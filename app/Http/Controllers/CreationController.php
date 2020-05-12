@@ -50,13 +50,13 @@ class CreationController extends Controller
         $data['user'] = Auth::user();
 
         if($data['post']){
-            $blogkey = 'post' . $data['post']->id;
+            // $blogkey = 'post' . $data['post']->id;
         
-            // Check if blog session key exists
-            if (!Session::has($blogkey)) {
-                Post::where('id', $data['post']->id)->increment('view_count');
-                Session::put($blogkey, 1);
-            }
+            // // Check if blog session key exists
+            // if (!Session::has($blogkey)) {
+            //     Session::put($blogkey, 1);
+            // }
+            Post::where('id', $data['post']->id)->increment('view_count');
     
             return view('front.home.creation_detail', $data);
         }else{
