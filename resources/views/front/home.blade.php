@@ -18,7 +18,7 @@
                             sketch,
                             UI hingga ilustrasi.
                         </p>
-                        <a class="btn btn-lg btn-outline-primary" href="#" role="button">Mulai Berkarya</a>
+                        <a class="btn btn-lg btn-outline-primary" href="{{ url('post/create') }}" role="button">Mulai Berkarya</a>
                     </div>
                 </div>
             </div>
