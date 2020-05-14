@@ -16,8 +16,8 @@
                     <a class="btn btn-light btn-lg font-weight-bold" href="{{ url('creation') }}" role="button">Lihat Kreasi</a>
                 </p>
             </div>
-            <div class="col-lg-6 d-none d-sm-block">
-                <img width="550" src="{{ URL::asset('gambar/sketch/6.svg')}}">
+            <div class="col-lg-6 d-none d-sm-block d-sm-block">
+                <img width="450" src="{{ URL::asset('gambar/sketch/6.svg')}}">
             </div>
         </div>
     </div>
@@ -28,25 +28,25 @@
     <div class="container">
         <div class="section-body">
             <div class="row text-center align-self-center">
-                <div class="col-lg-3 col-sm-4 mt-4" data-aos="zoom-in" data-aos-delay="200">
+                <div class="col-lg-3 col-sm-3 mt-4" data-aos="zoom-in" data-aos-delay="200">
                     <span style="color: #FF549C;">
                         <i class="fas fa-palette fa-4x"></i>
                         <h5 class="text-primary font-weight-normal mt-4">KARYA</h5>
                     </span>
                 </div>
-                <div class="col-lg-3 col-sm-4 mt-4" data-aos="zoom-in" data-aos-delay="400">
+                <div class="col-lg-3 col-sm-3 mt-4" data-aos="zoom-in" data-aos-delay="400">
                     <span style="color: #FF549C;">
                         <i class="fas fa-trophy fa-4x"></i>
                         <h5 class="text-primary font-weight-normal mt-4">PORTOFOLIO</h5>
                     </span>
                 </div>
-                <div class="col-lg-3 col-sm-4 mt-4" data-aos="zoom-in" data-aos-delay="600">
+                <div class="col-lg-3 col-sm-3 mt-4" data-aos="zoom-in" data-aos-delay="600">
                     <span style="color: #FF549C;">
                         <i class="fas fa-award fa-4x"></i>
                         <h5 class="text-primary font-weight-normal mt-4">BERSAING</h5>
                     </span>
                 </div>
-                <div class="col-lg-3 col-sm-4 mt-4" data-aos="zoom-in" data-aos-delay="800">
+                <div class="col-lg-3 col-sm-3 mt-4" data-aos="zoom-in" data-aos-delay="800">
                     <span style="color: #FF549C;">
                         <i class="fas fa-photo-video fa-4x"></i>
                         <h5 class="text-primary font-weight-normal mt-4">MEDIA</h5>
@@ -156,14 +156,14 @@
         <div class="section-body">
             <div class="row">
                 <div class="col align-self-center text-center">
-                    <h3 class="my-4 text-primary font-weight-bold">
+                    <h3 class="my-4 text-primary font-weight-bold" data-aos="zoom-out" data-aos-delay="400">
                         Kami menyediakan tempat untuk menuang Karya
                     </h3>
-                    <blockquote class="blockquote">
+                    <blockquote class="blockquote" data-aos="fade-up" data-aos-delay="600">
                         <p class="mb-0">Creativity is intelligence having fun</p>
                         <footer class="blockquote-footer"><cite title="Source Title">Albert Einstein</cite></footer>
                     </blockquote>
-                    <a class="btn btn-lg btn-outline-primary mt-4" href="{{ url('register') }}" role="button">Bergabung
+                    <a class="btn btn-lg btn-outline-primary mt-4" data-aos="zoom-out" data-aos-delay="800" href="{{ url('register') }}" role="button">Bergabung
                         Sekarang</a>
                 </div>
             </div>

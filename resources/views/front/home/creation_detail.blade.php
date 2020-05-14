@@ -33,3 +33,11 @@
 </section>
 
 @endsection
+
+@section('script')
+    <script>
+        $(document).ready(function(){
+            $("img").addClass("img-fluid");
+        });
+    </script>
+@endsection

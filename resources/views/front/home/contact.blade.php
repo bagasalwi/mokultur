@@ -6,7 +6,7 @@
 
         <div class="row">
             <div class="col-lg-8 offset-lg-2">
-                <h2 class="text-primary font-weight-bold text-center mb-4">Contact Us</h2>
+                <h2 class="text-primary font-weight-bold text-center mb-4">Support</h2>
             </div>
             <div class="col-lg-12 mt-4">
                 <div class="card card-primary">
