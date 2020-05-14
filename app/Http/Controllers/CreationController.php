@@ -47,7 +47,8 @@ class CreationController extends Controller
     {
         $data['title'] = 'KREASI';
         $data['post'] = Post::where('slug', $slug)->first();
-        $data['user'] = Auth::user();
+        $data['user'] = User::where('id', $data['post']->user_id)->first();
+        $data['post_count'] = Post::where('user_id', $data['user']->id)->count();
 
         if($data['post']){
             // $blogkey = 'post' . $data['post']->id;

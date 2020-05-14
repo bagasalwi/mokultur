@@ -15,29 +15,36 @@ class SidebarSeeder extends Seeder
         Sidebar::create([
             'role_id' => '2',
             'name' => 'User',
-            'url' => 'user',
+            'url' => 'admin/user',
             'icon' => 'fas fa-users',
         ]);
 
         Sidebar::create([
             'role_id' => '2',
             'name' => 'Post',
-            'url' => 'post-admin',
+            'url' => 'admin/post',
             'icon' => 'fas fa-list',
         ]);
 
         Sidebar::create([
             'role_id' => '2',
             'name' => 'Post Category',
-            'url' => 'post-category',
+            'url' => 'admin/category',
             'icon' => 'fas fa-tags',
         ]);
 
         Sidebar::create([
             'role_id' => '2',
             'name' => 'Tag',
-            'url' => 'tag',
+            'url' => 'admin/tag',
             'icon' => 'fas fa-tags',
+        ]);
+
+        Sidebar::create([
+            'role_id' => '2',
+            'name' => 'Support',
+            'url' => 'admin/support',
+            'icon' => 'fas fa-question',
         ]);
 
         Sidebar::create([

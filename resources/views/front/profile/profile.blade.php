@@ -1,7 +1,7 @@
 @extends('front.layouts.master')
 
 @section('content')
-<div class="main-content">
+<section class="section">
     <div class="container">
 
         @if ($errors->any())
@@ -134,8 +134,8 @@
                                         </div>
                                         <div class="text-right">
                                             <a href="{{ url()->previous() }}"
-                                                class="btn btn-lg btn-secondary mr-1">Batal</a>
-                                            <button class="btn btn-lg btn-primary">Simpan</button>
+                                                class="btn btn-secondary mr-1">Batal</a>
+                                            <button class="btn btn-primary">Simpan</button>
                                         </div>
                                     </div>
                                 </form>
@@ -190,8 +190,8 @@
                                         </div>
                                         <div class="text-right mt-2">
                                             <a href="{{ url()->previous() }}"
-                                                class="btn btn-lg btn-secondary mr-1">Batal</a>
-                                            <button class="btn btn-lg btn-primary">Simpan</button>
+                                                class="btn btn-secondary mr-1">Batal</a>
+                                            <button class="btn btn-primary">Simpan</button>
                                         </div>
                                     </div>
                                 </form>
@@ -202,7 +202,7 @@
             </div>
         </div>
     </div>
-</div>
+</section>
 @endsection
 
 @section('script')

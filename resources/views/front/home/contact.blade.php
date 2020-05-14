@@ -1,7 +1,7 @@
 @extends('front.layouts.master')
 
 @section('content')
-<div class="main-content">
+<section class="section">
     <div class="container">
 
         <div class="row">
@@ -63,7 +63,7 @@
             </div>
         </div>
     </div>
-</div>
+</section>
 @endsection
 
 @section('script')

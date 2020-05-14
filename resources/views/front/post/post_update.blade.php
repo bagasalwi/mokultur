@@ -2,7 +2,7 @@
 
 @section('content')
 @foreach ($fields as $fields)
-<div class="main-content">
+<section class="section">
     <div class="container">
 
         @if ($message = Session::get('success'))
@@ -106,8 +106,8 @@
                             </div>
                     </div>
                     <div class="card-footer text-right">
-                        <a href="{{ url()->previous() }}" class="btn btn-lg btn-secondary" type="submit">cancel</a>
-                        <button class="btn btn-lg btn-primary" type="submit">{{ $state }} post</button>
+                        <a href="{{ url()->previous() }}" class="btn btn-secondary" type="submit">cancel</a>
+                        <button class="btn btn-primary" type="submit">{{ $state }} post</button>
                     </div>
                     </form>
                 </div>

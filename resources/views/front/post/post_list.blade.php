@@ -1,7 +1,7 @@
 @extends('front.layouts.master')
 
 @section('content')
-<div class="main-content">
+<section class="section">
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-sm-12">
@@ -17,8 +17,8 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-striped" id="table-1">
+                        <div class="table">
+                            <table class="table">
                                 <thead>
                                     <tr>
                                         <th class="text-center">
@@ -49,7 +49,7 @@
                                     @endphp
                                     <tr>
                                         <td class="text-center">{{ $no++ }}</td>
-                                        <td>{{ $row->title }}</td>
+                                        <td style="width:50%">{{ $row->title }}</td>
                                         <td>
                                             <span class="badge badge-{{ $s_color }}">{{ $status }}</span>
                                         </td>
@@ -63,6 +63,9 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            <div class="float-right">
+                                {{ $post->links() }}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -70,7 +73,7 @@
             </div>
         </div>
     </div>
-</div>
+</section>
 
 <script>
     function deletePost(id){       

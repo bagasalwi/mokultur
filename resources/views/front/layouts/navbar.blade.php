@@ -1,4 +1,4 @@
-<nav class="navbar py-4 navbar-expand-lg navbar-light">
+<nav class="navbar py-4 navbar-expand-lg navbar-light border-bottom">
     <div class="container">
         <a class="navbar-brand .d-block .d-sm-none" href="#">
             <img src="{{ URL::asset('gambar/logo.png')}}" width="187" alt="">
@@ -9,22 +9,27 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav navbar-right ml-auto">
+            <ul class="navbar-nav ml-auto">
                 <li class="nav-item {{ ($title == "Home") ? "active" : "" }} align-self-center">
-                    <a class="nav-link" href="{{ url('/') }}">HOME</a>
+                    <a class="nav-link" href="{{ url('/') }}">Home</a>
                 </li>
                 <li class="nav-item {{ ($title == "KREASI") ? "active" : "" }} align-self-center">
-                    <a class="nav-link" href="{{ url('creation') }}">KREASI</a>
+                    <a class="nav-link" href="{{ url('creation') }}">Kreasi</a>
                 </li>
                 <li class="nav-item {{ ($title == "KREATOR") ? "active" : "" }} align-self-center">
-                    <a class="nav-link" href="{{ url('creator') }}">KREATOR</a>
+                    <a class="nav-link" href="{{ url('creator') }}">Kreator</a>
                 </li>
                 <li class="nav-item {{ ($title == "Contact") ? "active" : "" }} align-self-center">
-                    <a class="nav-link" href="{{ url('contact') }}">CONTACT</a>
+                    <a class="nav-link" href="{{ url('contact') }}">Support</a>
                 </li>
+                <li class="nav-item border-left"></li>
                 @guest
-                <a class="btn px-4 btn-primary ml-4" href="{{ route('login') }}" role="button">MASUK</a>
-                <a class="btn px-4 btn-outline-primary ml-2" href="{{ route('register') }}" role="button">DAFTAR</a>
+                <li class="nav-item align-self-center">
+                    <a class="nav-link" href="{{ url('login') }}">Masuk</a>
+                </li>
+                <li class="nav-item align-self-center">
+                    <a class="btn btn-outline-primary" href="{{ route('register') }}" role="button">DAFTAR</a>
+                </li>
                 @else
                 <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg">
                         <img alt="image" width="30" height="30"

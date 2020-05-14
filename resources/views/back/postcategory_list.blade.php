@@ -9,17 +9,11 @@
         </div>
 
         <div class="section-body">
-            <h2 class="section-title">Post Category Manager</h2>
             <div class="row">
-                <div class="col-12">
+                <div class="col-md-8">
                     <div class="card">
                         <div class="card-header">
-                            <div class="col-11">
-                                <h4>Category List</h4>
-                            </div>
-                            <div class="col-1">
-                                <a href="{{ $url_create }}" class="btn btn-primary">Create New</a>
-                            </div>
+                            <h4>Category List</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -31,8 +25,6 @@
                                             </th>
                                             <th>Name</th>
                                             <th>Description</th>
-                                            <th>Created Date</th>
-                                            <th>Update Date</th>
                                             <th class="text-center">Action</th>
                                         </tr>
                                     </thead>
@@ -46,11 +38,7 @@
                                             <td class="text-center">{{ $no++ }}</td>
                                             <td>{{ $row->name }}</td>
                                             <td>{{ $row->description }}</td>
-                                            <td>{{ $row->created_at }}</td>
-                                            <td>{{ $row->updated_at }}</td>
                                             <td class="text-center">
-                                                <a href="{{ $url_update }}/{{ $row->id }}"
-                                                    class="btn btn-primary"><i class="fas fa-edit"></i></a>
                                                 <button class="btn btn-danger"
                                                     onclick="deleteCategory({{ $row->id }})"><i
                                                         class="fas fa-trash"></i></button>
@@ -61,6 +49,38 @@
                                 </table>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <form class="forms-sample" action="{{ url($url_create) }}" method="POST">
+                            @csrf
+
+                            <div class="card-header">
+                                <h4>Tambah Category Baru</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label>Name</label>
+                                            <input type="text" class="form-control" id="name" name="name"
+                                                placeholder="Menu Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label>Description</label>
+                                            <input type="text" class="form-control" id="description" name="description"
+                                                placeholder="description">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer text-right">
+                                <button class="btn btn-primary mr-1" type="submit">Submit</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -81,7 +101,7 @@
       .then((willDelete) => {
           if (willDelete) {
             $.ajax({
-            url: "{{ url('post-category/delete') }}" + "/" + id,
+            url: "{{ url('admin/category/delete') }}" + "/" + id,
             success: function(){
                 swal("Done!","It was succesfully deleted!","success");
                 setInterval('window.location.reload()', 1000);

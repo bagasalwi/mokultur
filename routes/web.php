@@ -18,7 +18,6 @@ Route::get('/contact', 'HomeController@contact')->name('contact');
 Route::post('/contact-submit', 'HomeController@contact_submit');
 
 
-
 Route::prefix('creator')->group(function () {
     Route::get('/', 'CreatorController@creator');
     Route::get('/{username}', 'CreatorController@creator_detail');
@@ -58,28 +57,30 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'AdminRole'], function () {
 
         Route::prefix('sidebar')->group(function () {
-            // sidebar/....
             Route::get('/', 'SidebarController@index');
             Route::get('create', 'SidebarController@create');
             Route::get('update/{id}', 'SidebarController@update');
             Route::post('save', 'SidebarController@save');
             Route::get('delete/{id}', 'SidebarController@delete');
         });
-    
-        // Post Categories Controller
-        Route::prefix('post-category')->group(function (){
-            Route::get('/','PostCategoryController@index');
-            Route::get('create', 'PostCategoryController@create');
-            Route::get('update/{slug}', 'PostCategoryController@update');
-            Route::post('save', 'PostCategoryController@save');
-            Route::get('delete/{id}', 'PostCategoryController@delete');
-        });
 
         // Tag Controller
-        Route::prefix('tag')->group(function (){
-            Route::get('/','TagController@index');
-            Route::post('create', 'TagController@create');
-            Route::get('delete/{id}', 'TagController@delete');
+        Route::prefix('admin')->group(function (){
+            Route::get('support','AdminController@support');
+            Route::get('support/delete/{id}', 'AdminController@support_delete');
+
+            Route::get('post','AdminController@post');
+            Route::get('post/delete/{id}', 'AdminController@post_delete');
+
+            // Category Function
+            Route::get('category','AdminController@category');
+            Route::post('category/create', 'AdminController@category_create');
+            Route::get('category/delete/{id}', 'AdminController@category_delete');
+
+            // Tag Function
+            Route::get('tag','AdminController@tag');
+            Route::post('tag/create', 'AdminController@tag_create');
+            Route::get('tag/delete/{id}', 'AdminController@tag_delete');
         });
     
     });

@@ -42,7 +42,7 @@
 	<link href="{{ URL::asset('assets/modules/aos/aos.css')}}" rel="stylesheet">
 
 	{{-- font --}}
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
 
 </head>
 

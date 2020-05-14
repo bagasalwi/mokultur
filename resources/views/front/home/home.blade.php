@@ -1,7 +1,7 @@
 @extends('front.layouts.master')
 
 @section('content')
-<div class="main-content">
+<section class="section">
     <div class="container">
 
         @if ($message = Session::get('success'))
@@ -38,31 +38,27 @@
                     </div>
                     @foreach ($post as $p)
                     <div class="col-md-12">
-                        <article class="article article-style-c">
-                            <div class="article-header">
-                                <div class="article-image" data-background="{{ URL::asset('gambar/user_post/' . $p->thumbnail) }}">
+                        <div class="card">
+                            <div class="card-header border-bottom">
+                                <img alt="image" width="45" height="45"
+                                    src="{{ URL::asset('gambar/profile_pic/' . $p->user->profile_pic) }}"
+                                    class="rounded-circle mr-2">
+                                <h6><a href="{{ url('creator/' . $p->user->username) }}">{{ $p->user->name }}</a></h6>
+                            </div>
+                            <img class="w-100 img-fluid" style="max-width: 100%; height: 250px;"
+                                src="{{ URL::asset('gambar/user_post/' . $p->thumbnail) }}" alt="">
+                            <div class="card-body border-top">
+                                <a href="{{ url('creation/' . $p->slug) }}">
+                                    <h6>{{ $p->title }}</h6>
+                                </a>
+                                <div class="mt-2">
+                                    <a><i class="fas fa-eye"></i> {{ $p->view_count }}</a>
+                                    <div class="bullet"></div>
+                                    <a>{{ $p->category->name }}</a>
+                                    <a class="float-right">{{ $p->created_at->diffForHumans() }}</a>
                                 </div>
                             </div>
-                            <div class="article-details">
-                                <div class="article-category"><a>{{ $p->category->name }}</a>
-                                    <div class="bullet"></div> <a>{{ $p->created_at->diffForHumans() }}</a>
-                                </div>
-                                <div class="article-title">
-                                    <h2><a href="#">{{ $p->title }}</a></h2>
-                                </div>
-                                <div class="article-user">
-                                    <img alt="image" width="30" height="45" src="{{ URL::asset('gambar/profile_pic/' . $p->user->profile_pic) }}">
-                                    <div class="article-user-details">
-                                        <div class="user-detail-name">
-                                            <a href="#">{{ $p->user->name }}</a>
-                                        </div>
-                                        @if ($p->user->instagram != null)
-                                        <div class="text-job">{{ '@'.$p->user->instagram }}</div>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
+                        </div>
                     </div>
                     @endforeach
                     <div class="col d-flex justify-content-center">
@@ -72,6 +68,6 @@
             </div>
         </div>
     </div>
-</div>
+</section>
 
 @endsection

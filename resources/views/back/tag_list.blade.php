@@ -106,7 +106,7 @@
       .then((willDelete) => {
           if (willDelete) {
             $.ajax({
-            url: "{{ url('tag/delete') }}" + "/" + id,
+            url: "{{ url('admin/tag/delete') }}" + "/" + id,
             success: function(){
                 swal("Done!","It was succesfully deleted!","success");
                 setInterval('window.location.reload()', 1000);

@@ -28,7 +28,7 @@ class PostController extends Controller
         $data['sidebar'] = Sidebar::where('role_id', 1)->get();
         $data['post_count'] = Post::where('user_id', $data['user']->id)->count();
 
-        $data['post'] = Post::where('user_id', Auth::user()->id)->get();
+        $data['post'] = Post::where('user_id', Auth::user()->id)->paginate(5);
         
         $data['url_create'] = 'post/create';
         $data['url_update'] = 'post/update';

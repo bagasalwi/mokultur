@@ -5,6 +5,7 @@
                 <img class="rounded-circle text-center" width="150" height="150"
                     src="{{ URL::asset('gambar/profile_pic/' . $user->profile_pic) }}" alt="...">
             </div>
+            <h4 class="text-primary text-center mt-2">{{ $user->name }}</h4>
             <div class="profile-widget">
                 <div class="profile-widget-header">
                     <div class="profile-widget-items">
@@ -18,7 +19,6 @@
                         </div>
                     </div>
                 </div>
-                <h4 class="text-primary text-center">{{ $user->name }}</h4>
                 <div class="profile-widget-description">
                     <p>{{ $user->description }}</p>
                 </div>
