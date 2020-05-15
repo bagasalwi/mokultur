@@ -87,9 +87,6 @@
 </section>
 
 {{-- KREASI TERBARU --}}
-
-{{-- {{ dd($post_latest) }} --}}
-@if ($post_latest[0] != null)
 <section class="section" style="background-color:#FF549C;">
     <div class="container">
         <div class="section-body">
@@ -131,9 +128,6 @@
         </div>
     </div>
 </section>
-@else
-<hr>
-@endif
 
 <section class="section">
     <div class="container">
