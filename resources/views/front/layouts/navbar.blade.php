@@ -1,6 +1,6 @@
 <nav class="navbar py-4 navbar-expand-lg navbar-light border-bottom">
     <div class="container">
-        <a class="navbar-brand .d-block .d-sm-none" href="#">
+        <a class="navbar-brand .d-block .d-sm-none" href="{{ url('/') }}">
             <img src="{{ URL::asset('gambar/logo.png')}}" width="187" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -31,22 +31,21 @@
                     <a class="btn btn-outline-primary" href="{{ route('register') }}" role="button">DAFTAR</a>
                 </li>
                 @else
-                <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg">
+                <li class="dropdown nav-item align-self-center">
+                    <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg">
                         <img alt="image" width="30" height="30"
                             src="{{ URL::asset('gambar/profile_pic/' . Auth::user()->profile_pic) }}"
                             class="rounded-circle mr-1">
                         <div class="d-sm-none d-lg-inline-block">Hi, {{ Auth::user()->name }}</div>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <div class="dropdown-title">Logged
-                            {{ \Carbon\Carbon::parse(Auth::user()->last_login_at)->diffForHumans() }}</div>
-                        <a href="{{ url('home') }}" class="dropdown-item has-icon {{ ($title == "Home") ? "active" : "" }}">
+                    <div class="dropdown-menu dropdown-menu-left">
+                        <a href="{{ url('home') }}" class="dropdown-item has-icon">
                             Home
                         </a>
-                        <a href="{{ url('profile') }}" class="dropdown-item has-icon {{ ($title == "My Profile") ? "active" : "" }}">
+                        <a href="{{ url('profile') }}" class="dropdown-item has-icon">
                             My Profile
                         </a>
-                        <a href="{{ url('post') }}" class="dropdown-item has-icon {{ ($title == "My Post") ? "active" : "" }}">
+                        <a href="{{ url('post') }}" class="dropdown-item has-icon">
                             My Creation
                           </a>
                         <div class="dropdown-divider"></div>

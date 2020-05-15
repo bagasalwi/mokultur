@@ -780,10 +780,22 @@ select.form-control:not([size]):not([multiple]) {
     /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.13); */
     background-color: #fff;
     border: 1px solid rgb(235, 235, 235);
-    border-radius: 5px;;
+    border-radius: 5px;
     position: relative;
     margin-bottom: 30px;
 }
+
+.card-hover {
+    transition: all 0.3s ease 0s, opacity 0.5s cubic-bezier(0.5, 0, 0, 1) 1ms;
+}
+.card-hover:hover {
+    box-shadow: 2px 4px 8px 0 rgba(46, 61, 73, 0.2);
+    transform: scale(1.03);
+}
+.card-hover:active {
+    transform: scale(0.98);
+}
+
 .card .card-header,
 .card .card-body,
 .card .card-footer {
@@ -1616,7 +1628,7 @@ h6 .badge {
     margin-left: 0 !important;
 }
 .btn.btn-lg {
-    padding: 0.80rem 1.5rem;
+    padding: 0.8rem 1.5rem;
     font-size: 18px;
 }
 .btn.btn-lg.btn-icon-split i {
@@ -2675,7 +2687,7 @@ a.dropdown-item.active {
     background-color: #e3eaef;
 }
 
-.jumbotron-fluid p .lead{
+.jumbotron-fluid p .lead {
     font-size: 12px;
 }
 
@@ -4164,11 +4176,34 @@ h6,
     line-height: 1.5 !important;
 }
 
-a .hope:hover {
+.card a:hover {
     color: rgb(255, 0, 106) !important;
     text-decoration: none !important;
 }
 
-html,body{
+html,
+body {
     overflow-x: hidden;
+}
+
+.text-pulse {
+    -webkit-animation: neon-white 0.75s ease-in-out infinite alternate;
+    animation: neon-white 0.75s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes neon-white {
+    0% {
+        font-size: large;
+    }
+    to {
+        font-size: larger;
+    }
+}
+@keyframes neon-white {
+    0% {
+        font-size: large;
+    }
+    to {
+        font-size: larger;
+    }
 }

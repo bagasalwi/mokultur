@@ -16,9 +16,18 @@
                             <a href="{{ url($url_create) }}" class="btn btn-outline-primary">CREATE POST</a>
                         </div>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body">                        
+                        @if ($post[0] == null)
+                        <div class="empty-state" data-height="400">
+                            <img width="150" src="{{ URL::asset('gambar/sketch/7.svg')}}">
+                            <h2>Tidak ada Post</h2>
+                            <p class="lead">
+                                Kamu belum mengupload kreasi / post saat ini
+                            </p>
+                        </div>
+                        @else
                         <div class="table">
-                            <table class="table">
+                            <table class="table-responsive">
                                 <thead>
                                     <tr>
                                         <th class="text-center">
@@ -37,15 +46,15 @@
                                     @foreach ($post as $row)
 
                                     @php
-                                    
+
                                     if($row->status == 'P'){
-                                        $status = 'Published';
-                                        $s_color = 'success';
+                                    $status = 'Published';
+                                    $s_color = 'success';
                                     }else if($row->status == 'D'){
-                                        $status = 'Draft';
-                                        $s_color = 'danger';
+                                    $status = 'Draft';
+                                    $s_color = 'danger';
                                     }
-                                    
+
                                     @endphp
                                     <tr>
                                         <td class="text-center">{{ $no++ }}</td>
@@ -67,6 +76,7 @@
                                 {{ $post->links() }}
                             </div>
                         </div>
+                        @endif
                     </div>
                 </div>
 

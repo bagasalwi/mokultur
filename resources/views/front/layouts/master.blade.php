@@ -13,9 +13,9 @@
 	<link rel="stylesheet" href="{{ URL::asset('assets/modules/fontawesome/css/all.min.css')}}">
 
 	<!-- CSS Libraries -->
-	<link rel="stylesheet" href="{{ URL::asset('assets/modules/jqvmap/dist/jqvmap.min.css')}}">
+	{{-- <link rel="stylesheet" href="{{ URL::asset('assets/modules/jqvmap/dist/jqvmap.min.css')}}">
 	<link rel="stylesheet" href="{{ URL::asset('assets/modules/weather-icon/css/weather-icons.min.css')}}">
-	<link rel="stylesheet" href="{{ URL::asset('assets/modules/weather-icon/css/weather-icons-wind.min.css')}}">
+	<link rel="stylesheet" href="{{ URL::asset('assets/modules/weather-icon/css/weather-icons-wind.min.css')}}"> --}}
 	<link rel="stylesheet" href="{{ URL::asset('assets/modules/summernote/summernote-bs4.css')}}">
 	<link rel="stylesheet" href="{{ URL::asset('assets/modules/datatables/datatables.min.css')}}">
 	<link rel="stylesheet"
@@ -23,8 +23,8 @@
 	<link rel="stylesheet"
 		href="{{ URL::asset('assets/modules/datatables/Select-1.2.4/css/select.bootstrap4.min.css')}}">
 	<link rel="stylesheet" href="{{ URL::asset('assets/modules/bootstrap-daterangepicker/daterangepicker.css')}}">
-	<link rel="stylesheet"
-		href="{{ URL::asset('assets/modules/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css')}}">
+	{{-- <link rel="stylesheet"
+		href="{{ URL::asset('assets/modules/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css')}}"> --}}
 	<link rel="stylesheet" href="{{ URL::asset('assets/modules/select2/dist/css/select2.min.css')}}">
 	<link rel="stylesheet" href="{{ URL::asset('assets/modules/jquery-selectric/selectric.css')}}">
 	<link rel="stylesheet"
@@ -37,7 +37,6 @@
 	<!-- Template CSS -->
 	<link rel="stylesheet" href="{{ URL::asset('assets/css/style.css')}}">
 	<link rel="stylesheet" href="{{ URL::asset('assets/css/components.css')}}">
-	{{-- <link rel="stylesheet" href="{{ URL::asset('assets/css/all.min.css')}}"> --}}
 
 	<link href="{{ URL::asset('assets/modules/aos/aos.css')}}" rel="stylesheet">
 
@@ -90,7 +89,7 @@
 	<script src="{{ URL::asset('assets/modules/owlcarousel2/dist/owl.carousel.min.js')}}"></script>
 
 	<!-- Page Specific JS File -->
-	<script src="{{ URL::asset('assets/js/page/index-0.js')}}"></script>
+	{{-- <script src="{{ URL::asset('assets/js/page/index-0.js')}}"></script> --}}
 	<script src="{{ URL::asset('assets/js/page/modules-datatables.js')}}"></script>
 	<script src="{{ URL::asset('assets/js/page/forms-advanced-forms.js')}}"></script>
 	<script src="{{ URL::asset('assets/js/page/modules-slider.js')}}"></script>

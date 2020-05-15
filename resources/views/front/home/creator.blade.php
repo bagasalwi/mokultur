@@ -38,7 +38,7 @@
                 @foreach ($creator as $cr)
                 @if ($cr->latestPost != null)
                 <div class="col-md-4">
-                    <div class="card">
+                    <div class="card card-hover">
                         <div class="card-body">
                             <div class="media">
                                 <figure class="avatar avatar-lg mr-3">
@@ -52,7 +52,7 @@
                                     $name = $cr->username;
                                     }
                                     @endphp
-                                    <h4 class="mt-0 text-primary"><a href="{{ url('creator/' . $cr->username) }}">{{ $name }}</a></h4>
+                                    <h4 class="mt-0 text-primary"><a class="stretched-link" href="{{ url('creator/' . $cr->username) }}">{{ $name }}</a></h4>
                                     <p class="font-weight-light text-gray">{{ '@' . $cr->username }}</p>
                                 </div>
                             </div>
