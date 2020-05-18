@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 offset-lg-2">
-                <h2 class="text-white font-weight-bold text-center mb-4">Cari Kreasi</h2>
+                <h1 class="text-white font-weight-normal text-center mb-4">Cari Kreasi</h1>
                 <form action="{{ url('creation/search') }}" method="POST">
                     @csrf
                     <div class="input-group">
@@ -21,6 +21,13 @@
 </div>
 
 <div class="container">
+    <div class="row mb-4">
+        <div class="col-lg-8 offset-lg-2 text-center">
+            @foreach ($category as $cat)
+            <a href="{{ url('creation/category/' . $cat->name) }}" class="badge badge-primary">{{ $cat->name }}</a>
+            @endforeach
+        </div>
+    </div>
     @if ($message = Session::get('success'))
     <div class="alert alert-success alert-dismissible show fade">
         <div class="alert-body">

@@ -19,14 +19,26 @@
                             </div>
                         </div>
                     </div>
-                    <img src="{{ URL::asset('gambar/user_post/' . $post->thumbnail) }}" class="img-fluid w-100 mb-4 border-top border-bottom">
+                    <img src="{{ URL::asset('gambar/user_post/' . $post->thumbnail) }}"
+                        class="img-fluid w-100 mb-4 border-top border-bottom">
                     <div class="card-body">
                         {!! $post->description !!}
                     </div>
                 </div>
+                <a href="{{ url('creation/category/' . $post->category->name) }}"
+                    class="badge badge-primary">{{ $post->category->name }}</a>
+                <hr>
+                <div class="sharethis-inline-share-buttons"></div>
+                <div class="mt-2" id="disqus_thread"></div>
             </div>
             <div class="col-md-4">
                 @include('layouts.side-profile')
+                {{-- <div class="list-group d-sm-none d-md-block">
+                    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+                    <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+                    <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+                    <a href="#" class="list-group-item list-group-item-action disabled">Vestibulum at eros</a>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -35,9 +47,21 @@
 @endsection
 
 @section('script')
-    <script>
-        $(document).ready(function(){
+<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5ec27a5c1fa87300122c9912&product=inline-share-buttons&cms=website' async='async'></script>
+
+<script>
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://kreasibangsa.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments
+        powered by Disqus.</a></noscript>
+<script>
+    $(document).ready(function(){
             $("img").addClass("img-fluid");
         });
-    </script>
+</script>
 @endsection

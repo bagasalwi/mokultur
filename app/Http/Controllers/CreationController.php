@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\PostCategory;
 use App\User;
 use App\Sidebar;
 use App\Rules\MatchOldPassword;
@@ -37,7 +38,9 @@ class CreationController extends Controller
         $data['post'] = Post::where('status', 'P')->orderBy('created_at','desc')->paginate(6);
         $data['post_latest'] = Post::where('status', 'P')->orderBy('created_at', 'desc')->take(5)->get();
         $data['best_post'] = Post::where('status', 'P')->orderBy('view_count', 'asc')->first();
-        $data['popular_post'] = Post::where('status', 'P')->orderBy('view_count', 'asc')->take(3)->get(); 
+        $data['popular_post'] = Post::where('status', 'P')->orderBy('view_count', 'asc')->take(3)->get();
+        $data['category'] = PostCategory::get();
+
         $data['user'] = Auth::user();
 
         return view('front.home.creation', $data)->withPost($data['post']);
@@ -65,5 +68,18 @@ class CreationController extends Controller
         }
         
         
+    }
+
+    public function category_creation($name){
+        $data['title'] = 'KREASI';
+        $post = PostCategory::where('name', $name)->first();
+
+        $data['name'] = $name;
+        $data['category'] = PostCategory::get();
+
+        // dd($post);
+        $data['post'] = Post::where('category_id', $post->id)->orderBy('created_at','desc')->paginate(6);
+
+        return view('front.home.creation_category', $data);
     }
 }

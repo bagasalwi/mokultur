@@ -1464,6 +1464,13 @@ table tr:hover .table-links {
 .badge.badge-primary {
     background-color: #ff549c;
 }
+
+.badge-primary[href]:hover, .badge-primary[href]:focus {
+    color: #fff;
+    text-decoration: none;
+    background-color: #c5296a !important;
+  }
+
 .badge.badge-secondary {
     background-color: #cdd3d8;
 }
