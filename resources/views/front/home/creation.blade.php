@@ -40,26 +40,6 @@
     @endif
 
     <div class="row">
-        <div class="col-md-12 col-sm-12">
-            <div class="row">
-                @if ($best_post)
-                <div class="col-lg-8">
-                    <div class="owl-carousel owl-theme slider" id="slider2">
-                        <div><img alt="image" height="400" width="250"
-                                src="{{ URL::asset('gambar/user_post/' . $best_post->thumbnail) }}">
-                            <div class="slider-caption">
-                                <a href="{{ url('creation/' . $best_post->slug) }}" class="hope">
-                                    <div class="slider-title">
-                                        <h4>{{ $best_post->title }}</h4>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endif
-            </div>
-        </div>
         <div class="col-lg-12 mt-4">
             <h4 class="text-primary">Kreasi Terakhir</h4>
             <hr>

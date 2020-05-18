@@ -36,16 +36,16 @@ class CreationController extends Controller
     {
         $data['title'] = 'KREASI';
         $data['post'] = Post::where('status', 'P')->orderBy('created_at','desc')->paginate(6);
-        $data['best_post'] = Post::where('status', 'P')->orderBy('view_count', 'asc')->first();
+        // $data['best_post'] = Post::where('status', 'P')->orderBy('view_count', 'asc')->first();
 
-        $data['post_latest'] = Post::where('status', 'P')->orderBy('created_at', 'desc')->take(5)->get();
-        $data['popular_post'] = Post::where('status', 'P')->orderBy('view_count', 'asc')->take(3)->get();
+        // $data['post_latest'] = Post::where('status', 'P')->orderBy('created_at', 'desc')->take(5)->get();
+        // $data['popular_post'] = Post::where('status', 'P')->orderBy('view_count', 'asc')->take(3)->get();
 
         $data['category'] = PostCategory::all();
 
         $data['user'] = Auth::user();
 
-        return view('front.home.creation', $data)->withPost($data['post']);
+        return view('front.home.creation', $data);
     }
 
     public function creation_detail($slug)
