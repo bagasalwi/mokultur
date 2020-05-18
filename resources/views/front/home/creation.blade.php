@@ -58,7 +58,7 @@
                     </div>
                 </div>
                 @endif
-                <div class="col-lg-4">
+                {{-- <div class="col-lg-4">
                     @foreach ($post_latest as $pl)
                     <div class="my-4">
                         <div class="row">
@@ -75,7 +75,7 @@
                         </div>
                     </div>
                     @endforeach
-                </div>
+                </div> --}}
             </div>
         </div>
         <div class="col-lg-12 mt-4">
