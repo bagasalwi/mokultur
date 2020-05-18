@@ -36,9 +36,11 @@ class CreationController extends Controller
     {
         $data['title'] = 'KREASI';
         $data['post'] = Post::where('status', 'P')->orderBy('created_at','desc')->paginate(6);
-        $data['post_latest'] = Post::where('status', 'P')->orderBy('created_at', 'desc')->take(5)->get();
         $data['best_post'] = Post::where('status', 'P')->orderBy('view_count', 'asc')->first();
+
+        $data['post_latest'] = Post::where('status', 'P')->orderBy('created_at', 'desc')->take(5)->get();
         $data['popular_post'] = Post::where('status', 'P')->orderBy('view_count', 'asc')->take(3)->get();
+
         $data['category'] = PostCategory::get();
 
         $data['user'] = Auth::user();
