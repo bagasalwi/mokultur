@@ -83,14 +83,13 @@
             <hr>
             <div class="row">
                 @foreach ($popular_post as $p)
-                {{ dd($p->user->name) }}
                 <div class="col-md-4">
                     <div class="card card-hover">
                         <div class="card-header border-bottom">
                             <img alt="image" width="45" height="45"
-                                src="{{ URL::asset('gambar/profile_pic/' . $p->user->profile_pic) }}"
+                                src="{{ URL::asset('gambar/profile_pic/' . $p->user['profile_pic']) }}"
                                 class="rounded-circle mr-2">
-                            <h6><a href="{{ url('creator/' . $p->user->username) }}">{{ $p->user->name }}</a></h6>
+                            <h6><a href="{{ url('creator/' . $p->user['username']) }}">{{ $p->user['name'] }}</a></h6>
                         </div>
                         <img class="w-100 img-fluid" style="max-width: 100%; height: 250px;"
                             src="{{ URL::asset('gambar/user_post/' . $p->thumbnail) }}" alt="">
@@ -119,9 +118,9 @@
                     <div class="card card-hover">
                         <div class="card-header border-bottom">
                             <img alt="image" width="45" height="45"
-                                src="{{ URL::asset('gambar/profile_pic/' . $p->user->profile_pic) }}"
+                                src="{{ URL::asset('gambar/profile_pic/' . $p->user['profile_pic']) }}"
                                 class="rounded-circle mr-2">
-                            <h6><a href="{{ url('creator/' . $p->user->username) }}">{{ $p->user->name }}</a></h6>
+                            <h6><a href="{{ url('creator/' . $p->user['username']) }}">{{ $p->user['name'] }}</a></h6>
                         </div>
                         <img class="w-100 img-fluid" style="max-width: 100%; height: 250px;"
                             src="{{ URL::asset('gambar/user_post/' . $p->thumbnail) }}" alt="">
