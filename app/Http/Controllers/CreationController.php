@@ -41,7 +41,7 @@ class CreationController extends Controller
         $data['post_latest'] = Post::where('status', 'P')->orderBy('created_at', 'desc')->take(5)->get();
         $data['popular_post'] = Post::where('status', 'P')->orderBy('view_count', 'asc')->take(3)->get();
 
-        $data['category'] = PostCategory::get();
+        $data['category'] = PostCategory::all();
 
         $data['user'] = Auth::user();
 

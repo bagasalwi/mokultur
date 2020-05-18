@@ -33,12 +33,6 @@
             </div>
             <div class="col-md-4">
                 @include('layouts.side-profile')
-                {{-- <div class="list-group d-sm-none d-md-block">
-                    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-                    <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-                    <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-                    <a href="#" class="list-group-item list-group-item-action disabled">Vestibulum at eros</a>
-                </div> --}}
             </div>
         </div>
     </div>
