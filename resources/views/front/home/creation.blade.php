@@ -83,7 +83,7 @@
             <hr>
             <div class="row">
                 @foreach ($popular_post as $p)
-                {{-- {{ dd($p->user) }} --}}
+                {{ dd($p->user->name) }}
                 <div class="col-md-4">
                     <div class="card card-hover">
                         <div class="card-header border-bottom">
