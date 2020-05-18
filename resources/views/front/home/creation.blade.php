@@ -58,8 +58,10 @@
                     </div>
                 </div>
                 @endif
-                <div class="col-lg-4">
+                {{-- <div class="col-lg-4">
                     @foreach ($post_latest as $pl)
+
+                    {{ dd($pl->user->name) }}
                     <div class="my-4">
                         <div class="row">
                             <div class="col-8">
@@ -75,10 +77,10 @@
                         </div>
                     </div>
                     @endforeach
-                </div>
+                </div> --}}
             </div>
         </div>
-        <div class="col-lg-12 mt-4">
+        {{-- <div class="col-lg-12 mt-4">
             <h4 class="text-primary">Kreasi Popular</h4>
             <hr>
             <div class="row">
@@ -108,7 +110,7 @@
                 </div>
                 @endforeach
             </div>
-        </div>
+        </div> --}}
         <div class="col-lg-12 mt-4">
             <h4 class="text-primary">Kreasi Terakhir</h4>
             <hr>

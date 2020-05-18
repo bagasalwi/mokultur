@@ -68,8 +68,6 @@ class CreationController extends Controller
         }else{
             return redirect()->back();
         }
-        
-        
     }
 
     public function category_creation($name){
