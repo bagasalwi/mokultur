@@ -32,7 +32,7 @@ class CreationController extends Controller
         return view('front.home.creation_find', $data);
     }
 
-    public function creation()
+    public function all_creation()
     {
         $data['title'] = 'KREASI';
         $data['post'] = Post::where('status', 'P')->orderBy('created_at','desc')->paginate(6);
@@ -42,8 +42,6 @@ class CreationController extends Controller
         // $data['popular_post'] = Post::where('status', 'P')->orderBy('view_count', 'asc')->take(3)->get();
 
         $data['category'] = PostCategory::all();
-
-        $data['user'] = Auth::user();
 
         return view('front.home.creation', $data);
     }
