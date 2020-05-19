@@ -32,24 +32,19 @@ class CreationController extends Controller
         return view('front.home.creation_find', $data);
     }
 
-    public function browse(){
-        $data['title'] = 'KREASI';
-        $data['creation'] = DB::table('posts')->where('status', 'P')->orderBy('created_at','desc')->paginate(9);
+    // public function browse(){
+    //     $data['title'] = 'KREASI';
+    //     $data['creation'] = DB::table('posts')->where('status', 'P')->orderBy('created_at','desc')->paginate(9);
 
-        $data['category'] = PostCategory::get();
+    //     $data['category'] = PostCategory::get();
 
-        return view('front.home.creation', $data);
-    }
+    //     return view('front.home.creation', $data);
+    // }
 
     public function creation()
     {
         $data['title'] = 'KREASI';
-        $data['name'] = null;
         $data['creation'] = Post::where('status', 'P')->orderBy('created_at','desc')->paginate(6);
-        $data['best_post'] = Post::where('status', 'P')->orderBy('view_count', 'asc')->first();
-
-        $data['post_latest'] = Post::where('status', 'P')->orderBy('created_at', 'desc')->take(5)->get();
-        $data['popular_post'] = Post::where('status', 'P')->orderBy('view_count', 'asc')->take(3)->get();
 
         $data['category'] = PostCategory::all();
 

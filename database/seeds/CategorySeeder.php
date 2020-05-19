@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\PostCategory;
+use App\Tag;
 
 class CategorySeeder extends Seeder
 {
@@ -22,8 +23,34 @@ class CategorySeeder extends Seeder
             'description' => 'All About Movies',
         ],
         [
+            'name' => 'Review',
+            'description' => 'All About Review',
+        ],
+        [
+            'name' => 'Tutorial',
+            'description' => 'All About Tutorial',
+        ],
+        [
             'name' => 'Design',
             'description' => 'All About Design',
         ]);
+
+        Tag::create(
+            [
+                'name' => 'Game',
+            ],
+            [
+                'name' => 'Review',
+            ],
+            [
+                'name' => 'Tutorial',
+            ],
+            [
+                'name' => 'Design',
+            ],
+            [
+                'name' => 'Movie',
+            ],
+        );
     }
 }
