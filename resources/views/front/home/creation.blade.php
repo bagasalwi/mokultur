@@ -61,7 +61,7 @@
                 <div class="col-lg-4">
                     @foreach ($post_latest as $pl)
 
-                    {{ dd($pl->user->name) }}
+                    {{-- {{ dd($pl->user->name) }} --}}
                     <div class="my-4">
                         <div class="row">
                             <div class="col-8">
