@@ -36,6 +36,8 @@ class CreationController extends Controller
         $data['title'] = 'KREASI';
         $data['creation'] = Post::where('status', 'P')->orderBy('created_at','desc')->paginate(9);
 
+        $data['category'] = PostCategory::get();
+
         return view('front.home.creation', $data);
     }
 
