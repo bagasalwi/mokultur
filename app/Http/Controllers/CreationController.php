@@ -32,15 +32,6 @@ class CreationController extends Controller
         return view('front.home.creation_find', $data);
     }
 
-    // public function browse(){
-    //     $data['title'] = 'KREASI';
-    //     $data['creation'] = DB::table('posts')->where('status', 'P')->orderBy('created_at','desc')->paginate(9);
-
-    //     $data['category'] = PostCategory::get();
-
-    //     return view('front.home.creation', $data);
-    // }
-
     public function creation()
     {
         $data['title'] = 'KREASI';

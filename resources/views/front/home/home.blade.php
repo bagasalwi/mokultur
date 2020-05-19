@@ -36,7 +36,7 @@
                             </div>
                         </div>
                     </div>
-                    {{-- @foreach ($post as $p)
+                    @foreach ($post as $p)
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header border-bottom">
@@ -60,7 +60,7 @@
                             </div>
                         </div>
                     </div>
-                    @endforeach --}}
+                    @endforeach
                     <div class="col d-flex justify-content-center">
                         {{ $post->links() }}
                     </div>
