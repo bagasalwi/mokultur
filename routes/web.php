@@ -31,6 +31,8 @@ Route::prefix('creation')->group(function () {
     Route::get('/category/{name}', 'CreationController@category_creation');
 });
 
+Route::get('/browse', 'CreationController@browse');
+
 
 
 Route::group(['middleware' => 'auth'], function () {
