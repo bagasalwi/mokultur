@@ -34,7 +34,7 @@ class CreationController extends Controller
 
     public function browse(){
         $data['title'] = 'KREASI';
-        $data['creation'] = Post::where('status', 'P')->orderBy('created_at','desc')->paginate(9);
+        $data['creation'] = DB::table('posts')->where('status', 'P')->orderBy('created_at','desc')->paginate(9);
 
         $data['category'] = PostCategory::get();
 
@@ -45,7 +45,7 @@ class CreationController extends Controller
     {
         $data['title'] = 'KREASI';
         $data['name'] = null;
-        $data['post'] = Post::where('status', 'P')->orderBy('created_at','desc')->paginate(6);
+        $data['creation'] = Post::where('status', 'P')->orderBy('created_at','desc')->paginate(6);
         $data['best_post'] = Post::where('status', 'P')->orderBy('view_count', 'asc')->first();
 
         $data['post_latest'] = Post::where('status', 'P')->orderBy('created_at', 'desc')->take(5)->get();

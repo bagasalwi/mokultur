@@ -72,7 +72,7 @@
             </div>
         </div>
         <div class="col d-flex justify-content-center">
-            {{ $post->links() }}
+            {{ $creation->links() }}
         </div>
     </div>
 </div>
