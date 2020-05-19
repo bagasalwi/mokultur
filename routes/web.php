@@ -25,7 +25,7 @@ Route::prefix('creator')->group(function () {
 });
 
 Route::prefix('creation')->group(function () {
-    Route::get('/', 'CreationController@all_creation');
+    Route::get('/', 'CreationController@creation');
     Route::get('/{slug}', 'CreationController@creation_detail');
     Route::post('/search', 'CreationController@search_creation');
     Route::get('/category/{name}', 'CreationController@category_creation');
