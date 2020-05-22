@@ -9,12 +9,8 @@
                     <img src="{{ URL::asset('gambar/logo.png')}}" width="250" alt="">
                 </div>
 
-                <div class="card card-primary">
-                    <div class="card-header">
-                        <h4>Daftar Akun</h4>
-                    </div>
-
-                    <div class="card-body">
+                <div class="card">
+                    <div class="card-body mt-3">
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
                             <div class="form-group">

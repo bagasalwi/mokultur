@@ -13,7 +13,7 @@
                     <div class="card-header">
                         <h4>My Post</h4>
                         <div class="card-header-action">
-                            <a href="{{ url($url_create) }}" class="btn btn-outline-primary">CREATE POST</a>
+                            <a href="{{ url($url_create) }}" class="btn btn-outline-primary">Posting Baru</a>
                         </div>
                     </div>
                     <div class="card-body">                        

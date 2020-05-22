@@ -23,9 +23,10 @@
 <div class="container">
     <div class="row mb-4">
         <div class="col-lg-8 offset-lg-2 text-center">
+            <a href="{{ url('creation/category/all') }}" class="badge badge-{{ ($name == 'all') ? "primary" : "secondary" }} mt-2">Semua</a>
             @foreach ($category as $cat)
             <a href="{{ url('creation/category/' . $cat->name) }}"
-                class="badge badge-{{ ($name == $cat->name) ? "primary" : "secondary" }}">{{ $cat->name }}</a>
+                class="badge badge-{{ ($name == $cat->name) ? "primary" : "secondary" }} mt-2">{{ $cat->name }}</a>
             @endforeach
         </div>
     </div>

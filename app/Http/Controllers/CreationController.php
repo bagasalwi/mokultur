@@ -37,7 +37,7 @@ class CreationController extends Controller
         $data['title'] = 'KREASI';
         $data['creation'] = Post::where('status', 'P')->orderBy('created_at','desc')->paginate(6);
 
-        $data['category'] = PostCategory::all();
+        $data['category'] = PostCategory::take(5)->get();
 
         return view('front.home.creation', $data);
     }
@@ -66,12 +66,15 @@ class CreationController extends Controller
 
     public function category_creation($name){
         $data['title'] = 'KREASI';
-        $post = PostCategory::where('name', $name)->first();
+        if($name == 'all'){
+            $data['post'] = Post::orderBy('created_at','desc')->paginate(6);
+        }else{
+            $post = PostCategory::where('name', $name)->first();
+            $data['post'] = Post::where('category_id', $post->id)->orderBy('created_at','desc')->paginate(6);
+        }
 
         $data['name'] = $name;
-        $data['category'] = PostCategory::get();
-
-        $data['post'] = Post::where('category_id', $post->id)->orderBy('created_at','desc')->paginate(6);
+        $data['category'] = PostCategory::get();        
 
         return view('front.home.creation_category', $data);
     }

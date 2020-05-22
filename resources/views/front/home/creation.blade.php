@@ -26,6 +26,7 @@
             @foreach ($category as $cat)
             <a href="{{ url('creation/category/' . $cat->name) }}" class="badge badge-primary">{{ $cat->name }}</a>
             @endforeach
+            <a href="{{ url('creation/category/all') }}" class="badge badge-secondary">Lihat Semua</a>
         </div>
     </div>
     @if ($message = Session::get('success'))

@@ -11,25 +11,27 @@
                         <div class="mt-2">
                             <a>{{ $post->category->name }}</a>
                             <div class="bullet"></div>
-                            <a><i class="fas fa-eye"></i> {{ $post->view_count }} Viewed</a>
+                            <a><i class="fas fa-eye"></i> {{ $post->view_count }}</a>
                             <div class="bullet"></div>
                             <a>{{ $post->created_at->diffForHumans() }}</a>
                             <a class="float-right">{{ $post->created_at->format('d M Y') }}</a>
-                            <div class="align-left">
-                            </div>
                         </div>
                     </div>
                     <img src="{{ URL::asset('gambar/user_post/' . $post->thumbnail) }}"
                         class="img-fluid w-100 mb-4 border-top border-bottom">
                     <div class="card-body">
-                        {!! $post->description !!}
+                        <div class="mb-4">
+                            {!! $post->description !!}
+                        </div>
+                        <a href="{{ url('creation/category/' . $post->category->name) }}"
+                            class="badge badge-primary">{{ $post->category->name }}</a>
+                        <hr>
+                        <div class="sharethis-inline-share-buttons"></div>
+                        <div class="mt-2" id="disqus_thread"></div>
                     </div>
+                    
                 </div>
-                <a href="{{ url('creation/category/' . $post->category->name) }}"
-                    class="badge badge-primary">{{ $post->category->name }}</a>
-                <hr>
-                <div class="sharethis-inline-share-buttons"></div>
-                <div class="mt-2" id="disqus_thread"></div>
+                
             </div>
             <div class="col-md-4">
                 @include('layouts.side-profile')

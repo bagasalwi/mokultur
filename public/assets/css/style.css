@@ -4159,10 +4159,10 @@ h6,
     line-height: 1.5 !important;
 }
 
-.card a:hover {
+/* .card a:hover {
     color: rgb(255, 0, 106) !important;
     text-decoration: none !important;
-}
+} */
 
 html,
 body {

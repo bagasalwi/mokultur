@@ -34,25 +34,25 @@
                 <div class="col-lg-3 col-sm-3 mt-4" data-aos="zoom-in" data-aos-delay="200">
                     <span style="color: #FF549C;">
                         <i class="fas fa-palette fa-4x"></i>
-                        <h4 class="text-primary mt-4">KARYA</h4>
+                        <h4 class="text-primary mt-4">Karya</h4>
                     </span>
                 </div>
                 <div class="col-lg-3 col-sm-3 mt-4" data-aos="zoom-in" data-aos-delay="400">
                     <span style="color: #FF549C;">
                         <i class="fas fa-trophy fa-4x"></i>
-                        <h4 class="text-primary mt-4">PORTOFOLIO</h4>
+                        <h4 class="text-primary mt-4">Portofolio</h4>
                     </span>
                 </div>
                 <div class="col-lg-3 col-sm-3 mt-4" data-aos="zoom-in" data-aos-delay="600">
                     <span style="color: #FF549C;">
-                        <i class="fas fa-award fa-4x"></i>
-                        <h4 class="text-primary mt-4">BERSAING</h4>
+                        <i class="fas fa-share-alt fa-4x"></i>
+                        <h4 class="text-primary mt-4">Berbagi</h4>
                     </span>
                 </div>
                 <div class="col-lg-3 col-sm-3 mt-4" data-aos="zoom-in" data-aos-delay="800">
                     <span style="color: #FF549C;">
                         <i class="fas fa-photo-video fa-4x"></i>
-                        <h4 class="text-primary mt-4">MEDIA</h4>
+                        <h4 class="text-primary mt-4">Media</h4>
                     </span>
                 </div>
             </div>

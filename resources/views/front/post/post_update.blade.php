@@ -30,13 +30,10 @@
         @endif
 
         <div class="row">
-            <div class="col-md-4 col-sm-12">
-                @include('layouts.side-profile')
-            </div>
-            <div class="col-md-8 col-sm-12">
+            <div class="col-md-12 col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>{{ $state }} post</h4>
+                        <h4>Edit Posting</h4>
                     </div>
                     <div class="card-body">
                         <form class="forms-sample" action="{{ url('post/save') }}" method="POST"
@@ -54,7 +51,7 @@
                                             placeholder="Title" value="{{ $fields->title }}" required>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Category</label>
                                         <select class="form-control select2" id="category_id" name="category_id">
@@ -66,7 +63,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Tag</label>
                                         <select class="form-control select2-new" name="tags[]" multiple="multiple">
@@ -80,7 +77,7 @@
                                     <div class="form-group">
                                         <label>Content</label>
                                         <textarea name="description"
-                                            class="summernote-simple form-control">{{ $fields->description }}</textarea>
+                                            class="summernote form-control">{{ $fields->description }}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -107,7 +104,7 @@
                     </div>
                     <div class="card-footer text-right">
                         <a href="{{ url()->previous() }}" class="btn btn-secondary" type="submit">cancel</a>
-                        <button class="btn btn-primary" type="submit">{{ $state }} post</button>
+                        <button class="btn btn-primary" type="submit">Posting</button>
                     </div>
                     </form>
                 </div>
