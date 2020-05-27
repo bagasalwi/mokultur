@@ -49,7 +49,7 @@ class User extends Authenticatable
 
     public function latestPost()
     {
-        return $this->hasOne(Post::class)->latest();
+        return $this->hasOne(Post::class)->where('status', 'P')->latest();
     }
 
     public function authorizeRoles($roles)

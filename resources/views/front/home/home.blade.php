@@ -16,39 +16,36 @@
         @endif
 
         <div class="row">
-            <div class="col-md-4 col-sm-12">
+            <div class="col-md-4 col-sm-12 my-2">
                 @include('layouts.side-profile')
             </div>
-            <div class="col-md-8 col-sm-12">
+            <div class="col-md-8 col-sm-12 my-2">
                 <div class="row">
                     <div class="col-12 mb-4">
                         @include('layouts.top-menu')
-                        <div class="hero text-white bg-primary">
+                        <div class="hero text-white bg-primary mt-2">
                             <div class="hero-inner">
                                 <h2>Welcome, {{ $user->name }} !</h2>
                                 <p class="lead">Selamat datang di Kreasi Bangsa, Bersama kita tampilkan kreasi anak
                                     bangsa !</p>
-                                <div class="mt-4">
-                                    <a href="{{ url('post/create') }}"
-                                        class="btn btn-outline-white btn-lg btn-icon icon-left"><i
-                                            class="fas fa-plus mr-1"></i> TAMBAH KARYA</a>
-                                </div>
                             </div>
                         </div>
                     </div>
                     @foreach ($post as $p)
-                    <div class="col-md-12">
-                        <div class="card">
+                    <div class="col-md-6 mb-4">
+                        <div class="card card-hover h-100">
                             <div class="card-header border-bottom">
                                 <img alt="image" width="45" height="45"
                                     src="{{ URL::asset('gambar/profile_pic/' . $p->user->profile_pic) }}"
                                     class="rounded-circle mr-2">
                                 <h6><a href="{{ url('creator/' . $p->user->username) }}">{{ $p->user->name }}</a></h6>
                             </div>
-                            <img class="w-100 img-fluid" style="max-width: 100%; height: 250px;"
-                                src="{{ URL::asset('gambar/user_post/' . $p->thumbnail) }}" alt="">
+                            <div class="embed-responsive embed-responsive-4by3">
+                                <img class="embed-responsive-item img-fluid"
+                                    src="{{ URL::asset('gambar/user_post/' . $p->thumbnail) }}" alt="">
+                            </div>
                             <div class="card-body border-top">
-                                <a href="{{ url('creation/' . $p->slug) }}">
+                                <a class="stretched-link" href="{{ url('creation/' . $p->slug) }}">
                                     <h6>{{ $p->title }}</h6>
                                 </a>
                                 <div class="mt-2">

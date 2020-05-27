@@ -18,13 +18,13 @@
         @endif
 
         <div class="row">
-            <div class="col-md-4 col-sm-12">
+            <div class="col-md-4 col-sm-12 my-2">
                 @include('layouts.side-profile')
             </div>
 
-            <div class="col-md-8 col-sm-12">
+            <div class="col-md-8 col-sm-12 my-2">
                 @include('layouts.top-menu')
-                <div class="card">
+                <div class="card mt-2">
                     <div class="card-header">
                         <h4>Edit Profile</h4>
                     </div>

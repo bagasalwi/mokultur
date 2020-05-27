@@ -35,7 +35,8 @@ class CreationController extends Controller
     public function creation()
     {
         $data['title'] = 'KREASI';
-        $data['creation'] = Post::where('status', 'P')->orderBy('created_at','desc')->paginate(6);
+        $data['creation'] = Post::where('status', 'P')->orderBy('created_at','desc')->paginate(9);
+        $data['top_creation'] = Post::where('status', 'P')->orderBy('view_count','asc')->take(3)->get();
 
         $data['category'] = PostCategory::take(5)->get();
 
@@ -57,6 +58,8 @@ class CreationController extends Controller
             //     Session::put($blogkey, 1);
             // }
             Post::where('id', $data['post']->id)->increment('view_count');
+
+            $data['recomendation'] = Post::where('category_id', $data['post']->category_id)->take(3)->get()->except($data['post']->id);
     
             return view('front.home.creation_detail', $data);
         }else{
@@ -70,7 +73,7 @@ class CreationController extends Controller
             $data['post'] = Post::orderBy('created_at','desc')->paginate(6);
         }else{
             $post = PostCategory::where('name', $name)->first();
-            $data['post'] = Post::where('category_id', $post->id)->orderBy('created_at','desc')->paginate(6);
+            $data['post'] = Post::where('category_id', $post->id)->where('status', 'P')->orderBy('created_at','desc')->paginate(6);
         }
 
         $data['name'] = $name;

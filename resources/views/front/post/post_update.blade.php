@@ -48,7 +48,7 @@
                                     <div class="form-group">
                                         <label>Title</label>
                                         <input type="text" class="form-control" id="title" name="title"
-                                            placeholder="Title" value="{{ $fields->title }}" required>
+                                            placeholder="Title" value="{{old('title', $fields->title)}}" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -57,7 +57,8 @@
                                         <select class="form-control select2" id="category_id" name="category_id">
                                             @foreach ($post_category as $r)
                                             <option value="{{ $r->id }}"
-                                                {{ $fields->category_id == $r->id ? 'selected' : '' }}>
+                                                @if (old('category_id') == $r->id) {{ 'selected' }} @endif>
+                                                {{-- {{ old('category_id') == $r->id ? "selected" : "" }}> --}}
                                                 {{ $r->name }}</option>
                                             @endforeach
                                         </select>
@@ -77,7 +78,7 @@
                                     <div class="form-group">
                                         <label>Content</label>
                                         <textarea name="description"
-                                            class="summernote form-control">{{ $fields->description }}</textarea>
+                                            class="summernote form-control">{{old('description', $fields->description)}}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12">

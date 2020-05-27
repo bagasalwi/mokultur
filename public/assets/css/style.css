@@ -770,7 +770,6 @@ select.form-control:not([size]):not([multiple]) {
     border: 1px solid rgb(235, 235, 235);
     border-radius: 5px;
     position: relative;
-    margin-bottom: 30px;
 }
 
 .card .card-header,
@@ -2146,6 +2145,23 @@ h6 .badge {
     padding-bottom: 0 !important;
     height: 100%;
     font-size: 16px;
+}
+
+@media (max-width: 575.98px) {
+    .navbar .nav-link {
+        padding-top: 5px !important;
+        padding-bottom: 5px !important;
+        height: 100%;
+        font-size: 16px;
+    }
+}
+@media (max-width: 1000.98px) {
+    .navbar .nav-link {
+        padding-top: 5px !important;
+        padding-bottom: 5px !important;
+        height: 100%;
+        font-size: 16px;
+    }
 }
 
 .navbar .nav-link a .btn {
@@ -4200,4 +4216,8 @@ body {
 }
 .card-hover:active {
     transform: scale(0.98);
+}
+
+.embed-responsive .card-img-top {
+    object-fit: cover;
 }

@@ -48,7 +48,7 @@
                                     <div class="form-group">
                                         <label>Title</label>
                                         <input type="text" class="form-control" id="title" name="title"
-                                            placeholder="Title" value="{{ $fields->title }}" required>
+                                            placeholder="Title" value="{{old('title')}}" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -77,7 +77,7 @@
                                     <div class="form-group">
                                         <label>Content</label>
                                         <textarea name="description"
-                                            class="summernote form-control">{{ $fields->description }}</textarea>
+                                            class="summernote form-control">{{old('description')}}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12">

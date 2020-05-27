@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Kreasibangsa</title>
+	<link rel="icon" href="{{ URL::asset('gambar/Logo.svg') }}">
+	<title>Kreasibangsa</title>
 
     <!-- General CSS Files -->
 	<link rel="stylesheet" href="{{ URL::asset('assets/modules/bootstrap/css/bootstrap.min.css')}}">

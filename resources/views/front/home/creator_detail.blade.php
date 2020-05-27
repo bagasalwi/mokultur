@@ -29,18 +29,25 @@
                     </p>
                 </div>
                 @else
+                <h5 class="text-primary mb-2">Semua Post / Kreasi</h5>
                 <div class="row">
                     @foreach ($post as $p)
-                    <div class="col-md-12">
-                        <div class="card">
+                    <div class="col-md-6 mb-4">
+                        <div class="card card-hover h-100">
                             <div class="card-header border-bottom">
-                                <a href="{{ url('creation/' . $p->slug) }}">
-                                    <h5>{{ $p->title }}</h5>
-                                </a>
+                                <img alt="image" width="45" height="45"
+                                    src="{{ URL::asset('gambar/profile_pic/' . $p->user->profile_pic) }}"
+                                    class="rounded-circle mr-2">
+                                <h6><a href="{{ url('creator/' . $p->user->username) }}">{{ $p->user->name }}</a></h6>
                             </div>
-                            <img class="w-100 img-fluid" style="max-width: 100%; height: auto; "
-                                src="{{ URL::asset('gambar/user_post/' . $p->thumbnail) }}" alt="">
+                            <div class="embed-responsive embed-responsive-4by3">
+                                <img class="embed-responsive-item img-fluid"
+                                    src="{{ URL::asset('gambar/user_post/' . $p->thumbnail) }}" alt="">
+                            </div>
                             <div class="card-body border-top">
+                                <a class="stretched-link" href="{{ url('creation/' . $p->slug) }}">
+                                    <h6>{{ $p->title }}</h6>
+                                </a>
                                 <div class="mt-2">
                                     <a><i class="fas fa-eye"></i> {{ $p->view_count }}</a>
                                     <div class="bullet"></div>

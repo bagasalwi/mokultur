@@ -32,25 +32,25 @@
         <div class="section-body">
             <div class="row text-center align-self-center">
                 <div class="col-lg-3 col-sm-3 mt-4" data-aos="zoom-in" data-aos-delay="200">
-                    <span style="color: #FF549C;">
+                    <span style="color: #ff6ca9;">
                         <i class="fas fa-palette fa-4x"></i>
                         <h4 class="text-primary mt-4">Karya</h4>
                     </span>
                 </div>
                 <div class="col-lg-3 col-sm-3 mt-4" data-aos="zoom-in" data-aos-delay="400">
-                    <span style="color: #FF549C;">
+                    <span style="color: #ff6ca9;">
                         <i class="fas fa-trophy fa-4x"></i>
                         <h4 class="text-primary mt-4">Portofolio</h4>
                     </span>
                 </div>
                 <div class="col-lg-3 col-sm-3 mt-4" data-aos="zoom-in" data-aos-delay="600">
-                    <span style="color: #FF549C;">
+                    <span style="color: #ff6ca9;">
                         <i class="fas fa-share-alt fa-4x"></i>
                         <h4 class="text-primary mt-4">Berbagi</h4>
                     </span>
                 </div>
                 <div class="col-lg-3 col-sm-3 mt-4" data-aos="zoom-in" data-aos-delay="800">
-                    <span style="color: #FF549C;">
+                    <span style="color: #ff6ca9;">
                         <i class="fas fa-photo-video fa-4x"></i>
                         <h4 class="text-primary mt-4">Media</h4>
                     </span>
@@ -87,7 +87,7 @@
 </section>
 
 {{-- KREASI TERBARU --}}
-<section class="section" style="background-color:#FF549C;">
+<section class="section" style="background-color:#ff6ca9;">
     <div class="container">
         <div class="section-body">
             <div class="row">
@@ -98,32 +98,37 @@
                 </div>
             </div>
             <div class="row">
-                @foreach ($post_latest as $pl)
-                <div class="col-12 col-md-4 col-lg-4" data-aos="zoom-out-up">
-                    <article class="article article-style-c">
-                        <div class="article-header">
-                            <div class="article-image"
-                                data-background="{{ URL::asset('gambar/user_post/' . $pl->thumbnail) }}">
+                @foreach ($post_latest as $p)
+                <div class="col-md-4 mb-4">
+                    <div class="card card-hover h-100" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card-header border-bottom">
+                            <img alt="image" width="45" height="45"
+                                src="{{ URL::asset('gambar/profile_pic/' . $p->user->profile_pic) }}"
+                                class="rounded-circle mr-2">
+                            <h6><a href="{{ url('creator/' . $p->user->username) }}">{{ $p->user->name }}</a></h6>
+                        </div>
+                        <div class="embed-responsive embed-responsive-4by3">
+                            <img class="embed-responsive-item img-fluid"
+                                src="{{ URL::asset('gambar/user_post/' . $p->thumbnail) }}" alt="">
+                        </div>
+                        <div class="card-body border-top">
+                            <a class="stretched-link" href="{{ url('creation/' . $p->slug) }}">
+                                <h6>{{ $p->title }}</h6>
+                            </a>
+                            <div class="mt-2">
+                                <a><i class="fas fa-eye"></i> {{ $p->view_count }}</a>
+                                <div class="bullet"></div>
+                                <a>{{ $p->category->name }}</a>
+                                <a class="float-right">{{ $p->created_at->diffForHumans() }}</a>
                             </div>
                         </div>
-                        <div class="article-details">
-                            <h6><a href="{{ url('creation/' . $pl->slug) }}">{{ $pl->title }}</a></h6>
-                            <div class="article-title">
-                            </div>
-                            <div class="article-user">
-                                <img alt="image" width="30" height="45"
-                                    src="{{ URL::asset('gambar/profile_pic/' . $pl->user->profile_pic) }}">
-                                <div class="article-user-details">
-                                    <div class="user-detail-name">
-                                        <a href="{{ url('creator/' . $pl->user->username) }}">{{ $pl->user->name }}</a>
-                                    </div>
-                                    <div class="text-job">{{ '@'.$pl->user->username }}</div>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
+                    </div>
                 </div>
                 @endforeach
+            </div>
+            <div class="align-self-center text-center">
+                <a class="btn btn-lg btn-light mt-4" data-aos="zoom-out" data-aos-delay="600"
+                href="{{ url('creation') }}" role="button">Lihat Selengkapnya</a>
             </div>
         </div>
     </div>

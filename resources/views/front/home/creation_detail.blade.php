@@ -4,7 +4,7 @@
 <section class="section">
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-sm-12">
+            <div class="col-lg-8 col-sm-12">
                 <div class="card">
                     <div class="m-4">
                         <h1 class="text-dark font-weight-boldness">{{ $post->title }}</h1>
@@ -26,14 +26,41 @@
                         <a href="{{ url('creation/category/' . $post->category->name) }}"
                             class="badge badge-primary">{{ $post->category->name }}</a>
                         <hr>
-                        <div class="sharethis-inline-share-buttons"></div>
+                        {{-- <div class="sharethis-inline-share-buttons"></div> --}}
                         <div class="mt-2" id="disqus_thread"></div>
                     </div>
-                    
                 </div>
-                
+
+                <h4 class="text-dark my-4">Topik Rekomendasi</h4>
+                <div class="row">
+                    @foreach ($recomendation as $p)
+                    <div class="col-6 col-md-6 col-lg-4 mb-4">
+                        <div class="card card-hover h-100">
+                            <div class="card-header border-bottom">
+                                <img alt="image" width="45" height="45"
+                                    src="{{ URL::asset('gambar/profile_pic/' . $p->user->profile_pic) }}"
+                                    class="rounded-circle mr-2">
+                                <h6><a href="{{ url('creator/' . $p->user->username) }}">{{ $p->user->name }}</a></h6>
+                            </div>
+                            <div class="embed-responsive embed-responsive-4by3">
+                                <img class="embed-responsive-item img-fluid"
+                                    src="{{ URL::asset('gambar/user_post/' . $p->thumbnail) }}" alt="">
+                            </div>
+                            <div class="card-body border-top">
+                                <a class="stretched-link" href="{{ url('creation/' . $p->slug) }}">
+                                    <h6>{{ $p->title }}</h6>
+                                </a>
+                                <div class="mt-2">
+                                    <a>{{ $p->category->name }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+
             </div>
-            <div class="col-md-4">
+            <div class="col-lg-4">
                 @include('layouts.side-profile')
             </div>
         </div>
@@ -43,7 +70,9 @@
 @endsection
 
 @section('script')
-<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5ec27a5c1fa87300122c9912&product=inline-share-buttons&cms=website' async='async'></script>
+<script type='text/javascript'
+    src='https://platform-api.sharethis.com/js/sharethis.js#property=5ec27a5c1fa87300122c9912&product=inline-share-buttons&cms=website'
+    async='async'></script>
 
 <script>
     (function() { // DON'T EDIT BELOW THIS LINE

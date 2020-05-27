@@ -2,7 +2,7 @@
     <div class="card">
         <div class="card-body">
             <div class="d-flex justify-content-center">
-                <img class="rounded-circle text-center" width="200" height="200"
+                <img class="rounded-circle text-center border" width="200" height="200"
                     src="{{ URL::asset('gambar/profile_pic/' . $user->profile_pic) }}" alt="...">
             </div>
             <h4 class="text-primary text-center mt-2"><a
