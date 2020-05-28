@@ -4,6 +4,13 @@
 <head>
 	<meta charset="UTF-8">
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+	<meta name="keywords" content="kreasi bangsa, kreasi, bangsa, kreasibangsa" />
+	
+    <meta name="description" content="Kreasi bangsa merupakan sarana untuk mengenalkan kreasi - kreasi anak bangsa, mulai dari sketch, UI hingga ilustrasi." />
+	<meta itemprop="name" content="Kreasibangsa">
+	<meta itemprop="description" content="Kreasi bangsa merupakan sarana untuk mengenalkan kreasi - kreasi anak bangsa, mulai dari sketch, UI hingga ilustrasi.">
+	<meta itemprop="image" content="https://kreasibangsa.com/gambar/logo.png">
+
 	<link rel="icon" href="{{ URL::asset('gambar/Logo.svg') }}">
 	<title>Kreasibangsa</title>
 
