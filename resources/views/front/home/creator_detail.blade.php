@@ -3,7 +3,6 @@
 @section('content')
 <section class="section">
     <div class="container">
-
         @if ($message = Session::get('success'))
         <div class="alert alert-success alert-dismissible show fade">
             <div class="alert-body">

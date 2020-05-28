@@ -63,12 +63,12 @@
                             <a class="stretched-link" href="{{ url('creation/' . $p->slug) }}">
                                 <h6>{{ $p->title }}</h6>
                             </a>
-                            <div class="mt-2">
-                                <a><i class="fas fa-eye"></i> {{ $p->view_count }}</a>
-                                <div class="bullet"></div>
-                                <a>{{ $p->category->name }}</a>
-                                <a class="float-right">{{ $p->created_at->diffForHumans() }}</a>
-                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a><i class="fas fa-eye"></i> {{ $p->view_count }}</a>
+                            <div class="bullet"></div>
+                            <a>{{ $p->category->name }}</a>
+                            <a class="float-right">{{ $p->created_at->diffForHumans() }}</a>
                         </div>
                     </div>
                 </div>

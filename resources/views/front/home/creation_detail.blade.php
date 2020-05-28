@@ -4,7 +4,7 @@
 <section class="section">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-sm-12">
+            <div class="col-md-8 col-sm-12">
                 <div class="card">
                     <div class="m-4">
                         <h1 class="text-dark font-weight-boldness">{{ $post->title }}</h1>
@@ -21,16 +21,18 @@
                         class="img-fluid w-100 mb-4 border-top border-bottom">
                     <div class="card-body">
                         <div class="mb-4">
-                            {!! $post->description !!}
+                            <div id="posting">
+                                {!! $post->description !!}
+                            </div>
                         </div>
                         <a href="{{ url('creation/category/' . $post->category->name) }}"
                             class="badge badge-primary">{{ $post->category->name }}</a>
                         <hr>
-                        {{-- <div class="sharethis-inline-share-buttons"></div> --}}
                         <div class="mt-2" id="disqus_thread"></div>
                     </div>
                 </div>
 
+                @if ($recomendation->isNotEmpty())
                 <h4 class="text-dark my-4">Topik Rekomendasi</h4>
                 <div class="row">
                     @foreach ($recomendation as $p)
@@ -58,9 +60,10 @@
                     </div>
                     @endforeach
                 </div>
+                @endif
 
             </div>
-            <div class="col-lg-4">
+            <div class="col-md-4">
                 @include('layouts.side-profile')
             </div>
         </div>
@@ -86,7 +89,7 @@
         powered by Disqus.</a></noscript>
 <script>
     $(document).ready(function(){
-            $("img").addClass("img-fluid");
+        $('#posting img').addClass('img-fluid');
         });
 </script>
 @endsection
