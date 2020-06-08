@@ -69,6 +69,7 @@ class CreationController extends Controller
 
     public function category_creation($name){
         $data['title'] = 'KREASI';
+        
         if($name == 'all'){
             $data['post'] = Post::orderBy('created_at','desc')->paginate(6);
         }else{

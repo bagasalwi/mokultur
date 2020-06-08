@@ -3,9 +3,9 @@
 @section('content')
 <!-- Main Content -->
 <div class="main-content">
-    <section class="section section-backend">
+    <section class="section">
         <div class="section-header">
-            <h1>Support</h1>
+            <h1>User</h1>
         </div>
 
         <div class="section-body">
@@ -13,7 +13,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Support List</h4>
+                            <h4>User List</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -23,9 +23,10 @@
                                             <th class="text-center">
                                                 No
                                             </th>
-                                            <th>name</th>
-                                            <th>email</th>
-                                            <th>description</th>
+                                            <th>Name</th>
+                                            <th>Username</th>
+                                            <th>Email</th>
+                                            <th>Instagram</th>
                                             <th class="text-center">Action</th>
                                         </tr>
                                     </thead>
@@ -34,16 +35,16 @@
                                         $no = 1;
                                         @endphp
 
-                                        @foreach ($support as $row)
+                                        @foreach ($user as $row)
                                         <tr>
                                             <td class="text-center">{{ $no++ }}</td>
                                             <td>{{ $row->name }}</td>
+                                            <td>{{ $row->username }}</td>
                                             <td>{{ $row->email }}</td>
-                                            <td>{{ $row->description }}</td>
+                                            <td>{{ $row->instagram }}</td>
                                             <td class="text-center">
-                                                <button class="btn btn-danger"
-                                                    onclick="deleteSupport({{ $row->id }})"><i
-                                                        class="fas fa-trash"></i></button>
+                                                <a href="{{ url('creator/'. $row->username ) }}" class="btn btn-info"><i
+                                                        class="fas fa-eye"></i></a>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -57,30 +58,4 @@
         </div>
     </section>
 </div>
-
-
-<script>
-    function deleteSupport(id){       
-        swal({
-        title: "Are you sure?",
-        text: "Are your sure want to delete this row data?",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-      })
-      .then((willDelete) => {
-          if (willDelete) {
-            $.ajax({
-            url: "{{ url('admin/support/delete') }}" + "/" + id,
-            success: function(){
-                swal("Done!","It was succesfully deleted!","success");
-                setInterval('window.location.reload()', 1000);
-            },
-            error: function(){
-                swal("Error!", "", "Error");
-            }});
-        }
-      });
-    }
-</script>
 @endsection

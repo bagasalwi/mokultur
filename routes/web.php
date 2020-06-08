@@ -67,11 +67,16 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('delete/{id}', 'SidebarController@delete');
         });
 
-        // Tag Controller
+        // Admin Controller
         Route::prefix('admin')->group(function (){
+            // Support Function
             Route::get('support','AdminController@support');
             Route::get('support/delete/{id}', 'AdminController@support_delete');
 
+            // User Function
+            Route::get('user','AdminController@user');
+
+            // Post Function
             Route::get('post','AdminController@post');
             Route::get('post/delete/{id}', 'AdminController@post_delete');
 

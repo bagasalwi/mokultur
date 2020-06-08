@@ -47,7 +47,12 @@
                         </a>
                         <a href="{{ url('post') }}" class="dropdown-item has-icon">
                             My Creation
-                          </a>
+                        </a>
+                        @if (Auth::user()->hasRole('admin'))
+                        <a href="{{ url('admin/support') }}" class="dropdown-item has-icon">
+                            Support
+                        </a>
+                        @endif
                         <div class="dropdown-divider"></div>
                         <a href="#" onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();" class="dropdown-item has-icon text-danger">

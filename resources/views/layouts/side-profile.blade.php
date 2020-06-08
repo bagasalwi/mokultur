@@ -2,11 +2,10 @@
     <div class="card">
         <div class="card-body">
             <div class="d-flex justify-content-center">
-                <img class="img-profile"
+                <img class="rounded-circle my-2" width="150" height="150" 
                     src="{{ URL::asset('gambar/profile_pic/' . $user->profile_pic) }}" alt="...">
             </div>
-            <h4 class="text-primary text-center mt-2"><a
-                    href="{{ url('creator/'. $user->username) }}">{{ $user->name }}</a></h4>
+            <a href="{{ url('creator/'. $user->username) }}" class="text-primary text-center"><h4 >{{ $user->name }}</h4></a>
             <div class="profile-widget">
                 <div class="profile-widget-header">
                     <div class="profile-widget-items">

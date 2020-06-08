@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 use App\Tag;
 use App\PostCategory;
 use App\Post;
@@ -31,6 +32,18 @@ class AdminController extends Controller
 
     public function support_delete($id){
         DB::table('saran')->where('id', $id)->delete();
+    }
+
+    /*=======================================================*/
+    /*===================USER FUCNTION===================*/
+    /*=======================================================*/
+    public function user(){
+        $data['title'] = 'User';
+        $data['sidebar'] = Sidebar::where('role_id', 2)->get(); 
+        
+        $data['user'] = User::get();
+   
+        return view('back.user_list', $data);
     }
 
 
