@@ -1,6 +1,7 @@
 @extends('front.layouts.master')
 
 @section('content')
+{{-- {{ dd($fields) }} --}}
 @foreach ($fields as $fields)
 <section class="section">
     <div class="container">
@@ -30,98 +31,121 @@
         @endif
 
         <div class="row">
-            <div class="col-md-12 col-sm-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Membuat Post Baru</h4>
+            <form class="forms-sample" action="{{ url('post/save') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+
+                <input type="hidden" name="id" value="{{ $fields->id }}">
+                <input type="hidden" name="state" value="{{ $state }}">
+
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card row">
+                            <div class="card-header">
+                                <h4>Post Content</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label>Title</label>
+                                            <input type="text" class="form-control" id="title" name="title"
+                                                placeholder="Title" value="{{ old('title', $fields->title) }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label>Category</label>
+                                            <select class="form-control select2" id="category_id" name="category_id">
+                                                @foreach ($post_category as $r)
+                                                <option value="{{ $r->id }}"
+                                                    {{ $fields->category_id == $r->id ? 'selected' : '' }}>
+                                                    {{ $r->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label>Tag</label>
+                                            <select class="form-control select2-new" name="tags[]" multiple="multiple">
+                                                @foreach($tags as $tag => $val)
+                                                <option value='{{ $tag }}'>{{ $val }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label>Content</label>
+                                            <textarea name="description"
+                                                class="summernote form-control">{{ old('description', $fields->description) }}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <form class="forms-sample" action="{{ url('post/save') }}" method="POST"
-                            enctype="multipart/form-data">
-                            @csrf
-
-                            <input type="hidden" name="id" value="{{ $fields->id }}">
-                            <input type="hidden" name="state" value="{{ $state }}">
-
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Title</label>
-                                        <input type="text" class="form-control" id="title" name="title"
-                                            placeholder="Title" value="{{old('title')}}" required>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-6">
+                                <a href="{{ url()->previous() }}" class="btn btn-secondary btn-block">Cancel</a>
+                            </div>
+                            <div class="col-6">
+                                <button type="submit" class="btn btn-primary btn-block">Submit Post</button>
+                            </div>
+                        </div>
+                        <div class="card my-3">
+                            <div class="card-header">
+                                <h4>Post Image</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="my-2">
+                                            @if ($state == 'create')
+                                            <img id='img-upload' class="img-fluid img-thumbnail" src="{{ asset('gambar/no-image.jpg') }}"/>
+                                            @elseif($state == 'update')
+                                                @if ($fields->photo())
+                                                <img id='img-upload' class="img-fluid img-thumbnail" src="{{ asset('storage/' . $fields->photo()) }}" />
+                                                @else
+                                                <img id='img-upload' class="img-fluid img-thumbnail" src="{{ asset('gambar/no-image.jpg') }}"/>
+                                                @endif
+                                            @endif
+                                            
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Thumbnail</label>
+                                            <input type="file" class="form-control" name="photo" id="imgInp" />
+                                            
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Category</label>
-                                        <select class="form-control select2" id="category_id" name="category_id">
-                                            @foreach ($post_category as $r)
-                                            <option value="{{ $r->id }}"
-                                                {{ $fields->category_id == $r->id ? 'selected' : '' }}>
-                                                {{ $r->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Tag</label>
-                                        <select class="form-control select2-new" name="tags[]" multiple="multiple">
-                                            @foreach($tags as $tag => $val)
-                                            <option value='{{ $tag }}'>{{ $val }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Content</label>
-                                        <textarea name="description"
-                                            class="summernote form-control">{{old('description')}}</textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Thumbnail</label>
-                                        <input type="file" name="thumbnail" id="imgInp" />
-                                        @if ($fields->thumbnail)
-                                        <img width="250" height="250" id='img-upload'
-                                            src="{{ URL::asset('gambar/user_post/'. $fields->thumbnail)}}" />
-                                        @else
-                                        <img width="250" height="250" id='img-upload' />
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Status</label>
-                                        <select class="form-control selectric" name="status">
-                                            <option value="P">Publish</option>
-                                            <option value="D">Draft</option>
-                                        </select>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label>Status</label>
+                                            <select class="form-control selectric" name="status">
+                                                <option value="P">Publish</option>
+                                                <option value="D">Draft</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
                     </div>
-                    <div class="card-footer text-right">
-                        <button class="btn btn-primary" type="submit">Buat Post</button>
-                    </div>
-                    </form>
                 </div>
-
-            </div>
+            </form>
         </div>
     </div>
-</div>
+    </div>
 
-@endforeach
+    @endforeach
 
-@endsection
+    @endsection
 
-@section('script')
-<script>
-
-    $(document).ready( function() {
+    @section('script')
+    <script>
+        $(document).ready( function() {
         
         $('.select2-new').select2();
 
@@ -159,5 +183,5 @@
 		    readURL(this);
 		}); 	
 	});
-</script>
-@endsection
+    </script>
+    @endsection

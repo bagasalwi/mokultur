@@ -25,7 +25,7 @@ class CreatePostsTable extends Migration
             $table->string('slug');
             $table->string('title');
             $table->longText('description');
-            $table->string('thumbnail');
+            // $table->string('thumbnail'); // disable - split into post photo gallery
             $table->string('view_count')->nullable();
             $table->string('date_published')->nullable();
             $table->string('status');

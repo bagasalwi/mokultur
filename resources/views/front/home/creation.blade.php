@@ -54,8 +54,8 @@
                             <h6><a href="{{ url('creator/' . $p->user->username) }}">{{ $p->user->name }}</a></h6>
                         </div>
                         <div class="embed-responsive embed-responsive-4by3">
-                            <img class="embed-responsive-item img-fluid"
-                                src="{{ URL::asset('gambar/user_post/' . $p->thumbnail) }}" alt="">
+                            <img class="embed-responsive-item img-fluid" style="object-fit: cover;"
+                                src="{{ asset('storage/' . $p->photo()) }}" alt="">
                         </div>
                         <div class="card-body border-top">
                             <a class="stretched-link" href="{{ url('creation/' . $p->slug) }}">
@@ -89,8 +89,8 @@
                             <h6><a href="{{ url('creator/' . $p->user->username) }}">{{ $p->user->name }}</a></h6>
                         </div>
                         <div class="embed-responsive embed-responsive-4by3">
-                            <img class="embed-responsive-item img-fluid"
-                                src="{{ URL::asset('gambar/user_post/' . $p->thumbnail) }}" alt="">
+                            <img class="embed-responsive-item img-fluid" style="object-fit: cover;"
+                                src="{{ asset('storage/' . $p->photo()) }}" alt="">
                         </div>
                         <div class="card-body border-top">
                             <a class="stretched-link" href="{{ url('creation/' . $p->slug) }}">

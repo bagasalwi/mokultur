@@ -49,18 +49,11 @@ class CreationController extends Controller
         $data['post'] = Post::where('slug', $slug)->first();
         $data['user'] = User::where('id', $data['post']->user_id)->first();
         $data['post_count'] = Post::where('user_id', $data['user']->id)->count();
+        $data['recomendation'] = Post::where('category_id', $data['post']->category_id)->take(3)->get()->except($data['post']->id);
 
         if($data['post']){
-            // $blogkey = 'post' . $data['post']->id;
-        
-            // // Check if blog session key exists
-            // if (!Session::has($blogkey)) {
-            //     Session::put($blogkey, 1);
-            // }
             Post::where('id', $data['post']->id)->increment('view_count');
 
-            $data['recomendation'] = Post::where('category_id', $data['post']->category_id)->take(3)->get()->except($data['post']->id);
-    
             return view('front.home.creation_detail', $data);
         }else{
             return redirect()->back();

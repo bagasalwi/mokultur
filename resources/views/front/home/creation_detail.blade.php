@@ -17,7 +17,7 @@
                             <a class="float-right">{{ $post->created_at->format('d M Y') }}</a>
                         </div>
                     </div>
-                    <img src="{{ URL::asset('gambar/user_post/' . $post->thumbnail) }}"
+                    <img src="{{ asset('storage/' . $post->photo()) }}"
                         class="img-fluid w-100 mb-4 border-top border-bottom">
                     <div class="card-body">
                         <div class="mb-4">
@@ -46,7 +46,7 @@
                             </div>
                             <div class="embed-responsive embed-responsive-4by3">
                                 <img class="embed-responsive-item img-fluid"
-                                    src="{{ URL::asset('gambar/user_post/' . $p->thumbnail) }}" alt="">
+                                    src="{{ asset('storage/'. $p->photo()) }}" alt="">
                             </div>
                             <div class="card-body border-top">
                                 <a class="stretched-link" href="{{ url('creation/' . $p->slug) }}">
