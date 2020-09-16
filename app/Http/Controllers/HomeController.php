@@ -18,7 +18,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {        
         $data['title'] = 'Home';
-        $data['post_latest'] = Post::where('status', 'P')->orderBy('created_at', 'desc')->take(3)->get();
+        $data['creation'] = Post::where('status', 'P')->orderBy('created_at', 'desc')->take(3)->get();
 
         return view('front.home', $data);
     }

@@ -533,6 +533,24 @@ $(function() {
     });
   });
 
+  $('[data-font-size]').each(function() {
+    $(this).css({
+      'font-size': $(this).data('font-size')
+    });
+  });
+
+  $('[data-max-width]').each(function() {
+    $(this).css({
+      'max-width': $(this).data('max-width')
+    });
+  });
+
+  $('[data-max-height]').each(function() {
+    $(this).css({
+      'max-height': $(this).data('max-height')
+    });
+  });
+
   // Chocolat
   if($('.chocolat-parent').length && jQuery().Chocolat) {
     $('.chocolat-parent').Chocolat();

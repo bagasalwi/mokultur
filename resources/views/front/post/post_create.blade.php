@@ -112,12 +112,10 @@
                                                 <img id='img-upload' class="img-fluid img-thumbnail" src="{{ asset('gambar/no-image.jpg') }}"/>
                                                 @endif
                                             @endif
-                                            
                                         </div>
                                         <div class="form-group">
                                             <label>Thumbnail</label>
                                             <input type="file" class="form-control" name="photo" id="imgInp" />
-                                            
                                         </div>
                                     </div>
                                     <div class="col-12">

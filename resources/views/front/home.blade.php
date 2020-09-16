@@ -1,93 +1,79 @@
 @extends('front.layouts.master')
 
 @section('content')
-<div class="jumbotron jumbotron-fluid" style="background-color:#ff6ca9;">
+<div class="jumbotron jumbotron-fluid bg-front mb-0">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 align-self-center">
-                <h2 class="display-5 text-white"><b class="text-white">Kreasi
-                        Bangsa</b> memungkinkan kamu menyimpan kreasi /
-                    karya </h2>
-                {{-- <hr class="my-4"> --}}
-                <p class="mb-4 text-white" style="font-size: 16px;">Kreasi bangsa merupakan sarana untuk mengenalkan
-                    kreasi - kreasi anak bangsa, mulai
-                    dari
-                    sketch,
-                    UI hingga ilustrasi.</p>
-                <p class="lead">
-                    <a class="btn btn-light btn-lg font-weight-bold" href="{{ url('creation') }}" role="button">Lihat
-                        Kreasi</a>
-                </p>
+            <div class="col-lg-5 offset-lg-1 d-none d-sm-block d-sm-block">
+                <div class="card card-body shadow rounded">
+                    <img class="img-responsive align-self-center" src="{{ asset('gambar/mock-1.png') }}" alt="" data-max-width="250px">
+                    <h5 class="text-dark">Join Us and Start Sharing Your Creations</h5>
+                    <p data-font-size="14px" class="font-weight-normal">
+                        You can upload your creations from hobby, works, portofolio and sharing with others.
+                    </p>
+                    <div class="mt-2">
+                        <a href="{{ route('register') }}" class="btn btn-outline-dark btn-block">Join with us</a>
+                        <a href="{{ route('login') }}" class="btn btn-primary btn-block">I already have an Account</a>
+                    </div>
+                </div>
             </div>
-            <div class="col-lg-6 d-none d-sm-block d-sm-block">
-                <img width="450" src="{{ URL::asset('gambar/sketch/6.svg')}}">
+            <div class="col-lg-5 offset-lg-1 align-self-center">
+                <h1 class="text-dark font-weight-bold">Upload Your Creation!</h1>
+                <p class="mb-4 text-dark" data-font-size="16px">
+                    Kreasibangsa introduce creations of Anak Bangsa like Sketch, UI Design, Illustration, Reviews and more.
+                </p>
+                <a class="btn btn-dark btn-lg font-weight-bold" href="{{ url('creation') }}" role="button">Browse Creation</a>
             </div>
         </div>
     </div>
 </div>
 
-{{-- Kenapa kreasi bangsa? --}}
-<section class="section">
+<div class="section">
     <div class="container">
-        <div class="section-body">
-            <div class="row text-center align-self-center">
-                <div class="col-lg-3 col-sm-3 mt-4" data-aos="zoom-in" data-aos-delay="200">
-                    <span style="color: #ff6ca9;">
-                        <i class="fas fa-palette fa-4x"></i>
-                        <h4 class="text-primary mt-4">Karya</h4>
-                    </span>
-                </div>
-                <div class="col-lg-3 col-sm-3 mt-4" data-aos="zoom-in" data-aos-delay="400">
-                    <span style="color: #ff6ca9;">
-                        <i class="fas fa-trophy fa-4x"></i>
-                        <h4 class="text-primary mt-4">Portofolio</h4>
-                    </span>
-                </div>
-                <div class="col-lg-3 col-sm-3 mt-4" data-aos="zoom-in" data-aos-delay="600">
-                    <span style="color: #ff6ca9;">
-                        <i class="fas fa-share-alt fa-4x"></i>
-                        <h4 class="text-primary mt-4">Berbagi</h4>
-                    </span>
-                </div>
-                <div class="col-lg-3 col-sm-3 mt-4" data-aos="zoom-in" data-aos-delay="800">
-                    <span style="color: #ff6ca9;">
-                        <i class="fas fa-photo-video fa-4x"></i>
-                        <h4 class="text-primary mt-4">Media</h4>
-                    </span>
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="card card-full" data-background="{{ asset('gambar/bg-1.jpg') }}">
+                    <div class="card-body">
+                        <h4 class="text-dark">Welcome, Bagas</h4>
+                        <p class="text-dark">Kreasibangsa introduce creations of Anak Bangsa like Sketch, UI Design, Illustration, Reviews and more.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
-
-<hr>
-
-<section class="section">
-    <div class="container">
-        <div class="section-body">
-            <div class="row">
-                <div class="col align-self-center" data-aos="fade-up">
-                    <h1 class="mb-4 mr-2 text-dark">
-                        Buat <b class="text-primary">Portofolio</b> mu sekarang !
-                    </h1>
-                    <p class="mb-4 mr-2">
-                        Kamu dapat meng-upload kreasi - kreasi kamu sesuai dengan bidang yang kamu tekuni,
-                        kreasi
-                        kamu akan di tautkan dengan akun kamu sebagai karya dan portofolio.
-                    </p>
-                    <a class="btn btn-lg btn-outline-primary" href="{{ url('creator') }}" role="button">Lihat
-                        Kreator</a>
-                </div>
-                <div class="col d-none d-sm-block" data-aos="fade-up" data-aos-delay="600">
-                    <img width="550" src="{{ URL::asset('gambar/sketch/2.svg')}}" alt="">
-                </div>
+            <div class="col-lg-6">
+                <h6 class="text-dark">Popular Creation</h6>
+                @foreach ($creation as $p)
+                    <div class="card card-hover">
+                        <div class="card-header border-bottom">
+                            <img alt="image" width="45" height="45"
+                                src="{{ URL::asset('gambar/profile_pic/' . $p->user->profile_pic) }}"
+                                class="rounded-circle mr-2">
+                            <h6><a href="{{ url('creator/' . $p->user->username) }}">{{ $p->user->name }}</a></h6>
+                        </div>
+                        <div class="embed-responsive embed-responsive-4by3">
+                            <img class="embed-responsive-item img-fluid" style="object-fit: cover;"
+                                src="{{ asset('storage/' . $p->photo()) }}" alt="">
+                        </div>
+                        <div class="card-body border-top">
+                            <a class="stretched-link" href="{{ url('creation/' . $p->slug) }}">
+                                <h6>{{ $p->title }}</h6>
+                            </a>
+                        </div>
+                        <div class="card-footer">
+                            <a><i class="fas fa-eye"></i> {{ $p->view_count }}</a>
+                            <div class="bullet"></div>
+                            <a>{{ $p->category->name }}</a>
+                            <a class="float-right">{{ $p->created_at->diffForHumans() }}</a>
+                        </div>
+                    </div>
+                    @endforeach
             </div>
+            <div class="col-lg-3"></div>
         </div>
     </div>
-</section>
+</div>
 
 {{-- KREASI TERBARU --}}
-<section class="section" style="background-color:#ff6ca9;">
+{{-- <section class="section" style="background-color:#ff6ca9;">
     <div class="container">
         <div class="section-body">
             <div class="row">
@@ -128,11 +114,11 @@
             </div>
             <div class="align-self-center text-center">
                 <a class="btn btn-lg btn-light mt-4" data-aos="zoom-out" data-aos-delay="600"
-                href="{{ url('creation') }}" role="button">Lihat Selengkapnya</a>
+                    href="{{ url('creation') }}" role="button">Lihat Selengkapnya</a>
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 
 <section class="section">
     <div class="container">

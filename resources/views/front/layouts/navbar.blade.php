@@ -1,4 +1,4 @@
-<nav class="navbar py-4 navbar-expand-lg navbar-light border-bottom">
+<nav id="navbar_top" class="navbar py-4 navbar-expand-lg navbar-light shadow">
     <div class="container">
         <a class="navbar-brand .d-block .d-sm-none" href="{{ url('/') }}">
             <img src="{{ URL::asset('gambar/logo.png')}}" width="187" alt="">

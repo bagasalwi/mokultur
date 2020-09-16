@@ -3,22 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Services\PostServices;
 use App\User;
 use App\Post;
 use App\PostPhoto;
 use App\Tag;
 use App\PostCategory;
 use App\Sidebar;
-use File;
-use DB;
-use Auth;
-use Image;
+use File, DB, Auth, Image;
 use Carbon\Carbon;
 
 class PostController extends Controller
 {
-    public function __construct()
+    public function __construct(PostServices $postService)
     {
+        $this->postService = $postService;
         $this->middleware(['auth']);
     }
 
@@ -27,10 +26,10 @@ class PostController extends Controller
         $data['title'] = 'My Post';
         $data['user'] = Auth::user();
         $data['sidebar'] = Sidebar::where('role_id', 1)->get();
-        $data['post_count'] = Post::where('user_id', $data['user']->id)->count();
+        $data['post_count'] = $this->postService->userPostCount();
 
-        $data['post'] = Post::where('user_id', Auth::user()->id)->paginate(5);
-        
+        $data['post'] = $this->postService->allPost(10);
+
         $data['url_create'] = 'post/create';
         $data['url_update'] = 'post/update';
         $data['url_delete'] = 'post/delete';
@@ -45,7 +44,7 @@ class PostController extends Controller
         $data['sidebar'] = Sidebar::where('role_id', 1)->get();
         $data['post_category'] = PostCategory::get();
         $data['tags2'] = Tag::all();
-        $data['post_count'] = Post::where('user_id', $data['user']->id)->count();
+        $data['post_count'] = $this->postService->userPostCount();
 
         $tags = array();
         foreach ($data['tags2'] as $tag) {
@@ -94,16 +93,12 @@ class PostController extends Controller
         $data['fields'] = Post::where('slug', $slug)->get();
 
         return view('front.post.post_create', $data)->withTags($tags);
-        // if(Post::post() != Auth::user()->id){
-        //     return redirect()->back();
-        // }else{
-        // }
     }
 
     public function save(Request $request)
     {
         if ($request->state == 'create') {
-
+            
             $this->validate($request, [
                 'title' => 'required',
                 'category_id' => 'required',
@@ -111,36 +106,12 @@ class PostController extends Controller
                 'photo' => 'file|image|mimes:jpeg,png,jpg|required',
                 'status' => 'required',
             ]);
+                
+            $post = $this->postService->create($request->all());
 
             if ($request->hasFile('photo')) {
-                $image = $request->file('photo');
-                $path = $image->store('images');
+                $this->postService->createImage($post->id,$request->file('photo'));
             }
-
-            if ($request->status == 'P') {
-                $publish_date = Carbon::now();
-            } else {
-                $publish_date = null;
-            }
-
-            $post = Post::create([
-                'title' => $request->title,
-                'slug' => str_slug($request->title, '-') . str_random(8),
-                'user_id' => Auth::user()->id,
-                'category_id' => $request->category_id,
-                'description' => $request->description,
-                'view_count' => 0,
-                'date_published' => $publish_date,
-                'status' => $request->status,
-            ]);
-
-            PostPhoto::create([
-                'user_id' => Auth::user()->id,
-                'post_id' => $post->id,
-                'name' => $path
-            ]);
-
-            $post->tags()->sync($request->tags, false);
 
             return redirect('post')->with('success', 'Post baru berhasil dibuat!');
         }
@@ -151,43 +122,16 @@ class PostController extends Controller
                 'title' => 'required',
                 'category_id' => 'required',
                 'description' => 'required',
-                'thumbnail' => 'file|image|mimes:jpeg,png,jpg',
+                'photo' => 'file|image|mimes:jpeg,png,jpg',
                 'status' => 'required',
             ]);
-            
-            $post = Post::find($request->id);
+
+            $this->postService->update($request->all());
+
+            $post = $this->postService->find($request->id);
 
             if ($request->hasFile('photo')) {
-                $lastImage = asset('storage/' . $post->photo()); // get previous image from folder
-
-                if (File::exists($lastImage)) { // unlink or remove previous image from folder
-                    unlink($lastImage);
-                }
-
-                $thumbnail = $request->file('thumbnail');
-    
-                $image = $request->file('photo');
-                $path = $image->store('images');
-
-                PostPhoto::where('post_id', $post->id)->update([
-                    'user_id' => Auth::user()->id,
-                    'post_id' => $post->id,
-                    'name' => $path
-                ]);
-            }
-
-            Post::where('id', $request->id)->update([
-                'title' => $request->title,
-                'category_id' => $request->category_id,
-                'description' => $request->description,
-                'date_published' => $request->status == 'P' ? Carbon::now() : null,
-                'status' => $request->status,
-            ]);
-
-            if (isset($request->tags)) {
-                $post->tags()->sync($request->tags);
-            } else {
-                $post->tags()->sync(array());
+                $this->postService->updateImage($post->id,$request->file('photo'));
             }
 
             return redirect('post')->with('success', 'Post berhasil di update!');
