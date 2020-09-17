@@ -767,7 +767,7 @@ select.form-control:not([size]):not([multiple]) {
 .card {
     /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.13); */
     background-color: #fff;
-    border: 1px solid rgb(235, 235, 235);
+    border: 0px solid rgb(235, 235, 235);
     border-radius: 5px;
     position: relative;
 }
@@ -1457,10 +1457,10 @@ table tr:hover .table-links {
 
 .badge {
     vertical-align: middle;
-    padding: 7px 12px;
-    font-weight: 600;
+    padding: 4px 14px 4px 14px;
+    font-weight: 400;
     letter-spacing: 0.3px;
-    border-radius: 30px;
+    border-radius: 2px;
     font-size: 12px;
 }
 .badge.badge-warning {
@@ -2549,6 +2549,10 @@ a.bb {
 
 .img-shadow {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
+}
+
+.img-imagepost{
+    max-height: 400px;
 }
 
 .colors {
@@ -3882,7 +3886,7 @@ h6,
 .noto {
     /* font-family: "Lato", sans-serif !important; */
     margin-bottom: 0.5rem !important;
-    line-height: 1.5 !important;
+    line-height: 1.1 !important;
 }
 
 /* .card a:hover {
