@@ -767,7 +767,7 @@ select.form-control:not([size]):not([multiple]) {
 .card {
     /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.13); */
     background-color: #fff;
-    border: 0px solid rgb(235, 235, 235);
+    border: 1px solid rgb(235, 235, 235);
     border-radius: 5px;
     position: relative;
 }
@@ -2139,13 +2139,14 @@ h6 .badge {
 }
 
 .navbar .nav-link {
-    color: #f2f2f2;
+    color: #000000;
     padding-left: 18px !important;
     padding-right: 18px !important;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
     height: 100%;
     font-size: 16px;
+    font-family: 'Roboto Slab', serif;
 }
 
 @media (max-width: 575.98px) {
@@ -3884,20 +3885,15 @@ h4,
 h5,
 h6,
 .noto {
-    /* font-family: "Lato", sans-serif !important; */
+    font-family: 'Roboto Slab', serif !important;
     margin-bottom: 0.5rem !important;
-    line-height: 1.1 !important;
+    line-height: 1.2 !important;
 }
 
 /* .card a:hover {
     color: rgb(255, 0, 106) !important;
     text-decoration: none !important;
 } */
-
-html,
-body {
-    overflow-x: hidden;
-}
 
 .text-pulse {
     -webkit-animation: neon-white 0.75s ease-in-out infinite alternate;
@@ -3949,3 +3945,9 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.stickydiv {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 60px; /* required */
+  }

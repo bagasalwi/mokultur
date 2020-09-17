@@ -453,6 +453,19 @@ $(function() {
     });
   });
 
+  $("[data-background-full]").each(function() {
+    var me = $(this);
+    me.css({
+      'background': 'url(' + me.data('background-full') + ')',
+      '-webkit-background-size': 'cover',
+      '-moz-background-size': 'cover',
+      '-o-background-size': 'cover',
+      'background-size': 'cover'
+    });
+  });
+
+
+
   // Custom Tab
   $("[data-tab]").each(function() {
     var me = $(this);

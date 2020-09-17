@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\PostCategory;
 use DB;
 
 class HomeController extends Controller
@@ -19,6 +20,7 @@ class HomeController extends Controller
     {        
         $data['title'] = 'Home';
         $data['creation'] = Post::where('status', 'P')->orderBy('created_at', 'desc')->take(3)->get();
+        $data['category'] = PostCategory::orderBy('created_at', 'desc')->take(6)->get();
 
         return view('front.home', $data);
     }

@@ -35,18 +35,20 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3">
-                <div class="card card-full" data-background="{{ asset('gambar/bg-1.jpg') }}">
-                    <div class="card-body">
-                        <h4 class="text-dark">Welcome, Bagas</h4>
-                        <p class="text-dark">Kreasibangsa introduce creations of Anak Bangsa like Sketch, UI Design,
-                            Illustration, Reviews and more.</p>
+                <div class="stickydiv">
+                    <div class="card card-full" data-background="{{ asset('gambar/bg-1.jpg') }}">
+                        <div class="card-body">
+                            <h4 class="text-dark">Welcome, Bagas</h4>
+                            <p class="text-dark">Kreasibangsa introduce creations of Anak Bangsa like Sketch, UI Design,
+                                Illustration, Reviews and more.</p>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6">
-                <h4 class="text-dark">Popular Creation</h4>
+                <h5 class="text-dark">Popular Creation</h5>
                 @foreach ($creation as $p)
-                <div class="card mt-2 mb-4">
+                <div class="card border-0 my-2">
                     <img class="img-fluid img-imagepost" style="object-fit: cover;"
                         src="{{ asset('storage/' . $p->photo()) }}" alt="">
                     <div class="my-2">
@@ -74,28 +76,33 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="card-footer">
-                        <a><i class="fas fa-eye"></i> {{ $p->view_count }}</a>
-                    <div class="bullet"></div>
-                    <a>{{ $p->category->name }}</a>
-                    <a class="float-right">{{ $p->created_at->diffForHumans() }}</a>
-                </div> --}}
+                </div>
+                <hr>
+                @endforeach
             </div>
-            @endforeach
-        </div>
-        <div class="col-lg-3">
-            <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action">
-                    Cras justo odio
-                </a>
-                <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-                <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-                <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-                <a href="#" class="list-group-item list-group-item-action">Vestibulum at eros</a>
+            <div class="col-lg-3">
+                <div class="stickydiv">
+                    <div class="card card-full" data-background-full="{{ asset('gambar/covid.jpg') }}">
+                        <div class="card-body">
+                            <h4 class="text-dark">Wear your mask, Always!</h4>
+                            <p class="text-dark">due to covid19, you have to stick your mask as always as possible.</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <h5 class="text-dark">Top Categories</h5>
+                    <div class="list-group">
+                        @foreach ($category as $category)
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <h4 class="text-dark">{{ $category->name }}</h4>
+                            <small class="text-muted">{{ $category->description }}</small>
+                        </a>
+
+                        @endforeach
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 
 {{-- KREASI TERBARU --}}

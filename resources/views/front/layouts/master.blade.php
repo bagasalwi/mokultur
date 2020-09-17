@@ -5,10 +5,12 @@
 	<meta charset="UTF-8">
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
 	<meta name="keywords" content="kreasi bangsa, kreasi, bangsa, kreasibangsa" />
-	
-    <meta name="description" content="Kreasi bangsa merupakan sarana untuk mengenalkan kreasi - kreasi anak bangsa, mulai dari sketch, UI hingga ilustrasi." />
+
+	<meta name="description"
+		content="Kreasi bangsa merupakan sarana untuk mengenalkan kreasi - kreasi anak bangsa, mulai dari sketch, UI hingga ilustrasi." />
 	<meta itemprop="name" content="Kreasibangsa">
-	<meta itemprop="description" content="Kreasi bangsa merupakan sarana untuk mengenalkan kreasi - kreasi anak bangsa, mulai dari sketch, UI hingga ilustrasi.">
+	<meta itemprop="description"
+		content="Kreasi bangsa merupakan sarana untuk mengenalkan kreasi - kreasi anak bangsa, mulai dari sketch, UI hingga ilustrasi.">
 	<meta itemprop="image" content="https://kreasibangsa.com/gambar/logo.png">
 
 	<link rel="icon" href="{{ URL::asset('gambar/Logo.svg') }}">
@@ -44,7 +46,40 @@
 
 	{{-- font --}}
 	<link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
 
+	<style type="text/css">
+		.smart-scroll {
+			position: fixed;
+			top: 0;
+			right: 0;
+			left: 0;
+			z-index: 1030;
+		}
+
+		.scrolled-down {
+			transform: translateY(-100%);
+			transition: all 0.3s ease-in-out;
+		}
+
+		.scrolled-up {
+			transform: translateY(0);
+			transition: all 0.3s ease-in-out;
+		}
+
+		.dropdown-toggle::after {
+			display: none;
+		}
+
+		.text-decoration-none {
+			text-decoration: none !important;
+		}
+
+		/* Font Awesome Icons have variable width. Added fixed width to fix that.*/
+		.icon-width {
+			width: 2rem;
+		}
+	</style>
 </head>
 
 <body class="layout-3 bg-white">
@@ -56,7 +91,7 @@
 	</div>
 	@include('front.layouts.footer')
 
-	
+
 	<!-- General JS Scripts -->
 	<script src="{{ URL::asset('assets/modules/jquery.min.js')}}"></script>
 	<script src="{{ URL::asset('assets/modules/popper.js')}}"></script>
@@ -111,21 +146,49 @@
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167875262-1"></script>
 	<script>
-	window.dataLayer = window.dataLayer || [];
+		window.dataLayer = window.dataLayer || [];
 	function gtag(){dataLayer.push(arguments);}
 	gtag('js', new Date());
 
 	gtag('config', 'UA-167875262-1');
 
-	if ($(window).width() > 992) {
-		$(window).scroll(function(){  
-			if ($(this).scrollTop() > 40) {
-				$('#navbar_top').addClass("fixed-top");
-				$('body').css('padding-top', $('.navbar').outerHeight() + 'px');
-			}else{
-				$('#navbar_top').removeClass("fixed-top");
-				$('body').css('padding-top', '0');
-			}   
+	// if ($(window).width() > 992) {
+	// 	$(window).scroll(function(){  
+	// 		if ($(this).scrollTop() > 40) {
+	// 			$('#navbar_top').addClass("fixed-top");
+	// 			$('body').css('padding-top', $('.navbar').outerHeight() + 'px');
+	// 		}else{
+	// 			$('#navbar_top').removeClass("fixed-top");
+	// 			$('body').css('padding-top', '0');
+	// 		}   
+	// 	});
+	// }
+
+	$(document).ready(function () {
+		if ($(window).width() > 991){
+			$('.navbar-light .d-menu').hover(function () {
+        		$(this).find('.sm-menu').first().stop(true, true).slideDown(150);
+			}, function () {
+        		$(this).find('.sm-menu').first().stop(true, true).delay(120).slideUp(100);
+    			});
+    		}
+		});
+
+	// add padding top to show content behind navbar
+	$('body').css('padding-top', $('.navbar').outerHeight() + 'px')
+
+	// detect scroll top or down
+	if ($('.smart-scroll').length > 0) { // check if element exists
+		var last_scroll_top = 0;
+		$(window).on('scroll', function() {
+			scroll_top = $(this).scrollTop();
+			if(scroll_top < last_scroll_top) {
+				$('.smart-scroll').removeClass('scrolled-down').addClass('scrolled-up');
+			}
+			else {
+				$('.smart-scroll').removeClass('scrolled-up').addClass('scrolled-down');
+			}
+			last_scroll_top = scroll_top;
 		});
 	}
 	</script>
