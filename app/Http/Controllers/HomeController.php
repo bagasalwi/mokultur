@@ -19,8 +19,9 @@ class HomeController extends Controller
     public function index(Request $request)
     {        
         $data['title'] = 'Home';
-        $data['creation'] = Post::where('status', 'P')->orderBy('created_at', 'desc')->take(3)->get();
-        $data['category'] = PostCategory::orderBy('created_at', 'desc')->take(6)->get();
+        $data['creation'] = Post::where('status', 'P')->orderBy('created_at', 'desc')->paginate(2);
+        $data['max_page'] = ceil(Post::where('status','p')->count() / 30);
+        $data['category'] = PostCategory::orderBy('created_at', 'desc')->take(3)->get();
 
         return view('front.home', $data);
     }

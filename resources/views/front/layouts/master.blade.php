@@ -87,10 +87,7 @@
 		@include('front.layouts.navbar')
 
 		@yield('content')
-
 	</div>
-	@include('front.layouts.footer')
-
 
 	<!-- General JS Scripts -->
 	<script src="{{ URL::asset('assets/modules/jquery.min.js')}}"></script>
@@ -151,18 +148,6 @@
 	gtag('js', new Date());
 
 	gtag('config', 'UA-167875262-1');
-
-	// if ($(window).width() > 992) {
-	// 	$(window).scroll(function(){  
-	// 		if ($(this).scrollTop() > 40) {
-	// 			$('#navbar_top').addClass("fixed-top");
-	// 			$('body').css('padding-top', $('.navbar').outerHeight() + 'px');
-	// 		}else{
-	// 			$('#navbar_top').removeClass("fixed-top");
-	// 			$('body').css('padding-top', '0');
-	// 		}   
-	// 	});
-	// }
 
 	$(document).ready(function () {
 		if ($(window).width() > 991){

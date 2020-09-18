@@ -189,7 +189,7 @@ h6 {
 p,
 ul:not(.list-unstyled),
 ol {
-    line-height: 28px;
+    line-height: 24px;
 }
 
 .shadow {
@@ -2133,7 +2133,6 @@ h6 .badge {
 
 /* 3.18 Navbar */
 .navbar {
-    /* height: 80px; */
     background-color: white;
     font-size: 16px;
 }
@@ -2214,8 +2213,8 @@ a.dropdown-item {
 a.dropdown-item:focus,
 a.dropdown-item:active,
 a.dropdown-item.active {
-    background-color: #ff549c;
-    color: #fff !important;
+    background-color: #e4e4e4;
+    color: #fff;
 }
 
 .dropdown-divider {
@@ -2553,7 +2552,8 @@ a.bb {
 }
 
 .img-imagepost{
-    max-height: 400px;
+    max-height: 350px;
+    object-fit: cover;
 }
 
 .colors {

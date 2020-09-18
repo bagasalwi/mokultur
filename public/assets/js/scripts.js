@@ -456,7 +456,7 @@ $(function() {
   $("[data-background-full]").each(function() {
     var me = $(this);
     me.css({
-      'background': 'url(' + me.data('background-full') + ')',
+      'background-image': 'linear-gradient(to bottom, rgba(255,255,255,0.3) 0%,rgba(255,255,255,0.3) 100%),url(' + me.data('background-full') + ')',
       '-webkit-background-size': 'cover',
       '-moz-background-size': 'cover',
       '-o-background-size': 'cover',

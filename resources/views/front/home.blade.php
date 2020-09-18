@@ -1,6 +1,7 @@
 @extends('front.layouts.master')
 
 @section('content')
+@guest
 <div class="jumbotron jumbotron-fluid bg-front mb-0">
     <div class="container">
         <div class="row">
@@ -30,62 +31,83 @@
         </div>
     </div>
 </div>
+@endguest
 
 <div class="section">
     <div class="container">
         <div class="row">
             <div class="col-lg-3">
                 <div class="stickydiv">
-                    <div class="card card-full" data-background="{{ asset('gambar/bg-1.jpg') }}">
+                    @guest
+                    <div class="card card-full" data-background-full="{{ asset('gambar/bg-1.jpg') }}">
                         <div class="card-body">
-                            <h4 class="text-dark">Welcome, Bagas</h4>
-                            <p class="text-dark">Kreasibangsa introduce creations of Anak Bangsa like Sketch, UI Design,
-                                Illustration, Reviews and more.</p>
+                            <h4 class="text-dark">Sign In to make a Post</h4>
+                            <p class="text-dark">While you sign in to your account, you can share your stories through
+                                My Post.</p>
                         </div>
                     </div>
+                    @else
+                    <div class="card card-full" data-background-full="{{ asset('gambar/bg-1.jpg') }}">
+                        <div class="card-body">
+                            <h6 class="text-dark">Welcome,
+                                <h4 class="text-dark">{{ auth()->user()->name }}</h4>
+                            </h6>
+                            <p class="text-dark">Kreasibangsa introduce creations of Anak Bangsa like Sketch, UI Design,
+                                Illustration, Reviews and more.</p>
+                            <a href="#" class="btn btn-sm btn-block btn-dark">Start make Post</a>
+                        </div>
+                    </div>
+                    @endguest
                 </div>
             </div>
             <div class="col-lg-6">
                 <h5 class="text-dark">Popular Creation</h5>
-                @foreach ($creation as $p)
-                <div class="card border-0 my-2">
-                    <img class="img-fluid img-imagepost" style="object-fit: cover;"
-                        src="{{ asset('storage/' . $p->photo()) }}" alt="">
-                    <div class="my-2">
-                        <h2><a class="text-dark" href="{{ url('creation/' . $p->slug) }}">{{ $p->title }}</a></h2>
-                    </div>
-                    <div class="row">
-                        <div class="col-6 d-flex flex-row">
-                            <div class="align-self-center mr-2">
-                                <img alt="image" width="45" height="45"
-                                    src="{{ URL::asset('gambar/profile_pic/' . $p->user->profile_pic) }}"
-                                    class="rounded-circle">
+                <div id="posts">
+                    @foreach ($creation as $p)
+                    <div class="card border-0 my-2">
+                        <img class="img-fluid img-imagepost" src="{{ asset('storage/' . $p->photo()) }}" alt="">
+                        <div class="my-2">
+                            <h2><a class="text-dark" href="{{ url('creation/' . $p->slug) }}">{{ $p->title }}</a></h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 d-flex flex-row">
+                                <div class="align-self-center mr-2">
+                                    <img alt="image" width="45" height="45"
+                                        src="{{ URL::asset('gambar/profile_pic/' . $p->user->profile_pic) }}"
+                                        class="rounded-circle">
+                                </div>
+                                <div class="align-self-center">
+                                    <h6 class="p-0 m-0">
+                                        <a class="text-dark"
+                                            href="{{ url('creator/' . $p->user->username) }}">{{ $p->user->name }}</a>
+                                    </h6>
+                                    <p class="p-0 m-0"><span class="badge badge-dark">{{ $p->category->name }}</span>
+                                    </p>
+                                </div>
                             </div>
-                            <div class="align-self-center">
-                                <h6 class="p-0 m-0">
-                                    <a class="text-dark"
-                                        href="{{ url('creator/' . $p->user->username) }}">{{ $p->user->name }}</a>
-                                </h6>
-                                <p class="p-0 m-0"><span class="badge badge-dark">{{ $p->category->name }}</span>
-                                </p>
+                            <div class="col-6 d-flex flex-row-reverse">
+                                <div class="align-self-end">
+                                    <a href="{{ url('creation/' . $p->slug) }}" class="btn btn-outline-dark ">Read
+                                        More</a>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-6 d-flex flex-row-reverse">
-                            <div class="align-self-end">
-                                <a href="{{ url('creation/' . $p->slug) }}" class="btn btn-outline-dark ">Read More</a>
-                            </div>
-                        </div>
                     </div>
+                    <hr>
+                    @endforeach
                 </div>
-                <hr>
-                @endforeach
+                {!! $creation->render() !!}
+                <div class="text-center">
+                    <button id="see-more" class="btn btn-block btn-dark" data-page="2" data-link="{{ url('/?page=') }}" data-div="#posts">See more</button> 
+                </div>
             </div>
             <div class="col-lg-3">
                 <div class="stickydiv">
                     <div class="card card-full" data-background-full="{{ asset('gambar/covid.jpg') }}">
                         <div class="card-body">
-                            <h4 class="text-dark">Wear your mask, Always!</h4>
-                            <p class="text-dark">due to covid19, you have to stick your mask as always as possible.</p>
+                            <h4 class="text-dark">Always wear Mask!</h4>
+                            <p class="text-dark">Due to COVID19 pandemic, make your mask as a secondary weapon of life.
+                            </p>
                         </div>
                     </div>
                     <hr>
@@ -96,7 +118,6 @@
                             <h4 class="text-dark">{{ $category->name }}</h4>
                             <small class="text-muted">{{ $category->description }}</small>
                         </a>
-
                         @endforeach
                     </div>
                 </div>
@@ -105,97 +126,24 @@
     </div>
 </div>
 
-{{-- KREASI TERBARU --}}
-{{-- <section class="section" style="background-color:#ff6ca9;">
-    <div class="container">
-        <div class="section-body">
-            <div class="row">
-                <div class="col align-self-center text-center">
-                    <h1 class="my-4 text-white">
-                        KREASI TERBARU
-                    </h1>
-                </div>
-            </div>
-            <div class="row">
-                @foreach ($post_latest as $p)
-                <div class="col-md-4 mb-4">
-                    <div class="card card-hover h-100" data-aos="fade-up" data-aos-delay="200">
-                        <div class="card-header border-bottom">
-                            <img alt="image" width="45" height="45"
-                                src="{{ URL::asset('gambar/profile_pic/' . $p->user->profile_pic) }}"
-class="rounded-circle mr-2">
-<h6><a href="{{ url('creator/' . $p->user->username) }}">{{ $p->user->name }}</a></h6>
-</div>
-<div class="embed-responsive embed-responsive-4by3">
-    <img class="embed-responsive-item img-fluid" src="{{ URL::asset('gambar/user_post/' . $p->thumbnail) }}" alt="">
-</div>
-<div class="card-body border-top">
-    <a class="stretched-link" href="{{ url('creation/' . $p->slug) }}">
-        <h6>{{ $p->title }}</h6>
-    </a>
-    <div class="mt-2">
-        <a><i class="fas fa-eye"></i> {{ $p->view_count }}</a>
-        <div class="bullet"></div>
-        <a>{{ $p->category->name }}</a>
-        <a class="float-right">{{ $p->created_at->diffForHumans() }}</a>
-    </div>
-</div>
-</div>
-</div>
-@endforeach
-</div>
-<div class="align-self-center text-center">
-    <a class="btn btn-lg btn-light mt-4" data-aos="zoom-out" data-aos-delay="600" href="{{ url('creation') }}"
-        role="button">Lihat Selengkapnya</a>
-</div>
-</div>
-</div>
-</section> --}}
+@endsection
 
-<section class="section">
-    <div class="container">
-        <div class="section-body">
-            <div class="row">
-                <div class="col d-none d-sm-block" data-aos="fade-right" data-aos-delay="300">
-                    <img width="450" src="{{ URL::asset('gambar/sketch/4.svg')}}" alt="">
-                </div>
-                <div class="col align-self-center" data-aos="fade-left" data-aos-delay="500">
-                    <h1 class="mb-4 mr-2 text-dark">
-                        Atur <b class="text-primary">Kreasi</b> sesukamu!
-                    </h1>
-                    <p class="mb-4 mr-2">
-                        Kamu dapat meng-upload kreasi - kreasi kamu sesuai dengan bidang yang kamu tekuni,
-                        kreasi
-                        kamu akan di tautkan dengan akun kamu sebagai karya dan portofolio.
-                    </p>
-                    <a class="btn btn-lg btn-outline-primary" href="{{ url('creation') }}" role="button">Lihat
-                        Kreasi</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<hr>
-{{-- KREASI TERBARU --}}
-<section class="section">
-    <div class="container">
-        <div class="section-body">
-            <div class="row">
-                <div class="col align-self-center text-center">
-                    <h3 class="my-4 text-dark font-weight-bold" data-aos="zoom-out" data-aos-delay="400">
-                        Kreasi Bangsa menyediakan tempat untuk menuang <b class="text-primary">Karya</b>
-                    </h3>
-                    <blockquote class="blockquote" data-aos="fade-up" data-aos-delay="600">
-                        <p class="mb-0">Creativity is intelligence having fun</p>
-                        <footer class="blockquote-footer"><cite title="Source Title">Albert Einstein</cite></footer>
-                    </blockquote>
-                    <a class="btn btn-lg btn-outline-primary mt-4" data-aos="zoom-out" data-aos-delay="800"
-                        href="{{ url('register') }}" role="button">Bergabung
-                        Sekarang</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+@section('script')
+<script>
+    $("ul.pagination").hide();
 
+    $("#see-more").click(function() {
+        $div = $($(this).data('div')); //div to append
+        $link = $(this).data('link'); //current URL
+
+        $page = $(this).data('page'); //get the next page #
+        $href = $link + $page; //complete URL
+        $.get($href, function(response) { //append data
+            $html = $(response).find("#posts").html(); 
+            $div.append($html);
+        });
+
+        $(this).data('page', (parseInt($page) + 1)); //update page #
+    });
+</script>
 @endsection
