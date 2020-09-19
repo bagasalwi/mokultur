@@ -1,4 +1,4 @@
-<div class="col-lg-3">
+<div class="col-lg-3 d-none d-lg-block">
     <div class="stickydiv">
         <div class="card card-full" data-background-full="{{ asset('gambar/covid.jpg') }}">
             <div class="card-body">

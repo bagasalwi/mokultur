@@ -54,7 +54,7 @@ class CategoryServices{
         $cat = $this->find($id);
         $path = '';
 
-        if($image !== null && $cat->banner !== 'default.png'){
+        if($image !== null && $cat->banner !== 'default-banner.png'){
             $lastImage = public_path('storage/' . $cat->banner); // get previous image from folder
             
             if (File::exists($lastImage)) { // unlink or remove previous image from folder

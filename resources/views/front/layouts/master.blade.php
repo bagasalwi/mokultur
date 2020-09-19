@@ -177,6 +177,21 @@
 		});
 	}
 	</script>
+
+	<script>
+	$("#searchBtn").on('click', function(e) {
+		$(this).hide();
+		$("#searchForm").show();
+		$("#searchForm input").focus();
+	});
+
+	$("#searchForm input").focusout(function(e){
+		$("#searchBtn").show();
+		$("#titleBarNav").removeClass("hidden");
+		$("#searchForm").hide();
+	});
+
+	</script>
 </body>
 
 </html>

@@ -4,33 +4,41 @@
 <section class="section">
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-sm-12">
-                <div class="card">
-                    <div class="m-4">
-                        <h1 class="text-dark font-weight-boldness">{{ $post->title }}</h1>
-                        <div class="mt-2">
-                            <a>{{ $post->category->name }}</a>
-                            <div class="bullet"></div>
-                            <a><i class="fas fa-eye"></i> {{ $post->view_count }}</a>
-                            <div class="bullet"></div>
-                            <a>{{ $post->created_at->diffForHumans() }}</a>
-                            <a class="float-right">{{ $post->created_at->format('d M Y') }}</a>
+            <div class="col-md-8 col-sm-12 offset-md-2">
+                <h4><span class="badge badge-dark px-4">{{ $post->category->name }}</span></h4>
+                <h1 class="text-dark">{{ $post->title }}</h1>
+                <hr>
+                {{-- Profile --}}
+                <div class="row my-2">
+                    <div class="col-6 d-flex flex-row">
+                        <div class="align-self-center mr-2">
+                            <img alt="image" width="45" height="45"
+                                src="{{ URL::asset('gambar/profile_pic/' . $post->user->profile_pic) }}"
+                                class="rounded-circle">
+                        </div>
+                        <div class="align-self-center">
+                            <h5 class="p-0 m-0 font-weight-light">
+                                <a class="text-dark"
+                                    href="{{ url('creator/' . $post->user->username) }}">{{ $post->user->name }}</a>
+                            </h5>
+                            <p class="p-0 m-0"><small class="text-dark">Since {{ $post->user->created_at->diffForHumans() }}</small>
+                            </p>
                         </div>
                     </div>
-                    <img src="{{ asset('storage/' . $post->photo()) }}"
-                        class="img-fluid w-100 mb-4 border-top border-bottom">
-                    <div class="card-body">
-                        <div class="mb-4">
-                            <div id="posting">
-                                {!! $post->description !!}
-                            </div>
+                    <div class="col-6 d-flex flex-row-reverse">
+                        <div class="align-self-end">
+                            <p class="p-0 m-0">Published {{ $post->created_at->diffForHumans() }}</p>
                         </div>
-                        <a href="{{ url('creation/category/' . $post->category->name) }}"
-                            class="badge badge-primary">{{ $post->category->name }}</a>
-                        <hr>
-                        <div class="mt-2" id="disqus_thread"></div>
                     </div>
                 </div>
+                {{-- Photo --}}
+                <img src="{{ asset('storage/' . $post->photo()) }}" class="img-fluid w-100">
+                {{-- Content --}}
+                <div id="posting" class="my-4">
+                    {!! $post->description !!}
+                </div>
+
+                <div class="mt-2" id="disqus_thread"></div>
 
                 @if ($recomendation->isNotEmpty())
                 <h4 class="text-dark my-4">Topik Rekomendasi</h4>
@@ -63,9 +71,9 @@
                 @endif
 
             </div>
-            <div class="col-md-4">
+            {{-- <div class="col-md-4">
                 @include('layouts.side-profile')
-            </div>
+            </div> --}}
         </div>
     </div>
 </section>

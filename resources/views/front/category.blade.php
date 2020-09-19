@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="owl-carousel owl-theme slider" id="slider2">
+<div class="owl-carousel owl-theme slider d-none d-sm-block" id="slider2">
     @foreach ($category as $slider)
     <div>
         <img alt="image" class="img-slider" src="{{ asset('storage/' . $slider->banner) }}">

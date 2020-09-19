@@ -52,11 +52,11 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Post Controller
     Route::prefix('post')->group(function (){
-        Route::get('/','PostController@index');
-        Route::get('create', 'PostController@create');
+        Route::get('/','PostController@index')->name('post.index');
+        Route::get('create', 'PostController@create')->name('post.create');
         Route::get('update/{id}', 'PostController@update');
-        Route::post('save', 'PostController@save');
-        Route::get('delete/{id}', 'PostController@delete');
+        Route::post('save', 'PostController@save')->name('post.save');
+        Route::get('delete/{id}', 'PostController@delete')->name('post.delete');
     });
 
     // Back End (ADMIN)

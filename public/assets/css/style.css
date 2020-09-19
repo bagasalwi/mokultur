@@ -1431,20 +1431,20 @@ table tr:hover .table-links {
 
 /* 3.10 Pagination */
 .page-item .page-link {
-    color: #ff549c;
+    color: #000000;
     border-radius: 3px;
     margin: 0 3px;
 }
 
 .page-item.active .page-link {
-    background-color: #ff549c;
-    border-color: #ff549c;
+    background-color: #000000;
+    border-color: #000000;
 }
 
 .page-item.disabled .page-link {
     border-color: transparent;
     background-color: #f9fafe;
-    color: #ff549c;
+    color: #000000;
     opacity: 0.6;
 }
 
@@ -1454,7 +1454,7 @@ table tr:hover .table-links {
     font-weight: 600;
 }
 .page-link:hover {
-    background-color: #ff549c;
+    background-color: #131313;
     color: #fff;
     border-color: transparent;
 }
@@ -1675,7 +1675,7 @@ h6 .badge {
 
 .btn-secondary,
 .btn-secondary.disabled {
-    box-shadow: 0 2px 6px #e1e5e8;
+    /* box-shadow: 0 2px 6px #e1e5e8; */
     background-color: #cdd3d8;
     border-color: #cdd3d8;
     color: #fff;
@@ -1729,7 +1729,7 @@ h6 .badge {
 
 .btn-danger,
 .btn-danger.disabled {
-    box-shadow: 0 2px 6px #fd9b96;
+    /* box-shadow: 0 2px 6px #fd9b96; */
     background-color: #fc544b;
     border-color: #fc544b;
     color: #fff;
@@ -1755,7 +1755,7 @@ h6 .badge {
 
 .btn-dark,
 .btn-dark.disabled {
-    box-shadow: 0 2px 6px #728394;
+    /* box-shadow: 0 2px 6px #728394; */
     background-color: #191d21;
     border-color: #191d21;
     color: #fff;
@@ -2443,7 +2443,7 @@ body {
     font-size: 14px;
     font-weight: 400;
     font-family: "Nunito", "Segoe UI", arial;
-    color: #6c757d;
+    color: #000000;
 }
 
 a.bb {

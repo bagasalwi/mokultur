@@ -75,8 +75,51 @@
     </a>
 </li> --}}
 
+{{-- <nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Project Name</a>
+        </div>
+        <div id="titleBarNav" class="">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li class=""><a href="#">Link</a></li>
+                <li class=""><a href="#">Link</a></li>
+            </ul>
+            <button type="button" id="searchBtn" class="btn btn-default navbar-btn"><i
+                    class="fa fa-search"></i></button>
+        </div>
+        <form id="searchForm" class="navbar-form hidden" role="search">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </form>
+    </div>
+</nav> --}}
+
+{{-- <script>
+	$("#searchBtn").on('click', function(e) {
+		$(this).addClass("hidden");
+		$(this).closest($("#container-fluid")).find($("#titleBarNav")).addClass("hidden");
+		$("#searchForm").removeClass("hidden");
+		//$("$searchForm").addClass("animate");
+		$("#searchForm input").focus();
+	});
+
+	$("#searchForm input").focusout(function(e){
+		$("#searchBtn").removeClass("hidden");
+		$("#titleBarNav").removeClass("hidden");
+		$("#searchForm").addClass("hidden");
+	});
+
+	</script> --}}
+
+
 <nav class="navbar smart-scroll navbar-expand-lg navbar-light shadow-sm fixed-top">
-    <div class="container">
+    <div class="container" id="navbar-container">
         <a class="navbar-brand d-flex align-items-center" href="#">
             <img src="{{ URL::asset('gambar/logo.png')}}" width="187" alt="">
         </a>
@@ -90,26 +133,28 @@
             <ul class="navbar-nav mr-auto pl-lg-4">
                 <li class="nav-item px-lg-2 {{ request()->is('/') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ url('/') }}">
-                        <span class="d-inline-block d-lg-none icon-width">
-                            <i class="fas fa-home"></i>
-                        </span>Home
+                        <h6 class="m-0">HOME</h6>
                     </a>
                 </li>
                 <li class="nav-item px-lg-2 {{ request()->is('topic') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ url('topic') }}">
-                        <span class="d-inline-block d-lg-none icon-width">
-                            <i class="fas fa-spa"></i>
-                        </span>Category
+                        <h6 class="m-0">CATEGORY</h6>
                     </a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto mt-3 mt-lg-0">
+                <li class="nav-item">
+                    <button type="button" id="searchBtn" class="btn btn-default navbar-btn"><i
+                            class="fa fa-search"></i></button>
+                </li>
+                <form id="searchForm" action="{{ url('search') }}" role="search" style="display:none">
+                    <input type="text" class="form-control-sm form-control" placeholder="Search">
+                </form>
                 @guest
                 <li class="nav-item px-lg-2 dropdown d-menu">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
-                        <img alt="image" width="30" height="30"
-                            src="{{ asset('gambar/profile_pic/default.png') }}"
+                        <img alt="image" width="30" height="30" src="{{ asset('gambar/profile_pic/default.png') }}"
                             class="rounded-circle mr-1">
                         <span class="d-lg-none ml-3"></span>
                     </a>
@@ -129,7 +174,8 @@
                     <div class="dropdown-menu shadow-sm sm-menu" aria-labelledby="dropdown01">
                         <a class="dropdown-item">
                             <h6 class="p-0 m-0">
-                                <span class="font-weight-normal">{{ substr(auth()->user()->name, 0, 18) . '...' }}</span>
+                                <span
+                                    class="font-weight-normal">{{ substr(auth()->user()->name, 0, 18) . '...' }}</span>
                             </h6>
                             <small class="p-0 m-0 text-muted">{{ auth()->user()->username }}</small>
                         </a>
@@ -140,7 +186,8 @@
                             <span class="text-dark">My Post</span>
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item has-icon" onclick="event.preventDefault();document.getElementById('logout-form').submit();" href="#">
+                        <a class="dropdown-item has-icon"
+                            onclick="event.preventDefault();document.getElementById('logout-form').submit();" href="#">
                             <i class="fas fa-sign-out-alt"></i>
                             <span class="text-dark">Logout</span>
                         </a>

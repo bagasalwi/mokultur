@@ -1,5 +1,5 @@
 <div class="col-lg-6">
-    <h5 class="text-dark">Popular Creation</h5>
+    <h5 class="text-dark">Latest Post</h5>
     <div id="posts">
         @foreach ($creation as $p)
         <div class="card border-0 my-4">
@@ -36,12 +36,17 @@
     </div>
     {!! $creation->render() !!}
     <div class="text-center">
+        @if ($creation->hasMorePages())
         <button id="see-more" class="btn btn-block btn-dark" data-page="2" data-link="{{ url('/?page=') }}"
             data-div="#posts">See more</button>
+        @else
+        <h6 class="text-secondary font-weight-normal">No More Data</h6>
+        @endif
     </div>
 </div>
 
 
+@section('script')
 <script>
     $("ul.pagination").hide();
 
@@ -59,3 +64,4 @@
         $(this).data('page', (parseInt($page) + 1)); //update page #
     });
 </script>
+@endsection

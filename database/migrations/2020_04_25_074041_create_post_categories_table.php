@@ -18,7 +18,7 @@ class CreatePostCategoriesTable extends Migration
             $table->string('name');
             $table->string('slug')->unique();;
             $table->longText('description');
-            $table->string('banner')->default('images/category/default-banner.jpg')->nullable();
+            $table->string('banner')->default('images/category/default-banner.png')->nullable();
             $table->timestamps();
         });
     }

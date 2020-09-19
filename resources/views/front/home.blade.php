@@ -19,13 +19,12 @@
                 </div>
             </div>
             <div class="col-lg-5 offset-lg-1 align-self-center">
-                <h1 class="text-dark font-weight-bold">Upload Your Creation!</h1>
+                <h1 class="text-dark font-weight-bold">Article, Stories, Reviews, whatever you want to post!</h1>
                 <p class="mb-4 text-dark" data-font-size="16px">
-                    Kreasibangsa introduce creations of Anak Bangsa like Sketch, UI Design, Illustration, Reviews and
-                    more.
+                    In Kreasibangsa you can share all your creations to share with others!
                 </p>
-                <a class="btn btn-dark btn-lg font-weight-bold" href="{{ url('creation') }}" role="button">Browse
-                    Creation</a>
+                <a class="btn btn-dark btn-lg" href="{{ url('creation') }}" role="button"><h6 class="m-0">Browse
+                    Creation</h6></a>
             </div>
         </div>
     </div>

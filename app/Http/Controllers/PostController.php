@@ -71,7 +71,7 @@ class PostController extends Controller
         
         $data['state'] = 'create';
 
-        return view('front.post.post_create', $data)->withTags($tags);
+        return view('front.post.post_form', $data)->withTags($tags);
     }
 
     public function update($slug)
@@ -92,13 +92,12 @@ class PostController extends Controller
 
         $data['fields'] = Post::where('slug', $slug)->get();
 
-        return view('front.post.post_create', $data)->withTags($tags);
+        return view('front.post.post_form', $data)->withTags($tags);
     }
 
     public function save(Request $request)
     {
         if ($request->state == 'create') {
-            
             $this->validate($request, [
                 'title' => 'required',
                 'category_id' => 'required',
