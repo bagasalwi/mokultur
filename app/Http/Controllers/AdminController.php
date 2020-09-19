@@ -13,11 +13,14 @@ use DB;
 use File;
 use Carbon\Carbon;
 
+use App\Services\CategoryServices;
+
 
 class AdminController extends Controller
 {
-    public function __construct()
+    public function __construct(CategoryServices $categoryService)
     {
+        $this->categoryService = $categoryService;
         $this->middleware(['auth']);
     }
 
@@ -70,40 +73,6 @@ class AdminController extends Controller
         }
         
         Post::where('id', $id)->delete();
-    }
-
-    /*=======================================================*/
-    /*===================CATEGORY FUCNTION===================*/
-    /*=======================================================*/
-    public function category(){
-        $data['title'] = 'Post Category';
-        $data['sidebar'] = Sidebar::where('role_id', 2)->get(); 
-        
-        $data['postcategory'] = PostCategory::get();
-
-        $data['url_create'] = 'admin/category/create';        
-        $data['url_delete'] = 'admin/category/delete';
-
-        return view('back.postcategory_list', $data);
-    }
-
-    public function category_create(Request $request){
-
-        $this->validate($request, [
-            'name' => 'required',
-            'description' => 'required',
-        ]);
-
-        PostCategory::create([
-            'name' => $request->name,
-            'description' => $request->description,
-        ]);
-        
-        return redirect('admin/category');
-    }
-
-    public function category_delete($id){
-        PostCategory::where('id', $id)->delete();
     }
 
     /*==================================================*/

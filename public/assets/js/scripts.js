@@ -449,7 +449,11 @@ $(function() {
   $("[data-background]").each(function() {
     var me = $(this);
     me.css({
-      backgroundImage: 'url(' + me.data('background') + ')'
+      backgroundImage: 'url(' + me.data('background') + ')',
+      '-webkit-background-size': 'cover',
+      '-moz-background-size': 'cover',
+      '-o-background-size': 'cover',
+      'background-size': 'cover'
     });
   });
 
@@ -464,7 +468,15 @@ $(function() {
     });
   });
 
-
+  $("[data-background-topic]").each(function() {
+    var me = $(this);
+    me.css({
+      'background-image': 'url(' + me.data('background-topic') + ')',
+      'background-attachment':'fixed',
+      'background-repeat': 'no-repeat',
+      'background-size': 'cover',
+    });
+  });
 
   // Custom Tab
   $("[data-tab]").each(function() {

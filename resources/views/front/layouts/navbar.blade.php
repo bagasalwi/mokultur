@@ -95,8 +95,8 @@
                         </span>Home
                     </a>
                 </li>
-                <li class="nav-item px-lg-2">
-                    <a class="nav-link" href="#">
+                <li class="nav-item px-lg-2 {{ request()->is('topic') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ url('topic') }}">
                         <span class="d-inline-block d-lg-none icon-width">
                             <i class="fas fa-spa"></i>
                         </span>Category
@@ -127,12 +127,12 @@
                             class="rounded-circle mr-1">
                     </a>
                     <div class="dropdown-menu shadow-sm sm-menu" aria-labelledby="dropdown01">
-                        <div class="dropdown-item">
+                        <a class="dropdown-item">
                             <h6 class="p-0 m-0">
-                                <span>{{ auth()->user()->name }}</span>
+                                <span class="font-weight-normal">{{ substr(auth()->user()->name, 0, 18) . '...' }}</span>
                             </h6>
                             <small class="p-0 m-0 text-muted">{{ auth()->user()->username }}</small>
-                        </div>
+                        </a>
                         <a class="dropdown-item has-icon" href="{{ url('profile') }}">
                             <span class="text-dark">Profile</span>
                         </a>

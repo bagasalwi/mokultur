@@ -787,6 +787,18 @@ select.form-control:not([size]):not([multiple]) {
     padding : 0px;
     object-fit: cover;
 }
+.card-topic{
+    height: 140px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease 0s, opacity 0.5s cubic-bezier(0.5, 0, 0, 1) 1ms;
+}
+.card-topic:hover {
+    box-shadow: 2px 4px 8px 0 rgba(46, 61, 73, 0.2);
+    transform: scale(1.01);
+}
+.card-topic:active {
+    transform: scale(0.98);
+}
 .card .card-body {
     padding-top: 10px;
     padding-bottom: 10px;
@@ -1794,8 +1806,8 @@ h6 .badge {
 .btn-outline-light.disabled:hover,
 .btn-outline-light.disabled:focus,
 .btn-outline-light.disabled:active {
-    background-color: #e3eaef !important;
-    color: #fff !important;
+    background-color: #ffffff !important;
+    color: rgb(0, 0, 0) !important;
 }
 
 .btn-warning,
@@ -2214,7 +2226,7 @@ a.dropdown-item:focus,
 a.dropdown-item:active,
 a.dropdown-item.active {
     background-color: #e4e4e4;
-    color: #fff;
+    color: rgb(0, 0, 0);
 }
 
 .dropdown-divider {
@@ -3950,4 +3962,13 @@ h6,
     position: sticky;
     position: -webkit-sticky;
     top: 60px; /* required */
-  }
+}
+
+.img-slider{
+    max-height: 450px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    object-fit: cover;
+}

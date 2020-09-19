@@ -16,7 +16,9 @@ class CreatePostCategoriesTable extends Migration
         Schema::create('post_categories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->string('slug')->unique();;
             $table->longText('description');
+            $table->string('banner')->default('images/category/default-banner.jpg')->nullable();
             $table->timestamps();
         });
     }

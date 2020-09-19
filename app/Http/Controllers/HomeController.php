@@ -6,13 +6,16 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\PostCategory;
 use DB;
+use App\Services\CategoryServices;
+use App\Services\PostServices;
 
 class HomeController extends Controller
 {
     
-    public function __construct()
+    public function __construct(CategoryServices $categoryService, PostServices $postService)
     {
-        // $this->middleware(['auth']);
+        $this->postService = $postService;
+        $this->categoryService = $categoryService;
     }
 
     
@@ -20,10 +23,28 @@ class HomeController extends Controller
     {        
         $data['title'] = 'Home';
         $data['creation'] = Post::where('status', 'P')->orderBy('created_at', 'desc')->paginate(2);
-        $data['max_page'] = ceil(Post::where('status','p')->count() / 30);
-        $data['category'] = PostCategory::orderBy('created_at', 'desc')->take(3)->get();
+        $data['topCategory'] = $this->categoryService->topCategory();
 
         return view('front.home', $data);
+    }
+
+    public function category($category = null){
+        $data['title'] = 'Category';
+
+        if($category){
+            $data['category'] = $this->categoryService->findSlug($category);
+            $data['topCategory'] = $this->categoryService->topCategory();
+            $data['creation'] = Post::where('status', 'P')->where('category_id',$data['category']->id)->orderBy('created_at', 'desc')->paginate(2);
+            
+            return view('front.category-detail', $data);
+        }else{
+            $data['category'] = $this->categoryService->allCategory();
+            $data['topCategory'] = $this->categoryService->topCategory();
+            $data['creation'] = Post::where('status', 'P')->orderBy('created_at', 'desc')->paginate(2);
+
+            return view('front.category', $data);
+        }
+
     }
 
     public function contact()

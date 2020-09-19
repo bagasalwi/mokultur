@@ -1623,7 +1623,7 @@ tr:first-child > td > .fc-day-grid-event {
 }
 /* 1.35 Owl Carousel */
 .owl-theme .owl-item {
-  padding: 10px 0;
+  padding: 0px 0;
 }
 .owl-theme .owl-dots {
   margin-top: 20px !important;

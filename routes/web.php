@@ -14,6 +14,9 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/topic', 'HomeController@category');
+Route::get('/topic/{category}', 'HomeController@category');
+
 Route::get('/contact', 'HomeController@contact')->name('contact');
 Route::post('/contact-submit', 'HomeController@contact_submit');
 
@@ -81,9 +84,11 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('post/delete/{id}', 'AdminController@post_delete');
 
             // Category Function
-            Route::get('category','AdminController@category');
-            Route::post('category/create', 'AdminController@category_create');
-            Route::get('category/delete/{id}', 'AdminController@category_delete');
+            Route::get('category','CategoryController@category')->name('category');
+            Route::get('category/create', 'CategoryController@category_create')->name('category.create');
+            Route::get('category/update/{id}', 'CategoryController@category_update')->name('category.update');
+            Route::post('category/store', 'CategoryController@category_store')->name('category.store');
+            Route::get('category/delete/{id}', 'CategoryController@category_delete');
 
             // Tag Function
             Route::get('tag','AdminController@tag');
