@@ -21,16 +21,14 @@
         @endguest
         <div class="card card-full mb-4" data-background-full="{{ asset('gambar/instagram.jpg') }}">
             <div class="card-body">
-                <h5 class="text-white text-center">
+                <h6 class="text-white text-center">
                     Check our Instagram
-                </h5>
+                </h6>
                 <div class="text-center">
-                    <img src="{{ asset('gambar/instagram-logo.png') }}" width="80" height="80"
+                    <img src="{{ asset('gambar/instagram-logo.png') }}" width="40" height="40"
                         class="my-2" alt="">
                 </div>
-                <p data-font-size="12px" class="text-white">Kreasibangsa introduce creations of Anak Bangsa like Sketch, UI
-                    Design,
-                    Illustration, Reviews and more.</p>
+                <p data-font-size="12px" class="text-white text-center no-pm">@kreasibangsa</p>
                 <a href="#" class="btn btn-sm btn-block btn-outline-light">Follow</a>
             </div>
         </div>

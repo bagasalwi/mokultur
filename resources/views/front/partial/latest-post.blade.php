@@ -1,5 +1,5 @@
 <div class="col-lg-6">
-    <h5 class="text-dark">Latest Post</h5>
+    <h6 class="text-dark">Latest Post</h6>
     <div id="posts">
         @foreach ($creation as $p)
         <div class="card border-0 my-4">
@@ -19,7 +19,8 @@
                             <a class="text-dark"
                                 href="{{ url('creator/' . $p->user->username) }}">{{ $p->user->name }}</a>
                         </h6>
-                        <p class="p-0 m-1"><span class="badge badge-dark">{{ $p->category->name }}</span>
+                        <p class="p-0 m-1">
+                            <span class="badge badge-dark">{{ $p->category->name }}</span>
                         </p>
                     </div>
                 </div>

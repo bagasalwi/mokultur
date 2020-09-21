@@ -8,7 +8,7 @@
             </div>
         </div>
         <hr>
-        <h5 class="text-dark">Top Categories</h5>
+        <h6 class="text-dark">Top Categories</h6>
         <div class="list-group">
             @foreach ($topCategory as $category)
             <div class="card card-hover my-2" data-background="{{ asset('storage/' . $category->banner) }}">

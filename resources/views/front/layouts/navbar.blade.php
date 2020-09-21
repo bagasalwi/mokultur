@@ -175,7 +175,7 @@
                         <a class="dropdown-item">
                             <h6 class="p-0 m-0">
                                 <span
-                                    class="font-weight-normal">{{ substr(auth()->user()->name, 0, 18) . '...' }}</span>
+                                    class="font-weight-normal">{{ strlen(auth()->user()->name) > 50 ? substr(auth()->user()->name, 0, 18) . '...' : auth()->user()->name }}</span>
                             </h6>
                             <small class="p-0 m-0 text-muted">{{ auth()->user()->username }}</small>
                         </a>

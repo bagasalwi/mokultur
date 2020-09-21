@@ -3972,3 +3972,8 @@ h6,
     background-size: cover;
     object-fit: cover;
 }
+
+.no-pm{
+    margin : 0 !important;
+    padding : 0 !important;
+}

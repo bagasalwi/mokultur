@@ -26,6 +26,17 @@ class CreatorController extends Controller
         $data['post'] = Post::where('user_id', $data['user']->id)->paginate(10);
         $data['post_count'] = Post::where('user_id', $data['user']->id)->count();
 
+        $time = date("H");
+        if ($time < "12") {
+            $data['greetings'] = "Good morning";
+        } elseif ($time >= "12" && $time < "17") {
+            $data['greetings'] = "Good afternoon";
+        } elseif ($time >= "17" && $time < "19") {
+            $data['greetings'] = "Good evening";
+        } elseif ($time >= "19") {
+            $data['greetings'] = "Good night";
+        }
+
         return view('front.home.home', $data);
     }
 

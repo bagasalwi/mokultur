@@ -7,7 +7,7 @@
         @if ($message = Session::get('success'))
         <div class="alert alert-success alert-dismissible show fade">
             <div class="alert-body">
-                <button class="close" data-dismiss="alert">
+                <button class="clo  se" data-dismiss="alert">
                     <span>&times;</span>
                 </button>
                 <strong>{{ $message }}</strong>
@@ -22,14 +22,9 @@
             <div class="col-md-8 col-sm-12 my-2">
                 <div class="row">
                     <div class="col-12 mb-4">
-                        @include('layouts.top-menu')
-                        <div class="hero text-white bg-primary mt-2">
-                            <div class="hero-inner">
-                                <h2>Welcome, {{ $user->name }} !</h2>
-                                <p class="lead">Selamat datang di Kreasi Bangsa, Bersama kita tampilkan kreasi anak
-                                    bangsa !</p>
-                            </div>
-                        </div>
+                        <h2>{{ $greetings }} !</h2>
+                        <p>Your Account active since {{ auth()->user()->created_at->format('M Y') }}</p>
+                        {{-- @include('layouts.top-menu') --}}
                     </div>
                     @foreach ($post as $p)
                     <div class="col-md-6 mb-4">
