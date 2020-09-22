@@ -1,47 +1,26 @@
 @charset "UTF-8";
-/**
- * TABLE OF CONTENTS
- *
- * 1. Variable
- * 2. Mixin
- * 3. Bootstrap Override
- * 	  3.1 Misc
- * 	  3.2 Form
- * 	  3.3 List
- * 	  3.4 Alert
- * 	  3.5 Card
- * 	  3.6 Table
- * 	  3.7 Tooltip
- * 	  3.8 Modal
- * 	  3.9 Nav
- * 	  3.10 Pagination
- * 	  3.11 Badge
- * 	  3.12 Button
- * 	  3.13 Media
- * 	  3.14 Breadcrumb
- * 	  3.15 Accordion
- * 	  3.16 Popover
- * 	  3.17 Grid
- * 	  3.18 Navbar
- * 	  3.19 Dropdown
- * 	  3.20 Tab
- * 	  3.21 Progressbar
- * 	  3.22 Jumbotron
- * 	  3.23 Carousel
- * 4. Theme Style
- * 	  4.1 Misc
- * 	  4.2 Section
- * 	  4.3 Page
- * 	  4.4 Layout
- * 	  4.5 Animation
- * 5. Responsive
- *
- */
-/* 1. Variable */
-/* 2. Mixin */
-/* 3. Bootstrap Override */
-/* 3.1 Misc */
 @import url("//fonts.googleapis.com/css?family=Nunito:400,600,700,800");
+
+body {
+    background-color: #f4f6f9;
+    font-size: 14px;
+    font-weight: 300;
+    font-family: 'Open Sans', sans-serif;
+    color: #000000;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.noto {
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 0.5rem !important;
+    line-height: 1.2 !important;
+}
+
 .btn:focus,
 .btn:active,
 .btn:active:focus,
@@ -52,8 +31,8 @@
 }
 
 a {
-    color: #ff549c;
-    font-weight: 500;
+    color: #000000;
+    font-weight: 400;
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
     -o-transition: all 0.5s;
@@ -163,7 +142,7 @@ a:not(.btn-social-icon):not(.btn-social):not(.page-link) .fab {
 }
 
 .font-weight-normal {
-    font-weight: 500 !important;
+    font-weight: 400 !important;
 }
 
 .lead {
@@ -183,7 +162,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-weight: 700;
+    font-weight: 600;
 }
 
 p,
@@ -274,8 +253,8 @@ select.form-control:not([size]):not([multiple]) {
 }
 .form-group .control-label,
 .form-group > label {
-    font-weight: 600;
-    color: #34395e;
+    font-weight: 400;
+    color: #000000;
     font-size: 12px;
     letter-spacing: 0.5px;
 }
@@ -2157,7 +2136,8 @@ h6 .badge {
     padding-bottom: 0 !important;
     height: 100%;
     font-size: 16px;
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Open Sans', sans-serif !important;
+    letter-spacing: 2px;
 }
 
 @media (max-width: 575.98px) {
@@ -2436,14 +2416,6 @@ a.dropdown-item.active {
 body,
 html {
     min-height: 100%;
-}
-
-body {
-    background-color: #f4f6f9;
-    font-size: 14px;
-    font-weight: 400;
-    font-family: "Nunito", "Segoe UI", arial;
-    color: #000000;
 }
 
 a.bb {
@@ -3888,18 +3860,6 @@ body:not(.sidebar-mini)
 .affix {
     top: 20px;
     z-index: 9999 !important;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.noto {
-    font-family: 'Roboto Slab', serif !important;
-    margin-bottom: 0.5rem !important;
-    line-height: 1.2 !important;
 }
 
 /* .card a:hover {
