@@ -4,7 +4,7 @@
 <section class="section">
     <div class="container">
         <div class="my-4">
-            <h5 class="text-center font-weight-normal">Login to your Account</h5>
+            <h4 class="text-center font-weight-normal">Login to your Account</h4>
         </div>
         <div class="row">
             <div class="col-md-4 offset-md-4">
@@ -53,11 +53,11 @@
                     </div>
                 </form>
                 <div class="text-center">
-                    <p class="no-pm">Don't have an Account?
-                        <a class="text-dark font-weight-bold" href="{{ url('register') }}">Create Account</a>
+                    <p class="no-pm text-muted">Don't have an Account ?
+                        <a class="text-dark mx-2" href="{{ url('register') }}">Create Account</a>
                     </p>
                     <p class="no-pm">
-                        <a class="text-dark font-weight-bold" href="{{ url('/') }}">Back to Home</a>
+                        <a class="text-dark" href="{{ url('/') }}">Back to Home</a>
                     </p>
                 </div>
             </div>

@@ -20,7 +20,7 @@
     <h5 class="text-dark">All Topic Categories</h5>
     <div class="row">
         @foreach ($category as $category)
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             <div class="card card-topic" data-background="{{ asset('storage/' . $category->banner) }}">
                 <div class="card-body d-flex">
                     <a class="stretched-link" href="{{ url('topic/'.$category->slug) }}" style="text-decoration : none">

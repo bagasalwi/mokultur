@@ -839,6 +839,7 @@ tr:first-child > td > .fc-day-grid-event {
   outline: none;
   background-color: #fdfdff;
   border-color: #e4e6fc;
+  border-radius: 0 !important;
 }
 
 .select2-dropdown {
@@ -847,15 +848,15 @@ tr:first-child > td > .fc-day-grid-event {
 
 .select2-container.select2-container--open .select2-selection--multiple {
   background-color: #fefeff;
-  border-color: #95a0f4;
+  border-color: #000000;
 }
 .select2-container.select2-container--focus .select2-selection--multiple, .select2-container.select2-container--focus .select2-selection--single {
   background-color: #fefeff;
-  border-color: #95a0f4;
+  border-color: #000000;
 }
 .select2-container.select2-container--open .select2-selection--single {
   background-color: #fefeff;
-  border-color: #95a0f4;
+  border-color: #000000;
 }
 
 .select2-results__option {
@@ -897,7 +898,7 @@ tr:first-child > td > .fc-day-grid-event {
 .select2-container--default .select2-selection--multiple .select2-selection__choice,
 .select2-container--default .select2-results__option[aria-selected=true],
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
-  background-color: #FF549C;
+  background-color: #000000;
   color: #fff;
 }
 
@@ -909,6 +910,7 @@ tr:first-child > td > .fc-day-grid-event {
 .selectric {
   background-color: #fdfdff;
   border-color: #e4e6fc;
+  border-radius: 0 !important;
   min-height: 42px;
   border-radius: 3px;
   padding-left: 10px;
@@ -920,7 +922,7 @@ tr:first-child > td > .fc-day-grid-event {
 }
 .selectric:focus {
   background-color: #fefeff;
-  border-color: #95a0f4;
+  border-color: #000;
 }
 .selectric .label {
   font-size: 13px;
@@ -935,7 +937,7 @@ tr:first-child > td > .fc-day-grid-event {
 }
 
 .selectric-open .selectric {
-  border-color: #FF549C;
+  border-color: #000;
 }
 
 .selectric-above .selectric-items, .selectric-below .selectric-items {

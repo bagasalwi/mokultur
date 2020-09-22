@@ -5,20 +5,6 @@
 @foreach ($fields as $fields)
 <section class="section">
     <div class="container">
-        {{-- @if ($errors->any())
-        @foreach ($errors->all() as $error)
-        <div class="alert alert-danger alert-dismissible show fade">
-            <div class="alert-body">
-                <button class="close" data-dismiss="alert">
-                    <span>&times;</span>
-                </button>
-                {{ $error }}
-            </div>
-        </div>
-        @endforeach
-        @endif --}}
-
-
         <div class="row m-2">
             <form class="forms-sample" action="{{ url('post/save') }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -26,16 +12,16 @@
                 <input type="hidden" name="id" value="{{ $fields->id }}">
                 <input type="hidden" name="state" value="{{ $state }}">
 
-                <div class="d-flex flex-row row">
+                <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="mr-auto">
                             <h2 class="text-dark">Post Content</h2>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-12">
-                        <div class="float-right">
-                            <a href="{{ route('post.index') }}" class="btn btn-danger px-4">Cancel</a>
-                            <button type="submit" class="btn btn-dark px-4">Submit</button>
+                        <div class="row">
+                            <a href="{{ route('post.index') }}" class="btn btn-danger btn-block">Cancel</a>
+                            <button type="submit" class="btn btn-dark btn-block">Submit</button>
                         </div>
                     </div>
                 </div>
@@ -45,14 +31,14 @@
                         <div class="row">
                             <div class="col-md-12 col-sm-12">
                                 <div class="form-group">
-                                    <label><h6 class="text-dark font-weight-normal">Title</h6></label>
+                                    <label>Title</label>
                                     <input type="text" class="form-control" id="title" name="title" placeholder="Title"
                                         value="{{ old('title', $fields->title) }}" required>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
-                                    <label><h6 class="text-dark font-weight-normal">Category</h6></label>
+                                    <label>Category</label>
                                     <select class="form-control select2" id="category_id" name="category_id">
                                         @foreach ($post_category as $r)
                                         <option value="{{ $r->id }}"
@@ -64,7 +50,7 @@
                             </div>
                             <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
-                                    <label><h6 class="text-dark font-weight-normal">Tag</h6></label>
+                                    <label>Tag</label>
                                     <select class="form-control select2-new" name="tags[]" multiple="multiple">
                                         @foreach($tags as $tag => $val)
                                         <option value='{{ $tag }}'>{{ $val }}</option>
@@ -74,7 +60,7 @@
                             </div>
                             <div class="col-md-12 col-sm-12">
                                 <div class="form-group">
-                                    <label><h6 class="text-dark font-weight-normal">Content</h6></label>
+                                    <label>Content</label>
                                     <textarea name="description"
                                         class="summernote form-control">{{ old('description', $fields->description) }}</textarea>
                                 </div>
@@ -84,8 +70,7 @@
                     <div class="col-md-4">
                         <div class="row">
                             <div class="col-md-12 col-sm-12">
-                                <h6 class="text-dark font-weight-normal">Photo</h6>
-                                <div class="my-2">
+                                <div class="my-2 border">
                                     @if ($state == 'create')
                                     <img id='img-upload' class="img-fluid"
                                         src="{{ asset('gambar/no-image.jpg') }}" />
@@ -100,12 +85,13 @@
                                     @endif
                                 </div>
                                 <div class="form-group">
+                                    <label>Photo</label>
                                     <input type="file" class="form-control" name="photo" id="imgInp" />
                                 </div>
                             </div>
                             <div class="col-md-12 col-sm-12">
                                 <div class="form-group">
-                                    <label><h6 class="text-dark font-weight-normal">Status</h6></label>
+                                    <label>Status</label>
                                     <select class="form-control selectric" name="status">
                                         <option value="P">Publish</option>
                                         <option value="D">Draft</option>

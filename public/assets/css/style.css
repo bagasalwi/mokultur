@@ -186,13 +186,14 @@ ol {
 .custom-file-label {
     background-color: #fdfdff;
     border-color: #e4e6fc;
+    border-radius: 0 !important;
 }
 .form-control:focus,
 .input-group-text:focus,
 .custom-select:focus,
 .custom-file-label:focus {
     background-color: #fefeff;
-    border-color: #ff549c;
+    border-color: #000000;
 }
 
 .input-group-text,
@@ -249,13 +250,13 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 .form-group {
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 .form-group .control-label,
 .form-group > label {
     font-weight: 400;
     color: #000000;
-    font-size: 12px;
+    font-size: 13px;
     letter-spacing: 0.5px;
 }
 .form-group.floating-addon {
@@ -302,7 +303,7 @@ select.form-control:not([size]):not([multiple]) {
 
 .custom-radio .custom-control-input:checked ~ .custom-control-label::before,
 .custom-control-input:checked ~ .custom-control-label::before {
-    background-color: #ff549c !important;
+    background-color: #000 !important;
 }
 
 .custom-file-label {
@@ -321,7 +322,7 @@ select.form-control:not([size]):not([multiple]) {
 
 .custom-file-input:focus + .custom-file-label {
     box-shadow: none;
-    border-color: #ff549c;
+    border-color: #000000;
 }
 .custom-file-input:focus + .custom-file-label:after {
     border-color: transparent;
@@ -385,7 +386,7 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 .selectgroup-input:checked + .selectgroup-button {
-    background-color: #ff549c;
+    background-color: #000000;
     color: #fff;
     z-index: 1;
 }
@@ -1531,8 +1532,9 @@ h6 .badge {
 }
 
 /* 3.12 Button */
-.buttons .btn {
+.btn {
     margin: 0 8px 10px 0;
+    border-radius: 0em !important;
 }
 
 .btn:focus {
@@ -3931,6 +3933,7 @@ body:not(.sidebar-mini)
     -o-background-size: cover;
     background-size: cover;
     object-fit: cover;
+    background-position: center
 }
 
 .no-pm{
