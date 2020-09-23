@@ -13,15 +13,19 @@
                 <input type="hidden" name="state" value="{{ $state }}">
 
                 <div class="row">
-                    <div class="col-md-6 col-sm-12">
+                    <div class="col-sm-12 col-md-8 col-lg-8">
                         <div class="mr-auto">
                             <h2 class="text-dark">Post Content</h2>
                         </div>
                     </div>
-                    <div class="col-md-6 col-sm-12">
+                    <div class="col-sm-12 col-md-4 col-lg-4">
                         <div class="row">
-                            <a href="{{ route('post.index') }}" class="btn btn-danger btn-block">Cancel</a>
-                            <button type="submit" class="btn btn-dark btn-block">Submit</button>
+                            <div class="col-6 my-2">
+                                <a href="{{ route('post.index') }}" class="btn btn-danger btn-block">Cancel</a>
+                            </div>
+                            <div class="col-6 my-2">
+                                <button type="submit" class="btn btn-dark btn-block">Submit</button>
+                            </div>
                         </div>
                     </div>
                 </div>

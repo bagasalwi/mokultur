@@ -22,8 +22,8 @@
                     </a>
                 </li>
             </ul>
-            <ul class="navbar-nav ml-auto mt-3 mt-lg-0">
-                <li class="nav-item">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item px-lg-2">
                     <button type="button" id="searchBtn" class="btn btn-default navbar-btn"><i
                             class="fa fa-search"></i></button>
                 </li>
@@ -77,14 +77,6 @@
                     </div>
                 </li>
                 @endguest
-                {{-- <li class="nav-item">
-                    <div class="input-group">
-                        <input type="text" class="form-control" name="search" placeholder="Cari Kreasi kesukaan mu!">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-primary"><i class="fas fa-search"></i></button>
-                        </div>
-                    </div>
-                </li> --}}
             </ul>
         </div>
     </div>
