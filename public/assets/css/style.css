@@ -88,7 +88,7 @@ a:not(.btn-social-icon):not(.btn-social):not(.page-link) .fab {
 .text-secondary-all *,
 .text-secondary-all *:before,
 .text-secondary-all *:after {
-    color: #cdd3d8 !important;
+    color: #5b5b5b !important;
 }
 
 .text-success,
@@ -2775,6 +2775,10 @@ a.bb {
 
 .img-shadow {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
+}
+
+.img-cover{
+    object-fit: cover;
 }
 
 .img-imagepost {

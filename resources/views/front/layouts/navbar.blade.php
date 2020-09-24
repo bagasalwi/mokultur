@@ -1,6 +1,6 @@
 <nav class="navbar smart-scroll navbar-expand-lg navbar-light shadow-sm fixed-top">
     <div class="container" id="navbar-container">
-        <a class="navbar-brand d-flex align-items-center" href="#">
+        <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
             <img src="{{ URL::asset('gambar/logo.png')}}" width="100" alt="">
         </a>
 
@@ -22,9 +22,21 @@
                     </a>
                 </li>
             </ul>
+            @if (isset($post))
+            <ul class="navbar-nav mx-auto pl-lg-4 d-flex">
+                <li class="nav-item align-self-center">
+                    <span class="badge badge-dark mx-2">{{ $post->category->name }}</span>
+                </li>
+                <li class="nav-item align-self-center">
+                    <span class="no-pm">{{ $post->title }}</span>
+                </li>
+            </ul>
+            @else
+            
+            @endif
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item px-lg-2">
-                    <button type="button" id="searchBtn" class="btn btn-default navbar-btn"><i
+                    <button type="button" id="searchBtn" class="btn btn-default navbar-btn m-0"><i
                             class="fa fa-search"></i></button>
                 </li>
                 <form id="searchForm" action="{{ url('search') }}" role="search" style="display:none">

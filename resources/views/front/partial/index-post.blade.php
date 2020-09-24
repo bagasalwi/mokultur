@@ -1,40 +1,28 @@
 <div class="col-lg-9">
-    <h6 class="text-dark">Latest Post</h6>
+    <h6 class="text-dark">Latest</h6>
     <div id="posts">
         @foreach ($creation as $p)
         <div class="card border-0 my-4">
             <div class="row">
                 <div class="col-4">
-                    <img class="img-fluid img-imagepost" src="{{ asset('storage/' . $p->photo()) }}" alt="">
+                    <img class="img-cover" width="255" height="180" src="{{ asset('storage/' . $p->photo()) }}" alt="">
                 </div>
                 <div class="col-8">
-                    <div>
-                        <h4><a class="text-dark" href="{{ url('creation/' . $p->slug) }}">{{ $p->title }}</a></h4>
-                        @php
-                        $desc = strlen($p->description) > 100 ? substr($p->description, 0, 80) . '...' : $p->description
-                        @endphp
-                        <p class="text-muted no-pm">{!! $desc !!}</p>
+                    <h4><a class="text-dark" href="{{ url('creation/' . $p->slug) }}">{{ $p->title }}</a></h4>
+                    <div class="text-secondary no-pm" data-font-size="14px">
+                        {!!  strlen($p->description) > 100 ? substr($p->description, 0, 150) . '...' : $p->description  !!}
                     </div>
                     <div class="row">
                         <div class="col-6 d-flex flex-row">
-                            <div class="align-self-center mr-2">
-                                <img alt="image" width="45" height="45"
-                                    src="{{ URL::asset('gambar/profile_pic/' . $p->user->profile_pic) }}"
-                                    class="rounded-circle">
-                            </div>
-                            <div class="align-self-center">
-                                <h6 class="p-0 m-0">
-                                    <a class="text-dark"
-                                        href="{{ url('creator/' . $p->user->username) }}">{{ $p->user->name }}</a>
-                                </h6>
-                                <p class="p-0 m-1">
-                                    <span class="badge badge-dark">{{ $p->category->name }}</span>
+                            <div class="align-items-end">
+                                <p class="text-secondary" data-font-size="12px">
+                                    {{ Carbon\Carbon::parse($p->date_published)->diffForHumans() }} &middot; <a href="{{ url('creator/' . $p->user->username) }}">{{ strtoupper($p->user->name) }}</a> 
                                 </p>
                             </div>
                         </div>
                         <div class="col-6 d-flex flex-row-reverse">
                             <div class="align-self-end">
-                                <a href="{{ url('creation/' . $p->slug) }}" class="btn btn-outline-dark ">Read
+                                <a href="{{ url('creation/' . $p->slug) }}" class="btn btn-outline-dark m-0">Read
                                     More</a>
                             </div>
                         </div>
