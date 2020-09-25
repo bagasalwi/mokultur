@@ -39,8 +39,8 @@
                     <button type="button" id="searchBtn" class="btn btn-default navbar-btn m-0"><i
                             class="fa fa-search"></i></button>
                 </li>
-                <form id="searchForm" action="{{ url('search') }}" role="search" style="display:none">
-                    <input type="text" class="form-control-sm form-control" placeholder="Search">
+                <form id="searchForm" action="{{ url('creation') }}" role="search" style="display:none">
+                    <input type="text" name="search" class="form-control-sm form-control" placeholder="Search">
                 </form>
                 @guest
                 <li class="nav-item px-lg-2 dropdown d-menu">

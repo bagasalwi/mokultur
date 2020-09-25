@@ -30,6 +30,14 @@ class PostServices{
         }
     }
 
+    Public function latestPublishedPost($paginate = null){
+        if($paginate){
+            return Post::where('status', 'P')->orderBy('created_at', 'desc')->paginate($paginate);
+        }else{
+            return Post::where('status', 'P')->orderBy('created_at', 'desc')->get();
+        }
+    }
+
     Public function allPost($paginate = null){
         if($paginate){
             return Post::paginate($paginate);

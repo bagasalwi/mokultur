@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\CategoryServices;
+use App\Services\PostServices;
 use App\Post;
 use App\PostCategory;
 use App\User;
@@ -11,14 +13,16 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Carbon\Carbon;
-use Auth;
-use DB;
-use Image;
-use File;
-use Session;
+use File, DB, Auth, Image, Session;
 
 class CreationController extends Controller
 {
+    public function __construct(CategoryServices $categoryService, PostServices $postService)
+    {
+        $this->postService = $postService;
+        $this->categoryService = $categoryService;
+    }
+
     public function search_creation(Request $request)
     {
         $data['title'] = 'KREASI';
@@ -32,13 +36,22 @@ class CreationController extends Controller
         return view('front.home.creation_find', $data);
     }
 
-    public function creation()
+    public function creation(Request $request)
     {
-        $data['title'] = 'KREASI';
-        $data['creation'] = Post::where('status', 'P')->orderBy('created_at','desc')->paginate(9);
-        $data['top_creation'] = Post::where('status', 'P')->orderBy('view_count','desc')->take(3)->get();
+        // dd($request);
+        if($request->has('search')){
+            $data['title'] = 'KREASI';
+            $data['search_meta'] = $request->search;
+            $data['creation'] = Post::where('status', 'P')
+                                ->orderBy('created_at', 'desc')
+                                ->where('title', 'like', "%".$request->search."%")->paginate(10);
+            $data['topCategory'] = $this->categoryService->topCategory();
 
-        $data['category'] = PostCategory::take(5)->get();
+        }else{
+            $data['title'] = 'KREASI';
+            $data['creation'] = $this->postService->latestPublishedPost(10);
+            $data['topCategory'] = $this->categoryService->topCategory();
+        }
 
         return view('front.home.creation', $data);
     }

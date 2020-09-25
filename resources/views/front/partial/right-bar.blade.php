@@ -1,6 +1,7 @@
 <div class="col-lg-3 d-none d-lg-block">
     <div class="stickydiv">
-        <div class="card card-full" data-background-full="{{ asset('gambar/covid.jpg') }}">
+        {{-- <div class="card card-full no-bd-radius" data-background-full="{{ asset('gambar/covid.jpg') }}"> --}}
+        <div class="card card-full no-bd-radius pattern-3">
             <div class="card-body">
                 <h4 class="text-dark">Always wear Mask!</h4>
                 <p class="text-dark">Due to COVID19 pandemic, make your mask as a secondary weapon of life.
@@ -11,7 +12,7 @@
         <h6 class="text-dark">Top Categories</h6>
         <div class="list-group">
             @foreach ($topCategory as $category)
-            <div class="card card-hover my-2" data-background="{{ asset('storage/' . $category->banner) }}">
+            <div class="card card-hover no-bd-radius my-2" data-background="{{ asset('storage/' . $category->banner) }}">
                 <div class="card-body d-flex">
                     <a class="stretched-link" href="{{ url('topic/'.$category->slug) }}" style="text-decoration : none">
                         <div class="align-self-center">

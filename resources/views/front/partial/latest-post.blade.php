@@ -38,7 +38,7 @@
     {!! $creation->render() !!}
     <div class="text-center">
         @if ($creation->hasMorePages())
-        <button id="see-more" class="btn btn-block btn-dark" data-page="2" data-link="{{ url('/?page=') }}"
+        <button id="see-more" class="btn btn-block btn-dark" data-page="2" data-link="{{ url('/'.request()->segment(count(request()->segments())).'?page=') }}"
             data-div="#posts">See more</button>
         @else
         <h6 class="text-secondary font-weight-normal">No More Data</h6>
