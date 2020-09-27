@@ -1,6 +1,13 @@
 @extends('front.layouts.master')
 
 @section('content')
+{{-- 
+@section('script')
+<script>
+    alert('test');
+</script>
+@endsection --}}
+
 @guest
 <div class="jumbotron jumbotron-fluid pattern-1 mb-0">
     <div class="container">
@@ -40,9 +47,5 @@
         </div>
     </div>
 </div>
-
-@endsection
-
-@section('script')
 
 @endsection

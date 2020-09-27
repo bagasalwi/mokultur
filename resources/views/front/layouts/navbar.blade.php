@@ -22,7 +22,7 @@
                     </a>
                 </li>
             </ul>
-            @if (isset($post))
+            {{-- @if (isset($post))
             <ul class="navbar-nav mx-auto pl-lg-4 d-flex">
                 <li class="nav-item align-self-center">
                     <span class="badge badge-dark mx-2">{{ $post->category->name }}</span>
@@ -33,7 +33,7 @@
             </ul>
             @else
             
-            @endif
+            @endif --}}
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item px-lg-2">
                     <button type="button" id="searchBtn" class="btn btn-default navbar-btn m-0"><i

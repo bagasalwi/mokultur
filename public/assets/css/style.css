@@ -4179,3 +4179,19 @@ background-image: url("data:image/svg+xml,%3Csvg width='42' height='44' viewBox=
 .no-bd-radius{
     border-radius: 0 !important;
 }
+
+.inputSearch{
+    border:0;
+    outline:0;
+    background:#fff;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+    border-bottom:1px solid rgba(0,0,0,.15);
+    letter-spacing:0;
+    font-style:normal;
+    font-weight:300;
+    font-size:52px;
+    height:80px;
+    padding:0;
+    width:100%
+}
