@@ -59,7 +59,7 @@ class CreationController extends Controller
                             </div>
                             <div class="col-8">
                                 <h4><a class="text-dark" href="'. url('creation/' . $p->slug) .'">'. $p->title .'</a></h4>
-                                <div class="text-secondary no-pm" data-font-size="14px">'. $desc .'</div>
+                                <p class="no-pm" data-font-size="14px">'. $desc .'</p>
                                 <div class="row">
                                     <div class="col-6 d-flex flex-row">
                                         <div class="align-items-end">

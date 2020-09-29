@@ -72,7 +72,7 @@ class PostServices{
             'status' => $request['status'],
         ]);
 
-        $post->tags()->sync($request['tags'], false);
+        $post->retag($request['tags']);
 
         return $post;
     }
@@ -90,10 +90,8 @@ class PostServices{
 
         $post = $this->find($request['id']);
 
-        if (isset($request['tags'])) {
-            $post->tags()->sync($request['tags']);
-        } else {
-            $post->tags()->sync(array());
+        if($request['tags']){
+            $post->retag($request['tags']);
         }
         return $post;
     }
@@ -101,7 +99,8 @@ class PostServices{
     public function delete($id){
         $post = $this->find($id);
 
-        DB::table('post_tag')->where('post_id', $post->id)->delete();
+        $post->untag();
+
         Post::where('id', $id)->delete();
     }
 
@@ -139,11 +138,13 @@ class PostServices{
     public function deleteImage($id){
         $post = $this->find($id);
 
-        $image = public_path('storage/' . $post->photo()); // get previous image from folder
-        if (File::exists($image)) { // unlink or remove previous image from folder
-             unlink($image);
+        if($post->photo()){
+            $image = public_path('storage/' . $post->photo()); // get previous image from folder
+            if (File::exists($image)) { // unlink or remove previous image from folder
+                 unlink($image);
+            }
+    
+            PostPhoto::where('post_id',$post->id)->delete();
         }
-
-        PostPhoto::where('post_id',$post->id)->delete();
     }
 }

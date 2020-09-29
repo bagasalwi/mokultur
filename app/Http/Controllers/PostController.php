@@ -28,7 +28,7 @@ class PostController extends Controller
         $data['sidebar'] = Sidebar::where('role_id', 1)->get();
         $data['post_count'] = $this->postService->userPostCount();
 
-        $data['post'] = $this->postService->allPost(10);
+        $data['post'] = $this->postService->allPostUser(10);
 
         $data['url_create'] = 'post/create';
         $data['url_update'] = 'post/update';
@@ -43,56 +43,35 @@ class PostController extends Controller
         $data['user'] = Auth::user();
         $data['sidebar'] = Sidebar::where('role_id', 1)->get();
         $data['post_category'] = PostCategory::get();
-        $data['tags2'] = Tag::all();
         $data['post_count'] = $this->postService->userPostCount();
 
-        $tags = array();
-        foreach ($data['tags2'] as $tag) {
-            $tags[$tag->id] = $tag->name;
-        }
-
-        $fields = [
-            (object) [
-                'id' => 0,
-                'user_id' => 0,
-                'category_id' => '',
-                'title' => '',
-                'description' => '',
-                'thumbnail' => '',
-                'view_count' => '',
-                'date_published' => '',
-                'status' => '',
-                'created_at' => '',
-                'updated_at' => '',
-            ]
-        ];
-
-        $data['fields'] = collect($fields);
+        $data['fields'] = new Post;
         
         $data['state'] = 'create';
 
-        return view('front.post.post_form', $data)->withTags($tags);
+        return view('front.post.post_form', $data);
     }
 
     public function update($slug)
     {
-        //sidebar
-        $data['title'] = 'My Post';
-        $data['sidebar'] = Sidebar::where('role_id', 1)->get();
-        $data['post_category'] = PostCategory::get();
-        $data['tags2'] = Tag::all();
-        $data['post_count'] = Post::where('user_id', Auth::user()->id)->count();
+        $post = Post::where('slug', $slug)->first();
+        
+        if($post->user_id == auth()->user()->id){
+            $data['title'] = 'My Post';
+            $data['sidebar'] = Sidebar::where('role_id', 1)->get();
+            $data['post_category'] = PostCategory::get();
 
-        $tags = array();
-        foreach ($data['tags2'] as $tag) {
-            $tags[$tag->id] = $tag->name;
+            $data['post_count'] = Post::where('user_id', Auth::user()->id)->count();
+            
+            $data['state'] = 'update';
+            $data['fields'] = $this->postService->find($post->id);
+
+            $data['tags'] = $post->tagNames();
+
+            return view('front.post.post_form', $data);
+        }else{
+            return redirect()->route('post.create');
         }
-
-        $data['state'] = 'update';
-
-        $data['fields'] = Post::where('slug', $slug)->get();
-
-        return view('front.post.post_form', $data)->withTags($tags);
     }
 
     public function save(Request $request)
@@ -139,16 +118,16 @@ class PostController extends Controller
 
     public function delete($id)
     {
-        $post = Post::where('id', $id)->first();
-        $postPhoto = PostPhoto::where('post_id', $post->id)->first();
-        
-        DB::table('post_tag')->where('post_id', $post->id)->delete();
-        
-        $postImage = public_path("gambar/user_post/{$postPhoto->thumbnail}"); // get previous image from folder
-        if (File::exists($postImage)) { // unlink or remove previous image from folder
-             unlink($postImage);
+        $this->postService->deleteImage($id);
+        $this->postService->delete($id);
+    }
+
+    public function ajaxTags(Request $request){
+        if($request->has('q')){
+            $search = $request->q;
+            $data = Tag::select('id','name')->where('name', 'like', "%".$search."%")->get();
+
+            return response()->json($data);
         }
-        
-        Post::where('id', $id)->delete();
     }
 }

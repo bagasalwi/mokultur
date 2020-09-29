@@ -1,31 +1,25 @@
 <div class="col-lg-9">
-    <h6 class="text-dark">Latest</h6>
     <div id="posts">
         @foreach ($creation as $p)
         <div class="card border-0 my-4">
+            <img class="img-cover my-2" data-max-height="200" data-max-width="auto" src="{{ asset('storage/' . $p->photo()) }}" alt="">
+            <h2><a class="text-dark font-weight-bold" href="{{ url('creation/' . $p->slug) }}">{{ $p->title }}</a></h2>
+            <div class="text-secondary no-pm text-preview" data-font-size="14px">
+                {!! strlen($p->description) > 100 ? substr($p->description, 0, 150) . '...' : $p->description !!}
+            </div>
             <div class="row">
-                <div class="col-4">
-                    <img class="img-cover" width="255" height="180" src="{{ asset('storage/' . $p->photo()) }}" alt="">
-                </div>
-                <div class="col-8">
-                    <h4><a class="text-dark" href="{{ url('creation/' . $p->slug) }}">{{ $p->title }}</a></h4>
-                    <div class="text-secondary no-pm" data-font-size="14px">
-                        {!!  strlen($p->description) > 100 ? substr($p->description, 0, 150) . '...' : $p->description  !!}
+                <div class="col-6 d-flex flex-row">
+                    <div class="align-items-end">
+                        <p class="text-secondary" data-font-size="12px">
+                            {{ Carbon\Carbon::parse($p->date_published)->diffForHumans() }} &middot; <a
+                                href="{{ url('creator/' . $p->user->username) }}">{{ strtoupper($p->user->name) }}</a>
+                        </p>
                     </div>
-                    <div class="row">
-                        <div class="col-6 d-flex flex-row">
-                            <div class="align-items-end">
-                                <p class="text-secondary" data-font-size="12px">
-                                    {{ Carbon\Carbon::parse($p->date_published)->diffForHumans() }} &middot; <a href="{{ url('creator/' . $p->user->username) }}">{{ strtoupper($p->user->name) }}</a> 
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-6 d-flex flex-row-reverse">
-                            <div class="align-self-end">
-                                <a href="{{ url('creation/' . $p->slug) }}" class="btn btn-outline-dark m-0">Read
-                                    More</a>
-                            </div>
-                        </div>
+                </div>
+                <div class="col-6 d-flex flex-row-reverse">
+                    <div class="align-self-end">
+                        <a href="{{ url('creation/' . $p->slug) }}" class="btn btn-outline-dark m-0">Read
+                            More</a>
                     </div>
                 </div>
             </div>

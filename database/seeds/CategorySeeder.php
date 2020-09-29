@@ -39,20 +39,20 @@ class CategorySeeder extends Seeder
             'slug' => str_slug('Review', '-'),
         ]);
 
-        Tag::create([
-            'name' => 'Review',
-        ]);
-        Tag::create([
-            'name' => 'Game',
-        ]);
-        Tag::create([
-            'name' => 'Movies',
-        ]);
-        Tag::create([
-            'name' => 'Tutorial',
-        ]);
-        Tag::create([
-            'name' => 'Design',
-        ]);
+        // Tag::create([
+        //     'name' => 'Review',
+        // ]);
+        // Tag::create([
+        //     'name' => 'Game',
+        // ]);
+        // Tag::create([
+        //     'name' => 'Movies',
+        // ]);
+        // Tag::create([
+        //     'name' => 'Tutorial',
+        // ]);
+        // Tag::create([
+        //     'name' => 'Design',
+        // ]);
     }
 }

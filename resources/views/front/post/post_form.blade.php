@@ -1,12 +1,10 @@
 @extends('front.layouts.master')
 
 @section('content')
-
-@foreach ($fields as $fields)
 <section class="section">
     <div class="container">
         <div class="row m-2">
-            <form class="forms-sample" action="{{ url('post/save') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ url('post/save') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <input type="hidden" name="id" value="{{ $fields->id }}">
@@ -40,7 +38,7 @@
                                         value="{{ old('title', $fields->title) }}" required>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-sm-12">
+                            <div class="col-md-4 col-sm-12">
                                 <div class="form-group">
                                     <label>Category</label>
                                     <select class="form-control select2" id="category_id" name="category_id">
@@ -52,13 +50,21 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-sm-12">
+                            <div class="col-md-8 col-sm-12">
                                 <div class="form-group">
                                     <label>Tag</label>
-                                    <select class="form-control select2-new" name="tags[]" multiple="multiple">
-                                        @foreach($tags as $tag => $val)
-                                        <option value='{{ $tag }}'>{{ $val }}</option>
-                                        @endforeach
+                                    <select type="text" id="tags-input" class="form-control" name="tags[]" multiple="multiple">
+                                        @if(old('tags'))
+                                            @foreach(old('tags') as $tag)
+                                                <option value="{{$tag}}">{{$tag}}</option>
+                                            @endforeach
+                                        @else
+                                           @if (isset($tags))
+                                                @foreach ($tags as $tag)
+                                                    <option value="{{$tag}}">{{$tag}}</option>
+                                                @endforeach
+                                           @endif
+                                        @endif
                                     </select>
                                 </div>
                             </div>
@@ -76,15 +82,13 @@
                             <div class="col-md-12 col-sm-12">
                                 <div class="my-2 border">
                                     @if ($state == 'create')
-                                    <img id='img-upload' class="img-fluid"
-                                        src="{{ asset('gambar/no-image.jpg') }}" />
+                                    <img id='img-upload' class="img-fluid" src="{{ asset('gambar/no-image.jpg') }}" />
                                     @elseif($state == 'update')
                                     @if ($fields->photo())
                                     <img id='img-upload' class="img-fluid"
                                         src="{{ asset('storage/' . $fields->photo()) }}" />
                                     @else
-                                    <img id='img-upload' class="img-fluid"
-                                        src="{{ asset('gambar/no-image.jpg') }}" />
+                                    <img id='img-upload' class="img-fluid" src="{{ asset('gambar/no-image.jpg') }}" />
                                     @endif
                                     @endif
                                 </div>
@@ -110,34 +114,58 @@
     </div>
     </div>
 
-    @endforeach
-
     @endsection
 
     @section('script')
 
-    @if ($errors->any())
-        @foreach ($errors->all() as $error)
-        <script>
-            swal("Error", "{{ $error }}")
-        </script>
-        @endforeach
-    @endif
-
-    @if ($message = Session::get('success'))
     <script>
-        swal("Success!", "{{ $message }}");
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                swal("Error", "{{ $error }}")
+            @endforeach
+        @endif
+
+        @if ($message = Session::get('success'))
+            swal("Success!", "{{ $message }}");
+        @endif
     </script>
-    @endif
 
     <script>
         $(document).ready( function() {
-            $('.select2-new').select2();
+            $('#tags-input').tagsinput();
+
+            $('form').on('keyup keypress', function(e) {
+                var keyCode = e.keyCode || e.which;
+                if (keyCode === 13) { 
+                    e.preventDefault();
+                    return false;
+                }
+            });
+
+            // $('.cari').select2({
+            //     placeholder: 'Cari...',
+            //     ajax: {
+            //     url: '{{ url('post/tags') }}',
+            //     dataType: 'json',
+            //     delay: 250,
+            //     processResults: function (data) {
+            //         return {
+            //         results:  $.map(data, function (item) {
+            //             return {
+            //             text: item.name,
+            //             id: item.id
+            //             }
+            //         })
+            //         };
+            //     },
+            //     cache: true
+            //     }
+            // });
 
             $(document).on('change', '.btn-file :file', function() {
-            var input = $(this),
-                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-            input.trigger('fileselect', [label]);
+                var input = $(this),
+                    label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+                input.trigger('fileselect', [label]);
             });
 
             $('.btn-file :file').on('fileselect', function(event, label) {

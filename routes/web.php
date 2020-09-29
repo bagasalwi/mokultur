@@ -58,6 +58,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('update/{id}', 'PostController@update');
         Route::post('save', 'PostController@save')->name('post.save');
         Route::get('delete/{id}', 'PostController@delete')->name('post.delete');
+        Route::get('tags', 'PostController@ajaxTags');
     });
 
     // Back End (ADMIN)
