@@ -52,7 +52,6 @@ class PostServices{
         }else{
             return Post::all()->where('status', 'D')->where('user_id', auth()->user()->id);
         }
-        
     }
 
     public function userPostCount(){
@@ -99,6 +98,13 @@ class PostServices{
         return $post;
     }
 
+    public function delete($id){
+        $post = $this->find($id);
+
+        DB::table('post_tag')->where('post_id', $post->id)->delete();
+        Post::where('id', $id)->delete();
+    }
+
     public function createImage($id,$image){
         $user = auth()->user();
 
@@ -128,5 +134,16 @@ class PostServices{
             'post_id' => $post->id,
             'name' => $path
         ]);
+    }
+
+    public function deleteImage($id){
+        $post = $this->find($id);
+
+        $image = public_path('storage/' . $post->photo()); // get previous image from folder
+        if (File::exists($image)) { // unlink or remove previous image from folder
+             unlink($image);
+        }
+
+        PostPhoto::where('post_id',$post->id)->delete();
     }
 }
