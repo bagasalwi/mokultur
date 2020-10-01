@@ -35,6 +35,10 @@ class CategoryServices{
         }
     }
 
+    public function categoryTake($num){
+        return PostCategory::take($num)->get();
+    }
+
     public function create($request,$image = null){
         $user = auth()->user();
 
@@ -54,13 +58,15 @@ class CategoryServices{
         $cat = $this->find($id);
         $path = '';
 
-        if($image !== null && $cat->banner !== 'default-banner.png'){
+        if($image !== null && $cat->banner !== 'images/category/default-banner.png'){
             $lastImage = public_path('storage/' . $cat->banner); // get previous image from folder
             
             if (File::exists($lastImage)) { // unlink or remove previous image from folder
                 unlink($lastImage);
             }
             
+            $path = $image->store('images/category');
+        }else{
             $path = $image->store('images/category');
         }
         
@@ -72,6 +78,20 @@ class CategoryServices{
         ]);
 
         return $category;
+    }
+
+    public function delete($id){
+        $cat = $this->find($id);
+
+        if($cat->banner !== null && $cat->banner !== 'images/category/default-banner.png'){
+            $image = public_path('storage/' . $cat->banner); // get previous image from folder
+            
+            if (File::exists($image)) { // unlink or remove previous image from folder
+                unlink($image);
+            }
+        }
+
+        PostCategory::where('id',$id)->delete();
     }
 
     

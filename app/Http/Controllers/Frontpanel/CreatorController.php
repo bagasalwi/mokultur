@@ -1,20 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Frontpanel;
 
+use App\Http\Controllers\Controller;
 use App\Post;
 use App\User;
 use App\Sidebar;
-use App\Rules\MatchOldPassword;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
-use Illuminate\Support\Collection;
 use Carbon\Carbon;
-use Auth;
-use DB;
-use Image;
-use File;
-use Session;
+use Auth,DB,Image,File,Session;
 
 class CreatorController extends Controller
 {

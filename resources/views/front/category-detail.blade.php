@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="jumbotron jumbotron-fluid mb-0" data-background-topic="{{ asset('storage/' . $category->banner) }}">
+    <div class="jumbotron-overlay"></div>
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">

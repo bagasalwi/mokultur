@@ -797,11 +797,17 @@ select.form-control:not([size]):not([multiple]) {
 /* 3.5 Card */
 
 .card {
-    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.13); */
     background-color: #fff;
     border: 1px solid rgb(235, 235, 235);
     border-radius: 5px;
-    position: relative;
+}
+
+.card .card-overlay{
+    position: absolute;
+    width: 100%;
+    height:100%;
+    background-color: black;
+    opacity: 0.5;
 }
 
 .card .card-header,
@@ -838,6 +844,7 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 .card .card-body {
+    position: relative !important;
     padding-top: 10px;
     padding-bottom: 10px;
 }
@@ -1536,7 +1543,7 @@ table tr:hover .table-links {
 
 .page-item .page-link {
     color: #000000;
-    border-radius: 3px;
+    /* border-radius: 3px; */
     margin: 0 3px;
 }
 
@@ -2625,6 +2632,18 @@ a.dropdown-item.active {
 
 .jumbotron {
     background-color: #e3eaef;
+    background-size: cover;
+    position: relative;
+}
+
+.jumbotron-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:100%;
+    background-color: black;
+    opacity: 0.4;
 }
 
 .jumbotron-fluid p .lead {
@@ -2779,6 +2798,11 @@ a.bb {
 
 .img-cover{
     object-fit: cover;
+}
+
+.img-index{
+    max-height: 200px;
+    max-width: auto;
 }
 
 .img-imagepost {
@@ -4138,11 +4162,10 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
     position: sticky;
     position: -webkit-sticky;
     top: 60px;
-    /* required */
 }
 
 .img-slider {
-    max-height: 450px;
+    height:450px;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

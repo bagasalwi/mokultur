@@ -1104,7 +1104,7 @@ tr:first-child > td > .fc-day-grid-event {
 
 /* 1.25 Sweet Alert */
 .swal-button {
-  border-radius: 3px;
+  border-radius: 0;
   font-size: 16px;
 }
 .swal-button:focus {
@@ -1112,14 +1112,22 @@ tr:first-child > td > .fc-day-grid-event {
 }
 .swal-button.swal-button--confirm {
   box-shadow: 0 2px 6px #cccccc;
-  background-color: #ff4ca5;
+  background-color: #000000;
 }
 .swal-button.swal-button--confirm:focus {
   opacity: 0.8;
 }
 
+.swal-modal{
+  border-radius: 0;
+}
+
 .swal-footer {
   text-align: center;
+}
+
+.swal-title{
+  color: #000;
 }
 
 .swal-text {

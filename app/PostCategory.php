@@ -8,6 +8,8 @@ class PostCategory extends Model
 {
     protected $guarded = [];
 
+    protected $table = 'categories';
+
     public function post()
     {
         return $this->hasMany(Post::class);

@@ -19,8 +19,8 @@
 </script>
 <script src="{{ URL::asset('assets/modules/datatables/Select-1.2.4/js/dataTables.select.min.js')}}"></script>
 <script src="{{ URL::asset('assets/modules/jquery-ui/jquery-ui.min.js')}}"></script>
-<script src="{{ URL::asset('assets/modules/cleave-js/dist/cleave.min.js')}}"></script>
-<script src="{{ URL::asset('assets/modules/cleave-js/dist/addons/cleave-phone.us.js')}}"></script>
+{{-- <script src="{{ URL::asset('assets/modules/cleave-js/dist/cleave.min.js')}}"></script> --}}
+{{-- <script src="{{ URL::asset('assets/modules/cleave-js/dist/addons/cleave-phone.us.js')}}"></script> --}}
 <script src="{{ URL::asset('assets/modules/jquery-pwstrength/jquery.pwstrength.min.js')}}"></script>
 <script src="{{ URL::asset('assets/modules/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
 <script src="{{ URL::asset('assets/modules/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js')}}"></script>

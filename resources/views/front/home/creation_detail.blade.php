@@ -1,39 +1,57 @@
 @extends('front.layouts.master')
 
 @section('content')
+
+{{-- <div class="jumbotron jumbotron-fluid mb-0" data-background-topic="{{ asset('storage/' . $post->photo()) }}">
+    <div class="jumbotron-overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-sm-12 offset-md-2 text-center">
+                <h1 class="text-white font-weight-bold">{{ $post->title }}</h1>
+                <h4><span class="badge badge-dark px-4">{{ $post->category->name }}</span></h4>
+            </div>
+        </div>
+    </div>
+</div> --}}
+
 <section class="section">
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-sm-12 offset-md-2">
                 <h4><span class="badge badge-dark px-4">{{ $post->category->name }}</span></h4>
                 <h1 class="text-dark">{{ $post->title }}</h1>
-                <hr>
-                {{-- Profile --}}
                 <div class="row my-2">
                     <div class="col-6 d-flex flex-row">
                         <div class="align-self-center mr-2">
-                            <img alt="image" width="45" height="45"
+                            <img alt="image" width="30" height="30"
                                 src="{{ URL::asset('gambar/profile_pic/' . $post->user->profile_pic) }}"
                                 class="rounded-circle">
                         </div>
                         <div class="align-self-center">
-                            <h5 class="p-0 m-0 font-weight-light">
+                            <h6 class="p-0 m-0 font-weight-light">
                                 <a class="text-dark"
                                     href="{{ url('creator/' . $post->user->username) }}">{{ $post->user->name }}</a>
-                            </h5>
-                            <p class="p-0 m-0"><small class="text-dark">Since {{ $post->user->created_at->diffForHumans() }}</small>
+                            </h6>
+                            <p class="p-0 m-0"><small class="text-secondary">{{ $estimated_time }} read</small>
                             </p>
                         </div>
                     </div>
                     <div class="col-6 d-flex flex-row-reverse">
                         <div class="align-self-end">
-                            <p class="p-0 m-0">Published {{ $post->created_at->diffForHumans() }}</p>
+                            <p class="p-0 m-0"><small class="text-dark">Published
+                                    {{ $post->created_at->diffForHumans() }}</small></p>
                         </div>
                     </div>
                 </div>
-                {{-- Photo --}}
-                <img src="{{ asset('storage/' . $post->photo()) }}" class="img-fluid w-100">
-                {{-- Content --}}
+            </div>
+        </div>
+    </div>
+
+    <img src="{{ asset('storage/' . $post->photo()) }}" data-max-height="500px" class="img-fluid img-cover w-100">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-sm-12 offset-md-2">
                 <div id="posting" class="my-4">
                     {!! $post->description !!}
                 </div>
@@ -53,11 +71,11 @@
                                 <h6><a href="{{ url('creator/' . $p->user->username) }}">{{ $p->user->name }}</a></h6>
                             </div>
                             <div class="embed-responsive embed-responsive-4by3">
-                                <img class="embed-responsive-item img-fluid"
-                                    src="{{ asset('storage/'. $p->photo()) }}" alt="">
+                                <img class="embed-responsive-item img-fluid" src="{{ asset('storage/'. $p->photo()) }}"
+                                    alt="">
                             </div>
                             <div class="card-body border-top">
-                                <a class="stretched-link" href="{{ url('creation/' . $p->slug) }}">
+                                <a class="stretched-link" href="{{ route('post.detail',$p->slug) }}">
                                     <h6>{{ $p->title }}</h6>
                                 </a>
                                 <div class="mt-2">

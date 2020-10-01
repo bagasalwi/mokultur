@@ -54,6 +54,10 @@ class PostServices{
         }
     }
 
+    public function postByCategories($category_id){
+        return Post::where('status', 'P')->where('category_id',$category_id)->orderBy('created_at', 'desc')->paginate(2);
+    }
+
     public function userPostCount(){
         return $this->allPostUser()->count();
     }
@@ -112,7 +116,8 @@ class PostServices{
         PostPhoto::create([
             'user_id' => $user->id,
             'post_id' => $id,
-            'name' => $path
+            'name' => $path,
+            'status' => 'A'
         ]);
     }
 
@@ -131,7 +136,8 @@ class PostServices{
         PostPhoto::where('post_id', $post->id)->update([
             'user_id' => $user->id,
             'post_id' => $post->id,
-            'name' => $path
+            'name' => $path,
+            'status' => 'A'
         ]);
     }
 

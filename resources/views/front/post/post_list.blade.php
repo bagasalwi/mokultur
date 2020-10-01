@@ -29,14 +29,13 @@
 
                     <div class="card border-0">
                         <div class="d-flex flex-row">
-                            <div>
-                                <h6><a class="text-dark"
-                                        href="{{ url('creation/' . $item->slug) }}">{{ $item->title }}</a></h6>
-                            </div>
+                            <h6><a class="text-dark"
+                                    href="{{ route('post.detail', $item->slug) }}">{{ $item->title }}</a></h6>
                         </div>
                         <div class="d-flex flex-row">
                             <div>
-                                <p>Created {{ $item->created_at->diffForHumans() }} <span
+                                <p><small class="text-secondary">Created
+                                        {{ $item->created_at->diffForHumans() }}</small> <span
                                         class="badge badge-{{ $s_color }} mx-2">{{ $status }}</span></p>
                             </div>
                             <div class="ml-auto px-2">
@@ -53,14 +52,6 @@
                     @endforeach
                 </div>
                 {!! $post->render() !!}
-                <div class="text-center">
-                    @if ($post->hasMorePages())
-                    <button id="see-more" class="btn btn-outline-dark px-4" data-page="2"
-                        data-link="{{ url('/post?page=') }}" data-div="#posts">See more</button>
-                    @else
-                    <h6 class="text-secondary font-weight-normal">No More Data</h6>
-                    @endif
-                </div>
                 @else
                 <div class="text-center">
                     <h6 class="text-secondary font-weight-normal">No Post </h6>
@@ -81,22 +72,6 @@
 @endif
 
 <script>
-    $("ul.pagination").hide();
-
-    $("#see-more").click(function() {
-        $div = $($(this).data('div')); //div to append
-        $link = $(this).data('link'); //current URL
-
-        $page = $(this).data('page'); //get the next page #
-        $href = $link + $page; //complete URL
-        $.get($href, function(response) { //append data
-            $html = $(response).find("#posts").html(); 
-            $div.append($html);
-        });
-
-        $(this).data('page', (parseInt($page) + 1)); //update page #
-    });
-
     function deletePost(id){       
         swal({
         title: "Are you sure?",

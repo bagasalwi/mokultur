@@ -11,35 +11,23 @@
 
         <div class="collapse navbar-collapse" id="navbar4">
             <ul class="navbar-nav mr-auto pl-lg-4">
-                <li class="nav-item px-lg-2 {{ request()->is('/') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ url('/') }}">
-                        HOME
+                <li class="nav-item px-lg-2 {{ request()->is('browse') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('browse') }}">
+                        BROWSE
                     </a>
                 </li>
                 <li class="nav-item px-lg-2 {{ request()->is('topic') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ url('topic') }}">
+                    <a class="nav-link" href="{{ route('topic') }}">
                         CATEGORY
                     </a>
                 </li>
             </ul>
-            {{-- @if (isset($post))
-            <ul class="navbar-nav mx-auto pl-lg-4 d-flex">
-                <li class="nav-item align-self-center">
-                    <span class="badge badge-dark mx-2">{{ $post->category->name }}</span>
-                </li>
-                <li class="nav-item align-self-center">
-                    <span class="no-pm">{{ $post->title }}</span>
-                </li>
-            </ul>
-            @else
-            
-            @endif --}}
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item px-lg-2">
                     <button type="button" id="searchBtn" class="btn btn-default navbar-btn m-0"><i
                             class="fa fa-search"></i></button>
                 </li>
-                <form id="searchForm" action="{{ url('creation') }}" role="search" style="display:none">
+                <form id="searchForm" action="{{ route('post') }}" role="search" style="display:none">
                     <input type="text" name="search" class="form-control-sm form-control" placeholder="Search">
                 </form>
                 @guest

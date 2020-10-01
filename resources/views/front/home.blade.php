@@ -30,7 +30,7 @@
                 <p class="mb-4 text-dark" data-font-size="16px">
                     In Kreasibangsa you can share all your creations to share with others!
                 </p>
-                <a class="btn btn-dark btn-lg" href="{{ url('creation') }}" role="button"><h6 class="m-0">Browse
+                <a class="btn btn-dark btn-lg" href="{{ route('post') }}" role="button"><h6 class="m-0">Browse
                     Creation</h6></a>
             </div>
         </div>

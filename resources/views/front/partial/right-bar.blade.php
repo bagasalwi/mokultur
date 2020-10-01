@@ -13,11 +13,12 @@
         <div class="list-group">
             @foreach ($topCategory as $category)
             <div class="card card-hover no-bd-radius my-2" data-background="{{ asset('storage/' . $category->banner) }}">
+                <div class="card-overlay"></div>
                 <div class="card-body d-flex">
                     <a class="stretched-link" href="{{ url('topic/'.$category->slug) }}" style="text-decoration : none">
                         <div class="align-self-center">
-                            <h4 class="text-white">{{ $category->name }}</h4>
-                            <p class="text-white font-weight-normal">{{ $category->description }}</p>
+                            <h2 class="text-white">{{ $category->name }}</h2>
+                            {{-- <p class="text-white font-weight-normal">{{ $category->description }}</p> --}}
                         </div>
                     </a>
                 </div>

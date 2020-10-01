@@ -5,7 +5,7 @@
         <div class="card border-0 my-4">
             <img class="img-fluid img-imagepost" src="{{ asset('storage/' . $p->photo()) }}" alt="">
             <div class="my-2">
-                <h2><a class="text-dark" href="{{ url('creation/' . $p->slug) }}">{{ $p->title }}</a></h2>
+                <h2><a class="text-dark" href="{{ route('post.detail',$p->slug) }}">{{ $p->title }}</a></h2>
             </div>
             <div class="row">
                 <div class="col-6 d-flex flex-row">
@@ -26,7 +26,7 @@
                 </div>
                 <div class="col-6 d-flex flex-row-reverse">
                     <div class="align-self-end">
-                        <a href="{{ url('creation/' . $p->slug) }}" class="btn btn-outline-dark ">Read
+                        <a href="{{ route('post.detail',$p->slug) }}" class="btn btn-outline-dark ">Read
                             More</a>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
     {!! $creation->render() !!}
     <div class="text-center">
         @if ($creation->hasMorePages())
-        <button id="see-more" class="btn btn-block btn-dark" data-page="2" data-link="{{ url('/'.request()->segment(count(request()->segments())).'?page=') }}"
+        <button id="see-more" class="btn btn-block btn-dark" data-page="2" data-link="{{ url()->current().'?page=' }}"
             data-div="#posts">See more</button>
         @else
         <h6 class="text-secondary font-weight-normal">No More Data</h6>

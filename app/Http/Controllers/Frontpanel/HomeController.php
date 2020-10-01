@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Frontpanel;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Post;
 use App\PostCategory;
 use DB;
@@ -34,10 +35,11 @@ class HomeController extends Controller
         if($category){
             $data['category'] = $this->categoryService->findSlug($category);
             $data['topCategory'] = $this->categoryService->topCategory();
-            $data['creation'] = Post::where('status', 'P')->where('category_id',$data['category']->id)->orderBy('created_at', 'desc')->paginate(2);
+            $data['creation'] = $this->postService->postByCategories($data['category']->id);
             
             return view('front.category-detail', $data);
         }else{
+            $data['category_slide'] = $this->categoryService->categoryTake(5);
             $data['category'] = $this->categoryService->allCategory();
             $data['topCategory'] = $this->categoryService->topCategory();
             $data['creation'] = Post::where('status', 'P')->orderBy('created_at', 'desc')->paginate(2);

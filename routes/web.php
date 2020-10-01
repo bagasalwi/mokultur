@@ -13,37 +13,30 @@
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('/topic', 'HomeController@category');
-Route::get('/topic/{category}', 'HomeController@category');
+Route::get('/', 'Frontpanel\HomeController@index')->name('home');
+Route::get('/browse', 'Frontpanel\BrowseController@browseArticle')->name('browse');
 
-Route::get('/contact', 'HomeController@contact')->name('contact');
-Route::post('/contact-submit', 'HomeController@contact_submit');
+Route::prefix('topic')->group(function () {
+    Route::get('/', 'Frontpanel\HomeController@category')->name('topic');
+    Route::get('/{category}', 'Frontpanel\HomeController@category');
+});
 
+Route::prefix('article')->group(function () {
+    Route::get('/', 'Frontpanel\FrontPostController@post')->name('post');
+    Route::get('/{slug}', 'Frontpanel\FrontPostController@post_detail')->name('post.detail');
+});
 
 Route::prefix('creator')->group(function () {
-    Route::get('/', 'CreatorController@creator');
-    Route::get('/{username}', 'CreatorController@creator_detail');
-    Route::post('/search', 'CreatorController@search_creator');
+    Route::get('/', 'Frontpanel\CreatorController@creator');
+    Route::get('/{username}', 'Frontpanel\CreatorController@creator_detail');
+    Route::post('/search', 'Frontpanel\CreatorController@search_creator');
 });
-
-Route::prefix('creation')->group(function () {
-    Route::get('/', 'CreationController@creation');
-    // Route::get('/search', 'CreationController@ajaxSearch');
-    Route::get('/{slug}', 'CreationController@creation_detail');
-    // Route::post('/search', 'CreationController@search_creation');
-    Route::get('/category/{name}', 'CreationController@category_creation');
-});
-
-Route::get('/browse', 'CreationController@browse');
-
-
 
 Route::group(['middleware' => 'auth'], function () {
 
     // User Controller
 
-    Route::get('/home', 'CreatorController@index');
+    Route::get('/home', 'Frontpanel\CreatorController@index');
 
     Route::prefix('profile')->group(function () {
         Route::get('/', 'ProfileController@index');
@@ -91,11 +84,6 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('category/update/{id}', 'CategoryController@category_update')->name('category.update');
             Route::post('category/store', 'CategoryController@category_store')->name('category.store');
             Route::get('category/delete/{id}', 'CategoryController@category_delete');
-
-            // Tag Function
-            Route::get('tag','AdminController@tag');
-            Route::post('tag/create', 'AdminController@tag_create');
-            Route::get('tag/delete/{id}', 'AdminController@tag_delete');
         });
     
     });

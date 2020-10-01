@@ -39,7 +39,7 @@
                                             <td>{{ $row->title }}</td>
                                             <td>{{ $row->date_published }}</td>
                                             <td class="text-center">
-                                                <a href="{{ url('creation/'. $row->slug ) }}" class="btn btn-info"><i class="fas fa-eye"></i></a>
+                                                <a href="{{ route('post.detail',$row->slug) }}" class="btn btn-info"><i class="fas fa-eye"></i></a>
                                                 <button class="btn btn-danger"
                                                     onclick="deletePost({{ $row->id }})"><i
                                                         class="fas fa-trash"></i></button>

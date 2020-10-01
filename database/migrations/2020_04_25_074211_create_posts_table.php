@@ -20,12 +20,11 @@ class CreatePostsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
 
             $table->unsignedBigInteger('category_id')->nullable();
-            $table->foreign('category_id')->references('id')->on('post_categories');
+            $table->foreign('category_id')->references('id')->on('categories');
 
             $table->string('slug');
             $table->string('title');
             $table->longText('description');
-            // $table->string('thumbnail'); // disable - split into post photo gallery
             $table->string('view_count')->nullable();
             $table->string('date_published')->nullable();
             $table->string('status');

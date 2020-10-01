@@ -18,6 +18,7 @@ class CreatePostPhotosTable extends Migration
             $table->unsignedBigInteger('user_id');           
             $table->unsignedBigInteger('post_id');
             $table->string('name');
+            $table->string('status');
             
             $table->timestamps();
 

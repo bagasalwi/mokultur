@@ -14,17 +14,17 @@ class CategorySeeder extends Seeder
     public function run()
     {
         PostCategory::create([
-            'name' => 'Game',
+            'name' => 'Games',
             'description' => 'All About Games',
             'slug' => str_slug('Game', '-'),
         ]);
         PostCategory::create([
-            'name' => 'Movie',
+            'name' => 'Movies',
             'description' => 'All About Movies',
             'slug' => str_slug('Movie', '-'),
         ]);
         PostCategory::create([
-            'name' => 'Tutorial',
+            'name' => 'Sciences',
             'description' => 'All About Tutorial',
             'slug' => str_slug('Tutorial', '-'),
         ]);
@@ -34,25 +34,55 @@ class CategorySeeder extends Seeder
             'slug' => str_slug('Design', '-'),
         ]);
         PostCategory::create([
-            'name' => 'Review',
+            'name' => 'Reviews',
             'description' => 'All About Review',
             'slug' => str_slug('Review', '-'),
         ]);
+        PostCategory::create([
+            'name' => 'Anime',
+            'description' => 'All About Anime',
+            'slug' => str_slug('Anime', '-'),
+        ]);
+        PostCategory::create([
+            'name' => 'Technology',
+            'description' => 'All About Technology',
+            'slug' => str_slug('Technology', '-'),
+        ]);
+        PostCategory::create([
+            'name' => 'Pop Culture',
+            'description' => 'All About Pop Culture',
+            'slug' => str_slug('Pop Culture', '-'),
+        ]);
+        PostCategory::create([
+            'name' => 'Manga',
+            'description' => 'All About Manga',
+            'slug' => str_slug('Manga', '-'),
+        ]);
+        PostCategory::create([
+            'name' => 'Geeks',
+            'description' => 'All About Geek',
+            'slug' => str_slug('Geek', '-'),
+        ]);
+        PostCategory::create([
+            'name' => 'TV Series',
+            'description' => 'All About TV Series',
+            'slug' => str_slug('TV Series', '-'),
+        ]);
+        PostCategory::create([
+            'name' => 'Programming',
+            'description' => 'All About Programming',
+            'slug' => str_slug('Programming', '-'),
+        ]);
+        PostCategory::create([
+            'name' => 'Stories',
+            'description' => 'All About Story',
+            'slug' => str_slug('Story', '-'),
+        ]);
+        PostCategory::create([
+            'name' => 'Foodies',
+            'description' => 'All About Foodies',
+            'slug' => str_slug('Foodies', '-'),
+        ]);
 
-        // Tag::create([
-        //     'name' => 'Review',
-        // ]);
-        // Tag::create([
-        //     'name' => 'Game',
-        // ]);
-        // Tag::create([
-        //     'name' => 'Movies',
-        // ]);
-        // Tag::create([
-        //     'name' => 'Tutorial',
-        // ]);
-        // Tag::create([
-        //     'name' => 'Design',
-        // ]);
     }
 }

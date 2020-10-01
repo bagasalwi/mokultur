@@ -40,7 +40,7 @@
                                     src="{{ URL::asset('gambar/user_post/' . $p->thumbnail) }}" alt="">
                             </div>
                             <div class="card-body border-top">
-                                <a class="stretched-link" href="{{ url('creation/' . $p->slug) }}">
+                                <a class="stretched-link" href="{{ route('post.detail',$p->slug) }}">
                                     <h6>{{ $p->title }}</h6>
                                 </a>
                                 <div class="mt-2">

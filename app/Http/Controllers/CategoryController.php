@@ -89,6 +89,6 @@ class CategoryController extends Controller
     }
 
     public function category_delete($id){
-        PostCategory::where('id', $id)->delete();
+        $this->categoryService->delete($id);
     }
 }

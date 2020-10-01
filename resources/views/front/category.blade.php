@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="owl-carousel owl-theme slider d-none d-sm-block" id="slider2">
-    @foreach ($category as $slider)
+    @foreach ($category_slide as $slider)
     <div>
         <img alt="image" class="img-slider" src="{{ asset('storage/' . $slider->banner) }}">
         <div class="slider-caption text-center">
@@ -22,11 +22,12 @@
         @foreach ($category as $category)
         <div class="col-lg-4">
             <div class="card card-topic" data-background="{{ asset('storage/' . $category->banner) }}">
+                <div class="card-overlay"></div>
                 <div class="card-body d-flex">
                     <a class="stretched-link" href="{{ url('topic/'.$category->slug) }}" style="text-decoration : none">
                         <div class="align-self-center">
                             <h1 class="text-white">{{ $category->name }}</h1>
-                            <p class="text-white font-weight-normal">{{ $category->description }}</p>
+                            <p class="text-white font-weight-normal">{{ strlen($category->description) > 70 ? substr($category->description, 0, 75) . '...' : $category->description }}</p>
                         </div>
                     </a>
                 </div>
