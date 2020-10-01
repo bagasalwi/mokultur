@@ -10,7 +10,8 @@
                         <h2 class="text-dark">My Post</h2>
                     </div>
                     <div class="ml-auto">
-                        <a href="{{ route('post.create') }}" class="btn btn-dark px-4">Create New Post</a>
+                        <button type="button" data-toggle="modal" data-target="#articleType"
+                            class="btn btn-dark px-4">Create New Post</button>
                     </div>
                 </div>
                 @if ($post)
@@ -61,6 +62,40 @@
         </div>
     </div>
 </section>
+
+<!-- Modal -->
+<div class="modal center fade" id="articleType" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body m-4 p-0">
+                <div class="card card-topic no-bd-radius">
+                    <div class="card-body d-flex row">
+                        <div class="col-2 align-self-center">
+                            <img class="img-fluid" src="{{ asset('gambar/icon/article.png') }}" width="70" height="70" alt="">
+                        </div>
+                        <div class="col-10 align-self-center">
+                            <h4 class="text-dark no-pm">Simple Article</h4>
+                            <small class="text-secondary">Make an simple article about your stories, reviews, tutorials and more!</small>
+                            <a class="stretched-link" href="{{ route('post.create', 'type=simple') }}"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card card-topic no-bd-radius">
+                    <div class="card-body d-flex row">
+                        <div class="col-2 align-self-center">
+                            <img class="img-fluid" src="{{ asset('gambar/icon/gallery.png') }}" width="70" height="70" alt="">
+                        </div>
+                        <div class="col-10 align-self-center">
+                            <h4 class="text-dark no-pm">Photo Article</h4>
+                            <small class="text-secondary">Make an Multiple Photo article about your stories, reviews, tutorials and more!</small>
+                            <a class="stretched-link" href="{{ route('post.create', 'type=photo') }}"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 @endsection
 

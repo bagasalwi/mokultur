@@ -37,7 +37,7 @@ class PostController extends Controller
         return view('front.post.post_list', $data);
     }
 
-    public function create()
+    public function create(Request $request)
     {
         $data['title'] = 'My Post';
         $data['user'] = Auth::user();
@@ -49,7 +49,11 @@ class PostController extends Controller
         
         $data['state'] = 'create';
 
-        return view('front.post.post_form', $data);
+        if($request->type == 'photo'){
+            return view('front.post.post_photo_form', $data);
+        }elseif($request->type == 'simple'){
+            return view('front.post.post_form', $data);
+        }
     }
 
     public function update($slug)
