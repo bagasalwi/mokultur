@@ -27,6 +27,7 @@ class CreatePostsTable extends Migration
             $table->longText('description');
             $table->string('view_count')->nullable();
             $table->string('date_published')->nullable();
+            $table->string('type');
             $table->string('status');
             $table->timestamps();   
             

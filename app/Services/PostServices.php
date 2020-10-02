@@ -20,7 +20,11 @@ class PostServices{
     public function find($id)
 	{
 		return $this->model()->find($id);
-	}
+    }
+    
+    public function publishedDetailPost($slug){
+        return Post::where('slug',$slug)->where('status','P')->first();
+    }
 
     public function allPostUser($paginate = null){
         if($paginate){
@@ -73,6 +77,7 @@ class PostServices{
             'description' => $request['description'],
             'view_count' => 0,
             'date_published' => $request['status'] == 'P' ? Carbon::now() : null,
+            'type' => $request['type'],
             'status' => $request['status'],
         ]);
 
@@ -121,6 +126,26 @@ class PostServices{
         ]);
     }
 
+    public function createMultipleImage($id,$image){
+        $user = auth()->user();
+
+        foreach($image as $img){
+            $path = $img->store('images');
+
+            PostPhoto::create([
+                'user_id' => $user->id,
+                'post_id' => $id,
+                'name' => $path,
+                'status' => 'A'
+            ]);
+        }
+    }
+
+    public function updateMultipleImage($id,$image){
+        $this->deleteMultipleImage($id);
+        $this->createMultipleImage($id,$image);
+    }
+
     public function updateImage($id,$image){
         $user = auth()->user();
         $post = $this->find($id);
@@ -152,5 +177,19 @@ class PostServices{
     
             PostPhoto::where('post_id',$post->id)->delete();
         }
+    }
+
+    public function deleteMultipleImage($id){
+        $postPhoto = PostPhoto::where('post_id',$id)->get();
+
+        foreach($postPhoto as $img){
+            $image = public_path('storage/' . $img->name);
+
+            if (File::exists($image)) {
+                unlink($image);
+           }
+        }
+
+        PostPhoto::where('post_id',$id)->delete();
     }
 }

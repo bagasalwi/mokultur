@@ -50,8 +50,10 @@ class PostController extends Controller
         $data['state'] = 'create';
 
         if($request->type == 'photo'){
+            $data['type'] = 'photo';
             return view('front.post.post_photo_form', $data);
-        }elseif($request->type == 'simple'){
+        }elseif($request->type == 'article'){
+            $data['type'] = 'article';
             return view('front.post.post_form', $data);
         }
     }
@@ -72,7 +74,16 @@ class PostController extends Controller
 
             $data['tags'] = $post->tagNames();
 
-            return view('front.post.post_form', $data);
+            if($post->type == 'photo'){
+                $data['type'] = 'photo';
+                $data['post_image'] = PostPhoto::where('post_id',$post->id)->get();
+
+                return view('front.post.post_photo_form', $data);
+            }elseif($post->type == 'article'){
+                $data['type'] = 'article';
+
+                return view('front.post.post_form', $data);
+            }
         }else{
             return redirect()->route('post.create');
         }
@@ -120,10 +131,50 @@ class PostController extends Controller
         }
     }
 
+    public function savePhoto(Request $request){
+
+        $this->validate($request, [
+            'title' => 'required',
+            'category_id' => 'required',
+            'description' => 'required',
+            'photo.*' => 'file|image|mimes:jpeg,png,jpg|required',
+            'status' => 'required',
+        ]);
+
+        if($request->state == 'create'){
+            $post = $this->postService->create($request->all());
+
+            if ($request->hasFile('photo')) {
+                $image = $request->file('photo');
+
+                $this->postService->createMultipleImage($post->id,$image);
+            }
+
+            return redirect('post')->with('success', 'Post baru berhasil dibuat!');
+        }elseif($request->state == 'update'){
+            $post = $this->postService->update($request->all());
+
+            if ($request->hasFile('photo')) {
+                $image = $request->file('photo');
+
+                $this->postService->updateMultipleImage($post->id,$image);
+            }
+
+            return redirect('post')->with('success', 'Post berhasil di update!');
+        }
+    }
+
     public function delete($id)
     {
-        $this->postService->deleteImage($id);
-        $this->postService->delete($id);
+        $post = $this->postService->find($id);
+
+        if($post->type == 'article'){
+            $this->postService->deleteImage($id);
+            $this->postService->delete($id);
+        }elseif($post->type == 'photo'){
+            $this->postService->deleteMultipleImage($id);
+            $this->postService->delete($id);
+        }
     }
 
     public function ajaxTags(Request $request){

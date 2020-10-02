@@ -50,6 +50,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('create', 'PostController@create')->name('post.create');
         Route::get('update/{id}', 'PostController@update');
         Route::post('save', 'PostController@save')->name('post.save');
+        Route::post('save-photo', 'PostController@savePhoto')->name('post.save-photo');
         Route::get('delete/{id}', 'PostController@delete')->name('post.delete');
         Route::get('tags', 'PostController@ajaxTags');
     });

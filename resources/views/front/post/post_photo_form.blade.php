@@ -4,11 +4,12 @@
 <section class="section">
     <div class="container">
         <div class="row m-2">
-            <form action="{{ url('post/save') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('post.save-photo') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <input type="hidden" name="id" value="{{ $fields->id }}">
                 <input type="hidden" name="state" value="{{ $state }}">
+                <input type="hidden" name="type" value="{{ $type }}">
 
                 <div class="row">
                     <div class="col-sm-12 col-md-8 col-lg-8">
@@ -28,7 +29,17 @@
                     </div>
                 </div>
                 <hr>
-                <div id="gallery" class="row"></div>
+                @if (isset($post_image))
+                    <div id="gallery" class="row">
+                        @foreach ($post_image as $img)
+                            <div class="col-3">
+                                <img src="{{ asset('storage/' . $img->name) }}" class="img-cover my-2" width="250" height="250" alt="">
+                            </div>
+                        @endforeach
+                    </div>
+                @else
+                    <div id="gallery" class="row"></div>    
+                @endif
                 <div class="row">
                     <div class="col-md-12">
                         <div class="row">
@@ -135,8 +146,7 @@
                         for (i = 0; i < filesAmount; i++) {
                             var reader = new FileReader();
                             reader.onload = function(event) {
-                                // var col = $($.html('<img class="img-fluid">')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
-                                $($.parseHTML('<div class="col-3"><img width="250" height="250" src="'+event.target.result+'"></div>')).appendTo(placeToInsertImagePreview);
+                                $($.parseHTML('<div class="col-3"><img class="img-cover my-2" width="250" height="250" src="'+event.target.result+'"></div>')).appendTo(placeToInsertImagePreview);
                             }
                             reader.readAsDataURL(input.files[i]);
                         }

@@ -3,15 +3,15 @@
 @section('content')
 
 {{-- <div class="jumbotron jumbotron-fluid mb-0" data-background-topic="{{ asset('storage/' . $post->photo()) }}">
-    <div class="jumbotron-overlay"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-sm-12 offset-md-2 text-center">
-                <h1 class="text-white font-weight-bold">{{ $post->title }}</h1>
-                <h4><span class="badge badge-dark px-4">{{ $post->category->name }}</span></h4>
-            </div>
+<div class="jumbotron-overlay"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-sm-12 offset-md-2 text-center">
+            <h1 class="text-white font-weight-bold">{{ $post->title }}</h1>
+            <h4><span class="badge badge-dark px-4">{{ $post->category->name }}</span></h4>
         </div>
     </div>
+</div>
 </div> --}}
 
 <section class="section">
@@ -47,7 +47,19 @@
         </div>
     </div>
 
-    <img src="{{ asset('storage/' . $post->photo()) }}" data-max-height="500px" class="img-fluid img-cover w-100">
+    @if ($post->type == 'photo')
+    <div class="owl-carousel owl-theme slider d-none d-sm-block" id="slider2">
+        @foreach ($post_image as $image)
+        <div>
+            <img src="{{ asset('storage/' . $image->name) }}" data-max-height="500px" class="img-fluid img-cover w-100">
+        </div>
+        @endforeach
+    </div>
+    @else
+        <img src="{{ asset('storage/' . $post->photo()) }}" data-max-height="500px" class="img-fluid img-cover w-100">
+    @endif
+
+
 
     <div class="container">
         <div class="row">

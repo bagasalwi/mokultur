@@ -26,4 +26,8 @@ class Post extends Model
     public function photo(){
         return $this->hasOne(PostPhoto::class)->first()->name;
     }
+
+    public function images(){
+        return $this->hasMany(PostPhoto::class);
+    }
 }

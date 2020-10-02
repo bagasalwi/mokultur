@@ -76,7 +76,7 @@
                         <div class="col-10 align-self-center">
                             <h4 class="text-dark no-pm">Simple Article</h4>
                             <small class="text-secondary">Make an simple article about your stories, reviews, tutorials and more!</small>
-                            <a class="stretched-link" href="{{ route('post.create', 'type=simple') }}"></a>
+                            <a class="stretched-link" href="{{ route('post.create', 'type=article') }}"></a>
                         </div>
                     </div>
                 </div>
@@ -86,8 +86,8 @@
                             <img class="img-fluid" src="{{ asset('gambar/icon/gallery.png') }}" width="70" height="70" alt="">
                         </div>
                         <div class="col-10 align-self-center">
-                            <h4 class="text-dark no-pm">Photo Article</h4>
-                            <small class="text-secondary">Make an Multiple Photo article about your stories, reviews, tutorials and more!</small>
+                            <h4 class="text-dark no-pm">Slideshow Article</h4>
+                            <small class="text-secondary">Make an Slideshow photo article about your stories, reviews, tutorials and more!</small>
                             <a class="stretched-link" href="{{ route('post.create', 'type=photo') }}"></a>
                         </div>
                     </div>

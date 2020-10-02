@@ -39,8 +39,10 @@ class FrontPostController extends Controller
 
     public function post_detail($slug)
     {
-        $data['title'] = 'KREASI';
-        $data['post'] = Post::where('slug', $slug)->first();
+        $data['post'] = $this->postService->publishedDetailPost($slug);
+
+        $data['post_image'] = $data['post']->images()->get();
+        
         $data['user'] = User::where('id', $data['post']->user_id)->first();
         $data['post_count'] = Post::where('user_id', $data['user']->id)->count();
         $data['recomendation'] = Post::where('category_id', $data['post']->category_id)->take(3)->get()->except($data['post']->id);

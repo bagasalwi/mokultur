@@ -9,6 +9,7 @@
 
                 <input type="hidden" name="id" value="{{ $fields->id }}">
                 <input type="hidden" name="state" value="{{ $state }}">
+                <input type="hidden" name="type" value="{{ $type }}">
 
                 <div class="row">
                     <div class="col-sm-12 col-md-8 col-lg-8">
