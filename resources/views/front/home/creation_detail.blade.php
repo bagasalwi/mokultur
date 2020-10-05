@@ -18,7 +18,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-sm-12 offset-md-2">
-                <h4><span class="badge badge-dark px-4">{{ $post->category->name }}</span></h4>
+                <h4>
+                    <span class="badge badge-dark px-4">{{ $post->category->name }}</span>
+                    @if ($post->status() == 'DRAFT')
+                        <span class="badge badge-danger px-4">{{ $post->status() }}</span>
+                    @endif
+                </h4>
                 <h1 class="text-dark">{{ $post->title }}</h1>
                 <div class="row my-2">
                     <div class="col-6 d-flex flex-row">
@@ -38,8 +43,10 @@
                     </div>
                     <div class="col-6 d-flex flex-row-reverse">
                         <div class="align-self-end">
+                            @if ($post->date_published != null)
                             <p class="p-0 m-0"><small class="text-dark">Published
-                                    {{ $post->created_at->diffForHumans() }}</small></p>
+                                {{ $post->created_at->diffForHumans() }}</small></p>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -49,14 +56,18 @@
 
     @if ($post->type == 'photo')
     <div class="owl-carousel owl-theme slider d-none d-sm-block" id="slider2">
-        @foreach ($post_image as $image)
+        @foreach ($post->images()->get() as $image)
         <div>
             <img src="{{ asset('storage/' . $image->name) }}" data-max-height="500px" class="img-fluid img-cover w-100">
         </div>
         @endforeach
     </div>
     @else
+        @if ($post->photo() == "no-image")
+        
+        @else
         <img src="{{ asset('storage/' . $post->photo()) }}" data-max-height="500px" class="img-fluid img-cover w-100">
+        @endif
     @endif
 
 
@@ -82,10 +93,14 @@
                                     class="rounded-circle mr-2">
                                 <h6><a href="{{ url('creator/' . $p->user->username) }}">{{ $p->user->name }}</a></h6>
                             </div>
+                            @if ($p->photo() == 'no-image')
+                                
+                            @else
                             <div class="embed-responsive embed-responsive-4by3">
                                 <img class="embed-responsive-item img-fluid" src="{{ asset('storage/'. $p->photo()) }}"
                                     alt="">
                             </div>
+                            @endif
                             <div class="card-body border-top">
                                 <a class="stretched-link" href="{{ route('post.detail',$p->slug) }}">
                                     <h6>{{ $p->title }}</h6>

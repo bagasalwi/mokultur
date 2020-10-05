@@ -23,7 +23,7 @@ Route::prefix('topic')->group(function () {
 
 Route::prefix('article')->group(function () {
     Route::get('/', 'Frontpanel\FrontPostController@post')->name('post');
-    Route::get('/{slug}', 'Frontpanel\FrontPostController@post_detail')->name('post.detail');
+    Route::get('/{slug}', 'Frontpanel\FrontPostController@postChecker')->name('post.detail');
 });
 
 Route::prefix('creator')->group(function () {

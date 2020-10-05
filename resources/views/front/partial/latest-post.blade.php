@@ -3,7 +3,21 @@
     <div id="posts">
         @foreach ($creation as $p)
         <div class="card border-0 my-4">
-            <img class="img-fluid img-imagepost" src="{{ asset('storage/' . $p->photo()) }}" alt="">
+            @if ($p->type == 'photo')
+            <div class="owl-carousel owl-theme slider d-none d-sm-block" id="slider2">
+                @foreach ($p->images()->get() as $image)
+                <div>
+                    <img src="{{ asset('storage/' . $image->name) }}" data-max-height="500px" class="img-fluid img-imagepost">
+                </div>
+                @endforeach
+            </div>
+            @else
+                @if ($p->photo() == "no-image")
+                
+                @else
+                <img class="img-fluid img-imagepost" src="{{ asset('storage/' . $p->photo()) }}" alt="">
+                @endif
+            @endif
             <div class="my-2">
                 <h2><a class="text-dark" href="{{ route('post.detail',$p->slug) }}">{{ $p->title }}</a></h2>
             </div>

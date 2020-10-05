@@ -24,10 +24,28 @@ class Post extends Model
     }
     
     public function photo(){
-        return $this->hasOne(PostPhoto::class)->first()->name;
+        $post = $this->hasOne(PostPhoto::class)->first();
+        if($post){
+            return $post->name;
+        }else{
+            return "no-image";
+        }
     }
 
     public function images(){
         return $this->hasMany(PostPhoto::class);
+    }
+
+    public function status(){
+        $status = '';
+        if($this->status == 'D'){
+            $status = 'DRAFT';
+        }elseif($this->status == 'P'){
+            $status = 'PUBLISH';
+        }else{
+            $status = 'NULL';
+        }
+
+        return $status;
     }
 }

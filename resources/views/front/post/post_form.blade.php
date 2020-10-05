@@ -102,8 +102,8 @@
                                 <div class="form-group">
                                     <label>Status</label>
                                     <select class="form-control selectric" name="status">
-                                        <option value="P">Publish</option>
-                                        <option value="D">Draft</option>
+                                        <option value="P" {{ $fields->status == 'P' ? 'selected' : '' }}>Publish</option>
+                                        <option value="D" {{ $fields->status == 'D' ? 'selected' : '' }}>Draft</option>
                                     </select>
                                 </div>
                             </div>
