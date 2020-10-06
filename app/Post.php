@@ -36,16 +36,22 @@ class Post extends Model
         return $this->hasMany(PostPhoto::class);
     }
 
-    public function status(){
-        $status = '';
-        if($this->status == 'D'){
-            $status = 'DRAFT';
-        }elseif($this->status == 'P'){
-            $status = 'PUBLISH';
+    public function checkStatus(){
+        
+        if($this->status){
+            $status = '';
+
+            if($this->status == 'D'){
+                $status = 'DRAFT';
+            }elseif($this->status == 'P'){
+                $status = 'PUBLISH';
+            }else{
+                $status = 'NULL';
+            }
+            return $status;
         }else{
-            $status = 'NULL';
+            return 'NULL';
         }
 
-        return $status;
     }
 }

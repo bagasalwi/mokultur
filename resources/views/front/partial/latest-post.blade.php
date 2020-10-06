@@ -4,7 +4,7 @@
         @foreach ($creation as $p)
         <div class="card border-0 my-4">
             @if ($p->type == 'photo')
-            <div class="owl-carousel owl-theme slider d-none d-sm-block" id="slider2">
+            <div class="owl-carousel owl-theme slider" id="slider2">
                 @foreach ($p->images()->get() as $image)
                 <div>
                     <img src="{{ asset('storage/' . $image->name) }}" data-max-height="500px" class="img-fluid img-imagepost">

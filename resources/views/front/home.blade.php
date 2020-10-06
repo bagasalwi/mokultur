@@ -16,22 +16,21 @@
                 <div class="card card-body shadow rounded">
                     <img class="img-responsive align-self-center" src="{{ asset('gambar/mock-1.png') }}" alt=""
                         data-max-width="200px">
-                    <h5>Join Us and Start Sharing Your Creations</h5>
-                    <p data-font-size="12px" class="font-weight-normal">
+                    <h4>Join Us and Start Sharing Your Creations</h4>
+                    <p class="font-weight-normal">
                         You can upload your creations from hobby, works, portofolio and sharing with others.
                     </p>
                     <div class="mt-2">
-                        <a href="{{ route('register') }}" class="btn btn-outline-dark btn-block">Join with us</a>
+                        <a href="{{ route('register') }}" class="btn btn-outline-dark btn-block">JOIN WITH US</a>
                     </div>
                 </div>
             </div>
             <div class="col-lg-5 offset-lg-1 align-self-center">
                 <h1 class="text-dark font-weight-bold">Article, Stories, Reviews, whatever you want to post!</h1>
-                <p class="mb-4 text-dark" data-font-size="16px">
+                <p class="mb-4 text-dark">
                     In Kreasibangsa you can share all your creations to share with others!
                 </p>
-                <a class="btn btn-dark btn-lg" href="{{ route('post') }}" role="button"><h6 class="m-0">Browse
-                    Creation</h6></a>
+                <a class="btn btn-dark btn-lg" href="{{ route('post') }}" role="button">Browse Creation</a>
             </div>
         </div>
     </div>

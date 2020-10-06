@@ -20,7 +20,7 @@
             <div class="col-md-8 col-sm-12 offset-md-2">
                 <h4>
                     <span class="badge badge-dark px-4">{{ $post->category->name }}</span>
-                    @if ($post->status() == 'DRAFT')
+                    @if ($post->checkStatus() == 'DRAFT')
                         <span class="badge badge-danger px-4">{{ $post->status() }}</span>
                     @endif
                 </h4>
@@ -55,7 +55,7 @@
     </div>
 
     @if ($post->type == 'photo')
-    <div class="owl-carousel owl-theme slider d-none d-sm-block" id="slider2">
+    <div class="owl-carousel owl-theme slider" id="slider2">
         @foreach ($post->images()->get() as $image)
         <div>
             <img src="{{ asset('storage/' . $image->name) }}" data-max-height="500px" class="img-fluid img-cover w-100">

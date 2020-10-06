@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Panno Text';
+    src: local('Panno Text Normal'), local('Panno-Text-Normal'),
+        url('PannoText-Normal.woff2') format('woff2'),
+        url('PannoText-Normal.woff') format('woff'),
+        url('PannoText-Normal.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
