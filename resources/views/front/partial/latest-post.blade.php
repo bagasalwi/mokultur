@@ -1,50 +1,29 @@
-<div class="col-lg-6">
-    <h6 class="text-dark">Latest Post</h6>
-    <div id="posts">
+<div class="col-lg-8 col-sm-12">
+    <h3 class="text-dark font-weight-bold">Latest Post</h3>
+    <hr>
+    <div id="posts" class="row">
         @foreach ($creation as $p)
-        <div class="card border-0 my-4">
-            @if ($p->type == 'photo')
-            <div class="owl-carousel owl-theme slider" id="slider2">
-                @foreach ($p->images()->get() as $image)
-                <div>
-                    <img src="{{ asset('storage/' . $image->name) }}" data-max-height="500px" class="img-fluid img-imagepost">
-                </div>
-                @endforeach
-            </div>
-            @else
-                @if ($p->photo() == "no-image")
-                
-                @else
-                <img class="img-fluid img-imagepost" src="{{ asset('storage/' . $p->photo()) }}" alt="">
-                @endif
-            @endif
-            <div class="my-2">
-                <h2><a class="text-dark" href="{{ route('post.detail',$p->slug) }}">{{ $p->title }}</a></h2>
-            </div>
-            <div class="row">
-                <div class="col-6 d-flex flex-row">
-                    <div class="align-self-center mr-2">
-                        <img alt="image" width="45" height="45"
-                            src="{{ URL::asset('gambar/profile_pic/' . $p->user->profile_pic) }}"
-                            class="rounded-circle">
+        <div class="col-lg-6 col-sm-12">
+            <a href="{{ route('post.detail',$p->slug) }}" class="card-block clearfix">
+                <div class="card border-0 my-2">
+                    <div class="card-img-wrap">
+                        <img class="img-fluid img-imagepost" src="{{ asset('storage/' . $p->photo()) }}" alt="">
+                        <div class="card-img-overlay text-white">
+                            <h5 class="badge badge-light shadow">{{ $p->category->name }}</h5>
+                        </div>
                     </div>
-                    <div class="align-self-center">
-                        <h6 class="p-0 m-0">
-                            <a class="text-dark"
-                                href="{{ url('creator/' . $p->user->username) }}">{{ $p->user->name }}</a>
-                        </h6>
-                        <p class="p-0 m-1">
-                            <span class="badge badge-dark">{{ $p->category->name }}</span>
-                        </p>
+                    <div class="mt-1">
+                        <h4 class="no-pm">
+                            <a href="{{ route('post.detail',$p->slug) }}">{{ $p->title }}</a>
+                        </h4>
                     </div>
+                    <small class="text-secondary">
+                        {{ Carbon\Carbon::parse($p->date_published)->format('d M Y') }} &middot;
+                        {{ $p->user->name }}
+                    </small>
                 </div>
-                <div class="col-6 d-flex flex-row-reverse">
-                    <div class="align-self-end">
-                        <a href="{{ route('post.detail',$p->slug) }}" class="btn btn-outline-dark ">Read
-                            More</a>
-                    </div>
-                </div>
-            </div>
+            </a>
+
         </div>
         <hr>
         @endforeach
@@ -73,7 +52,11 @@
         $href = $link + $page; //complete URL
         $.get($href, function(response) { //append data
             $html = $(response).find("#posts").html(); 
-            $div.append($html);
+            if($html.length < 20){
+                $('#see-more').replaceWith('<h6 class="text-secondary font-weight-normal">No More Data</h6>')          
+            }else{
+                $div.append($html);
+            }
         });
 
         $(this).data('page', (parseInt($page) + 1)); //update page #

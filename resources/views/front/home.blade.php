@@ -40,7 +40,7 @@
 <div class="section">
     <div class="container">
         <div class="row">
-            @include('front.partial.left-bar')
+            {{-- @include('front.partial.left-bar') --}}
             @include('front.partial.latest-post')
             @include('front.partial.right-bar')
         </div>

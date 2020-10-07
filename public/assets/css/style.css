@@ -57,6 +57,14 @@ a {
     -o-transition: all 0.5s;
 }
 
+a:hover{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    transition: all 0.9s;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+}
+
 a:not(.btn-social-icon):not(.btn-social):not(.page-link) .ion,
 a:not(.btn-social-icon):not(.btn-social):not(.page-link) .fas,
 a:not(.btn-social-icon):not(.btn-social):not(.page-link) .far,
@@ -286,7 +294,7 @@ select.form-control:not([size]):not([multiple]) {
 .form-group>label {
     font-weight: 400;
     color: #000000;
-    font-size: 13px;
+    font-size: 16px;
     letter-spacing: 0.5px;
 }
 
@@ -414,7 +422,7 @@ select.form-control:not([size]):not([multiple]) {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    font-size: 13px;
+    font-size: 16px;
     min-width: 2.375rem;
     line-height: 36px;
 }
@@ -913,7 +921,7 @@ select.form-control:not([size]):not([multiple]) {
 
 .card .card-header .form-control {
     height: 31px;
-    font-size: 13px;
+    font-size: 16px;
     border-radius: 30px;
 }
 
@@ -938,8 +946,8 @@ select.form-control:not([size]):not([multiple]) {
 .card .card-header h4+.card-header-form .btn {
     font-size: 12px;
     border-radius: 30px !important;
-    padding-left: 13px !important;
-    padding-right: 13px !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
 }
 
 .card .card-header h4+.card-header-action .btn.active,
@@ -1018,7 +1026,7 @@ select.form-control:not([size]):not([multiple]) {
     transform: translate(-50%, -50%);
     z-index: 999;
     color: #fff !important;
-    padding: 5px 13px;
+    padding: 5px 16px;
 }
 
 .card.card-progress.remove-spinner .card-progress-dismiss {
@@ -1186,7 +1194,7 @@ select.form-control:not([size]):not([multiple]) {
 .card.card-statistic-1 .card-header h4,
 .card.card-statistic-2 .card-header h4 {
     font-weight: 600;
-    font-size: 13px;
+    font-size: 16px;
     letter-spacing: 0.5px;
 }
 
@@ -1224,7 +1232,7 @@ select.form-control:not([size]):not([multiple]) {
 .card .card-stats .card-stats-title {
     padding: 15px 25px;
     background-color: #fff;
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 600;
     letter-spacing: 0.3px;
 }
@@ -1431,7 +1439,7 @@ table tr:hover .table-links {
 }
 
 .tooltip-inner {
-    padding: 7px 13px;
+    padding: 7px 16px;
 }
 
 
@@ -1606,9 +1614,9 @@ table tr:hover .table-links {
     vertical-align: middle;
     padding: 4px 14px 4px 14px;
     font-weight: 400;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.5px;
     border-radius: 2px;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .badge.badge-warning {
@@ -1673,7 +1681,7 @@ h3 .badge {
 
 h4 .badge {
     font-size: 16px;
-    padding: 8px 13px;
+    padding: 8px 16px;
 }
 
 h5 .badge {
@@ -2398,7 +2406,7 @@ h6 .badge {
 
 .dropdown-item.has-icon i {
     margin-top: -1px;
-    font-size: 13px;
+    font-size: 16px;
 }
 
 .dropdown-menu {
@@ -2412,7 +2420,7 @@ h6 .badge {
 }
 
 .dropdown-menu a {
-    font-size: 13px;
+    font-size: 16px;
 }
 
 .dropdown-menu .dropdown-title {
@@ -2460,7 +2468,7 @@ a.dropdown-item.active {
     width: 100%;
     padding-top: 15px;
     padding-bottom: 15px;
-    font-size: 13px;
+    font-size: 16px;
     border-bottom: 1px solid #f9f9f9;
 }
 
@@ -2609,7 +2617,7 @@ a.dropdown-item.active {
 
 .dropdown-flag .dropdown-item .flag-icon {
     width: 20px;
-    height: 13px;
+    height: 16px;
     margin-right: 7px;
     margin-top: -6px;
 }
@@ -2674,7 +2682,7 @@ a.dropdown-item.active {
 /* 3.23 Carousel */
 
 .carousel .carousel-caption p {
-    font-size: 13px;
+    font-size: 16px;
     line-height: 24px;
 }
 
@@ -2826,8 +2834,35 @@ a.bb {
 }
 
 .img-imagepost {
-    height: 350px;
+    width: 250px;
+    height: 250px;
     object-fit: cover;
+}
+
+.card-img-wrap {
+    overflow: hidden;
+    position: relative;
+  }
+.card-img-wrap:after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+}
+.card-img-wrap img {
+    transition: transform .25s;
+    width: 100%;
+}
+.card-img-wrap:hover img {
+    transform: scale(1.1);
+}
+.card-img-wrap:hover:after {
+    opacity: 1;
+}
+.link-img-wrap:hover img {
+    transform: scale(1.1);
+}
+.link-img-wrap:hover:after {
+    opacity: 1;
 }
 
 .colors {
@@ -2883,7 +2918,7 @@ blockquote .blockquote-footer {
 .far,
 .fab,
 .fal {
-    font-size: 13px;
+    font-size: 16px;
 }
 
 #visitorMap {
@@ -2905,7 +2940,7 @@ pre {
 
 .circle-step .circle-content {
     margin-top: 3px;
-    margin-left: 13px;
+    margin-left: 16px;
 }
 
 .circle-step .circle {
@@ -3687,7 +3722,7 @@ body.layout-3 .navbar.navbar-secondary .navbar-nav>.nav-item:last-child .nav-lin
 
 body.layout-3 .navbar.navbar-secondary .navbar-nav>.nav-item>.nav-link {
     color: #868e96;
-    font-size: 13px;
+    font-size: 16px;
     letter-spacing: 0.3px;
     height: 70px;
     padding: 0;

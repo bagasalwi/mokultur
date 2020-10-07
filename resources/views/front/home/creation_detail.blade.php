@@ -54,27 +54,22 @@
         </div>
     </div>
 
-    @if ($post->type == 'photo')
-    <div class="owl-carousel owl-theme slider" id="slider2">
-        @foreach ($post->images()->get() as $image)
-        <div>
-            <img src="{{ asset('storage/' . $image->name) }}" data-max-height="500px" class="img-fluid img-cover w-100">
-        </div>
-        @endforeach
-    </div>
-    @else
-        @if ($post->photo() == "no-image")
-        
-        @else
-        <img src="{{ asset('storage/' . $post->photo()) }}" data-max-height="500px" class="img-fluid img-cover w-100">
-        @endif
-    @endif
-
-
-
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-sm-12 offset-md-2">
+                @if ($post->type == 'photo')
+                <div class="owl-carousel owl-theme slider" id="slider2">
+                    @foreach ($post->images()->get() as $image)
+                        <img src="{{ asset('storage/' . $image->name) }}" data-max-height="500px" class="img-fluid img-cover w-100">
+                    @endforeach
+                </div>
+                @else
+                    @if ($post->photo() == "no-image")
+                    
+                    @else
+                    <img src="{{ asset('storage/' . $post->photo()) }}" data-max-height="500px" class="img-fluid img-cover w-100">
+                    @endif
+                @endif
                 <div id="posting" class="my-4">
                     {!! $post->description !!}
                 </div>
@@ -116,9 +111,6 @@
                 @endif
 
             </div>
-            {{-- <div class="col-md-4">
-                @include('layouts.side-profile')
-            </div> --}}
         </div>
     </div>
 </section>
@@ -143,6 +135,6 @@
 <script>
     $(document).ready(function(){
         $('#posting img').addClass('img-fluid');
-        });
+    });
 </script>
 @endsection

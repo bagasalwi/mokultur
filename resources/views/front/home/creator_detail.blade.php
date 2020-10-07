@@ -3,22 +3,23 @@
 @section('content')
 <section class="section">
     <div class="container">
-        @if ($message = Session::get('success'))
-        <div class="alert alert-success alert-dismissible show fade">
-            <div class="alert-body">
-                <button class="close" data-dismiss="alert">
-                    <span>&times;</span>
-                </button>
-                <strong>{{ $message }}</strong>
-            </div>
-        </div>
-        @endif
 
         <div class="row">
-            <div class="col-md-4 col-sm-12">
-                @include('layouts.side-profile')
-            </div>
-            <div class="col-md-8 col-sm-12">
+            <div class="col-md-8 col-sm-12 offset-md-2">
+                <div class="card my-2 sticky-top">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="d-flex justify-content-center">
+                                <img class="rounded-circle my-2" width="150" height="150" 
+                                    src="{{ URL::asset('gambar/profile_pic/' . $user->profile_pic) }}" alt="...">
+                            </div>
+                        </div>
+                        <div class="col-md-8 d-flex flex-column align-self-center">
+                            <h2><a href="{{ url('creator/'. $user->username) }}">{{ $user->name }}</a></h2>
+                            <p class="text-secondary">{{ $user->description }}</p>
+                        </div>
+                    </div>
+                </div>
                 @if ($post[0] == null)
                 <div class="empty-state" data-height="400">
                     <img width="150" src="{{ URL::asset('gambar/sketch/7.svg')}}">
@@ -28,33 +29,29 @@
                     </p>
                 </div>
                 @else
-                <h5 class="text-primary mb-2">Semua Post / Kreasi</h5>
                 <div class="row">
                     @foreach ($post as $p)
-                    <div class="col-md-6 mb-4">
-                        <div class="card card-hover h-100">
-                            <div class="card-header border-bottom">
-                                <img alt="image" width="45" height="45"
-                                    src="{{ URL::asset('gambar/profile_pic/' . $p->user->profile_pic) }}"
-                                    class="rounded-circle mr-2">
-                                <h6><a href="{{ url('creator/' . $p->user->username) }}">{{ $p->user->name }}</a></h6>
-                            </div>
-                            <div class="embed-responsive embed-responsive-4by3">
-                                <img class="embed-responsive-item img-fluid"
-                                    src="{{ URL::asset('gambar/user_post/' . $p->thumbnail) }}" alt="">
-                            </div>
-                            <div class="card-body border-top">
-                                <a class="stretched-link" href="{{ route('post.detail',$p->slug) }}">
-                                    <h6>{{ $p->title }}</h6>
-                                </a>
-                                <div class="mt-2">
-                                    <a><i class="fas fa-eye"></i> {{ $p->view_count }}</a>
-                                    <div class="bullet"></div>
-                                    <a>{{ $p->category->name }}</a>
-                                    <a class="float-right">{{ $p->created_at->diffForHumans() }}</a>
+                    <div class="col-lg-6 col-sm-12">
+                        <a href="{{ route('post.detail',$p->slug) }}" class="card-block clearfix">
+                            <div class="card border-0 my-2">
+                                <div class="card-img-wrap">
+                                    <img class="img-fluid img-imagepost" src="{{ asset('storage/' . $p->photo()) }}" alt="">
+                                    <div class="card-img-overlay text-white">
+                                        <h5 class="badge badge-light shadow">{{ $p->category->name }}</h5>
+                                    </div>
                                 </div>
+                                <div class="mt-1">
+                                    <h4 class="no-pm">
+                                        <a href="{{ route('post.detail',$p->slug) }}">{{ $p->title }}</a>
+                                    </h4>
+                                </div>
+                                <small class="text-secondary">
+                                    {{ Carbon\Carbon::parse($p->date_published)->format('d M Y') }} &middot;
+                                    {{ $p->user->name }}
+                                </small>
                             </div>
-                        </div>
+                        </a>
+            
                     </div>
                     @endforeach
                     <div class="col d-flex justify-content-center">
