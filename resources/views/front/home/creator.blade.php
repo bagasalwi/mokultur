@@ -1,7 +1,7 @@
 @extends('front.layouts.master')
 
 @section('content')
-<div class="jumbotron jumbotron-fluid" style="background-color:#ff6ca9;">
+{{-- <div class="jumbotron jumbotron-fluid" style="background-color:#ff6ca9;">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 offset-lg-2">
@@ -19,19 +19,15 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 <div class="container">
-
-    @if ($message = Session::get('success'))
-    <div class="alert alert-success alert-dismissible show fade">
-        <div class="alert-body">
-            <button class="close" data-dismiss="alert">
-                <span>&times;</span>
-            </button>
-            <strong>{{ $message }}</strong>
-        </div>
+    <div class="my-4">
+        <p class="no-pm">Showing result for :</p>
+        <form action="{{ route('post') }}" role="search">
+            <input type="text" id="search" name="search" class="inputSearch" placeholder="Search.."
+                value="{{ isset($search_meta ) ? $search_meta : ""  }}">
+        </form>
     </div>
-    @endif
     <div class="row">
         <div class="col-lg-12 mt-4">
             <div class="row">

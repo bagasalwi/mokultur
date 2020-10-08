@@ -14,7 +14,7 @@
 Auth::routes();
 
 Route::get('/', 'Frontpanel\HomeController@index')->name('home');
-Route::get('/browse', 'Frontpanel\BrowseController@browseArticle')->name('browse');
+Route::get('/browse', 'Frontpanel\FrontPostController@browseArticle')->name('browse');
 
 Route::prefix('topic')->group(function () {
     Route::get('/', 'Frontpanel\HomeController@category')->name('topic');

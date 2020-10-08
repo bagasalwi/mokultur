@@ -33,11 +33,11 @@
                                 class="rounded-circle">
                         </div>
                         <div class="align-self-center">
-                            <h6 class="p-0 m-0 font-weight-light">
+                            <h6 class="no-pm font-weight-light">
                                 <a class="text-dark"
                                     href="{{ url('creator/' . $post->user->username) }}">{{ $post->user->name }}</a>
                             </h6>
-                            <p class="p-0 m-0"><small class="text-secondary">{{ $estimated_time }} read</small>
+                            <p class="no-pm"><small class="text-secondary">{{ $estimated_time }} read</small>
                             </p>
                         </div>
                     </div>

@@ -52,7 +52,7 @@
         $href = $link + $page; //complete URL
         $.get($href, function(response) { //append data
             $html = $(response).find("#posts").html(); 
-            if($html.length < 20){
+            if($html.length < 40){
                 $('#see-more').replaceWith('<h6 class="text-secondary font-weight-normal">No More Data</h6>')          
             }else{
                 $div.append($html);

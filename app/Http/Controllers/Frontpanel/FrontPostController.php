@@ -19,6 +19,24 @@ class FrontPostController extends Controller
         $this->categoryService = $categoryService;
     }
 
+    public function browseArticle(Request $request)
+    {
+        if ($request->has('search')) {
+            $data['search_meta'] = $request->search;
+            $data['creation'] = Post::where('status', 'P')
+                ->orderBy('created_at', 'desc')
+                ->where('title', 'like', "%" . $request->search . "%")->paginate(2);
+
+            $data['creation']->appends(['search' => $request->search]);
+
+            $data['topCategory'] = $this->categoryService->topCategory();
+        } else {
+            $data['creation'] = $this->postService->latestPublishedPost(2);
+            $data['topCategory'] = $this->categoryService->topCategory();
+        }
+        return view('front.home.browse', $data);
+    }
+
     public function post(Request $request)
     {
         if ($request->has('search')) {
@@ -34,7 +52,7 @@ class FrontPostController extends Controller
             $data['creation'] = $this->postService->latestPublishedPost(2);
             $data['topCategory'] = $this->categoryService->topCategory();
         }
-        return view('front.home.creation', $data);
+        return view('front.home.browse', $data);
     }
 
     public function previewDetailPost($slug)
@@ -51,13 +69,7 @@ class FrontPostController extends Controller
     
                 $words = str_word_count(strip_tags($data['post']->description));
                 $minutes = floor($words / 120);
-                $seconds = floor($words % 120 / (120 / 60));
-    
-                if (1 <= $minutes) {
-                    $data['estimated_time'] = $minutes . ' minute' . ($minutes == 1 ? '' : 's') . ', ' . $seconds . ' second' . ($seconds == 1 ? '' : 's');
-                } else {
-                    $data['estimated_time'] = $seconds . ' second' . ($seconds == 1 ? '' : 's');
-                }
+                $data['estimated_time'] = $minutes . ' minute' . ($minutes == 1 ? '' : 's');
     
                 Post::where('id', $data['post']->id)->increment('view_count');
     
@@ -79,13 +91,7 @@ class FrontPostController extends Controller
 
         $words = str_word_count(strip_tags($data['post']->description));
         $minutes = floor($words / 120);
-        $seconds = floor($words % 120 / (120 / 60));
-
-        if (1 <= $minutes) {
-            $data['estimated_time'] = $minutes . ' minute' . ($minutes == 1 ? '' : 's') . ', ' . $seconds . ' second' . ($seconds == 1 ? '' : 's');
-        } else {
-            $data['estimated_time'] = $seconds . ' second' . ($seconds == 1 ? '' : 's');
-        }
+        $data['estimated_time'] = $minutes . ' minute' . ($minutes == 1 ? '' : 's');
 
         Post::where('id', $data['post']->id)->increment('view_count');
 
