@@ -1,7 +1,7 @@
 <div class="col-lg-3 d-none d-lg-block">
     <div class="stickydiv">
-        {{-- <div class="card card-full no-bd-radius" data-background-full="{{ asset('gambar/covid.jpg') }}"> --}}
         <div class="card card-full no-bd-radius pattern-3">
+            <div class="card-overlay"></div>
             <div class="card-body">
                 <h4 class="text-dark">Always wear Mask!</h4>
                 <p class="text-dark">Due to COVID19 pandemic, make your mask as a secondary weapon of life.
@@ -18,7 +18,6 @@
                     <a class="stretched-link" href="{{ url('topic/'.$category->slug) }}" style="text-decoration : none">
                         <div class="align-self-center">
                             <h2 class="text-white">{{ $category->name }}</h2>
-                            {{-- <p class="text-white font-weight-normal">{{ $category->description }}</p> --}}
                         </div>
                     </a>
                 </div>

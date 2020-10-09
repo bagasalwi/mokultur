@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use Illuminate\Http\Request;
 use App\User;
 use App\PostCategory;
 use App\Sidebar;

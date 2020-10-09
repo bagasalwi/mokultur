@@ -2,13 +2,9 @@
 
 namespace App\Services;
 
-use Illuminate\Http\Request;
 use App\User;
 use App\Post;
 use App\PostPhoto;
-use App\Tag;
-use App\PostCategory;
-use App\Sidebar;
 use File, DB, Auth, Image;
 use Carbon\Carbon;
 
@@ -24,14 +20,19 @@ class PostServices
         return $this->model()->find($id);
     }
 
+    public function postCountAuth($id)
+    {
+        return Post::where('user_id', $id)->count();
+    }
+
     public function postStatusChecker($slug)
     {
         $post = Post::where('slug', $slug)->first();
-        if($post->status == 'D'){
+        if ($post->status == 'D') {
             return "DRAFT";
-        }elseif($post->status == 'P'){
+        } elseif ($post->status == 'P') {
             return "PUBLISH";
-        }else{
+        } else {
             return redirect()->back();
         }
     }

@@ -11,11 +11,11 @@
                         <div class="col-md-4">
                             <div class="d-flex justify-content-center">
                                 <img class="rounded-circle" width="150" height="150"
-                                    src="{{ URL::asset('gambar/profile_pic/' . $user->profile_pic) }}" alt="...">
+                                    src="{{ asset('storage/' . $user->profile_pic) }}" alt="...">
                             </div>
                         </div>
                         <div class="col-md-8 d-flex flex-column align-self-center">
-                            <h1><a href="{{ url('creator/'. $user->username) }}">{{ $user->name }}</a></h1>
+                            <h1>{{ $user->name }}</h1>
                             <p class="text-secondary">{{ $user->description }}</p>
                             <div class="flex-row">
                                 @if ($user->facebook)

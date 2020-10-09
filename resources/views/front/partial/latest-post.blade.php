@@ -1,9 +1,9 @@
-<div class="col-lg-8 col-sm-12">
+<div class="col-lg-6 col-sm-12">
     <h3 class="text-dark font-weight-bold">Latest Post</h3>
     <hr>
     <div id="posts" class="row">
         @foreach ($creation as $p)
-        <div class="col-lg-6 col-sm-12">
+        <div class="col-lg-12 col-sm-12">
             <a href="{{ route('post.detail',$p->slug) }}" class="card-block clearfix">
                 <div class="card border-0 my-2">
                     <div class="card-img-wrap">

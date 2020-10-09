@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers\Frontpanel;
 
+use App\Services\CategoryServices;
+use App\Services\PostServices;
+use App\Services\UserServices;
+
 use App\Http\Controllers\Controller;
 use App\Post;
 use App\User;
@@ -12,10 +16,17 @@ use Auth,DB,Image,File,Session;
 
 class CreatorController extends Controller
 {
+    public function __construct(CategoryServices $categoryService, PostServices $postService, UserServices $userService)
+    {
+        $this->postService = $postService;
+        $this->categoryService = $categoryService;
+        $this->userService = $userService;
+    }
+
     public function index()
     {
         $data['title'] = 'Home';
-        $data['user'] = Auth::user();
+        $data['user'] = $this->userService->auth();
         $data['sidebar'] = Sidebar::where('role_id', 1)->get();
         $data['post'] = Post::where('user_id', $data['user']->id)->paginate(10);
         $data['post_count'] = Post::where('user_id', $data['user']->id)->count();

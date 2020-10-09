@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\CategoryServices;
 use App\Services\PostServices;
+use App\Services\UserServices;
 use App\Post;
 use App\User;
 use Carbon\Carbon;

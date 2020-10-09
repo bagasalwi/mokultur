@@ -23,21 +23,11 @@
                             $p->description
                             !!}
                         </div>
-                        <div class="row">
-                            <div class="col-6 d-flex flex-row">
-                                <div class="align-items-end">
-                                    <p class="text-secondary" data-font-size="12px">
-                                        {{ Carbon\Carbon::parse($p->date_published)->diffForHumans() }} &middot; <a
-                                            href="{{ url('creator/' . $p->user->username) }}">{{ strtoupper($p->user->name) }}</a>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-6 d-flex flex-row-reverse">
-                                <div class="align-self-end">
-                                    <a href="{{ route('post.detail',$p->slug) }}" class="btn btn-outline-dark m-0">Read
-                                        More</a>
-                                </div>
-                            </div>
+                        <div class="align-items-end">
+                            <p class="text-secondary" data-font-size="16px">
+                                {{ Carbon\Carbon::parse($p->date_published)->diffForHumans() }} &middot; <a
+                                    href="{{ url('creator/' . $p->user->username) }}">{{ strtoupper($p->user->name) }}</a>
+                            </p>
                         </div>
                     </div>
                     <hr>

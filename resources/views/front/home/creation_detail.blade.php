@@ -24,12 +24,12 @@
                         <span class="badge badge-danger px-4">{{ $post->status() }}</span>
                     @endif
                 </h4>
-                <h1 class="text-dark">{{ $post->title }}</h1>
+                <h1 class="text-dark my-4">{{ $post->title }}</h1>
                 <div class="row my-2">
                     <div class="col-6 d-flex flex-row">
                         <div class="align-self-center mr-2">
-                            <img alt="image" width="30" height="30"
-                                src="{{ URL::asset('gambar/profile_pic/' . $post->user->profile_pic) }}"
+                            <img alt="image" width="50" height="50"
+                                src="{{ asset('storage/' . $post->user->profile_pic) }}"
                                 class="rounded-circle">
                         </div>
                         <div class="align-self-center">

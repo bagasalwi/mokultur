@@ -27,8 +27,8 @@ Route::prefix('article')->group(function () {
 });
 
 Route::prefix('creator')->group(function () {
-    Route::get('/', 'Frontpanel\CreatorController@creator');
-    Route::get('/{username}', 'Frontpanel\CreatorController@creator_detail');
+    Route::get('/', 'Frontpanel\CreatorController@creator')->name('creator');
+    Route::get('/{username}', 'Frontpanel\CreatorController@creator_detail')->name('creator.detail');
     Route::post('/search', 'Frontpanel\CreatorController@search_creator');
 });
 

@@ -1,13 +1,6 @@
 @extends('front.layouts.master')
 
 @section('content')
-{{-- 
-@section('script')
-<script>
-    alert('test');
-</script>
-@endsection --}}
-
 @guest
 <div class="jumbotron jumbotron-fluid pattern-1 mb-0">
     <div class="container">
@@ -40,7 +33,7 @@
 <div class="section">
     <div class="container">
         <div class="row">
-            {{-- @include('front.partial.left-bar') --}}
+            @include('front.partial.left-bar')
             @include('front.partial.latest-post')
             @include('front.partial.right-bar')
         </div>

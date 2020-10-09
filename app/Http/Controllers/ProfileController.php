@@ -7,71 +7,46 @@ use App\Sidebar;
 use App\Post;
 use App\Rules\MatchOldPassword;
 
-use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Hash;
+use App\Services\CategoryServices;
+use App\Services\PostServices;
+use App\Services\UserServices;
+
 use Illuminate\Http\Request;
-use Illuminate\Support\Collection;
 use Carbon\Carbon;
 use Auth;
-use DB;
-use Image;
-use File;
 
 class ProfileController extends Controller
 {
-    public function __construct()
+    public function __construct(CategoryServices $categoryService, PostServices $postService, UserServices $userService)
     {
         $this->middleware(['auth']);
+        $this->postService = $postService;
+        $this->categoryService = $categoryService;
+        $this->userService = $userService;
     }
 
     public function index()
     {
         $data['title'] = 'My Profile';
-        $data['user'] = Auth::user();
+        $data['user'] = $this->userService->auth();
         $data['sidebar'] = Sidebar::where('role_id', 1)->get();
-        $data['post_count'] = Post::where('user_id', $data['user']->id)->count();
+        $data['post_count'] = $this->postService->postCountAuth($data['user']->id);
         
         return view('front.profile.profile', $data);
     }
 
     public function save(Request $request)
     {
-        $user = Auth::user();
+        $user = $this->userService->auth();
 
         $this->validate($request, [
             'name' => 'required|min:3',
-            'email' => 'required|email|unique:users,email,'. $user->id,
+            // 'email' => 'required|email|unique:users,email,'. $user->id,
             'username' => 'required|min:3|max:10|unique:users,username,'. $user->id,
             'profile_pic' => 'file|image|mimes:jpeg,png,jpg',
-            ]);
+        ]);
 
-
-        if ($request->hasFile('profile_pic')) {
-            $avatar = $request->file('profile_pic');
-            
-
-            $filename = time() . '.' . $avatar->getClientOriginalExtension();
-
-            // Delete current image before uploading new image
-            if ($user->profile_pic !== null && $user->profile_pic !== 'default.png') {
-                $usersImage = public_path('gambar/profile_pic/' . $user->profile_pic); // get previous image from folder
-                if (File::exists($usersImage)) { // unlink or remove previous image from folder
-                    unlink($usersImage);
-                }
-            }
-
-            Image::make($avatar)->save(public_path('gambar/profile_pic/' . $filename));
-            $user->profile_pic = $filename;
-        }
-
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->username = $request->username;
-        $user->slug = str_slug($request->username, '-');
-        $user->description = $request->description;
-        $user->instagram = $request->instagram;
-        $user->facebook = $request->facebook;
-        $user->save();
+        $this->userService->updateProfile($request->all(),$request->file('profile_pic'));
 
         return redirect('profile')->with(['success' => 'Profil kamu berhasil di update!']);
     }
@@ -84,11 +59,7 @@ class ProfileController extends Controller
             'new_confirm_password' => ['same:new_password']
         ]);
 
-        $id = Auth::user()->id;
-        $user = User::find($id);
-
-        $user->password = Hash::make($request->new_password);
-        $user->save();
+        $this->userService->updatePassword($request->all());
 
         return redirect('profile')->with(['success' => 'Password berhasil di update!']);
     }

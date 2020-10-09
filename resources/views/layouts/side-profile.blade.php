@@ -3,7 +3,7 @@
         <div class="card-body">
             <div class="d-flex justify-content-center">
                 <img class="rounded-circle my-2" width="150" height="150" 
-                    src="{{ URL::asset('gambar/profile_pic/' . $user->profile_pic) }}" alt="...">
+                    src="{{ asset('storage/' . $user->profile_pic) }}" alt="...">
             </div>
             <a href="{{ url('creator/'. $user->username) }}" class="text-primary text-center"><h4 >{{ $user->name }}</h4></a>
             <div class="profile-widget">

@@ -21,10 +21,15 @@
                         CATEGORY
                     </a>
                 </li>
+                <li class="nav-item px-lg-2 {{ request()->is('creator') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('creator') }}">
+                        CREATOR
+                    </a>
+                </li>
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item px-lg-2">
-                    <button type="button" id="searchBtn" class="btn btn-default navbar-btn m-0"><i
+                    <button type="button" id="searchBtn" class="btn btn-default navbar-btn nav-link m-0"><i
                             class="fa fa-search"></i></button>
                 </li>
                 <form id="searchForm" action="{{ route('post') }}" role="search" style="display:none">
@@ -48,14 +53,13 @@
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         <img alt="image" width="30" height="30"
-                            src="{{ URL::asset('gambar/profile_pic/' . auth()->user()->profile_pic) }}"
-                            class="rounded-circle mr-1">
+                            src="{{ asset('storage/' . auth()->user()->profile_pic) }}" class="rounded-circle mr-1">
                     </a>
                     <div class="dropdown-menu shadow-sm sm-menu" aria-labelledby="dropdown01">
                         <a class="dropdown-item">
                             <h6 class="p-0 m-0">
                                 <span
-                                    class="font-weight-normal">{{ strlen(auth()->user()->name) > 50 ? substr(auth()->user()->name, 0, 18) . '...' : auth()->user()->name }}</span>
+                                    class="font-weight-normal">{{ strlen(auth()->user()->name) > 20 ? substr(auth()->user()->name, 0, 20) . '...' : auth()->user()->name }}</span>
                             </h6>
                             <small class="p-0 m-0 text-muted">{{ auth()->user()->username }}</small>
                         </a>
