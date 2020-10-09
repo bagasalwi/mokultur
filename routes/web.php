@@ -36,10 +36,10 @@ Route::group(['middleware' => 'auth'], function () {
 
     // User Controller
 
-    Route::get('/home', 'Frontpanel\CreatorController@index');
+    Route::get('/home', 'Frontpanel\CreatorController@index')->name('dashboard');
 
     Route::prefix('profile')->group(function () {
-        Route::get('/', 'ProfileController@index');
+        Route::get('/', 'ProfileController@index')->name('profile');
         Route::post('save', 'ProfileController@save');
         Route::post('password/save', 'ProfileController@change_password');
     });

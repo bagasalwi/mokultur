@@ -63,7 +63,7 @@
                             </h6>
                             <small class="p-0 m-0 text-muted">{{ auth()->user()->username }}</small>
                         </a>
-                        <a class="dropdown-item has-icon" href="{{ url('profile') }}">
+                        <a class="dropdown-item has-icon" href="{{ url('home') }}">
                             <span class="text-dark">Profile</span>
                         </a>
                         <a class="dropdown-item has-icon" href="{{ url('post') }}">

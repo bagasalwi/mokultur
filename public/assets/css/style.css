@@ -1535,11 +1535,11 @@ table tr:hover .table-links {
 .nav-pills .nav-link.active,
 .nav-pills .show>.nav-link {
     color: #fff;
-    background-color: #ff549c;
+    background-color: #000;
 }
 
 .nav-pills .nav-item .nav-link {
-    color: #ff549c;
+    color: #000;
     padding-left: 15px !important;
     padding-right: 15px !important;
 }
@@ -1549,9 +1549,9 @@ table tr:hover .table-links {
 }
 
 .nav-pills .nav-item .nav-link.active {
-    box-shadow: 0 2px 6px #acb5f6;
+    box-shadow: 0 2px 6px #00000011;
     color: #fff;
-    background-color: #ff549c;
+    background-color: #000;
 }
 
 .nav-pills .nav-item .nav-link .badge {

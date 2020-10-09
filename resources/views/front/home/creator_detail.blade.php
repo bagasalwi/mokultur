@@ -19,23 +19,20 @@
                             <p class="text-secondary">{{ $user->description }}</p>
                             <div class="flex-row">
                                 @if ($user->facebook)
-                                <button class="btn btn-facebook"
-                                    onclick="location.href='https://facebook.com/{{ $user->facebook }}';">
+                                <a class="btn btn-facebook" href="https://facebook.com/{{ $user->facebook }}" target="_blank">
                                     <i class="fab fa-facebook"></i> Facebook
-                                </button>
+                                </a>
                                 @endif
                                 @if($user->instagram)
-                                <button class="btn btn-instagram"
-                                    onclick="location.href='https://instagram.com/{{ $user->instagram }}';">
+                                <a class="btn btn-instagram" href="https://instagram.com/{{ $user->instagram }}" target="_blank">
                                     <i class="fab fa-instagram"></i> Instagram
-                                </button>
+                                </a>
                                 @endif
                             </div>
                         </div>
                     </div>
                 </div>
-
-
+                
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
