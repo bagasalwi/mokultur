@@ -17,7 +17,7 @@
                     <div class="card-body row">
                         <div class="col-4 align-self-center text-center">
                             <img class="rounded-circle img-cover" width="90" height="90"
-                                src="{{ asset('storage/' . $user->profile_pic) }}" alt="...">
+                                src="{{ asset('storage/' . $cr->profile_pic) }}" alt="...">
                         </div>
                         <div class="col-8 d-flex flex-column align-self-center">
                             <h2 class="no-pm">{{ $cr->name }}</h2>

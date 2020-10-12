@@ -23,28 +23,6 @@ class CreatorController extends Controller
         $this->userService = $userService;
     }
 
-    public function index()
-    {
-        $data['title'] = 'Home';
-        $data['user'] = $this->userService->auth();
-        $data['sidebar'] = Sidebar::where('role_id', 1)->get();
-        $data['post'] = Post::where('user_id', $data['user']->id)->paginate(10);
-        $data['post_count'] = Post::where('user_id', $data['user']->id)->count();
-
-        $time = date("H");
-        if ($time < "12") {
-            $data['greetings'] = "Good morning";
-        } elseif ($time >= "12" && $time < "17") {
-            $data['greetings'] = "Good afternoon";
-        } elseif ($time >= "17" && $time < "19") {
-            $data['greetings'] = "Good evening";
-        } elseif ($time >= "19") {
-            $data['greetings'] = "Good night";
-        }
-
-        return view('front.home.home', $data);
-    }
-
     public function creator(Request $request){
         if ($request->has('search')) {
             $data['search_meta'] = $request->search;
@@ -53,10 +31,8 @@ class CreatorController extends Controller
                         ->where('name', 'like', "%".$request->search."%")->paginate(9);
 
             $data['creator']->appends(['search' => $request->search]);
-            $data['user'] = Auth::user();
         } else {
             $data['creator'] = User::with('latestPost')->paginate(9);         
-            $data['user'] = Auth::user();
         }
 
         return view('front.home.creator', $data);
@@ -66,17 +42,19 @@ class CreatorController extends Controller
     {
         $data['user'] = User::where('username', $username)->first();
 
-        if($data['user']->id == auth()->user()->id){
-            return redirect()->route('dashboard');
-        }
-
-        if($data['user']){
-            $data['post'] = Post::orderBy('created_at', 'desc')->where('user_id', $data['user']->id)->paginate(10);
-            $data['post_count'] = Post::where('user_id', $data['user']->id)->count();
-    
-            return view('front.home.creator_detail', $data);
+        if(auth()->user()){
+            if($data['user']->id == auth()->user()->id){
+                return redirect()->route('dashboard');
+            }
         }else{
-            return redirect()->back();
+            if($data['user']){
+                $data['post'] = Post::orderBy('created_at', 'desc')->where('user_id', $data['user']->id)->paginate(10);
+                $data['post_count'] = Post::where('user_id', $data['user']->id)->count();
+        
+                return view('front.home.creator_detail', $data);
+            }else{
+                return redirect()->back();
+            }
         }
     }
 

@@ -34,6 +34,34 @@ class ProfileController extends Controller
         
         return view('front.profile.profile', $data);
     }
+    
+    public function dashboard(){
+        $data['user'] = $this->userService->auth();
+        $data['sidebar'] = Sidebar::where('role_id', 1)->get();
+        $data['post'] = Post::where('user_id', $data['user']->id)->paginate(10);
+        $data['total_post'] = auth()->user()->totalPost();
+        $data['active_since'] = auth()->user()->created_at->format('d M Y');
+
+        $data['total_view'] = 0;
+        if($data['post']){
+            foreach($data['post'] as $post){
+                $data['total_view'] += $post->view_count;
+            }
+        }
+
+        $time = date("H");
+        if ($time < "12") {
+            $data['greetings'] = "Good morning";
+        } elseif ($time >= "12" && $time < "17") {
+            $data['greetings'] = "Good afternoon";
+        } elseif ($time >= "17" && $time < "19") {
+            $data['greetings'] = "Good evening";
+        } elseif ($time >= "19") {
+            $data['greetings'] = "Good night";
+        }
+
+        return view('front.home.home', $data);
+    }
 
     public function save(Request $request)
     {

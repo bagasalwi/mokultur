@@ -35,11 +35,9 @@ Route::prefix('creator')->group(function () {
 Route::group(['middleware' => 'auth'], function () {
 
     // User Controller
-
-    Route::get('/home', 'Frontpanel\CreatorController@index')->name('dashboard');
-
     Route::prefix('profile')->group(function () {
         Route::get('/', 'ProfileController@index')->name('profile');
+        Route::get('/dashboard', 'ProfileController@dashboard')->name('dashboard');
         Route::post('save', 'ProfileController@save');
         Route::post('password/save', 'ProfileController@change_password');
     });

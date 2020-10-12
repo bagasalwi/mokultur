@@ -54,8 +54,9 @@
                 </div>
                 {!! $post->render() !!}
                 @else
-                <div class="text-center">
-                    <h6 class="text-secondary font-weight-normal">No Post </h6>
+                <div class="empty-state" data-height="400">
+                    <img width="150" src="{{ URL::asset('gambar/sketch/7.svg')}}">
+                    <h2>Tidak ada Post</h2>
                 </div>
                 @endif
             </div>

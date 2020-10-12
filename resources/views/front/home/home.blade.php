@@ -46,9 +46,6 @@
                         <div class="empty-state" data-height="400">
                             <img width="150" src="{{ URL::asset('gambar/sketch/7.svg')}}">
                             <h2>Tidak ada Post</h2>
-                            <p class="lead">
-                                {{ $user->name }} belum mengupload kreasi / post saat ini
-                            </p>
                         </div>
                         @else
                         <div id="posts" class="row">
@@ -89,7 +86,33 @@
                         </div>
                         @endif
                     </div>
-                    <div class="tab-pane fade show active" id="fact" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="tab-pane fade show" id="fact" role="tabpanel" aria-labelledby="fact-tab">
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="card card-body bg-dark">
+                                    <h5 class="text-white">Here Just to Post</h5>
+                                    <p class="text-white">Overall Total Post, {{ $total_post }} Article</p>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="card card-body bg-dark">
+                                    <h5 class="text-white">My Viewers, My Achievement</h5>
+                                    <p class="text-white">Total Views from All Post, {{ $total_view }}</p>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="card card-body bg-dark">
+                                    <h5 class="text-white">From The Beginning</h5>
+                                    <p class="text-white">Your Account active since {{ $active_since }}</p>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="card card-body bg-dark">
+                                    <h5 class="text-white">The Tag Master</h5>
+                                    <p class="text-white"></p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
