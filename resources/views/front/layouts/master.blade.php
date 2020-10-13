@@ -18,6 +18,8 @@
 
 	@include('front.layouts.css-extension')
 
+	@yield('css')
+
 	<style type="text/css">
 		.smart-scroll {
 			position: fixed;

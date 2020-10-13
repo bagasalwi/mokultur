@@ -14,22 +14,23 @@
 Auth::routes();
 
 Route::get('/', 'Frontpanel\HomeController@index')->name('home');
-Route::get('/browse', 'Frontpanel\FrontPostController@browseArticle')->name('browse');
+Route::get('/browse', 'Frontpanel\FrontPostController@browsePost')->name('browse');
 
 Route::prefix('topic')->group(function () {
     Route::get('/', 'Frontpanel\HomeController@category')->name('topic');
-    Route::get('/{category}', 'Frontpanel\HomeController@category');
+    Route::get('/{category}', 'Frontpanel\HomeController@category')->name('topic.detail');
 });
 
+Route::get('/event', 'Frontpanel\HomeController@specialCategory')->name('topic.event');
+
 Route::prefix('article')->group(function () {
-    Route::get('/', 'Frontpanel\FrontPostController@post')->name('post');
+    Route::get('/', 'Frontpanel\FrontPostController@browsePost')->name('post');
     Route::get('/{slug}', 'Frontpanel\FrontPostController@postChecker')->name('post.detail');
 });
 
 Route::prefix('creator')->group(function () {
     Route::get('/', 'Frontpanel\CreatorController@creator')->name('creator');
     Route::get('/{username}', 'Frontpanel\CreatorController@creator_detail')->name('creator.detail');
-    Route::post('/search', 'Frontpanel\CreatorController@search_creator');
 });
 
 Route::group(['middleware' => 'auth'], function () {

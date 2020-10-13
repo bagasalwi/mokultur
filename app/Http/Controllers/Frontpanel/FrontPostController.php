@@ -20,25 +20,7 @@ class FrontPostController extends Controller
         $this->categoryService = $categoryService;
     }
 
-    public function browseArticle(Request $request)
-    {
-        if ($request->has('search')) {
-            $data['search_meta'] = $request->search;
-            $data['creation'] = Post::where('status', 'P')
-                ->orderBy('created_at', 'desc')
-                ->where('title', 'like', "%" . $request->search . "%")->paginate(2);
-
-            $data['creation']->appends(['search' => $request->search]);
-
-            $data['topCategory'] = $this->categoryService->topCategory();
-        } else {
-            $data['creation'] = $this->postService->latestPublishedPost(2);
-            $data['topCategory'] = $this->categoryService->topCategory();
-        }
-        return view('front.home.browse', $data);
-    }
-
-    public function post(Request $request)
+    public function browsePost(Request $request)
     {
         if ($request->has('search')) {
             $data['search_meta'] = $request->search;

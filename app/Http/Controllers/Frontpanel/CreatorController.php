@@ -57,18 +57,4 @@ class CreatorController extends Controller
             }
         }
     }
-
-    public function search_creator(Request $request)
-    {
-        $data['title'] = 'KREATOR';      
-        $data['user'] = Auth::user();
-
-        $search = $request->search;
-        $data['creator'] = User::with('latestPost')
-                        ->orderBy('created_at', 'desc')
-                        ->where('name', 'like', "%".$search."%")->paginate(9);
-
-        // dd($data['creator']);
-        return view('front.home.creator', $data);
-    }
 }

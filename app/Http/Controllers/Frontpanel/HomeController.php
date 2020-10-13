@@ -30,42 +30,29 @@ class HomeController extends Controller
     }
 
     public function category($category = null){
-        $data['title'] = 'Category';
-
         if($category){
             $data['category'] = $this->categoryService->findSlug($category);
             $data['topCategory'] = $this->categoryService->topCategory();
             $data['creation'] = $this->postService->postByCategories($data['category']->id);
             
-            return view('front.category-detail', $data);
+            return view('front.category.category-detail', $data);
         }else{
             $data['category_slide'] = $this->categoryService->categoryTake(5);
             $data['category'] = $this->categoryService->allCategory();
             $data['topCategory'] = $this->categoryService->topCategory();
             $data['creation'] = Post::where('status', 'P')->orderBy('created_at', 'desc')->paginate(2);
 
-            return view('front.category', $data);
+            return view('front.category.category', $data);
         }
 
     }
 
-    public function contact()
-    {        
-        $data['title'] = 'Contact';        
+    public function specialCategory(){
 
-        return view('front.home.contact', $data);
-    }
-
-    public function contact_submit(Request $request)
-    {        
-        $data['title'] = 'Contact'; 
-
-        DB::table('saran')->insert([
-            'name' => $request->name,
-            'email' => $request->email,
-            'description' => $request->description,
-        ]);
-
-        return redirect('contact')->with('success', 'Terima kasih Saran & Kritik anda sangat membantu !');
+        $data['category'] = PostCategory::first();
+        $data['topCategory'] = $this->categoryService->topCategory();
+        $data['creation'] = Post::where('status', 'P')->orderBy('created_at', 'desc')->paginate(8);
+        
+        return view('front.special.category-special', $data);
     }
 }

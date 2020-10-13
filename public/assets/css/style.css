@@ -2,7 +2,7 @@
 @import url("//fonts.googleapis.com/css?family=Nunito:400,600,700,800");
 body {
     background-color: #f4f6f9;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 200;
     letter-spacing: 0.2px;
     font-family: 'Poppins', sans-serif;
@@ -830,6 +830,10 @@ select.form-control:not([size]):not([multiple]) {
     border: 1px solid rgb(235, 235, 235);
     border-radius: 0px;
     position: relative;
+}
+
+.card-event{
+    box-shadow: 0 2px 2px rgb(255, 255, 255), 0 0 2px rgb(255, 255, 255);
 }
 
 .card .card-overlay{

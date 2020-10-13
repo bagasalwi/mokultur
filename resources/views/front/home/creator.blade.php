@@ -4,7 +4,7 @@
 <div class="container">
     <div class="my-4">
         <p class="no-pm">Showing result for :</p>
-        <form action="{{ url('creator/search') }}" role="search">
+        <form action="{{ url('creator') }}" role="search">
             <input type="text" id="search" name="search" class="inputSearch" placeholder="Search.."
                 value="{{ isset($search_meta ) ? $search_meta : ""  }}">
         </form>

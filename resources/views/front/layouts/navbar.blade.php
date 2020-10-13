@@ -18,12 +18,17 @@
                 </li>
                 <li class="nav-item px-lg-2 {{ request()->is('topic') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('topic') }}">
-                        CATEGORY
+                        TOPICS
                     </a>
                 </li>
                 <li class="nav-item px-lg-2 {{ request()->is('creator') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('creator') }}">
-                        CREATOR
+                        CREATORS
+                    </a>
+                </li>
+                <li class="nav-item px-lg-2 {{ request()->is('event') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('topic.event') }}">
+                        EVENT
                     </a>
                 </li>
             </ul>
