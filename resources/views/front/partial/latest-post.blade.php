@@ -29,7 +29,7 @@
         @endforeach
     </div>
     {!! $creation->render() !!}
-    <div class="text-center">
+    <div class="text-center my-4">
         @if ($creation->hasMorePages())
         <button id="see-more" class="btn btn-block btn-dark" data-page="2" data-link="{{ url()->current().'?page=' }}"
             data-div="#posts">See more</button>

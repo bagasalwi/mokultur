@@ -47,7 +47,8 @@ class CategoryServices{
             'name' => $request['name'],
             'slug' => str_slug($request['name'], '-'),
             'description' => $request['description'],
-            'banner' => $path
+            'banner' => $path,
+            'status' => 'A'
         ]);
 
         return $category;
@@ -73,7 +74,8 @@ class CategoryServices{
             'name' => $request['name'],
             'slug' => str_slug($request['name'], '-'),
             'description' => $request['description'],
-            'banner' => $path
+            'banner' => $path,
+            'status' => 'A'
         ]);
 
         return $category;
@@ -91,6 +93,17 @@ class CategoryServices{
         }
 
         PostCategory::where('id',$id)->delete();
+    }
+
+    public function makeAnEvent($id){
+        $cat = $this->find($id);
+
+        PostCategory::where('id',$cat->id)->update([
+            'status' => 'E'
+        ]);
+
+        
+        
     }
 
     

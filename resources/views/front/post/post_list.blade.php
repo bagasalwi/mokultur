@@ -20,11 +20,14 @@
 
                     @php
                     if($item->status == 'P'){
-                    $status = 'Published';
-                    $s_color = 'success';
+                        $status = 'Published';
+                        $s_color = 'success';
                     }else if($item->status == 'D'){
-                    $status = 'Draft';
-                    $s_color = 'danger';
+                        $status = 'Draft';
+                        $s_color = 'danger';
+                    }else{
+                        $status = 'null';
+                        $s_color = 'danger';
                     }
                     @endphp
 

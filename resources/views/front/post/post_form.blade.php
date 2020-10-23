@@ -42,7 +42,8 @@
                             <div class="col-md-4 col-sm-12">
                                 <div class="form-group">
                                     <label>Category</label>
-                                    <select class="form-control select2" id="category_id" name="category_id">
+                                    <select class="form-control select2" id="category_id" name="category_id" required>
+                                        <option value="">- Select Category -</option>
                                         @foreach ($post_category as $r)
                                         <option value="{{ $r->id }}"
                                             {{ $fields->category_id == $r->id ? 'selected' : '' }}>
@@ -101,8 +102,8 @@
                             <div class="col-md-12 col-sm-12">
                                 <div class="form-group">
                                     <label>Status</label>
-                                    <select class="form-control selectric" name="status">
-                                        <option {{ $fields->status == '' ? 'selected' : '' }}>Select Status</option>
+                                    <select class="form-control selectric" name="status" required>
+                                        <option {{ $fields->status == '' ? 'selected' : '' }} value="">Select Status</option>
                                         <option value="P" {{ $fields->status == 'P' ? 'selected' : '' }}>Publish</option>
                                         <option value="D" {{ $fields->status == 'D' ? 'selected' : '' }}>Draft</option>
                                     </select>

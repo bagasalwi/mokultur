@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->longText('description')->nullable();
             $table->string('instagram')->nullable();
             $table->string('facebook')->nullable();
-            $table->string('profile_pic')->default('images/category/user-default.png')->nullable();
+            $table->string('profile_pic')->default('images/profile/user-default.png')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

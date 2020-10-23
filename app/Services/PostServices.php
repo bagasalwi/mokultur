@@ -109,7 +109,9 @@ class PostServices
             'status' => $request['status'],
         ]);
 
-        $post->retag($request['tags']);
+        if(isset($request['tags'])){
+            $post->retag($request['tags']);
+        }
 
         return $post;
     }
