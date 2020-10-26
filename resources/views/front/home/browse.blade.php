@@ -11,26 +11,28 @@
             </form>
         </div>
         <div class="row">
-            <div class="col-lg-9 post-index">
+            <div class="col-lg-9 col-sm-12">
                 <div id="posts">
                     @foreach ($creation as $p)
-                    <div class="card border-0 my-4">
-                        <img class="img-cover img-index my-2" src="{{ asset('storage/' . $p->photo()) }}" alt="">
-                        <h2><a class="text-dark font-weight-bold"
-                                href="{{ route('post.detail',$p->slug) }}">{{ $p->title }}</a></h2>
-                        <div class="text-secondary no-pm text-preview">
-                            {!! strlen($p->description) > 100 ? substr($p->description, 0, 150) . '...' :
-                            $p->description
-                            !!}
+                    <a href="{{ route('post.detail',$p->slug) }}" class="card-block clearfix">
+                        <div class="card border-0 mb-2">
+                            <div class="card-img-wrap mb-2">
+                                <img class="img-fluid img-imagepost" loading="lazy"
+                                    src="{{ asset('storage/' . $p->photo()) }}" alt="">
+                            </div>
+                            <h2><a class="text-dark font-weight-bold"
+                                    href="{{ route('post.detail',$p->slug) }}">{{ $p->title }}</a></h2>
+                            <div class="text-secondary no-pm">
+                                {{ str_limit(strip_tags($p->description),190,'...') }}
+                            </div>
+                            <div class="align-items-end mt-2">
+                                <p class="text-secondary">
+                                    {{ Carbon\Carbon::parse($p->date_published)->diffForHumans() }} &middot; <a
+                                        href="{{ url('creator/' . $p->user->username) }}">{{ strtoupper($p->user->name) }}</a>
+                                </p>
+                            </div>
                         </div>
-                        <div class="align-items-end">
-                            <p class="text-secondary" data-font-size="16px">
-                                {{ Carbon\Carbon::parse($p->date_published)->diffForHumans() }} &middot; <a
-                                    href="{{ url('creator/' . $p->user->username) }}">{{ strtoupper($p->user->name) }}</a>
-                            </p>
-                        </div>
-                    </div>
-                    <hr>
+                    </a>
                     @endforeach
                 </div>
                 {!! $creation->render() !!}
@@ -39,7 +41,7 @@
                     <button id="see-more" class="btn btn-block btn-dark" data-page="2"
                         data-link="{{ url()->current().'?page=' }}" data-div="#posts">See more</button>
                     @else
-                    <h6 class="text-secondary font-weight-normal">No More Data</h6>
+                    <h6 class="text-secondary font-weight-normal">You reach the bottom of Knowledge!</h6>
                     @endif
                 </div>
             </div>
@@ -63,7 +65,7 @@
             $html = $(response).find("#posts").html(); 
             if($html.length < 40){
                 alert('habis');
-                $('#see-more').replaceWith('<h6 class="text-secondary font-weight-normal">No More Data</h6>')          
+                $('#see-more').replaceWith('<h6 class="text-secondary font-weight-normal">You reach the bottom of Knowledge!</h6>')          
             }else{
                 alert($html);
                 $div.append($html);

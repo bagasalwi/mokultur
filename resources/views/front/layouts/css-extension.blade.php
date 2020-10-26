@@ -27,7 +27,6 @@ href="{{ URL::asset('assets/modules/bootstrap-timepicker/css/bootstrap-timepicke
 <link href="{{ URL::asset('assets/modules/aos/aos.css')}}" rel="stylesheet">
 
 {{-- font --}}
-<link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet"> 
 <link rel="stylesheet" href="{{ URL::asset('assets/css/fonts/PannoText/PannoText.css')}}">
+<link rel="stylesheet" href="{{ URL::asset('assets/css/fonts/DinLT/stylesheet.css')}}">

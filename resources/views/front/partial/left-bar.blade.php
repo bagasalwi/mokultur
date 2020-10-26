@@ -1,7 +1,7 @@
 <div class="col-lg-3 d-none d-lg-block">
     <div class="stickydiv">
         @guest
-        <div class="card card-full no-bd-radius mb-4 pattern-4">
+        <div class="card card-full no-bd-radius mb-4">
             <div class="card-body">
                 <h4 class="text-dark">Sign In to make a Post</h4>
                 <p class="text-dark">While you sign in to your account, you can share your stories through
@@ -19,7 +19,7 @@
             </div>
         </div>
         @endguest
-        <div class="card card-full mb-4" data-background-full="{{ asset('gambar/instagram.jpg') }}">
+        <div class="card card-full bd-radius-8 mb-4" data-background-full="{{ asset('gambar/instagram.jpg') }}">
             <div class="card-body">
                 <h6 class="text-white text-center">
                     Link Your Instagram

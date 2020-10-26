@@ -1,4 +1,4 @@
-<nav class="navbar smart-scroll navbar-expand-lg navbar-light shadow-sm fixed-top">
+<nav class="navbar navbar-expand-lg navbar-light shadow-sm fixed-top">
     <div class="container" id="navbar-container">
         <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
             <img src="{{ URL::asset('gambar/logo.png')}}" width="100" alt="">
@@ -13,22 +13,22 @@
             <ul class="navbar-nav mr-auto pl-lg-4">
                 <li class="nav-item px-lg-2 {{ request()->is('browse') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('browse') }}">
-                        BROWSE
+                        <h6 class="no-pm">BROWSE</h6>
                     </a>
                 </li>
                 <li class="nav-item px-lg-2 {{ request()->is('topic') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('topic') }}">
-                        TOPICS
+                        <h6 class="no-pm">TOPICS</h6>
                     </a>
                 </li>
                 <li class="nav-item px-lg-2 {{ request()->is('creator') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('creator') }}">
-                        CREATORS
+                        <h6 class="no-pm">CREATORS</h6>
                     </a>
                 </li>
                 <li class="nav-item px-lg-2 {{ request()->is('event') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('topic.event') }}">
-                        EVENT
+                        <h6 class="no-pm">EVENT</h6>
                     </a>
                 </li>
             </ul>

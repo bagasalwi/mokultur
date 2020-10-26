@@ -23,28 +23,28 @@ h4,
 h5,
 h6,
 .noto {
-    font-family: 'Panno Text', sans-serif;
+    font-family: 'DIN Next LT Pro', sans-serif;
     margin-bottom: 0.5rem !important;
     line-height: 1.2 !important;
 }
 
 h1 {
-    font-size: 42px;
+    font-size: 36px;
 }
 h2 {
-    font-size: 38px;
+    font-size: 32px;
 }
 h3 {
-    font-size: 34px;
+    font-size: 28px;
 }
 h4 {
-    font-size: 30px;
+    font-size: 24px;
 }
 h5 {
-    font-size: 26px;
+    font-size: 20px;
 }
 h6 {
-    font-size: 22px;
+    font-size: 16px;
 }
 
 
@@ -839,11 +839,16 @@ select.form-control:not([size]):not([multiple]) {
     position: relative;
 }
 
+.card-horizontal {
+    display: flex;
+    flex: 1 1 auto;
+}
+
 .card-event{
     box-shadow: 0 2px 2px rgb(255, 255, 255), 0 0 2px rgb(255, 255, 255);
 }
 
-.card .card-overlay{
+.card-overlay{
     position: absolute;
     width: 100%;
     height:100%;
@@ -2418,8 +2423,8 @@ h6 .badge {
     color: #000000;
     padding-left: 18px !important;
     padding-right: 18px !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
     height: 100%;
     font-size: 20px;
     font-family: 'Panno Text', sans-serif !important;
@@ -2878,13 +2883,25 @@ a.bb {
 }
 
 .img-index{
-    max-height: 200px;
+    max-height: 300px;
     max-width: auto;
+}
+
+.img-imagepost-headline{
+    width: 100%;
+    max-height: 600px;
+    object-fit: cover;
 }
 
 .img-imagepost {
     width: 250px;
     height: 250px;
+    object-fit: cover;
+}
+
+.img-imagepost-hr{
+    width: 150px;
+    height: 100px;
     object-fit: cover;
 }
 
@@ -4267,7 +4284,7 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
 .stickydiv {
     position: sticky;
     position: -webkit-sticky;
-    top: 60px;
+    top: 70px;
 }
 
 .img-slider {
@@ -4307,6 +4324,16 @@ background-image: url("data:image/svg+xml,%3Csvg width='42' height='44' viewBox=
 
 .no-bd-radius{
     border-radius: 0 !important;
+}
+
+.bd-radius-2{
+    border-radius: 4px !important;
+}
+.bd-radius-4{
+    border-radius: 8px !important;
+}
+.bd-radius-8{
+    border-radius: 12px !important;
 }
 
 .inputSearch{

@@ -12,12 +12,12 @@
         <h6 class="text-dark">Top Topic's</h6>
         <div class="list-group">
             @foreach ($topCategory as $category)
-            <div class="card card-hover border-0 no-bd-radius my-2" data-background="{{ asset('storage/' . $category->banner) }}">
-                <div class="card-overlay"></div>
+            <div class="card card-hover border-0 bd-radius-8 my-2" data-background="{{ asset('storage/' . $category->banner) }}">
+                <div class="card-overlay bd-radius-8"></div>
                 <div class="card-body d-flex">
                     <a class="stretched-link" href="{{ url('topic/'.$category->slug) }}" style="text-decoration : none">
                         <div class="align-self-center">
-                            <h2 class="text-white">{{ $category->name }}</h2>
+                            <h1 class="text-white" style="text-shadow: 1px 1px #000">{{ $category->name }}</h1>
                         </div>
                     </a>
                 </div>
