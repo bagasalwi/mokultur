@@ -63,10 +63,10 @@
                                                 <h5 class="badge badge-light shadow">{{ $p->category->name }}</h5>
                                             </div>
                                         </div>
-                                        <div class="mt-1">
-                                            <h4 class="no-pm">
-                                                <a href="{{ route('post.detail',$p->slug) }}">{{ $p->title }}</a>
-                                            </h4>
+                                        <div class="mt-2">
+                                            <a href="{{ route('post.detail',$p->slug) }}">
+                                                <h4 class="no-pm">{{ $p->title }}</h4>
+                                            </a>
                                         </div>
                                         <small class="text-secondary">
                                             {{ Carbon\Carbon::parse($p->date_published)->format('d M Y') }} &middot;
@@ -82,9 +82,9 @@
                         <div class="text-center">
                             @if ($post->hasMorePages())
                             <button id="see-more" class="btn btn-block btn-dark" data-page="2"
-                                data-link="{{ url()->current().'?page=' }}" data-div="#posts">See more</button>
+                                data-link="{{ url()->current().'?page=' }}" data-div="#posts">Reach More</button>
                             @else
-                            <h6 class="text-secondary font-weight-normal">No More Data</h6>
+                            <h4 class="text-secondary font-weight-normal">You reach the bottom of Knowledge!</h4>
                             @endif
                         </div>
                         @endif
@@ -110,7 +110,7 @@
         $.get($href, function(response) { //append data
             $html = $(response).find("#posts").html(); 
             if($html.length < 20){
-                $('#see-more').replaceWith('<h6 class="text-secondary font-weight-normal">No More Data</h6>')          
+                $('#see-more').replaceWith('<h6 class="text-secondary font-weight-normal">You reach the bottom of Knowledge!!</h6>')          
             }else{
                 $div.append($html);
             }

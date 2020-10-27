@@ -3,7 +3,7 @@
 @section('css')
 <style>
     body {
-        background: url('{{ asset('storage/' . $category->banner) }}') no-repeat center center fixed;
+        background: url('{{ asset('storage/' . $event->banner) }}') no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -19,7 +19,7 @@
         <div class="jumbotron img-cover d-flex shadow" data-height="300" style="background-position: center;"
             data-background="https://2.bp.blogspot.com/-YSRL7xmCD2Q/XQ8eHaJ9wkI/AAAAAAAAHtA/0-bVcL3HJmQ4eCCCJY8Sq9y0tGKoVw3IwCKgBGAs/w0/genshin-impact-uhdpaper.com-4K-1.jpg">
             <div class="align-self-center">
-                <h1 data-font-size="60px">Genshin Impact Tips & Trick</h1>
+                <h1 data-font-size="60px">{{ $event->name }} Special Event</h1>
                 <a href="#" class="btn btn-lg btn-dark">Browse Article</a>
             </div>
         </div>
@@ -29,31 +29,27 @@
                 <div id="posts" class="row">
                     @foreach ($creation as $p)
                     <div class="col-lg-12 col-sm-12">
-                        <a href="{{ route('post.detail',$p->slug) }}" class="card-block clearfix">
-                            <div class="card border-0 my-2 shadow-lg">
-                                <div class="card-img-wrap">
-                                    <img class="img-fluid img-imagepost" src="{{ asset('storage/' . $p->photo()) }}"
-                                        alt="">
-                                    <div class="card-img-overlay text-white">
-                                        <h5 class="badge badge-light shadow">{{ $p->category->name }}</h5>
-                                    </div>
+                        <div class="card border-0 mb-3 shadow">
+                            <div class="row no-gutters">
+                                <div class="col-sm-4">
+                                    <img class="card-img no-bd-radius img-cover" height="200vh" src="{{ asset('storage/' . $p->photo()) }}" alt="Loading..">
                                 </div>
-                                <div class="card-body">
-                                    <div class="mt-1">
-                                        <h4 class="no-pm">
-                                            <a href="{{ route('post.detail',$p->slug) }}">{{ $p->title }}</a>
-                                        </h4>
+                                <div class="col-sm-8">
+                                    <div class="card-body">
+                                        <a href="{{ route('post.detail',$p->slug) }}" class="card-title">
+                                            <h3>
+                                                {{ $p->title }}
+                                            </h3>
+                                        </a>
+                                        <p class="card-text">
+                                            {{ str_limit(strip_tags($p->description),160,'...') }}
+                                        </p>
                                     </div>
-                                    <small class="text-secondary">
-                                        {{ Carbon\Carbon::parse($p->date_published)->format('d M Y') }} &middot;
-                                        {{ $p->user->name }}
-                                    </small>
                                 </div>
                             </div>
-                        </a>
-
+                        </div>
                     </div>
-                    <hr>
+                    
                     @endforeach
                 </div>
                 {!! $creation->render() !!}

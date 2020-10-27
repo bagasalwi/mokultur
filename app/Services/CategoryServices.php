@@ -26,6 +26,10 @@ class CategoryServices{
         return PostCategory::where('slug',$slug)->first();
     }
 
+    public function findEvent(){
+        return PostCategory::where('status', 'S')->first();
+    }
+
     Public function allCategory($paginate = null){
         if($paginate){
             return PostCategory::paginate($paginate);

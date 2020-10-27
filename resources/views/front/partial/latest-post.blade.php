@@ -33,7 +33,7 @@
     <div class="text-center my-4">
         @if ($creation->hasMorePages())
         <button id="see-more" class="btn btn-block btn-dark" data-page="2" data-link="{{ url()->current().'?page=' }}"
-            data-div="#posts">See more</button>
+            data-div="#posts">Reach More</button>
         @else
         <h6 class="text-secondary font-weight-normal">You reach the bottom of Knowledge!</h6>
         @endif

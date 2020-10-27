@@ -75,8 +75,8 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('user','AdminController@user');
 
             // Post Function
-            Route::get('post','AdminController@post');
-            Route::get('post/delete/{id}', 'AdminController@post_delete');
+            Route::get('post','Adminpanel\PostAdminController@post');
+            Route::get('post/delete/{id}', 'Adminpanel\PostAdminController@post_delete');
 
             // Category Function
             Route::get('category','CategoryController@category')->name('category');
