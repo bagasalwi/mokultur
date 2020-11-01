@@ -26,11 +26,12 @@
         <div class="row mb-4">
             <div class="col-lg-6 col-sm-12 mb-2">
                 <div class="stickydiv">
+                    <h4 class="">Recent Article</h4>
                     @foreach ($creation as $idx => $p)
                     @if ($idx == 0)
                     <div class="card border-0 my-2">
                         <a href="{{ route('post.detail',$p->slug) }}" class="card-block clearfix">
-                            <div class="card-img-wrap">
+                            <div class="card-img-wrap bd-radius-4">
                                 <img class="img-fluid img-imagepost-headline" loading="lazy"
                                     src="{{ asset('storage/' . $p->photo()) }}" alt="">
                                 <div class="card-img-overlay text-white">
@@ -38,7 +39,7 @@
                                 </div>
                             </div>
                         </a>
-                        <div class="my-1">
+                        <div class="my-2">
                             <a href="{{ route('post.detail',$p->slug) }}" class="no-pm">
                                 <h3>{{ $p->title }}</h3>
                             </a>
@@ -55,30 +56,66 @@
                     @endforeach
                 </div>
             </div>
-            <hr class="d-lg-none">
-            <div class="col-lg-6 col-sm-12 mb-2">
-                <h2 class="no-pm">Recent Article</h2>
+            <div class="col-lg-6 col-sm-12 mb-2 d-none d-lg-block">
+                <h4 class="">Recent Article</h4>
                 @foreach ($creation as $idx => $p)
                 @if($idx != 0)
-                <div class="list-group">
-                    <a href="{{ route('post.detail',$p->slug) }}" class="card-block clearfix d-flex align-self-center">
-                        {{-- <div class="card"> --}}
-                        <div class="card-horizontal">
-                            <img class="img-imagepost-hr" loading="lazy" src="{{ asset('storage/' . $p->photo()) }}"
-                                alt="">
-                            <div class="card-body">
+                <div class="card border-0 mb-3">
+                    <div class="row no-gutters">
+                        <div class="col-sm-4">
+                            <img class="card-img bd-radius-4 img-cover" height="150vh" src="{{ asset('storage/' . $p->photo()) }}" alt="Loading..">
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="mx-2 py-0">
                                 <a href="{{ route('post.detail',$p->slug) }}" class="card-title">
-                                    <h5>
+                                    <h4>
                                         {{ $p->title }}
-                                    </h5>
+                                    </h4>
                                 </a>
                                 <p class="card-text">
-                                    {{ str_limit(strip_tags($p->description),100,'...') }}
+                                    {{ str_limit(strip_tags($p->description),120,'...') }}
                                 </p>
                             </div>
                         </div>
-                        {{-- </div> --}}
-                    </a>
+                    </div>
+                </div>
+                <div class="card border-0 mb-3">
+                    <div class="row no-gutters">
+                        <div class="col-sm-4">
+                            <img class="card-img bd-radius-4 img-cover" height="150vh" src="{{ asset('storage/' . $p->photo()) }}" alt="Loading..">
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="mx-2 py-0">
+                                <a href="{{ route('post.detail',$p->slug) }}" class="card-title">
+                                    <h4>
+                                        {{ $p->title }}
+                                    </h4>
+                                </a>
+                                <p class="card-text">
+                                    {{ str_limit(strip_tags($p->description),120,'...') }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-0 mb-3">
+                    <div class="row no-gutters">
+                        <div class="col-sm-4">
+                            <img class="card-img bd-radius-4 img-cover" height="150vh" src="{{ asset('storage/' . $p->photo()) }}" alt="Loading..">
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="mx-2 py-0">
+                                <a href="{{ route('post.detail',$p->slug) }}" class="card-title">
+                                    <h4>
+                                        {{ $p->title }}
+                                    </h4>
+                                </a>
+                                <p class="card-text">
+                                    {{ str_limit(strip_tags($p->description),120,'...') }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 @endif
                 @endforeach

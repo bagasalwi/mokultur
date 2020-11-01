@@ -2,26 +2,25 @@
 
 @section('content')
 
-{{-- <div class="jumbotron jumbotron-fluid mb-0" data-background-topic="{{ asset('storage/' . $post->photo()) }}">
-<div class="jumbotron-overlay"></div>
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-sm-12 offset-md-2 text-center">
-            <h1 class="text-white font-weight-bold">{{ $post->title }}</h1>
-            <h4><span class="badge badge-dark px-4">{{ $post->category->name }}</span></h4>
+<div class="jumbotron jumbotron-fluid mb-0" data-background-topic="{{ asset('storage/' . $post->category->banner) }}">
+    <div class="jumbotron-overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-sm-12 offset-md-2 text-center">
+                <h1 class="text-white font-weight-bold">{{ $post->category->name }}</h1>
+                <h4><span class="badge badge-dark px-4">{{ $post->category->description }}</span></h4>
+            </div>
         </div>
     </div>
 </div>
-</div> --}}
 
 <section class="section">
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-sm-12 offset-md-2">
                 <h4>
-                    <span class="badge badge-dark px-4">{{ $post->category->name }}</span>
                     @if ($post->checkStatus() == 'DRAFT')
-                        <span class="badge badge-danger px-4">{{ $post->status() }}</span>
+                        <span class="badge badge-danger px-4">{{ $post->checkStatus() }}</span>
                     @endif
                 </h4>
                 <h1 class="text-dark my-4">{{ $post->title }}</h1>
@@ -45,7 +44,7 @@
                         <div class="align-self-end">
                             @if ($post->date_published != null)
                             <p class="p-0 m-0"><small class="text-dark">Published
-                                {{ $post->created_at->diffForHumans() }}</small></p>
+                                {{ $post->created_at->format('d-M-Y') }}</small></p>
                             @endif
                         </div>
                     </div>
@@ -54,20 +53,20 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container mt-2">
         <div class="row">
             <div class="col-md-8 col-sm-12 offset-md-2">
                 @if ($post->type == 'photo')
-                <div class="owl-carousel owl-theme slider" id="slider2">
+                <div class="owl-carousel owl-theme slider" id="carousel-post">
                     @foreach ($post->images()->get() as $image)
-                        <img src="{{ asset('storage/' . $image->name) }}" data-max-height="500px" class="img-fluid img-cover w-100">
+                        <img src="{{ asset('storage/' . $image->name) }}" class="img-fluid img-cover w-100 bd-radius-4">
                     @endforeach
                 </div>
                 @else
                     @if ($post->photo() == "no-image")
                     
                     @else
-                    <img src="{{ asset('storage/' . $post->photo()) }}" data-max-height="500px" class="img-fluid img-cover w-100">
+                    <img src="{{ asset('storage/' . $post->photo()) }}" class="img-fluid img-cover w-100 bd-radius-4">
                     @endif
                 @endif
                 <div id="posting" class="my-4">
@@ -135,6 +134,15 @@
 <script>
     $(document).ready(function(){
         $('#posting img').addClass('img-fluid');
+    });
+
+    $("#carousel-post").owlCarousel({
+        items:1,
+        // margin:10,
+        autoHeight:true,
+        nav: true,
+        dots: false,
+        navText: ['<i class="fas fa-chevron-left"></i>','<i class="fas fa-chevron-right"></i>']
     });
 </script>
 @endsection

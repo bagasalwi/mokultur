@@ -53,7 +53,7 @@
                             <div class="col-lg-4 col-sm-12">
                                 <a href="{{ route('post.detail',$p->slug) }}" class="card-block clearfix">
                                     <div class="card border-0 my-2">
-                                        <div class="card-img-wrap">
+                                        <div class="card-img-wrap bd-radius-4">
                                             <img class="img-fluid img-imagepost"
                                                 src="{{ asset('storage/' . $p->photo()) }}" alt="">
                                             <div class="card-img-overlay text-white">
@@ -88,26 +88,26 @@
                     </div>
                     <div class="tab-pane fade show" id="fact" role="tabpanel" aria-labelledby="fact-tab">
                         <div class="row">
-                            <div class="col-3">
-                                <div class="card card-body bg-dark">
+                            <div class="col-auto">
+                                <div class="card card-body bg-dark bd-radius-8">
                                     <h5 class="text-white">Here Just to Post</h5>
                                     <p class="text-white">Overall Total Post, {{ $total_post }} Article</p>
                                 </div>
                             </div>
-                            <div class="col-3">
-                                <div class="card card-body bg-dark">
+                            <div class="col-auto">
+                                <div class="card card-body bg-dark bd-radius-8">
                                     <h5 class="text-white">My Viewers, My Achievement</h5>
                                     <p class="text-white">Total Views from All Post, {{ $total_view }}</p>
                                 </div>
                             </div>
-                            <div class="col-3">
-                                <div class="card card-body bg-dark">
+                            <div class="col-auto">
+                                <div class="card card-body bg-dark bd-radius-8">
                                     <h5 class="text-white">From The Beginning</h5>
                                     <p class="text-white">Your Account active since {{ $active_since }}</p>
                                 </div>
                             </div>
-                            <div class="col-3">
-                                <div class="card card-body bg-dark">
+                            <div class="col-auto">
+                                <div class="card card-body bg-dark bd-radius-8">
                                     <h5 class="text-white">The Tag Master</h5>
                                     <p class="text-white"></p>
                                 </div>

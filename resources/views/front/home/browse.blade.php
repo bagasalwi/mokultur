@@ -16,7 +16,7 @@
                     @foreach ($creation as $p)
                     <a href="{{ route('post.detail',$p->slug) }}" class="card-block clearfix">
                         <div class="card border-0 mb-2">
-                            <div class="card-img-wrap mb-2">
+                            <div class="card-img-wrap mb-2 bd-radius-4">
                                 <img class="img-fluid img-imagepost" loading="lazy"
                                     src="{{ asset('storage/' . $p->photo()) }}" alt="">
                             </div>
@@ -64,10 +64,10 @@
         $.get($href, function(response) { //append data
             $html = $(response).find("#posts").html(); 
             if($html.length < 40){
-                alert('habis');
+                // alert('habis');
                 $('#see-more').replaceWith('<h6 class="text-secondary font-weight-normal">You reach the bottom of Knowledge!</h6>')          
             }else{
-                alert($html);
+                // alert($html);
                 $div.append($html);
             }
         });

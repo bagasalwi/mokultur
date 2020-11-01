@@ -14,6 +14,7 @@
                             class="btn btn-dark px-4">Create New Post</button>
                     </div>
                 </div>
+                <hr>
                 @if ($post)
                 <div id="posts" class="my-4">
                     @foreach ($post as $item)
@@ -33,13 +34,14 @@
 
                     <div class="card border-0">
                         <div class="d-flex flex-row">
-                            <h6><a class="text-dark"
-                                    href="{{ route('post.detail', $item->slug) }}">{{ $item->title }}</a></h6>
+                            <a class="text-dark" href="{{ route('post.detail', $item->slug) }}">
+                                <h4>{{ $item->title }}</h4>
+                            </a>
                         </div>
                         <div class="d-flex flex-row">
                             <div>
-                                <p><small class="text-secondary">Created
-                                        {{ $item->created_at->diffForHumans() }}</small> <span
+                                <p>Created
+                                        {{ $item->created_at->format('d M Y') }}<span
                                         class="badge badge-{{ $s_color }} mx-2">{{ $status }}</span></p>
                             </div>
                             <div class="ml-auto px-2">
