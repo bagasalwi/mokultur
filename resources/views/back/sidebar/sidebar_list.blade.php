@@ -1,77 +1,60 @@
 @extends('back.layouts.master')
 
-@section('content')
+@section('adminContent')
 <!-- Main Content -->
-<div class="main-content">
-    <section class="section">
-        <div class="section-header">
-            <h1>Sidebar</h1>
-        </div>
-
-        <div class="section-body">
-            <h2 class="section-title">Sidebar Manager</h2>
-            <p class="section-lead">
-                Create sidebar to access menu for admin or user priviliges.
-            </p>
-
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="col-11">
-                                <h4>Sidebar List</h4>
-                            </div>
-                            <div class="col-1">
-                                <a href="{{ $url_create }}" class="btn btn-primary">Create New</a>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped" id="table-1">
-                                    <thead>
-                                        <tr>
-                                            <th class="text-center">
-                                                No
-                                            </th>
-                                            <th>Name</th>
-                                            <th>Url</th>
-                                            <th>Icon</th>
-                                            <th>Created Date</th>
-                                            <th>Update Date</th>
-                                            <th class="text-center">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @php
-                                        $no = 1;
-                                        @endphp
-
-                                        @foreach ($sidebar_array as $row)
-                                        <tr>
-                                            <td class="text-center">{{ $no++ }}</td>
-                                            <td>{{ $row->name }}</td>
-                                            <td>{{ $row->url }}</td>
-                                            <td><i class="{{ $row->icon }}"></i></td>
-                                            <td>{{ $row->created_at }}</td>
-                                            <td>{{ $row->updated_at }}</td>
-                                            <td class="text-center">
-                                                <a href="{{ $url_update }}/{{ $row->id }}" class="btn btn-primary"><i
-                                                        class="fas fa-edit"></i></a>
-                                                <button class="btn btn-danger"
-                                                    onclick="deleteSidebar({{ $row->id }})"><i
-                                                        class="fas fa-trash"></i></button>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <div class="col-11">
+                <h4>Sidebar List</h4>
+            </div>
+            <div class="col-1">
+                <a href="{{ $url_create }}" class="btn btn-primary">Create New</a>
             </div>
         </div>
-    </section>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped" id="table-1">
+                    <thead>
+                        <tr>
+                            <th class="text-center">
+                                No
+                            </th>
+                            <th>Name</th>
+                            <th>Url</th>
+                            <th>Icon</th>
+                            <th>Created Date</th>
+                            <th>Update Date</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @php
+                        $no = 1;
+                        @endphp
+
+                        @foreach ($sidebar_array as $row)
+                        <tr>
+                            <td class="text-center">{{ $no++ }}</td>
+                            <td>{{ $row->name }}</td>
+                            <td>{{ $row->url }}</td>
+                            <td><i class="{{ $row->icon }}"></i></td>
+                            <td>{{ $row->created_at }}</td>
+                            <td>{{ $row->updated_at }}</td>
+                            <td class="text-center">
+                                <a href="{{ $url_update }}/{{ $row->id }}" class="btn btn-primary"><i
+                                        class="fas fa-edit"></i></a>
+                                <button class="btn btn-danger"
+                                    onclick="deleteSidebar({{ $row->id }})"><i
+                                        class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
 
 

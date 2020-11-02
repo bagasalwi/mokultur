@@ -1,6 +1,5 @@
 <div class="col-lg-6 col-sm-12">
     <h3 class="text-dark font-weight-bold">All Post</h3>
-    <hr>
     <div id="posts" class="row">
         @foreach ($creation as $p)
         <div class="col-lg-12 col-sm-12">

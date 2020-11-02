@@ -3,6 +3,7 @@
 @section('content')
 	{{-- <section class="section"> --}}
 		<div class="container my-4">
+			<h2>Admin Manager</h2>
 			<ul class="nav nav-pills" id="myTab3" role="tablist">
 				@foreach ($sidebar as $sb)
 				<li class="nav-item mr-2">

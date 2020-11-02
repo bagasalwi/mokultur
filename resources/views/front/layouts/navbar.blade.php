@@ -1,92 +1,96 @@
-<nav class="navbar navbar-expand-lg navbar-light shadow-sm fixed-top">
-    <div class="container" id="navbar-container">
-        <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
-            <img src="{{ URL::asset('gambar/logo.png')}}" width="100" alt="">
-        </a>
+<div class="navigation-wrap bg-light start-header start-style shadow">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="navbar navbar-expand-md navbar-light">
+                
+                    <a class="navbar-brand" href="{{ url('/') }}" target="_blank">
+                        <img src="{{ URL::asset('gambar/logo.png')}}" alt="">
+                    </a>	
+                    
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto py-4 py-md-0">
+                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 {{ request()->is('browse') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('browse') }}">
+                                    <h6 class="no-pm">BROWSE</h6>
+                                </a>
+                            </li>
+                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 {{ request()->is('topic') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('topic') }}">
+                                    <h6 class="no-pm">TOPICS</h6>
+                                </a>
+                            </li>
+                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 {{ request()->is('creator') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('creator') }}">
+                                    <h6 class="no-pm">CREATORS</h6>
+                                </a>
+                            </li>
+                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 {{ request()->is('event') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('topic.event') }}">
+                                    <h6 class="no-pm">EVENT</h6>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav ml-auto py-4 py-md-0">
+                            @guest
+                            <li class="nav-item dropdown pl-4 pl-md-0 ml-0 ml-md-4">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <h6 class="no-pm">MY ACCOUNT<i class="fas fa-caret-down ml-2"></i></h6>
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{{ url('login') }}">Login</a>
+                                    <a class="dropdown-item" href="{{ url('register') }}">Register</a>
+                                </div>
+                            </li>
+                            @else
 
-        <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse"
-            data-target="#navbar4">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbar4">
-            <ul class="navbar-nav mr-auto pl-lg-4">
-                <li class="nav-item px-lg-2 {{ request()->is('browse') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('browse') }}">
-                        <h6 class="no-pm">BROWSE</h6>
-                    </a>
-                </li>
-                <li class="nav-item px-lg-2 {{ request()->is('topic') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('topic') }}">
-                        <h6 class="no-pm">TOPICS</h6>
-                    </a>
-                </li>
-                <li class="nav-item px-lg-2 {{ request()->is('creator') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('creator') }}">
-                        <h6 class="no-pm">CREATORS</h6>
-                    </a>
-                </li>
-                <li class="nav-item px-lg-2 {{ request()->is('event') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('topic.event') }}">
-                        <h6 class="no-pm">EVENT</h6>
-                    </a>
-                </li>
-            </ul>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item px-lg-2">
-                    <button type="button" id="searchBtn" class="btn btn-default navbar-btn nav-link m-0"><i
-                            class="fa fa-search"></i></button>
-                </li>
-                <form id="searchForm" action="{{ route('post') }}" role="search" style="display:none">
-                    <input type="text" name="search" class="form-control-sm form-control" placeholder="Search">
-                </form>
-                @guest
-                <li class="nav-item px-lg-2 dropdown d-menu">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        <img alt="image" width="30" height="30" src="{{ asset('gambar/profile_pic/default.png') }}"
-                            class="rounded-circle mr-1">
-                        <span class="d-lg-none ml-3"></span>
-                    </a>
-                    <div class="dropdown-menu shadow-sm sm-menu" aria-labelledby="dropdown01">
-                        <a class="dropdown-item" href="{{ route('login') }}">Login</a>
-                        <a class="dropdown-item" href="{{ route('register') }}">Register</a>
+                            @php
+                                $fullname = auth()->user()->name;
+                                $fullname = trim($fullname); // remove double space
+                                $firstname = substr($fullname, 0, strpos($fullname, ' '));
+                                $lastname = substr($fullname, strpos($fullname, ' '), strlen($fullname));   
+                            @endphp
+                            <li class="nav-item dropdown pl-4 pl-md-0 ml-0 ml-md-4">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <h6 class="no-pm">{{ strlen($firstname) > 20 ? substr($firstname, 0, 20) . '...' : $firstname }}<i class="fas fa-caret-down ml-2"></i></h6>
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item d-flex flex-row" href="#">
+                                        <img alt="image" width="30" height="30"
+                                        src="{{ asset('storage/' . auth()->user()->profile_pic) }}" class="rounded-circle no-pm">
+                                        <div class="ml-2">
+                                            <h6 class="p-0 m-0">
+                                                {{ strlen($fullname) > 20 ? substr($fullname, 0, 20) . '...' : $fullname }}
+                                            </h6>
+                                            <small class="p-0 m-0 text-muted">{{ auth()->user()->username }}</small>
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('dashboard') }}">
+                                        Profile
+                                    </a>
+                                    <a class="dropdown-item" href="{{ url('post') }}">
+                                        My Post
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item"
+                                        onclick="event.preventDefault();document.getElementById('logout-form').submit();" href="#">
+                                        Logout
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                            @endguest
+                        </ul>
                     </div>
-                </li>
-                @else
-                <li class="nav-item px-lg-2 dropdown d-menu">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        <img alt="image" width="30" height="30"
-                            src="{{ asset('storage/' . auth()->user()->profile_pic) }}" class="rounded-circle mr-1">
-                    </a>
-                    <div class="dropdown-menu shadow-sm sm-menu" aria-labelledby="dropdown01">
-                        <a class="dropdown-item">
-                            <h6 class="p-0 m-0">
-                                <span
-                                    class="font-weight-normal">{{ strlen(auth()->user()->name) > 20 ? substr(auth()->user()->name, 0, 20) . '...' : auth()->user()->name }}</span>
-                            </h6>
-                            <small class="p-0 m-0 text-muted">{{ auth()->user()->username }}</small>
-                        </a>
-                        <a class="dropdown-item has-icon" href="{{ route('dashboard') }}">
-                            <span class="text-dark">Profile</span>
-                        </a>
-                        <a class="dropdown-item has-icon" href="{{ url('post') }}">
-                            <span class="text-dark">My Post</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item has-icon"
-                            onclick="event.preventDefault();document.getElementById('logout-form').submit();" href="#">
-                            <i class="fas fa-sign-out-alt"></i>
-                            <span class="text-dark">Logout</span>
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </div>
-                </li>
-                @endguest
-            </ul>
+                    
+                </nav>		
+            </div>
         </div>
     </div>
-</nav>
+</div>

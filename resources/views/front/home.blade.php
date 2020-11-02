@@ -11,7 +11,7 @@
                 <p class="mb-4 text-dark" data-font-size="20px" style="line-height:120%;">
                     In Kreasibangsa you can share all your creations to share with others!
                 </p>
-                <a class="btn btn-dark btn-lg" href="{{ route('post') }}" role="button">Browse Creation</a>
+                <a class="btn btn-primary btn-lg" href="{{ route('post') }}" role="button">Browse Creation</a>
             </div>
             <div class="col-lg-12">
 
@@ -60,44 +60,6 @@
                 <h4 class="">Recent Article</h4>
                 @foreach ($creation as $idx => $p)
                 @if($idx != 0)
-                <div class="card border-0 mb-3">
-                    <div class="row no-gutters">
-                        <div class="col-sm-4">
-                            <img class="card-img bd-radius-4 img-cover" height="150vh" src="{{ asset('storage/' . $p->photo()) }}" alt="Loading..">
-                        </div>
-                        <div class="col-sm-8">
-                            <div class="mx-2 py-0">
-                                <a href="{{ route('post.detail',$p->slug) }}" class="card-title">
-                                    <h4>
-                                        {{ $p->title }}
-                                    </h4>
-                                </a>
-                                <p class="card-text">
-                                    {{ str_limit(strip_tags($p->description),120,'...') }}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card border-0 mb-3">
-                    <div class="row no-gutters">
-                        <div class="col-sm-4">
-                            <img class="card-img bd-radius-4 img-cover" height="150vh" src="{{ asset('storage/' . $p->photo()) }}" alt="Loading..">
-                        </div>
-                        <div class="col-sm-8">
-                            <div class="mx-2 py-0">
-                                <a href="{{ route('post.detail',$p->slug) }}" class="card-title">
-                                    <h4>
-                                        {{ $p->title }}
-                                    </h4>
-                                </a>
-                                <p class="card-text">
-                                    {{ str_limit(strip_tags($p->description),120,'...') }}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="card border-0 mb-3">
                     <div class="row no-gutters">
                         <div class="col-sm-4">
