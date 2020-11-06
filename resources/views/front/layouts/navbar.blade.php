@@ -1,10 +1,10 @@
-<div class="navigation-wrap bg-light start-header start-style shadow">
+<div class="navigation-wrap bg-light start-header start-style">
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <nav class="navbar navbar-expand-md navbar-light">
                 
-                    <a class="navbar-brand" href="{{ url('/') }}" target="_blank">
+                    <a class="navbar-brand" href="{{ url('/') }}">
                         <img src="{{ URL::asset('gambar/logo.png')}}" alt="">
                     </a>	
                     
@@ -75,6 +75,11 @@
                                     <a class="dropdown-item" href="{{ url('post') }}">
                                         My Post
                                     </a>
+                                    @if (auth()->user()->hasRole('admin'))
+                                    <a class="dropdown-item" href="{{ url('admin') }}">
+                                        Admin Menu
+                                    </a> 
+                                    @endif
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item"
                                         onclick="event.preventDefault();document.getElementById('logout-form').submit();" href="#">

@@ -76,4 +76,8 @@ class User extends Authenticatable
     {
         return null !== $this->roles()->where('name', $role)->first();
     }
+
+    public function role(){
+        return $this->hasOne(Role::class);
+    }
 }

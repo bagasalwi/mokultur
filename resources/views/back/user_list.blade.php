@@ -3,8 +3,9 @@
 @section('adminContent')
 <!-- Main Content -->
 <div class="container">
-    <div class="section-header">
-        <h1>User</h1>
+    <div class="d-flex flex-row">
+        <h2>User</h2>
+        <h4 class="ml-auto align-self-end font-weight-normal">Total : {{ count($user) }} User</h4>
     </div>
 
     <div class="card">

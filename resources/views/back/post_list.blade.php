@@ -3,7 +3,10 @@
 @section('adminContent')
 <!-- Main Content -->
 <div class="container">
-    <h1>Article <small>(Total : {{ count($post) }} Article)</small></h1>
+    <div class="d-flex flex-row">
+        <h2>Article</h2>
+        <h4 class="ml-auto align-self-end font-weight-normal">Total : {{ count($post) }} Article</h4>
+    </div>
 
     <div class="card">
         <div class="card-body">

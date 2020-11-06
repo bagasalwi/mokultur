@@ -52,10 +52,16 @@ class HomeController extends Controller
         $data['category'] = PostCategory::first();
         $data['topCategory'] = $this->categoryService->topCategory();
         $data['event'] = $this->categoryService->findEvent();
-        $data['creation'] = Post::where('status', 'P')
-                            ->where('category_id', $data['event']->id)
-                            ->orderBy('created_at', 'desc')->paginate(8);
+
+        if($data['event']){
+            $data['creation'] = Post::where('status', 'P')
+                                ->where('category_id', $data['event']->id)
+                                ->orderBy('created_at', 'desc')->paginate(8);
+                                
+            return view('front.special.category-special', $data);
+        }else{
+            return redirect('/');
+        }
         
-        return view('front.special.category-special', $data);
     }
 }

@@ -67,6 +67,11 @@ Route::group(['middleware' => 'auth'], function () {
 
         // Admin Controller
         Route::prefix('admin')->group(function (){
+
+            Route::get('/',function(){
+                return redirect('admin/user');
+            });
+
             // Support Function
             Route::get('support','AdminController@support');
             Route::get('support/delete/{id}', 'AdminController@support_delete');
@@ -84,6 +89,7 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('category/update/{id}', 'CategoryController@category_update')->name('category.update');
             Route::post('category/store', 'CategoryController@category_store')->name('category.store');
             Route::get('category/delete/{id}', 'CategoryController@category_delete');
+            Route::get('category/event/{id}', 'CategoryController@makeEvent');
         });
     
     });

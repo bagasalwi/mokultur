@@ -91,4 +91,8 @@ class CategoryController extends Controller
     public function category_delete($id){
         $this->categoryService->delete($id);
     }
+
+    public function makeEvent($id){
+        $this->categoryService->makeAnEvent($id);
+    }
 }

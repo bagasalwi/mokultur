@@ -27,7 +27,7 @@ class CategoryServices{
     }
 
     public function findEvent(){
-        return PostCategory::where('status', 'S')->first();
+        return PostCategory::where('status', 'E')->first();
     }
 
     Public function allCategory($paginate = null){
@@ -102,11 +102,11 @@ class CategoryServices{
     public function makeAnEvent($id){
         $cat = $this->find($id);
 
+        PostCategory::where('id', '>', 0)->update(['status' => 'A']);
+
         PostCategory::where('id',$cat->id)->update([
             'status' => 'E'
         ]);
-
-        
         
     }
 

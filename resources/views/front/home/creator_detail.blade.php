@@ -33,15 +33,26 @@
         </div>
     </div>
 </div>
+
+@php
+    $fullname = $user->name;
+    $fullname = trim($fullname); // remove double space
+    $firstname = substr($fullname, 0, strpos($fullname, ' '));
+    $lastname = substr($fullname, strpos($fullname, ' '), strlen($fullname));   
+@endphp
+
 <section class="section">
     <div class="container">
         <div class="row">
-            <div class="col-md-8 offset-md-2 col-sm-12">
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item">
+            <div class="col-md-12 col-sm-12">
+                <ul class="nav nav-pills" id="myTab" role="tablist">
+                    <li class="nav-item mr-2">
                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                            aria-controls="home" aria-selected="true">All Post <span
-                                class="badge badge-dark px-2 ml-2">{{ $post_count }}</span></a>
+                            aria-controls="home" aria-selected="true">My Post</a>
+                    </li>
+                    <li class="nav-item mr-2">
+                        <a class="nav-link" id="fact-tab" data-toggle="tab" href="#fact" role="tab"
+                            aria-controls="home" aria-selected="true">Facts About {{ $firstname }}'s Account</a>
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
@@ -57,7 +68,7 @@
                         @else
                         <div id="posts" class="row">
                             @foreach ($post as $p)
-                            <div class="col-lg-6 col-sm-12">
+                            <div class="col-lg-4 col-md-4 col-sm-12">
                                 <a href="{{ route('post.detail',$p->slug) }}" class="card-block clearfix">
                                     <div class="card border-0 my-2">
                                         <div class="card-img-wrap bd-radius-8">
@@ -92,6 +103,34 @@
                             @endif
                         </div>
                         @endif
+                    </div>
+                    <div class="tab-pane fade show" id="fact" role="tabpanel" aria-labelledby="fact-tab">
+                        <div class="row">
+                            <div class="col-auto">
+                                <div class="card card-body bg-dark bd-radius-8">
+                                    <h5 class="text-white">Here Just to Post</h5>
+                                    <p class="text-white">Overall Total Post, {{ $total_post }} Article</p>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="card card-body bg-dark bd-radius-8">
+                                    <h5 class="text-white">My Viewers, My Achievement</h5>
+                                    <p class="text-white">Total Views from All Post, {{ $total_view }}</p>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="card card-body bg-dark bd-radius-8">
+                                    <h5 class="text-white">From The Beginning</h5>
+                                    <p class="text-white">Your Account active since {{ $active_since }}</p>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="card card-body bg-dark bd-radius-8">
+                                    <h5 class="text-white">The Tag Master</h5>
+                                    <p class="text-white"></p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

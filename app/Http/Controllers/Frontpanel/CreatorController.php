@@ -50,6 +50,15 @@ class CreatorController extends Controller
             if($data['user']){
                 $data['post'] = Post::orderBy('created_at', 'desc')->where('user_id', $data['user']->id)->paginate(10);
                 $data['post_count'] = Post::where('user_id', $data['user']->id)->count();
+                $data['total_post'] = $data['user']->totalPost();
+                $data['active_since'] = $data['user']->created_at->format('d M Y');
+
+                $data['total_view'] = 0;
+                if($data['post']){
+                    foreach($data['post'] as $post){
+                        $data['total_view'] += $post->view_count;
+                    }
+                }
         
                 return view('front.home.creator_detail', $data);
             }else{
