@@ -54,6 +54,15 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('tags', 'PostController@ajaxTags');
     });
 
+    // Review Controller
+    Route::prefix('review')->group(function (){
+        Route::get('/','ReviewController@index')->name('review.index');
+        Route::get('create', 'ReviewController@create')->name('review.create');
+        Route::get('update/{id}', 'ReviewController@update');
+        Route::post('save', 'ReviewController@save')->name('review.save');
+        Route::get('delete/{id}', 'ReviewController@delete')->name('review.delete');
+    });
+
     // Back End (ADMIN)
     Route::group(['middleware' => 'AdminRole'], function () {
 

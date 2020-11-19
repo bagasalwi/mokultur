@@ -25,7 +25,7 @@ class PostController extends Controller
     {
         $data['title'] = 'My Post';
         $data['user'] = Auth::user();
-        $data['sidebar'] = Sidebar::where('role_id', 1)->get();
+        // $data['sidebar'] = Sidebar::where('role_id', 1)->get();
         $data['post_count'] = $this->postService->userPostCount();
 
         $data['post'] = $this->postService->allPostUser(5);
