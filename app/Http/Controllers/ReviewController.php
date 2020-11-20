@@ -32,4 +32,16 @@ class ReviewController extends Controller
 
         return view('front.review.review_list', $data);
     }
+
+    public function create(Request $request)
+    {
+        $data['user'] = Auth::user();
+        $data['sidebar'] = Sidebar::where('role_id', 1)->get();
+
+        $data['fields'] = new Review;
+        
+        $data['state'] = 'create';
+
+        return view('front.review.review_form', $data);
+    }
 }

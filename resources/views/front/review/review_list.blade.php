@@ -7,11 +7,10 @@
             <div class="col-md-12 col-sm-12">
                 <div class="d-flex flex-row">
                     <div class="mr-auto">
-                        <h2 class="text-dark">My Post</h2>
+                        <h2 class="text-dark">My Review</h2>
                     </div>
                     <div class="ml-auto">
-                        <button type="button" data-toggle="modal" data-target="#articleType"
-                            class="btn btn-dark px-4">Create New Post</button>
+                        <a class="btn btn-dark px-4" href="{{ url($url_create) }}">Create New Review</a>
                     </div>
                 </div>
                 <hr>

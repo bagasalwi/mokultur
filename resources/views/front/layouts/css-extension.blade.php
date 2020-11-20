@@ -22,6 +22,7 @@ href="{{ URL::asset('assets/modules/bootstrap-timepicker/css/bootstrap-timepicke
 
 <!-- Template CSS -->
 <link rel="stylesheet" href="{{ URL::asset('assets/css/style.css')}}">
+<link rel="stylesheet" href="{{ URL::asset('assets/css/nav.css')}}">
 <link rel="stylesheet" href="{{ URL::asset('assets/css/components.css')}}">
 
 <link href="{{ URL::asset('assets/modules/aos/aos.css')}}" rel="stylesheet">

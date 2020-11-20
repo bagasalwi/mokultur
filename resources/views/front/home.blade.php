@@ -4,7 +4,7 @@
 @guest
 <div class="jumbotron jumbotron-fluid pattern-1 mb-0">
     <div class="container">
-        <div class="row">
+        <div class="row mt-4">
             <div class="col-lg-8 offset-lg-1 align-self-center">
                 <h1 class="text-dark font-weight-bold" data-font-size="48px">Article, Stories, Reviews, whatever you
                     want to post!</h1>
@@ -60,6 +60,56 @@
                 {{-- <h4 class="">Recent Article</h4> --}}
                 @foreach ($creation as $idx => $p)
                 @if($idx != 0)
+                <div class="card border-0 mb-3">
+                    <div class="row no-gutters">
+                        <div class="col-sm-4">
+                            <a href="{{ route('post.detail',$p->slug) }}" class="card-block clearfix">
+                                <div class="card-img-wrap bd-radius-4">
+                                    <img class="card-img img-imagepost-headline" loading="lazy" height="150vh"
+                                        src="{{ asset('storage/' . $p->photo()) }}" alt="">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="mx-2 py-0">
+                                <a href="" class="text-primary"><h6>{{ $p->category->name }}</h6></a>
+                                <a href="{{ route('post.detail',$p->slug) }}" class="card-title">
+                                    <h4>
+                                        {{ $p->title }}
+                                    </h4>
+                                </a>
+                                <p class="card-text">
+                                    {{ str_limit(strip_tags($p->description),80,'...') }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-0 mb-3">
+                    <div class="row no-gutters">
+                        <div class="col-sm-4">
+                            <a href="{{ route('post.detail',$p->slug) }}" class="card-block clearfix">
+                                <div class="card-img-wrap bd-radius-4">
+                                    <img class="card-img img-imagepost-headline" loading="lazy" height="150vh"
+                                        src="{{ asset('storage/' . $p->photo()) }}" alt="">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="mx-2 py-0">
+                                <a href="" class="text-primary"><h6>{{ $p->category->name }}</h6></a>
+                                <a href="{{ route('post.detail',$p->slug) }}" class="card-title">
+                                    <h4>
+                                        {{ $p->title }}
+                                    </h4>
+                                </a>
+                                <p class="card-text">
+                                    {{ str_limit(strip_tags($p->description),80,'...') }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="card border-0 mb-3">
                     <div class="row no-gutters">
                         <div class="col-sm-4">
