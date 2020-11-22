@@ -1,9 +1,10 @@
-<div class="col-lg-3 d-none d-lg-block">
+<div class="col-lg-3 col-sm-12">
     <div class="stickydiv">
-        <div class="card card-full bd-radius-4 pattern-3">
-            <div class="card-overlay bd-radius-4"></div>
+        <div class="card card-full bd-radius-4">
+            {{-- <div class="card-overlay bd-radius-4"></div> --}}
             <div class="card-body">
-                <h4 class="text-dark">Always wear Mask!</h4>
+                <div id="covid19" style="max-width: 400px; margin: 0 auto;"></div>
+                <h4 class="text-primary">Always wear Mask!</h4>
                 <p class="text-dark">Due to COVID19 pandemic, make your mask as a secondary weapon of life.
                 </p>
             </div>

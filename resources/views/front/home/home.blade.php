@@ -21,7 +21,7 @@
                             <h1>{{ $greetings }}, {{ $user->name }} !</h1>
                             <p class="text-secondary">{{ $user->description }}</p>
                             <div class="flex-row">
-                               <a class="btn btn-outline-dark" href="{{ route('post.index') }}">Manage My Post</a>
+                               <a class="btn btn-outline-primary" href="{{ route('post.index') }}">Manage My Post</a>
                                <a class="btn btn-dark" href="{{ route('profile') }}">Edit Profile</a>
                             </div>
                         </div>

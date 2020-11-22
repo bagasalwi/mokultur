@@ -4,7 +4,7 @@
 <div class="jumbotron jumbotron-fluid pattern-1 mb-0">
     <div class="row">
         <div class="col-md-8 offset-md-2">
-            <div class="card card-body bd-radius-8 shadow border-0 m-2">
+            <div class="card card-body bd-radius-8 shadow border-0 m-2 animated">
                 <div class="row">
                     <div class="col-lg-2 col-md-4 col-sm-12 my-2">
                         <div class="d-flex justify-content-center">
@@ -41,7 +41,7 @@
     $lastname = substr($fullname, strpos($fullname, ' '), strlen($fullname));   
 @endphp
 
-<section class="section">
+<section class="mini-section">
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-sm-12">

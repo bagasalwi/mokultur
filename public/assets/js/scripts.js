@@ -446,6 +446,13 @@ $(function() {
   }
 
   // Background
+  $("[data-background-color]").each(function() {
+    var me = $(this);
+    me.css({
+      'background-color' : me.data('background-color'),
+    });
+  });
+
   $("[data-background]").each(function() {
     var me = $(this);
     me.css({

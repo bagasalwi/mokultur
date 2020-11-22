@@ -40,3 +40,4 @@
 <script src="{{ asset('assets/js/all.min.js')}}"></script>
 
 <script src="{{ asset('assets/modules/aos/aos.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.5.9/lottie.min.js"></script>

@@ -41,12 +41,16 @@ class CreatorController extends Controller
     public function creator_detail($username)
     {
         $data['user'] = User::where('username', $username)->first();
+        // dd(auth()->user());
 
         if(auth()->user()){
-            if($data['user']->id == auth()->user()->id){
-                return redirect()->route('dashboard');
+            if($data['user']->username == auth()->user()->username){
+                if($data['user']->id == auth()->user()->id){
+                    return redirect()->route('dashboard');
+                }
             }
-        }else{
+        }
+        else{
             if($data['user']){
                 $data['post'] = Post::orderBy('created_at', 'desc')->where('user_id', $data['user']->id)->paginate(10);
                 $data['post_count'] = Post::where('user_id', $data['user']->id)->count();

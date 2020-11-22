@@ -9,7 +9,7 @@
                         <img class="img-fluid img-imagepost" loading="lazy" src="{{ asset('storage/' . $p->photo()) }}"
                             alt="">
                         <div class="card-img-overlay text-white">
-                            <h5 class="badge badge-light shadow">{{ $p->category->name }}</h5>
+                            <h5 class="badge badge-primary shadow">{{ $p->category->name }}</h5>
                         </div>
                     </div>
                     <div class="mt-2">
