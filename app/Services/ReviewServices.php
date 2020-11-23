@@ -87,62 +87,86 @@ class ReviewServices
         return $this->allReviewUser()->count();
     }
 
-    public function create($request)
+    public function create($request, $photo)
     {
         $user = auth()->user();
+        
+        $review = New Review;
+        
+        if($photo){
+            $path = $photo->store('images/review');
+        }
+        // dd($path);
 
-        $review = Review::create([
-            'user_id' => $user->id,
-            'review_name' => $request['review_name'],
-            'review_image' => $request['review_image'],
-            'review_synopsis' => $request['review_synopsis'],
-            'review_releasedate' => $request['review_releasedate'],
-            'review_genre' => $request['review_genre'],
-            'review_studio' => $request['review_studio'],
-            'review_link' => $request['review_link'],
+        $review->user_id = $user->id;
+        $review->review_name = $request['review_name'];
+        $review->review_image = $path;
+        $review->review_synopsis = $request['review_synopsis'];
+        $review->review_releasedate = $request['review_releasedate'];
+        $review->review_genre = implode(', ', $request['review_genre']);
+        $review->review_studio = $request['review_studio'];
+        $review->review_link = $request['review_link'];
+        $review->title = $request['title'];
+        $review->slug = str_slug($request['title'], '-') . '-' . str_random(5);
+        $review->content = $request['content'];
+        $review->score = $request['score'];
+        $review->recommend = $request['recommend'];
+        $review->unrecommend = $request['unrecommend'];
+        $review->status = $request['status'];
+        $review->save();
 
-            'title' => $request['title'],
-            'slug' => $user->username . '/' . str_slug($request['title'], '-') . '-' . str_random(5),
-            'content' => $request['content'],
-            'score' => $request['score'],
-            'recommend' => $request['recommend'],
-            'unrecommend' => $request['unrecommend'],
-            'status' => $request['status'],
-        ]);
-
-        if(isset($request['tags'])){
-            $review->retag($request['tags']);
+        if(isset($request['review_genre'])){
+            $review->retag($request['review_genre']);
         }
 
         return $review;
     }
 
-    public function update($request)
+    public function update($request, $photo)
     {
         $user = auth()->user();
 
-        Review::where('id', $request['id'])->where('user_id', $user->id)->update([
-            'review_name' => $request['review_name'],
-            'review_image' => $request['review_image'],
-            'review_synopsis' => $request['review_synopsis'],
-            'review_releasedate' => $request['review_releasedate'],
-            'review_genre' => $request['review_genre'],
-            'review_studio' => $request['review_studio'],
-            'review_link' => $request['review_link'],
-
-            'title' => $request['title'],
-            'content' => $request['content'],
-            'score' => $request['score'],
-            'recommend' => $request['recommend'],
-            'unrecommend' => $request['unrecommend'],
-            'status' => $request['status'],
-        ]);
-
         $review = $this->find($request['id']);
 
-        if ($request['tags']) {
-            $review->retag($request['tags']);
+        if($photo){
+            // dd($photo);
+            if ($review->review_image) {
+                $lastImage = public_path('storage/' . $review->review_image); // get previous image from folder
+                
+                if (File::exists($lastImage)) { // unlink or remove previous image from folder
+                    unlink($lastImage);
+                }
+                $path = $photo->store('images/review');
+                $review->review_image = $path;
+    
+            } else {
+                $path = $photo->store('images/review');
+                $review->review_image = $path;
+            }
         }
+
+        $review->user_id = $user->id;
+        $review->review_name = $request['review_name'];
+        
+        $review->review_synopsis = $request['review_synopsis'];
+        $review->review_releasedate = $request['review_releasedate'];
+        
+        if(isset($request['review_genre'])){
+            $review->retag($request['review_genre']);
+            $review->review_genre = implode(',', $request['review_genre']);
+        }
+        
+        $review->review_studio = $request['review_studio'];
+        $review->review_link = $request['review_link'];
+        $review->title = $request['title'];
+        $review->slug = str_slug($request['title'], '-') . '-' . str_random(5);
+        $review->content = $request['content'];
+        $review->score = $request['score'];
+        $review->recommend = $request['recommend'];
+        $review->unrecommend = $request['unrecommend'];
+        $review->status = $request['status'];
+        $review->save();
+
         return $review;
     }
 
@@ -151,6 +175,13 @@ class ReviewServices
         $review = $this->find($id);
 
         $review->untag();
+
+        if ($review->review_image) {
+            $image = public_path('storage/' . $review->review_image); // get previous image from folder
+            if (File::exists($image)) { // unlink or remove previous image from folder
+                unlink($image);
+            }
+        }
 
         Review::where('id', $id)->delete();
     }

@@ -44,4 +44,61 @@ class ReviewController extends Controller
 
         return view('front.review.review_form', $data);
     }
+
+    public function update($slug){
+        $review = Review::where('slug',$slug)->first();
+
+        if($review->user_id == auth()->user()->id){
+            $data['state'] = 'update';
+            $data['fields'] = $this->reviewService->find($review->id);
+
+            $data['review_genre'] = $review->tagNames();
+
+            return view('front.review.review_form', $data);
+        }else{
+            return redirect()->route('review.create');
+        }
+    }
+
+    public function save(Request $request){
+        // dd($request->post());
+
+        if($request->state == 'create'){
+            $this->validate($request, [
+                'review_name' => 'required',
+                'review_image' => 'file|image|mimes:jpeg,png,jpg|required',
+                'review_synopsis' => 'required',
+                'review_releasedate' => 'required',
+                'title' => 'required',
+                'content' => 'required',
+                'score' => 'required',
+                'status' => 'required',
+            ]);
+
+            $review = $this->reviewService->create($request->all(), $request->file('review_image'));
+
+            return redirect('review')->with('success', 'Review baru berhasil dibuat!');
+        }else if($request->state == 'update'){
+            $this->validate($request, [
+                'review_name' => 'required',
+                'review_image' => 'file|image|mimes:jpeg,png,jpg',
+                'review_synopsis' => 'required',
+                'review_releasedate' => 'required',
+                'title' => 'required',
+                'content' => 'required',
+                'score' => 'required',
+                'status' => 'required',
+            ]);
+
+            // $review_image = "";
+
+            $review = $this->reviewService->update($request->all(), $request->file('review_image'));
+
+            return redirect('review')->with('success', 'Review baru berhasil diupdate!');
+        }
+    }
+
+    public function delete($id){
+        $this->reviewService->delete($id);
+    }
 }

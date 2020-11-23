@@ -46,7 +46,7 @@
                             <div class="ml-auto px-2">
                                 <a href="{{ $url_update }}/{{ $item->slug }}"
                                     class="btn btn-outline-dark btn-sm px-4">Edit</a>
-                                <button onclick="deletePost({{ $item->id }})"
+                                <button onclick="deleteReview({{ $item->id }})"
                                     class="btn btn-outline-danger btn-sm px-2">
                                     <i class="fas fa-trash"></i>
                                 </button>
@@ -60,7 +60,7 @@
                 @else
                 <div class="empty-state" data-height="400">
                     <img width="150" src="{{ URL::asset('gambar/sketch/7.svg')}}">
-                    <h2>Tidak ada Post</h2>
+                    <h2>Tidak ada Review</h2>
                 </div>
                 @endif
             </div>
@@ -77,8 +77,8 @@
 </script>
 @endif
 
-{{-- <script>
-    function deletePost(id){       
+<script>
+    function deleteReview(id){       
         swal({
         title: "Are you sure?",
         text: "Are your sure want to delete this row data?",
@@ -89,7 +89,7 @@
       .then((willDelete) => {
           if (willDelete) {
             $.ajax({
-            url: "{{ url('post/delete') }}" + "/" + id,
+            url: "{{ url('review/delete') }}" + "/" + id,
             success: function(){
                 swal("Done!","It was succesfully deleted!","success");
                 setInterval('window.location.reload()', 1000);
@@ -100,5 +100,5 @@
         }
       });
     }
-</script> --}}
+</script>
 @endsection

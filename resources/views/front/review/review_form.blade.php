@@ -79,13 +79,13 @@
                                         <label>What kind of Genre?</label>
                                         <select type="text" id="tags-input" class="form-control" name="review_genre[]" placeholder="Action, Romance.."
                                             multiple="multiple">
-                                            @if(old('tags'))
-                                                @foreach(old('tags') as $tag)
+                                            @if(old('review_genre'))
+                                                @foreach(old('review_genre') as $tag)
                                                     <option value="{{$tag}}">{{$tag}}</option>
                                                 @endforeach
                                             @else
-                                               @if (isset($tags))
-                                                    @foreach ($tags as $tag)
+                                               @if (isset($review_genre))
+                                                    @foreach ($review_genre as $tag)
                                                         <option value="{{$tag}}">{{$tag}}</option>
                                                     @endforeach
                                                @endif
@@ -103,14 +103,14 @@
                                 <div class="col-md-4 col-sm-12">
                                     <div class="form-group">
                                         <label>Publisher or Studio?</label>
-                                        <input type="text" class="form-control datepicker" id="review_studio" name="review_studio" placeholder="Release Date"
+                                        <input type="text" class="form-control" id="review_studio" name="review_studio" placeholder="Review Studio"
                                             value="{{ old('review_studio', $fields->review_studio) }}" required>
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-sm-12">
                                     <div class="form-group">
                                         <label>Link to Source</label>
-                                        <input type="text" class="form-control datepicker" id="review_link" name="review_link" placeholder="Release Date"
+                                        <input type="text" class="form-control" id="review_link" name="review_link" placeholder="Official Source, Redirect link.."
                                             value="{{ old('review_link', $fields->review_link) }}" required>
                                     </div>
                                 </div>
