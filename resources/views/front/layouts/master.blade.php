@@ -19,39 +19,6 @@
 	@include('front.layouts.css-extension')
 
 	@yield('css')
-
-	<style type="text/css">
-		.smart-scroll {
-			position: fixed;
-			top: 0;
-			right: 0;
-			left: 0;
-			z-index: 1030;
-		}
-
-		.scrolled-down {
-			transform: translateY(-100%);
-			transition: all 0.3s ease-in-out;
-		}
-
-		.scrolled-up {
-			transform: translateY(0);
-			transition: all 0.3s ease-in-out;
-		}
-
-		.dropdown-toggle::after {
-			display: none;
-		}
-
-		.text-decoration-none {
-			text-decoration: none !important;
-		}
-
-		/* Font Awesome Icons have variable width. Added fixed width to fix that.*/
-		.icon-width {
-			width: 2rem;
-		}
-	</style>
 </head>
 
 <body class="layout-3 bg-white">
