@@ -2,19 +2,25 @@
 
 @section('content')
 <section class="section">
+    <div class="container mb-3">
+        <div class="card card-body d-flex flex-row">
+            <div class="mr-auto">
+                <ul class="nav nav-pills" id="post-bar" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link mr-1 {{ request()->is('post') ? 'active' : '' }}" href="{{ route('post.index') }}">My Post</a>
+                        <a class="nav-link mr-1 {{ request()->is('review') ? 'active' : '' }}" href="{{ route('review.index') }}">My Review</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="ml-auto">
+                <button type="button" data-toggle="modal" data-target="#articleType"
+                    class="btn btn-dark px-4">Create New Post</button>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-sm-12">
-                <div class="d-flex flex-row">
-                    <div class="mr-auto">
-                        <h2 class="text-dark">My Post</h2>
-                    </div>
-                    <div class="ml-auto">
-                        <button type="button" data-toggle="modal" data-target="#articleType"
-                            class="btn btn-dark px-4">Create New Post</button>
-                    </div>
-                </div>
-                <hr>
                 @if ($post)
                 <div id="posts" class="my-4">
                     @foreach ($post as $item)

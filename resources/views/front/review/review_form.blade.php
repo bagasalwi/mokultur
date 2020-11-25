@@ -149,14 +149,14 @@
                                 <div class="col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label>I'll Recommend You If..</label>
-                                        <textarea name="recommend" rows="4" cols="50"
+                                        <textarea name="recommend"
                                             class="form-control">{{ old('recommend', $fields->recommend) }}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label>I'll Unrecommend You If..</label>
-                                        <textarea rows="4" cols="50" name="unrecommend" 
+                                        <textarea name="unrecommend" 
                                             class="form-control">{{ old('unrecommend', $fields->unrecommend) }}</textarea>
                                     </div>
                                 </div>

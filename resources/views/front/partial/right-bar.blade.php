@@ -1,4 +1,4 @@
-<div class="col-lg-3 col-sm-12">
+<div class="col-lg-3 col-sm-12 d-none d-lg-block">
     <div class="stickydiv">
         <div class="card card-full bd-radius-4">
             {{-- <div class="card-overlay bd-radius-4"></div> --}}

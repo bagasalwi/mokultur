@@ -44,7 +44,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                     aria-expanded="false">
-                    MY ACCOUNT<i class="fas fa-caret-down ml-2"></i>
+                    MY ACCOUNT
                 </a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="{{ url('login') }}">Login</a>
@@ -62,8 +62,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                     aria-expanded="false">
-                    {{ strlen($firstname) > 20 ? substr($firstname, 0, 20) . '...' : $firstname }}<i
-                        class="fas fa-caret-down ml-2"></i>
+                    {{ strlen($firstname) > 20 ? substr($firstname, 0, 20) . '...' : $firstname }}
                 </a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item d-flex flex-row" href="#">

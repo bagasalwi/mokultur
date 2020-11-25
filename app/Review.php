@@ -14,4 +14,13 @@ class Review extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    public function photo(){
+        $review = Review::where('id', $this->id)->first();
+        if($review){
+            return $review->review_image;
+        }else{
+            return "no-image";
+        }
+    }
 }

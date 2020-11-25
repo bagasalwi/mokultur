@@ -28,6 +28,11 @@ Route::prefix('article')->group(function () {
     Route::get('/{slug}', 'Frontpanel\FrontPostController@postChecker')->name('post.detail');
 });
 
+Route::prefix('reviews')->group(function () {
+    Route::get('/', 'Frontpanel\FrontPostController@browseReview')->name('review');
+    Route::get('/{slug}', 'Frontpanel\FrontPostController@reviewDetail')->name('review.detail');
+});
+
 Route::prefix('creator')->group(function () {
     Route::get('/', 'Frontpanel\CreatorController@creator')->name('creator');
     Route::get('/{username}', 'Frontpanel\CreatorController@creator_detail')->name('creator.detail');

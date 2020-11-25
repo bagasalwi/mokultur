@@ -839,7 +839,7 @@ tr:first-child > td > .fc-day-grid-event {
   outline: none;
   background-color: #fdfdff;
   border-color: #e4e6fc;
-  border-radius: 0 !important;
+  border-radius: 4px !important;
 }
 
 .select2-dropdown {
@@ -910,7 +910,7 @@ tr:first-child > td > .fc-day-grid-event {
 .selectric {
   background-color: #fdfdff;
   border-color: #e4e6fc;
-  border-radius: 0 !important;
+  border-radius: 4px !important;
   min-height: 42px;
   border-radius: 3px;
   padding-left: 10px;
@@ -1081,8 +1081,8 @@ tr:first-child > td > .fc-day-grid-event {
 
 /* 1.24 Summernote */
 .note-editor.note-frame {
-  border-radius: 3px;
-  border: 1px solid #ededed;
+  border-radius: 4px;
+  border: 1px solid #cccccc;
   box-shadow: none;
 }
 
@@ -1104,7 +1104,7 @@ tr:first-child > td > .fc-day-grid-event {
 
 /* 1.25 Sweet Alert */
 .swal-button {
-  border-radius: 0;
+  border-radius: 4px;
   font-size: 16px;
 }
 .swal-button:focus {
@@ -1119,7 +1119,7 @@ tr:first-child > td > .fc-day-grid-event {
 }
 
 .swal-modal{
-  border-radius: 0;
+  border-radius: 4px;
 }
 
 .swal-footer {

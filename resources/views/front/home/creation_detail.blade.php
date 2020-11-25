@@ -4,7 +4,7 @@
 
 <div class="jumbotron jumbotron-fluid mb-0" data-background-topic="{{ asset('storage/' . $post->category->banner) }}">
     <div class="jumbotron-overlay"></div>
-    <div class="container">
+    <div class="container mt-4">
         <div class="row">
             <div class="col-md-8 col-sm-12 offset-md-2 text-center">
                 <h1 class="text-white font-weight-bold">{{ $post->category->name }}</h1>

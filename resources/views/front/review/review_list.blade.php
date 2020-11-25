@@ -2,18 +2,24 @@
 
 @section('content')
 <section class="section">
+    <div class="container mb-3">
+        <div class="card card-body d-flex flex-row">
+            <div class="mr-auto">
+                <ul class="nav nav-pills" id="post-bar" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link mr-1 {{ request()->is('post') ? 'active' : '' }}" href="{{ route('post.index') }}">My Post</a>
+                        <a class="nav-link mr-1 {{ request()->is('review') ? 'active' : '' }}" href="{{ route('review.index') }}">My Review</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="ml-auto">
+                <a class="btn btn-dark px-4" href="{{ url($url_create) }}">Create New Review</a>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-sm-12">
-                <div class="d-flex flex-row">
-                    <div class="mr-auto">
-                        <h2 class="text-dark">My Review</h2>
-                    </div>
-                    <div class="ml-auto">
-                        <a class="btn btn-dark px-4" href="{{ url($url_create) }}">Create New Review</a>
-                    </div>
-                </div>
-                <hr>
                 @if ($review)
                 <div id="posts" class="my-4">
                     @foreach ($review as $item)
@@ -33,7 +39,7 @@
 
                     <div class="card border-0">
                         <div class="d-flex flex-row">
-                            <a class="text-dark" href="{{ route('post.detail', $item->slug) }}">
+                            <a class="text-dark" href="{{ route('review.detail', $item->slug) }}">
                                 <h4>{{ $item->title }}</h4>
                             </a>
                         </div>
