@@ -64,6 +64,14 @@ class ReviewServices
         }
     }
 
+    public function takePublishReview($take){
+        if ($take) {
+            return Review::where('status', 'P')->orderBy('created_at', 'desc')->take($take)->get();
+        } else {
+            return Review::where('status', 'P')->orderBy('created_at', 'desc')->take(5)->get();
+        }
+    }
+
     public function allReview($paginate = null)
     {
         if ($paginate) {

@@ -14,14 +14,12 @@
 Auth::routes();
 
 Route::get('/', 'Frontpanel\HomeController@index')->name('home');
-Route::get('/browse', 'Frontpanel\FrontPostController@browsePost')->name('browse');
+Route::get('/browse', 'Frontpanel\HomeController@browse')->name('browse');
 
 Route::prefix('topic')->group(function () {
     Route::get('/', 'Frontpanel\HomeController@category')->name('topic');
     Route::get('/{category}', 'Frontpanel\HomeController@category')->name('topic.detail');
 });
-
-Route::get('/event', 'Frontpanel\HomeController@specialCategory')->name('topic.event');
 
 Route::prefix('article')->group(function () {
     Route::get('/', 'Frontpanel\FrontPostController@browsePost')->name('post');

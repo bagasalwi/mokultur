@@ -35,11 +35,11 @@
                     CREATORS
                 </a>
             </li>
-            <li class="nav-item {{ request()->is('event') ? 'active' : '' }}">
+            {{-- <li class="nav-item {{ request()->is('event') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('topic.event') }}">
                     EVENT
                 </a>
-            </li>
+            </li> --}}
             @guest
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"

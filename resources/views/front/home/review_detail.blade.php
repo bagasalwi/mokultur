@@ -60,8 +60,10 @@
             <div class="col-md-6 col-sm-12">
                 <div class="card card-body border-0 bd-radius-4 shadow-sm d-flex flex-row">
                     <div class="mr-auto align-self-center">
-                        <h6 class="text-primary">{{ $review->user->name }} says,</h6>
-                        <h3 class="no-pm">{{ $review->title }}</h3>
+                        <a href="{{ url('creator/' . $review->user->username) }}">
+                            <h6 class="text-primary">{{ $review->user->name }},</h6>
+                        </a>
+                        <h3 class="no-pm">"{{ $review->title }}"</h3>
                     </div>
                 </div>
                 <div class="card border-0 bd-radius-4 shadow my-2">
@@ -90,6 +92,39 @@
                         <div class="card-body">
                             <p>{!! $review->content !!}</p>
                         </div>
+                    </div>
+                </div>
+                <div class="card border-0 bd-radius-4 shadow my-2">
+                    <div class="card-header">
+                        <h4 class="no-pm">I'll Recommend You If..</h4>
+                        <div class="card-header-action">
+                            <a data-collapse="#recommend-collapse" class="btn btn-icon btn-primary" href="#"><i
+                                    class="fas fa-minus"></i></a>
+                        </div>
+                    </div>
+                    <div class="collapse show" id="recommend-collapse">
+                        <div class="card-body">
+                            <p>{{ $review->recommend }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-0 bd-radius-4 shadow my-2">
+                    <div class="card-header">
+                        <h4 class="no-pm">I'll Unrecommend You If..</h4>
+                        <div class="card-header-action">
+                            <a data-collapse="#unrecommend-collapse" class="btn btn-icon btn-primary" href="#"><i
+                                    class="fas fa-minus"></i></a>
+                        </div>
+                    </div>
+                    <div class="collapse show" id="unrecommend-collapse">
+                        <div class="card-body">
+                            <p>{{ $review->unrecommend }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-0 bd-radius-4 shadow my-2">
+                    <div class="card-body">
+                        <div class="mt-2" id="disqus_thread"></div>
                     </div>
                 </div>
             </div>

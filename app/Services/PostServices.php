@@ -65,6 +65,14 @@ class PostServices
         }
     }
 
+    public function takePublishPost($take){
+        if ($take) {
+            return Post::where('status', 'P')->orderBy('created_at', 'desc')->take($take)->get();
+        } else {
+            return Post::where('status', 'P')->orderBy('created_at', 'desc')->take(5)->get();
+        }
+    }
+
     public function allPost($paginate = null)
     {
         if ($paginate) {

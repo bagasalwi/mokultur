@@ -21,7 +21,7 @@
 	@yield('css')
 </head>
 
-<body class="layout-3 bg-white">
+<body class="layout-3 bg-light">
 	<div id="app">
 		@include('front.layouts.navbar')
 

@@ -5,17 +5,20 @@ namespace App\Http\Controllers\Frontpanel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Post;
+use App\Review;
 use App\PostCategory;
 use DB;
 use App\Services\CategoryServices;
 use App\Services\PostServices;
+use App\Services\ReviewServices;
 
 class HomeController extends Controller
 {
     
-    public function __construct(CategoryServices $categoryService, PostServices $postService)
+    public function __construct(CategoryServices $categoryService, PostServices $postService, ReviewServices $reviewService)
     {
         $this->postService = $postService;
+        $this->reviewService = $reviewService;
         $this->categoryService = $categoryService;
     }
 
@@ -47,21 +50,27 @@ class HomeController extends Controller
 
     }
 
-    public function specialCategory(){
+    public function browse(Request $request){
 
-        $data['category'] = PostCategory::first();
-        $data['topCategory'] = $this->categoryService->topCategory();
-        $data['event'] = $this->categoryService->findEvent();
-
-        if($data['event']){
+        if ($request->has('search')) {
+            $data['search_meta'] = $request->search;
             $data['creation'] = Post::where('status', 'P')
-                                ->where('category_id', $data['event']->id)
-                                ->orderBy('created_at', 'desc')->paginate(8);
-                                
-            return view('front.special.category-special', $data);
-        }else{
-            return redirect('/');
+                ->orderBy('created_at', 'desc')
+                ->where('title', 'like', "%" . $request->search . "%")->paginate(8);
+
+            $data['creation']->appends(['search' => $request->search]);
+
+            $data['review'] = Review::where('status', 'P')
+                ->orderBy('created_at', 'desc')
+                ->where('title', 'like', "%" . $request->search . "%")->paginate(8);
+
+            $data['topCategory'] = $this->categoryService->topCategory();
+        } else {
+            $data['creation'] = $this->postService->takePublishPost(5);
+            $data['review'] = $this->reviewService->takePublishReview(5);
+            $data['topCategory'] = $this->categoryService->topCategory();
         }
+        return view('front.home.browse', $data);
         
     }
 }

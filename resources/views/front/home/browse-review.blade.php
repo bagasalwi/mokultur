@@ -11,10 +11,10 @@
             </form>
         </div>
         <div class="row">
-            <div class="col-lg-9 col-sm-12">
+            <div class="col-lg-9 col-md-12 col-sm-12">
                 <div id="reviews" class="row">
                     @foreach ($review as $p)
-                    <div class="col-md-3">
+                    <div class="col-lg-3 col-md-4 col-sm-4">
                         <a href="{{ route('review.detail',$p->slug) }}" class="card-block clearfix">
                             <div class="card border-0 mb-2">
                                 <div class="card-img-wrap mb-2 bd-radius-4">
