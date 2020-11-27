@@ -3,27 +3,21 @@
 @section('content')
 <div class="section">
     <div class="container">
-        <div class="my-4">
-            <p class="no-pm">{{ isset($search_meta ) ? 'Showing result for :' : 'Search An Article or Reviews :'  }}</p>
-            <form action="{{ route('post') }}" role="search">
-                <input type="text" id="search" name="search" class="inputSearch" placeholder="Search.."
-                    value="{{ isset($search_meta ) ? $search_meta : ""  }}">
-            </form>
-        </div>
         <div class="row">
             <div class="col-lg-9 col-sm-12">
-
-                <div class="hero primary-gradient text-white bd-radius-4 mb-3">
-                    <div class="hero-inner">
-                        <h1 class="text-white">More Like, A Geek's Playground</h1>
-                        <p class="lead text-white">We just offering a place to upload, and as you know.. You all are our filler.</p>
+                <a href="{{ route('review') }}" class="card-block clearfix">
+                    <div class="hero primary-gradient text-white mb-3 card-hover bd-radius-4">
+                        <div class="hero-inner">
+                            <h1 class="text-white">Reviews</h1>
+                            <p class="lead text-white">A place for you to share your personal opinion about Movies,
+                                Anime, Comics, Tv Series or Game. <span class="font-weight-bold">Click This Banner For More</span></p>
+                        </div>
                     </div>
-                </div>
-
-                @foreach ($review as $p)
-                <div class="col-lg-3 col-md-4 col-sm-4">
-                    <a href="{{ route('review.detail',$p->slug) }}" class="card-block clearfix">
-                        <div class="card border-0 mb-2">
+                </a>
+                <div class="row">
+                    @foreach ($review as $p)
+                    <div class="col-lg-3 col-md-4 col-sm-4">
+                        <a href="{{ route('review.detail',$p->slug) }}" class="card-block clearfix">
                             <div class="card-img-wrap mb-2 bd-radius-4">
                                 <img class="img-fluid img-imagereview" loading="lazy"
                                     src="{{ asset('storage/' . $p->photo()) }}" alt="">
@@ -39,11 +33,19 @@
                                         href="{{ url('creator/' . $p->user->username) }}">{{ strtoupper($p->user->username) }}</a>
                                 </p>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
+                    @endforeach
                 </div>
-                @endforeach
-                <hr>
+
+                <a href="{{ route('post') }}" class="card-block clearfix">
+                    <div class="hero primary-gradient text-white mb-3 card-hover bd-radius-4">
+                        <div class="hero-inner">
+                            <h1 class="text-white">Articles</h1>
+                            <p class="lead text-white">A place for you to share your Stories, Knowledge, Experience, Tutorials, Foodies and more. <span class="font-weight-bold">Click This Banner For More</span></p>
+                        </div>
+                    </div>
+                </a>
                 <div id="posts" class="row">
                     @foreach ($creation as $p)
                     <div class="col-md-4">

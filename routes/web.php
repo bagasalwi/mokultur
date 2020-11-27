@@ -17,8 +17,8 @@ Route::get('/', 'Frontpanel\HomeController@index')->name('home');
 Route::get('/browse', 'Frontpanel\HomeController@browse')->name('browse');
 
 Route::prefix('topic')->group(function () {
-    Route::get('/', 'Frontpanel\HomeController@category')->name('topic');
-    Route::get('/{category}', 'Frontpanel\HomeController@category')->name('topic.detail');
+    Route::get('/', 'Frontpanel\HomeController@topic')->name('topic');
+    Route::get('/{category}', 'Frontpanel\HomeController@topic')->name('topic.detail');
 });
 
 Route::prefix('article')->group(function () {

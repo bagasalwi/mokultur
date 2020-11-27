@@ -57,6 +57,11 @@ class User extends Authenticatable
         return $this->hasMany(Post::class)->count();
     }
 
+    public function totalReview()
+    {
+        return $this->hasMany(Review::class)->count();
+    }
+
     public function authorizeRoles($roles)
     {
         if (is_array($roles)) {

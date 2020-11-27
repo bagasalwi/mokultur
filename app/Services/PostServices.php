@@ -93,7 +93,7 @@ class PostServices
 
     public function postByCategories($category_id)
     {
-        return Post::where('status', 'P')->where('category_id', $category_id)->orderBy('created_at', 'desc')->paginate(2);
+        return Post::where('status', 'P')->where('category_id', $category_id)->orderBy('created_at', 'desc')->paginate(10);
     }
 
     public function userPostCount()

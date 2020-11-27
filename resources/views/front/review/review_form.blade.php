@@ -33,15 +33,15 @@
                         <div class="stickydiv">
                             <div class="row">
                                 <div class="col-md-12 col-sm-12">
-                                    <div class="my-2 bd-radius-8 border" data-toggle="tooltip" data-placement="top" title="Foto akan disesuaikan dengan ukuran poster, jika size melebihi akan tercover">
+                                    <div class="my-2 bd-radius-8" data-toggle="tooltip" data-placement="top" title="Foto akan disesuaikan dengan ukuran poster, jika size melebihi akan tercover">
                                         @if ($state == 'create')
-                                        <img id='img-upload' class="img-fluid bd-radius-8" src="{{ asset('gambar/no-image.jpg') }}" />
+                                        <img id='img-upload' class="img-fluid img-imagereview mx-auto d-block bd-radius-8" src="{{ asset('gambar/no-image.jpg') }}" />
                                         @elseif($state == 'update')
                                         @if ($fields->review_image)
-                                        <img id='img-upload' class="img-fluid bd-radius-8"
+                                        <img id='img-upload' class="img-fluid img-imagereview mx-auto d-block bd-radius-8"
                                             src="{{ asset('storage/' . $fields->review_image) }}" />
                                         @else
-                                        <img id='img-upload' class="img-fluid bd-radius-8" src="{{ asset('gambar/no-image.jpg') }}" />
+                                        <img id='img-upload' class="img-fluid img-imagereview mx-auto d-block bd-radius-8" src="{{ asset('gambar/no-image.jpg') }}" />
                                         @endif
                                         @endif
                                     </div>

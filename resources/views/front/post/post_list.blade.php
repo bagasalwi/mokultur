@@ -7,7 +7,7 @@
             <div class="mr-auto">
                 <ul class="nav nav-pills" id="post-bar" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link mr-1 {{ request()->is('post') ? 'active' : '' }}" href="{{ route('post.index') }}">My Post</a>
+                        <a class="nav-link mr-1 {{ request()->is('post') ? 'active' : '' }}" href="{{ route('post.index') }}">My Article</a>
                         <a class="nav-link mr-1 {{ request()->is('review') ? 'active' : '' }}" href="{{ route('review.index') }}">My Review</a>
                     </li>
                 </ul>

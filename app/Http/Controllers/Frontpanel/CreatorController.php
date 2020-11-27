@@ -4,70 +4,83 @@ namespace App\Http\Controllers\Frontpanel;
 
 use App\Services\CategoryServices;
 use App\Services\PostServices;
+use App\Services\ReviewServices;
 use App\Services\UserServices;
 
 use App\Http\Controllers\Controller;
 use App\Post;
 use App\User;
+use App\Review;
 use App\Sidebar;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-use Auth,DB,Image,File,Session;
+use Auth, DB, Image, File, Session;
 
 class CreatorController extends Controller
 {
-    public function __construct(CategoryServices $categoryService, PostServices $postService, UserServices $userService)
+    public function __construct(CategoryServices $categoryService, PostServices $postService, ReviewServices $reviewService, UserServices $userService)
     {
         $this->postService = $postService;
         $this->categoryService = $categoryService;
         $this->userService = $userService;
+        $this->reviewService = $reviewService;
     }
 
-    public function creator(Request $request){
+    public function creator(Request $request)
+    {
         if ($request->has('search')) {
             $data['search_meta'] = $request->search;
             $data['creator'] = User::with('latestPost')
-                        ->orderBy('created_at', 'desc')
-                        ->where('name', 'like', "%".$request->search."%")->paginate(9);
+                ->orderBy('created_at', 'desc')
+                ->where('name', 'like', "%" . $request->search . "%")->paginate(9);
 
             $data['creator']->appends(['search' => $request->search]);
+            $data['topCategory'] = $this->categoryService->topCategory();
         } else {
-            $data['creator'] = User::with('latestPost')->paginate(9);         
+            $data['creator'] = User::with('latestPost')->paginate(9);
+            $data['topCategory'] = $this->categoryService->topCategory();
         }
 
-        return view('front.home.creator', $data);
+        return view('front.creator.creator', $data);
     }
 
-    public function creator_detail($username)
+    public function creator_detail(Request $request, $username)
     {
         $data['user'] = User::where('username', $username)->first();
-        // dd(auth()->user());
 
-        if(auth()->user()){
-            if($data['user']->username == auth()->user()->username){
-                if($data['user']->id == auth()->user()->id){
-                    return redirect()->route('dashboard');
-                }
-            }
-        }
-        else{
-            if($data['user']){
+        if ($data['user']) {
+            $data['active_since'] = $data['user']->created_at->format('d M Y');
+            if ($request->type == 'article' || $request->type == '') {
                 $data['post'] = Post::orderBy('created_at', 'desc')->where('user_id', $data['user']->id)->paginate(10);
                 $data['post_count'] = Post::where('user_id', $data['user']->id)->count();
                 $data['total_post'] = $data['user']->totalPost();
-                $data['active_since'] = $data['user']->created_at->format('d M Y');
 
                 $data['total_view'] = 0;
-                if($data['post']){
-                    foreach($data['post'] as $post){
+                if ($data['post']) {
+                    foreach ($data['post'] as $post) {
                         $data['total_view'] += $post->view_count;
                     }
                 }
-        
-                return view('front.home.creator_detail', $data);
+
+                return view('front.creator.creator-post', $data);
+            }elseif($request->type == 'review'){
+                $data['review'] = Review::orderBy('created_at', 'desc')->where('user_id', $data['user']->id)->paginate(10);
+                $data['review_count'] = Review::where('user_id', $data['user']->id)->count();
+                $data['total_review'] = $data['user']->totalReview();
+
+                return view('front.creator.creator-review', $data);
             }else{
-                return redirect()->back();
+                return redirect('/');
             }
+        } else {
+            return redirect()->back();
         }
+
+
+        // if (auth()->user() && $data['user']->username == auth()->user()->username) {
+        //     if ($data['user']->id == auth()->user()->id) {
+        //         return redirect()->route('dashboard');
+        //     }
+        // } else { }
     }
 }

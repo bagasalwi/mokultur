@@ -32,7 +32,7 @@ class HomeController extends Controller
         return view('front.home', $data);
     }
 
-    public function category($category = null){
+    public function topic($category = null){
         if($category){
             $data['category'] = $this->categoryService->findSlug($category);
             $data['topCategory'] = $this->categoryService->topCategory();
@@ -43,7 +43,7 @@ class HomeController extends Controller
             $data['category_slide'] = $this->categoryService->categoryTake(5);
             $data['category'] = $this->categoryService->allCategory();
             $data['topCategory'] = $this->categoryService->topCategory();
-            $data['creation'] = Post::where('status', 'P')->orderBy('created_at', 'desc')->paginate(2);
+            $data['creation'] = Post::where('status', 'P')->orderBy('created_at', 'desc')->paginate(10);
 
             return view('front.category.category', $data);
         }
@@ -51,25 +51,10 @@ class HomeController extends Controller
     }
 
     public function browse(Request $request){
-
-        if ($request->has('search')) {
-            $data['search_meta'] = $request->search;
-            $data['creation'] = Post::where('status', 'P')
-                ->orderBy('created_at', 'desc')
-                ->where('title', 'like', "%" . $request->search . "%")->paginate(8);
-
-            $data['creation']->appends(['search' => $request->search]);
-
-            $data['review'] = Review::where('status', 'P')
-                ->orderBy('created_at', 'desc')
-                ->where('title', 'like', "%" . $request->search . "%")->paginate(8);
-
-            $data['topCategory'] = $this->categoryService->topCategory();
-        } else {
-            $data['creation'] = $this->postService->takePublishPost(5);
-            $data['review'] = $this->reviewService->takePublishReview(5);
-            $data['topCategory'] = $this->categoryService->topCategory();
-        }
+        $data['creation'] = $this->postService->takePublishPost(9);
+        $data['review'] = $this->reviewService->takePublishReview(8);
+        $data['topCategory'] = $this->categoryService->topCategory();
+    
         return view('front.home.browse', $data);
         
     }
