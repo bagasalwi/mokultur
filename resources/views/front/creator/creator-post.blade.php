@@ -52,71 +52,13 @@ $lastname = substr($fullname, strpos($fullname, ' '), strlen($fullname));
                     </div>
                     @endforeach
                 </div>
-                {!! $post->render() !!}
-                <div class="text-center">
-                    @if ($post->hasMorePages())
-                    <button id="see-more" class="btn btn-block btn-dark" data-page="2"
-                        data-link="{{ url()->current().'?page=' }}" data-div="#posts">Reach More</button>
-                    @else
-                    <h4 class="text-secondary font-weight-normal">You reach the bottom of Knowledge!</h4>
-                    @endif
+                <div class="d-flex justify-content-center mt-4">
+                   {!! $post->render() !!}
                 </div>
                 @endif
-
-                <div class="row">
-                    <div class="col-auto">
-                        <div class="card card-body bg-dark bd-radius-8">
-                            <h5 class="text-white">Here Just to Post</h5>
-                            <p class="text-white">Overall Total Post, {{ $total_post }} Article</p>
-                        </div>
-                    </div>
-                    <div class="col-auto">
-                        <div class="card card-body bg-dark bd-radius-8">
-                            <h5 class="text-white">My Viewers, My Achievement</h5>
-                            <p class="text-white">Total Views from All Post, {{ $total_view }}</p>
-                        </div>
-                    </div>
-                    <div class="col-auto">
-                        <div class="card card-body bg-dark bd-radius-8">
-                            <h5 class="text-white">From The Beginning</h5>
-                            <p class="text-white">Your Account active since {{ $active_since }}</p>
-                        </div>
-                    </div>
-                    <div class="col-auto">
-                        <div class="card card-body bg-dark bd-radius-8">
-                            <h5 class="text-white">The Tag Master</h5>
-                            <p class="text-white"></p>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
 </section>
 
-@endsection
-
-@section('script')
-<script>
-    $("ul.pagination").hide();
-
-    $("#see-more").click(function() {
-        $div = $($(this).data('div')); //div to append
-        $link = $(this).data('link'); //current URL
-
-        $page = $(this).data('page'); //get the next page #
-        $href = $link + $page; //complete URL
-        $.get($href, function(response) { //append data
-            $html = $(response).find("#posts").html(); 
-            if($html.length < 20){
-                $('#see-more').replaceWith('<h6 class="text-secondary font-weight-normal">You reach the bottom of Knowledge!!</h6>')          
-            }else{
-                $div.append($html);
-            }
-        });
-
-        $(this).data('page', (parseInt($page) + 1)); //update page #
-    });    
-</script>
 @endsection

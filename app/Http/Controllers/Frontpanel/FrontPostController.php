@@ -34,7 +34,7 @@ class FrontPostController extends Controller
 
             $data['topCategory'] = $this->categoryService->topCategory();
         } else {
-            $data['creation'] = $this->postService->latestPublishedPost(8);
+            $data['creation'] = $this->postService->latestPublishedPost(1);
             $data['topCategory'] = $this->categoryService->topCategory();
         }
         return view('front.home.browse-post', $data);
@@ -50,7 +50,7 @@ class FrontPostController extends Controller
 
             $data['topCategory'] = $this->categoryService->topCategory();
         } else {
-            $data['review'] = $this->reviewService->latestPublishedReview(8);
+            $data['review'] = $this->reviewService->latestPublishedReview(1);
             $data['topCategory'] = $this->categoryService->topCategory();
         }
         return view('front.home.browse-review', $data);

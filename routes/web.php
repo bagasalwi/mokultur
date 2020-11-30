@@ -33,7 +33,7 @@ Route::prefix('reviews')->group(function () {
 
 Route::prefix('creator')->group(function () {
     Route::get('/', 'Frontpanel\CreatorController@creator')->name('creator');
-    Route::get('/{username}', 'Frontpanel\CreatorController@creator_detail')->name('creator.detail');
+    Route::get('/{username}/{type?}', 'Frontpanel\CreatorController@creator_detail')->name('creator.detail');
 });
 
 Route::group(['middleware' => 'auth'], function () {

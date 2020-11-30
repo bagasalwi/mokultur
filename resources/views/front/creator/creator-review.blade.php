@@ -63,14 +63,8 @@ $lastname = substr($fullname, strpos($fullname, ' '), strlen($fullname));
                     </div>
                     @endforeach
                 </div>
-                {!! $review->render() !!}
-                <div class="text-center">
-                    @if ($review->hasMorePages())
-                    <button id="see-more" class="btn btn-block btn-dark" data-page="2"
-                        data-link="{{ url()->current().'?page=' }}" data-div="#reviews">Reach More</button>
-                    @else
-                    <h4 class="text-secondary font-weight-normal">You reach the bottom of Knowledge!</h4>
-                    @endif
+                <div class="d-flex justify-content-center mt-4">
+                    {!! $review->render() !!}
                 </div>
                 @endif
             </div>
@@ -78,28 +72,4 @@ $lastname = substr($fullname, strpos($fullname, ' '), strlen($fullname));
     </div>
 </section>
 
-@endsection
-
-@section('script')
-<script>
-    $("ul.pagination").hide();
-
-    $("#see-more").click(function() {
-        $div = $($(this).data('div')); //div to append
-        $link = $(this).data('link'); //current URL
-
-        $page = $(this).data('page'); //get the next page #
-        $href = $link + $page; //complete URL
-        $.get($href, function(response) { //append data
-            $html = $(response).find("#reviews").html(); 
-            if($html.length < 20){
-                $('#see-more').replaceWith('<h6 class="text-secondary font-weight-normal">You reach the bottom of Knowledge!!</h6>')          
-            }else{
-                $div.append($html);
-            }
-        });
-
-        $(this).data('page', (parseInt($page) + 1)); //update page #
-    });    
-</script>
 @endsection

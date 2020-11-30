@@ -1590,7 +1590,7 @@ table tr:hover .table-links {
 
 .page-item .page-link {
     color: #000000;
-    /* border-radius: 3px; */
+    border-radius: 4px;
     margin: 0 3px;
 }
 

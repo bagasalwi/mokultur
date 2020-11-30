@@ -34,7 +34,7 @@
         <button id="see-more" class="btn btn-block btn-dark" data-page="2" data-link="{{ url()->current().'?page=' }}"
             data-div="#posts">Reach More</button>
         @else
-        <h6 class="text-secondary font-weight-normal">You reach the bottom of Knowledge!</h6>
+        <h6 class="text-secondary">You reach the bottom of Knowledge!</h6>
         @endif
     </div>
 </div>
@@ -52,8 +52,9 @@
         $href = $link + $page; //complete URL
         $.get($href, function(response) { //append data
             $html = $(response).find("#posts").html(); 
+            alert($html);
             if($html.length < 40){
-                $('#see-more').replaceWith('<h6 class="text-secondary font-weight-normal">You reach the bottom of Knowledge!</h6>')          
+                $('#see-more').replaceWith('<h6 class="text-secondary">You reach the bottom of Knowledge!</h6>')          
             }else{
                 $div.append($html);
             }

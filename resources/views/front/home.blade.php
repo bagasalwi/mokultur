@@ -25,11 +25,11 @@
 <div class="section">
     <div class="container card border-0 bd-radius-8 shadow my-4">
         <div class="card-body">
-            <h4 class="mt-2">Recent Article</h4>
+            <h4 class="mt-2">Top Article</h4>
             <div class="row">
                 <div class="col-lg-6 col-sm-12 mb-2">
                     <div class="stickydiv">
-                        @foreach ($creation as $idx => $p)
+                        @foreach ($top_creation as $idx => $p)
                         @if ($idx == 0)
                         <div class="card border-0 mb-2">
                             <a href="{{ route('post.detail',$p->slug) }}" class="card-block clearfix">
@@ -60,8 +60,8 @@
                 </div>
                 <div class="col-lg-6 col-sm-12 mb-2 d-none d-lg-block">
                     {{-- <h4 class="">Recent Article</h4> --}}
-                    @foreach ($creation as $idx => $p)
-                    @if($idx != 0)
+                    @foreach ($top_creation as $idx => $p)
+                    @if($idx > 0)
                     <div class="card border-0 mb-3">
                         <div class="row no-gutters">
                             <div class="col-sm-4">

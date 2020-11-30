@@ -26,7 +26,8 @@ class HomeController extends Controller
     public function index(Request $request)
     {        
         $data['title'] = 'Home';
-        $data['creation'] = Post::where('status', 'P')->orderBy('created_at', 'desc')->paginate(8);
+        $data['top_creation'] = Post::where('status', 'P')->orderBy('view_count', 'desc')->take(5)->get();
+        $data['creation'] = Post::where('status', 'P')->orderBy('created_at', 'desc')->paginate(10);
         $data['topCategory'] = $this->categoryService->topCategory();
 
         return view('front.home', $data);

@@ -44,14 +44,16 @@ class CreatorController extends Controller
         return view('front.creator.creator', $data);
     }
 
-    public function creator_detail(Request $request, $username)
+    public function creator_detail(Request $request, $username, $type = null)
     {
         $data['user'] = User::where('username', $username)->first();
 
+        $type = $request->type;
+
         if ($data['user']) {
             $data['active_since'] = $data['user']->created_at->format('d M Y');
-            if ($request->type == 'article' || $request->type == '') {
-                $data['post'] = Post::orderBy('created_at', 'desc')->where('user_id', $data['user']->id)->paginate(10);
+            if ($type == 'article' || $type == '') {
+                $data['post'] = Post::orderBy('created_at', 'desc')->where('user_id', $data['user']->id)->paginate(9);
                 $data['post_count'] = Post::where('user_id', $data['user']->id)->count();
                 $data['total_post'] = $data['user']->totalPost();
 
@@ -63,8 +65,8 @@ class CreatorController extends Controller
                 }
 
                 return view('front.creator.creator-post', $data);
-            }elseif($request->type == 'review'){
-                $data['review'] = Review::orderBy('created_at', 'desc')->where('user_id', $data['user']->id)->paginate(10);
+            }elseif($type == 'review'){
+                $data['review'] = Review::orderBy('created_at', 'desc')->where('user_id', $data['user']->id)->paginate(12);
                 $data['review_count'] = Review::where('user_id', $data['user']->id)->count();
                 $data['total_review'] = $data['user']->totalReview();
 
@@ -75,12 +77,5 @@ class CreatorController extends Controller
         } else {
             return redirect()->back();
         }
-
-
-        // if (auth()->user() && $data['user']->username == auth()->user()->username) {
-        //     if ($data['user']->id == auth()->user()->id) {
-        //         return redirect()->route('dashboard');
-        //     }
-        // } else { }
     }
 }
