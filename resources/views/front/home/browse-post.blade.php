@@ -14,7 +14,7 @@
             <div class="col-lg-9 col-sm-12">
                 <div id="posts" class="row">
                     @foreach ($creation as $p)
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <a href="{{ route('post.detail',$p->slug) }}" class="card-block clearfix">
                             <div class="card border-0 mb-2">
                                 <div class="card-img-wrap mb-2 bd-radius-4">
@@ -38,12 +38,12 @@
                     @endforeach
                 </div>
                 {!! $creation->render() !!}
-                <div class="text-center">
+                <div class="text-center my-2">
                     @if ($creation->hasMorePages())
-                    <button id="see-more" class="btn btn-block btn-dark" data-page="2"
+                    <button id="see-more" class="btn btn-outline-dark" data-page="2"
                         data-link="{{ url()->current().'?page=' }}" data-div="#posts">See more</button>
                     @else
-                    <h6 class="text-secondary font-weight-normal">You reach the bottom of Knowledge!</h6>
+                    <h6 class="text-secondary">You reach the bottom of Knowledge!</h6>
                     @endif
                 </div>
             </div>
@@ -67,7 +67,7 @@
             $html = $(response).find("#posts").html(); 
             if($html.length < 40){
                 // alert('habis');
-                $('#see-more').replaceWith('<h6 class="text-secondary font-weight-normal">You reach the bottom of Knowledge!</h6>')          
+                $('#see-more').replaceWith('<h6 class="text-secondary">You reach the bottom of Knowledge!</h6>')          
             }else{
                 // alert($html);
                 $div.append($html);

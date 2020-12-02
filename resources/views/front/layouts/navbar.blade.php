@@ -4,7 +4,8 @@
         <button data-trigger="#navbar_main" class="navbar-toggler" type="button"><span
                 class="fas fa-bars"></span></button>
         <a class="navbar-brand mx-auto" href="{{ url('/') }}">
-            <img src="{{ asset('gambar/logo/KREASIBANGSA.png')}}" alt="">
+            {{-- <img src="{{ asset('gambar/logo/KREASIBANGSA.png')}}" alt=""> --}}
+            <h4 class="no-pm">GWEEKLY</h4>
         </a>
     </div>
 </nav>
@@ -14,7 +15,8 @@
 <nav id="navbar_main" class="mobile-offcanvas navbar fixed-top navbar-expand-lg shadow-sm">
     <div class="container nav-cont">
         <a class="navbar-brand d-none d-lg-block" href="{{ url('/') }}">
-            <img src="{{ asset('gambar/logo/KREASIBANGSA.png')}}" alt="">
+            {{-- <img src="{{ asset('gambar/logo/KREASIBANGSA.png')}}" alt=""> --}}
+            <h4 class="no-pm">GWEEKLY</h4>
         </a>
         <div class="offcanvas-header">
             <button class="navbar-toggler btn-close"><span class="fas fa-bars"></span></button>

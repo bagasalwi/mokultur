@@ -14,7 +14,7 @@
     </div>
 </div>
 
-<section class="section">
+<section class="mini-section">
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-sm-12 offset-md-2">

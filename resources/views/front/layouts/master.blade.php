@@ -31,6 +31,7 @@
 	@include('front.layouts.script-extension')
 
 	@yield('script')
+	@stack('script')
 
 	<script>
 		lottie.loadAnimation({

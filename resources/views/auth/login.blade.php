@@ -2,13 +2,12 @@
 
 @section('content')
 <section class="section">
-    <div class="container">
+    <div class="container mt-4">
         <div class="my-4">
-            <h4 class="text-center">Login to your Account</h4>
+            <h4 class="text-center">Sign In</h4>
         </div>
         <div class="row">
             <div class="col-md-4 offset-md-4">
-                <hr>
                 <form method="POST" action="#" class="needs-validation" novalidate="">
                     @csrf
                     <div class="form-group">
