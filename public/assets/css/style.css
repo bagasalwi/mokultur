@@ -17,6 +17,12 @@ body {
     padding-top: 25px !important;
 }
 
+@media only screen and (max-width: 768px) {
+    body {
+        font-size: 12px;
+    }
+}
+
 h1,
 h2,
 h3,
@@ -48,6 +54,26 @@ h6 {
     font-size: 16px;
 }
 
+@media only screen and (max-width: 768px) {
+    h1 {
+        font-size: 34px;
+    }
+    h2 {
+        font-size: 30px;
+    }
+    h3 {
+        font-size: 26px;
+    }
+    h4 {
+        font-size: 22px;
+    }
+    h5 {
+        font-size: 18px;
+    }
+    h6 {
+        font-size: 14px;
+    }
+}
 
 .btn:focus,
 .btn:active,
@@ -60,7 +86,7 @@ h6 {
 
 a {
     color: #000000;
-    font-weight: 400;
+    font-weight: 600;
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
     -o-transition: all 0.5s;
@@ -1631,8 +1657,8 @@ table tr:hover .table-links {
 
 .badge {
     vertical-align: middle;
-    padding: 4px 14px 4px 14px;
-    font-weight: 400;
+    padding: 4px 10px 4px 10px;
+    /* font-weight: 400; */
     letter-spacing: 0.5px;
     border-radius: 2px;
     font-size: 14px;
@@ -1989,6 +2015,7 @@ h6 .badge {
 .btn-light.disabled:focus,
 .btn-light.disabled:active {
     background-color: #e9e9e9 !important;
+    color: #0093E9;
 }
 
 .btn-outline-light,
@@ -2937,9 +2964,17 @@ a.bb {
 }
 
 .img-imagereview{
-    /* width: 200px; */
+    width: 100%;
     height: 320px;
-    /* object-fit: cover; */
+    object-fit: cover;
+}
+
+@media only screen and (max-width: 768px) {
+    .img-imagereview{
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+    }
 }
 
 .card-img-wrap {

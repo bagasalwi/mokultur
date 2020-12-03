@@ -20,31 +20,26 @@
             <button class="navbar-toggler btn-close"><span class="fas fa-bars"></span></button>
         </div>
         <ul class="navbar-nav">
-            <li class="nav-item {{ request()->is('browse') ? 'active' : '' }}">
+            <li class="nav-item py-2">
                 <a class="nav-link" href="{{ route('browse') }}">
-                    BROWSE
+                    <h6 class="no-pm {{ request()->is('browse') ? 'text-primary' : '' }}">BROWSE</h6>
                 </a>
             </li>
-            <li class="nav-item {{ request()->is('topic') ? 'active' : '' }}">
+            <li class="nav-item py-2">
                 <a class="nav-link" href="{{ route('topic') }}">
-                    TOPICS
+                    <h6 class="no-pm {{ request()->is('topic') ? 'text-primary' : '' }}">TOPICS</h6>
                 </a>
             </li>
-            <li class="nav-item {{ request()->is('creator') ? 'active' : '' }}">
+            <li class="nav-item py-2">
                 <a class="nav-link" href="{{ route('creator') }}">
-                    CREATORS
+                    <h6 class="no-pm {{ request()->is('creator') ? 'text-primary' : '' }}">CREATORS</h6>
                 </a>
             </li>
-            {{-- <li class="nav-item {{ request()->is('event') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('topic.event') }}">
-                    EVENT
-                </a>
-            </li> --}}
             @guest
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+            <li class="nav-item py-2 dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                     aria-expanded="false">
-                    MY ACCOUNT
+                    <h6 class="no-pm">MY ACCOUNT <i class="fas fa-chevron-down"></i></h6>
                 </a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="{{ url('login') }}">Login</a>
@@ -59,7 +54,7 @@
             $firstname = substr($fullname, 0, strpos($fullname, ' '));
             $lastname = substr($fullname, strpos($fullname, ' '), strlen($fullname));
             @endphp
-            <li class="nav-item dropdown">
+            <li class="nav-item py-2 dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                     aria-expanded="false">
                     {{ strlen($firstname) > 20 ? substr($firstname, 0, 20) . '...' : $firstname }}

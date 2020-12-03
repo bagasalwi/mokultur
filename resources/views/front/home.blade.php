@@ -7,16 +7,18 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 align-self-center">
-                <h1 data-font-size="48px" class="text-white font-weight-bold">Article, Stories, Reviews, whatever you
+                <h1 class="text-white font-weight-bold">Article, Stories, Reviews, whatever you
                     want to post!</h1>
                 <p class="mb-4 text-white">
                     In Kreasibangsa you can share all your creations to share with others!
                 </p>
-                <a class="btn btn-light btn-lg mr-2" href="{{ route('post') }}" role="button">Sign In</a>
-                <a class="btn btn-outline-white btn-lg" href="{{ route('post') }}" role="button">Browse Creation</a>
+                <div class="d-none d-lg-block">
+                    <a class="btn btn-light btn-lg mr-2" href="{{ route('post') }}" role="button">Sign In</a>
+                    <a class="btn btn-outline-white btn-lg" href="{{ route('post') }}" role="button">Browse Creation</a>
+                </div>
             </div>
             <div class="col-lg-6 d-none d-lg-block">
-                <div class="m-0 w-100 animated" id="anijson"></div>
+                <div class="m-0 w-90 animated" id="anijson"></div>
             </div>
         </div>
     </div>
@@ -30,7 +32,7 @@
                 <div class="row">
                     <div class="col-lg-6 col-sm-12 mb-2">
                         <div class="stickydiv">
-                            <h4 class="my-2">Top Article</h4>
+                            <h4 class="my-2 text-primary">Top Article</h4>
                             @foreach ($top_creation as $idx => $p)
                             @if ($idx == 0)
                             <div class="card border-0 mb-2">
@@ -112,41 +114,28 @@
             </a>
             <div class="row">
                 @foreach ($review as $p)
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="card card-body bd-radius-8 shadow border-0 my-2">
-                        <a href="{{ route('review.detail',$p->slug) }}" class="card-block clearfix">
-                            <div class="card-img-wrap mb-2 bd-radius-4">
-                                <img class="img-fluid img-imagereview" loading="lazy"
-                                    src="{{ asset('storage/' . $p->photo()) }}" alt="">
-                            </div>
-                            <h5><a class="text-dark font-weight-bold"
-                                    href="{{ route('review.detail',$p->slug) }}">{{ $p->title }}</a></h5>
-                            <div class="align-items-end mt-2">
+                <div class="col-lg-3 col-md-6 col-sm-6 my-2">
+                    <div class="card bd-radius-8 shadow border-0 h-100">
+                        <div class="card-body mt-2">
+                            <a href="{{ route('review.detail',$p->slug) }}" class="card-block clearfix">
+                                <div class="card-img-wrap mb-2 bd-radius-2">
+                                    <img class="img-fluid img-imagereview" loading="lazy"
+                                        src="{{ asset('storage/' . $p->photo()) }}" alt="">
+                                </div>
+                                <h4 class="no-pm"><a class="text-dark font-weight-bold"
+                                        href="{{ route('review.detail',$p->slug) }}">{{ $p->title }}</a></h4>
+                            </a>
+                        </div>
+                        <div class="card-footer">
+                            <div class="text-center">
                                 <p class="text-secondary no-pm">
                                     {{ Carbon\Carbon::parse($p->created_at)->diffForHumans() }} &middot; <a
                                         href="{{ url('creator/' . $p->user->username) }}">{{ strtoupper($p->user->username) }}</a>
                                 </p>
                             </div>
-                        </a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="card card-body bd-radius-8 shadow border-0 my-2">
-                        <a href="{{ route('review.detail',$p->slug) }}" class="card-block clearfix">
-                            <div class="card-img-wrap mb-2 bd-radius-4">
-                                <img class="img-fluid img-imagereview" loading="lazy"
-                                    src="{{ asset('storage/' . $p->photo()) }}" alt="">
-                            </div>
-                            <h5><a class="text-dark font-weight-bold"
-                                    href="{{ route('review.detail',$p->slug) }}">{{ $p->title }}</a></h5>
-                            <div class="align-items-end mt-2">
-                                <p class="text-secondary no-pm">
-                                    {{ Carbon\Carbon::parse($p->created_at)->diffForHumans() }} &middot; <a
-                                        href="{{ url('creator/' . $p->user->username) }}">{{ strtoupper($p->user->username) }}</a>
-                                </p>
-                            </div>
-                        </a>
-                    </div>
+                    
                 </div>
                 @endforeach
             </div>

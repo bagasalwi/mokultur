@@ -1,5 +1,5 @@
 <div class="col-lg-6 col-sm-12">
-    <h3 class="text-dark font-weight-bold">All Post</h3>
+    <h3 class="text-primary font-weight-bold">All Post</h3>
     <div id="posts" class="row">
         @foreach ($creation as $p)
         <div class="col-lg-12 col-sm-12">
@@ -9,7 +9,7 @@
                         <img class="img-fluid img-imagepost" loading="lazy" src="{{ asset('storage/' . $p->photo()) }}"
                             alt="">
                         <div class="card-img-overlay text-white">
-                            <h5 class="badge badge-primary shadow">{{ $p->category->name }}</h5>
+                            <h4 class="badge badge-primary shadow">{{ $p->category->name }}</h4>
                         </div>
                     </div>
                     <div class="mt-2">
