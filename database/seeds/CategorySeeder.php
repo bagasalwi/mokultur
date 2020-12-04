@@ -24,19 +24,9 @@ class CategorySeeder extends Seeder
             'slug' => str_slug('Movie', '-'),
         ]);
         PostCategory::create([
-            'name' => 'Sciences',
-            'description' => 'All About Tutorial',
-            'slug' => str_slug('Tutorial', '-'),
-        ]);
-        PostCategory::create([
             'name' => 'Design',
             'description' => 'All About Design',
             'slug' => str_slug('Design', '-'),
-        ]);
-        PostCategory::create([
-            'name' => 'Reviews',
-            'description' => 'All About Review',
-            'slug' => str_slug('Review', '-'),
         ]);
         PostCategory::create([
             'name' => 'Anime',
@@ -54,19 +44,9 @@ class CategorySeeder extends Seeder
             'slug' => str_slug('Pop Culture', '-'),
         ]);
         PostCategory::create([
-            'name' => 'Manga',
-            'description' => 'All About Manga',
-            'slug' => str_slug('Manga', '-'),
-        ]);
-        PostCategory::create([
             'name' => 'Geeks',
             'description' => 'All About Geek',
             'slug' => str_slug('Geek', '-'),
-        ]);
-        PostCategory::create([
-            'name' => 'TV Series',
-            'description' => 'All About TV Series',
-            'slug' => str_slug('TV Series', '-'),
         ]);
         PostCategory::create([
             'name' => 'Programming',

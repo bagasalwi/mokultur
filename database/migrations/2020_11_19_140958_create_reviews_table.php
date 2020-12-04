@@ -21,7 +21,7 @@ class CreateReviewsTable extends Migration
             
             $table->string('review_name');
             $table->string('review_image');
-            $table->string('review_synopsis');
+            $table->longText('review_synopsis');
             $table->string('review_releasedate');
             $table->string('review_genre')->nullable();
             $table->string('review_studio')->nullable();
