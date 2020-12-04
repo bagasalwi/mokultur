@@ -5,11 +5,8 @@
 @foreach ($fields as $fields)
 <div class="main-content">
     <section class="section">
-        <div class="section-header">
-            <h1>Category Update</h1>
-        </div>
-
-        <div class="section-body">
+        <div class="container">
+            <h4>Category {{ $state }}</h4>
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
@@ -17,9 +14,6 @@
                             @csrf
                             <input type="text" name="state" value="{{ $state }}" hidden>
                             <input type="text" name="id" value="{{ $fields->id }}" hidden>
-                            <div class="card-header">
-                                <h4>Tambah Category Baru</h4>
-                            </div>
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-12">

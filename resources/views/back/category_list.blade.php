@@ -43,9 +43,9 @@
                             <td class="text-center">
                                 <a class="btn btn-info" href="{{ url('admin/category/update/' . $row->id) }}"><i class="fas fa-edit"></i></a>
                                 <button class="btn btn-danger" onclick="deleteCategory({{ $row->id }})"><i class="fas fa-trash"></i></button>
-                                @if ($row->status != 'E')
+                                {{-- @if ($row->status != 'E')
                                 <button class="btn btn-dark" onclick="makeEvent({{ $row->id }})">Set as Event</button>
-                                @endif
+                                @endif --}}
                             </td>
                         </tr>
                         @endforeach
