@@ -23,7 +23,6 @@
                     </small>
                 </div>
             </a>
-
         </div>
         <hr>
         @endforeach

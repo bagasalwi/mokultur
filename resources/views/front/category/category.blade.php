@@ -20,7 +20,7 @@
     <h5 class="text-primary">All Topic Categories</h5>
     <div class="row">
         @foreach ($category as $category)
-        <div class="col-lg-4 col-6 cat">
+        <div class="col-lg-4 cat">
             <div class="card card-topic bd-radius-8" data-background="{{ asset('storage/' . $category->banner) }}">
                 <div class="card-overlay bd-radius-8"></div>
                 <div class="card-body d-flex">
@@ -56,7 +56,7 @@
 
 @push('script')
     <script>
-        $('.cat:gt(5)').hide().last().after(
+        $('.cat:gt(2)').hide().last().after(
             $('#show-cat').click(function(){
                 var a = this;
                 $('.cat:not(:visible):lt(3)').fadeIn(function(){

@@ -4,7 +4,7 @@
         <button data-trigger="#navbar_main" class="navbar-toggler" type="button"><span
                 class="fas fa-bars"></span></button>
         <a class="navbar-brand mx-auto" href="{{ url('/') }}">
-            <img src="{{ asset('gambar/logo/gweekly-logo.png')}}" alt="">
+            <img src="{{ asset('gambar/logo/KREASIBANGSA.png')}}" alt="">
         </a>
     </div>
 </nav>
@@ -14,7 +14,7 @@
 <nav id="navbar_main" class="mobile-offcanvas navbar fixed-top navbar-expand-lg shadow-sm">
     <div class="container nav-cont">
         <a class="navbar-brand d-none d-lg-block" href="{{ url('/') }}">
-            <img src="{{ asset('gambar/logo/gweekly-logo.png')}}" alt="">
+            <img src="{{ asset('gambar/logo/KREASIBANGSA.png')}}" alt="">
         </a>
         <div class="offcanvas-header">
             <button class="navbar-toggler btn-close"><span class="fas fa-bars"></span></button>
@@ -55,9 +55,9 @@
             $lastname = substr($fullname, strpos($fullname, ' '), strlen($fullname));
             @endphp
             <li class="nav-item py-2 dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                     aria-expanded="false">
-                    {{ strlen($firstname) > 20 ? substr($firstname, 0, 20) . '...' : $firstname }}
+                    <h6 class="no-pm">{{ Str::upper(auth()->user()->username) }} <i class="fas fa-chevron-down"></i></h6>
                 </a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item d-flex flex-row" href="#">

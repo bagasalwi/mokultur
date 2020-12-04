@@ -79,31 +79,31 @@
                 <h4 class="text-dark my-4">Topik Rekomendasi</h4>
                 <div class="row">
                     @foreach ($recomendation as $p)
-                    <div class="col-6 col-md-6 col-lg-4 mb-4">
-                        <div class="card card-hover h-100">
-                            <div class="card-header border-bottom">
-                                <img alt="image" width="45" height="45"
-                                    src="{{ URL::asset('gambar/profile_pic/' . $p->user->profile_pic) }}"
-                                    class="rounded-circle mr-2">
-                                <h6><a href="{{ url('creator/' . $p->user->username) }}">{{ $p->user->name }}</a></h6>
-                            </div>
-                            @if ($p->photo() == 'no-image')
-                                
-                            @else
-                            <div class="embed-responsive embed-responsive-4by3">
-                                <img class="embed-responsive-item img-fluid" src="{{ asset('storage/'. $p->photo()) }}"
-                                    alt="">
-                            </div>
-                            @endif
-                            <div class="card-body border-top">
-                                <a class="stretched-link" href="{{ route('post.detail',$p->slug) }}">
-                                    <h6>{{ $p->title }}</h6>
-                                </a>
-                                <div class="mt-2">
-                                    <a>{{ $p->category->name }}</a>
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <a href="{{ route('post.detail',$p->slug) }}" class="card-block clearfix">
+                            <div class="card border my-2 shadow bd-radius-4">
+                                <div class="card-img-top">
+                                    <div class="card-img-wrap bd-radius-4">
+                                        <img class="img-fluid img-imagepost" loading="lazy" src="{{ asset('storage/' . $p->photo()) }}"
+                                            alt="">
+                                        <div class="card-img-overlay text-white">
+                                            <h4 class="badge badge-primary shadow">{{ $p->category->name }}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="mt-2">
+                                        <a href="{{ route('post.detail',$p->slug) }}" class="no-pm">
+                                            <h6>{{ $p->title }}</h6>
+                                        </a>
+                                    </div>
+                                    <small class="text-secondary">
+                                        {{ Carbon\Carbon::parse($p->date_published)->format('d M Y') }} &middot;
+                                        {{ $p->user->name }}
+                                    </small>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                     @endforeach
                 </div>
