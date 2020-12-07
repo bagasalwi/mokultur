@@ -1,5 +1,9 @@
 @extends('front.layouts.master')
 
+@section('meta_title'){{ $post->title }}@endsection
+@section('meta_keyword'){{ implode(', ', $tags) }}@endsection
+@section('meta_desc'){{ str_limit(strip_tags($post->description),180,'...') }}@endsection
+
 @section('content')
 
 <div class="jumbotron jumbotron-fluid mb-0" data-background-topic="{{ asset('storage/' . $post->category->banner) }}">

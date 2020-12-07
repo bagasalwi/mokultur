@@ -1,5 +1,9 @@
 @extends('front.layouts.master')
 
+@section('meta_title'){{ $category->name }}@endsection
+@section('meta_keyword'){{ $review->name }}@endsection
+@section('meta_desc'){{ str_limit(strip_tags($review->description),180,'...') }}@endsection
+
 @section('content')
 <div class="jumbotron jumbotron-fluid mb-0" data-background-topic="{{ asset('storage/' . $category->banner) }}">
     <div class="jumbotron-overlay"></div>

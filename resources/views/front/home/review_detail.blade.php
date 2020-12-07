@@ -1,7 +1,10 @@
 @extends('front.layouts.master')
 
-@section('content')
+@section('meta_title'){{ $review->title }}@endsection
+@section('meta_keyword'){{ $review->review_genre }}@endsection
+@section('meta_desc'){{ str_limit(strip_tags($review->content),180,'...') }}@endsection
 
+@section('content')
 <section class="section">
     <div class="container">
         <div class="row">
@@ -94,6 +97,7 @@
                         </div>
                     </div>
                 </div>
+                @if ($review->recommend)
                 <div class="card border-0 bd-radius-4 shadow my-2">
                     <div class="card-header">
                         <h4 class="no-pm">I'll Recommend You If..</h4>
@@ -108,6 +112,8 @@
                         </div>
                     </div>
                 </div>
+                @endif
+                @if ($review->unrecommend)
                 <div class="card border-0 bd-radius-4 shadow my-2">
                     <div class="card-header">
                         <h4 class="no-pm">I'll Unrecommend You If..</h4>
@@ -122,6 +128,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
                 <div class="card border-0 bd-radius-4 shadow my-2">
                     <div class="card-body">
                         <div class="mt-2" id="disqus_thread"></div>

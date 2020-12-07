@@ -94,6 +94,8 @@ class FrontPostController extends Controller
         $minutes = floor($words / 120);
         $data['estimated_time'] = $minutes . ' minute' . ($minutes == 1 ? '' : 's');
 
+        $data['tags'] = $data['post']->tagNames();
+
         Post::where('id', $data['post']->id)->increment('view_count');
 
         return view('front.home.creation_detail', $data);
