@@ -1,5 +1,7 @@
 @extends('front.layouts.master')
 
+@section('meta_title')Browse Article @endsection
+
 @section('content')
 <div class="section">
     <div class="container">
@@ -15,14 +17,14 @@
                 <div id="posts" class="row">
                     @foreach ($creation as $p)
                     <div class="col-md-6">
-                        <a href="{{ route('post.detail',$p->slug) }}" class="card-block clearfix">
+                        <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="card-block clearfix">
                             <div class="card border-0 mb-2">
                                 <div class="card-img-wrap mb-2 bd-radius-4">
                                     <img class="img-fluid img-imagepost" loading="lazy"
                                         src="{{ asset('storage/' . $p->photo()) }}" alt="">
                                 </div>
                                 <h4><a class="text-dark font-weight-bold"
-                                        href="{{ route('post.detail',$p->slug) }}">{{ $p->title }}</a></h4>
+                                        href="{{ route('post.detail',[$p->user->username,$p->slug]) }}">{{ $p->title }}</a></h4>
                                 <div class="text-secondary no-pm">
                                     {{ str_limit(strip_tags($p->description),100,'...') }}
                                 </div>

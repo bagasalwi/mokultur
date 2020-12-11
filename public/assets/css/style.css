@@ -1,9 +1,9 @@
 @charset "UTF-8";
 @import url("//fonts.googleapis.com/css?family=Nunito:400,600,700,800");
 
-@media (min-width: 1285px) {
+@media (min-width: 1205px) {
     .container{
-      max-width: 1280px !important;
+      max-width: 1200px !important;
     }
   }
 
@@ -205,6 +205,10 @@ a:not(.btn-social-icon):not(.btn-social):not(.page-link) .fab {
 
 .font-weight-normal {
     font-weight: 400 !important;
+}
+
+.font-weight-bold {
+    font-weight: 600 !important;
 }
 
 .lead {
@@ -2938,6 +2942,12 @@ a.bb {
 
 .img-cover{
     object-fit: cover;
+}
+
+.img-article{
+    object-fit: cover;
+    width: 700px;
+    height: 400px;
 }
 
 .img-index{

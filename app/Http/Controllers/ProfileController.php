@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Sidebar;
 use App\Post;
+use App\Review;
 use App\Rules\MatchOldPassword;
 
 use App\Services\CategoryServices;
 use App\Services\PostServices;
+use App\Services\ReviewServices;
 use App\Services\UserServices;
 
 use Illuminate\Http\Request;
@@ -25,31 +27,9 @@ class ProfileController extends Controller
         $this->userService = $userService;
     }
 
-    public function index()
-    {
-        $data['title'] = 'My Profile';
-        $data['user'] = $this->userService->auth();
-        $data['sidebar'] = Sidebar::where('role_id', 1)->get();
-        $data['post_count'] = $this->postService->postCountAuth($data['user']->id);
-        
-        return view('front.profile.profile', $data);
-    }
-    
-    public function dashboard(){
-        $data['user'] = $this->userService->auth();
-        $data['sidebar'] = Sidebar::where('role_id', 1)->get();
-        $data['post'] = Post::where('user_id', $data['user']->id)->paginate(10);
-        $data['total_post'] = auth()->user()->totalPost();
-        $data['active_since'] = auth()->user()->created_at->format('d M Y');
-
-        $data['total_view'] = 0;
-        if($data['post']){
-            foreach($data['post'] as $post){
-                $data['total_view'] += $post->view_count;
-            }
-        }
-
+    public function getGreets(){
         $time = date("H");
+
         if ($time < "12") {
             $data['greetings'] = "Good morning";
         } elseif ($time >= "12" && $time < "17") {
@@ -60,7 +40,39 @@ class ProfileController extends Controller
             $data['greetings'] = "Good night";
         }
 
-        return view('front.home.home', $data);
+        return $data['greetings'];
+    }
+
+    public function index()
+    {
+        $data['title'] = 'My Profile';
+        $data['user'] = $this->userService->auth();
+        $data['sidebar'] = Sidebar::where('role_id', 1)->get();
+        $data['post_count'] = $this->postService->postCountAuth($data['user']->id);
+        
+        return view('front.profile.profile', $data);
+    }
+    
+    public function dashboard($type = null){
+        $data['user'] = $this->userService->auth();
+        $data['active_since'] = auth()->user()->created_at->format('d M Y');
+        $data['greetings'] = $this->getGreets();
+
+        if($type == null || $type == 'article'){
+            $data['post'] = Post::orderBy('created_at', 'desc')->where('user_id', $data['user']->id)->paginate(9);
+            $data['post_count'] = Post::where('user_id', $data['user']->id)->count();
+            $data['total_post'] = $data['user']->totalPost();
+
+            return view('front.profile.dashboard-article', $data);
+        }else if($type == 'review'){
+            $data['review'] = Review::orderBy('created_at', 'desc')->where('user_id', $data['user']->id)->paginate(12);
+            $data['review_count'] = Review::where('user_id', $data['user']->id)->count();
+            $data['total_review'] = $data['user']->totalReview();
+
+            return view('front.profile.dashboard-review', $data);
+        }else{
+            return redirect()->back();
+        }
     }
 
     public function save(Request $request)

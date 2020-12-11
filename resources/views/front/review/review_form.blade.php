@@ -128,7 +128,7 @@
                                 <div class="col-md-9 col-sm-12">
                                     <div class="form-group">
                                         <label>Your Review Title</label>
-                                        <input type="text" class="form-control" id="title" name="title" placeholder="Title"
+                                        <input type="text" class="form-control slugify" data-target="slug" id="title" name="title" placeholder="Title"
                                             value="{{ old('title', $fields->title) }}" required>
                                     </div>
                                 </div>
@@ -137,6 +137,13 @@
                                         <label>Your Score</label>
                                         <input type="text" class="form-control" id="score" name="score" placeholder="Your Score"
                                             value="{{ old('score', $fields->score) }}" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-9 col-sm-12">
+                                    <div class="form-group">
+                                        <label>Slug</label>
+                                        <input type="text" class="form-control" id="slug" name="slug" placeholder="slug"
+                                            value="{{ old('slug', $fields->slug) }}" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-sm-12">

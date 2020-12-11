@@ -36,12 +36,11 @@
                                 class="rounded-circle">
                         </div>
                         <div class="align-self-center">
-                            <h6 class="no-pm font-weight-light">
+                            <h6 class="no-pm">
                                 <a class="text-dark"
                                     href="{{ url('creator/' . $post->user->username) }}">{{ $post->user->name }}</a>
                             </h6>
-                            <p class="no-pm"><small class="text-secondary">{{ $estimated_time }} read</small>
-                            </p>
+                            <p class="no-pm"><small class="text-secondary">{{ $estimated_time }} read</small></p>
                         </div>
                     </div>
                     <div class="col-6 d-flex flex-row-reverse">
@@ -70,7 +69,7 @@
                     @if ($post->photo() == "no-image")
                     
                     @else
-                    <img src="{{ asset('storage/' . $post->photo()) }}" class="img-fluid img-cover w-100 bd-radius-4">
+                    <img src="{{ asset('storage/' . $post->photo()) }}" class="img-fluid img-article w-100 bd-radius-4">
                     @endif
                 @endif
                 <div id="posting" class="my-4">
@@ -84,7 +83,7 @@
                 <div class="row">
                     @foreach ($recomendation as $p)
                     <div class="col-md-6 col-lg-4 mb-4">
-                        <a href="{{ route('post.detail',$p->slug) }}" class="card-block clearfix">
+                        <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="card-block clearfix">
                             <div class="card border my-2 shadow bd-radius-4">
                                 <div class="card-img-top">
                                     <div class="card-img-wrap bd-radius-4">
@@ -97,7 +96,7 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="mt-2">
-                                        <a href="{{ route('post.detail',$p->slug) }}" class="no-pm">
+                                        <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="no-pm">
                                             <h6>{{ $p->title }}</h6>
                                         </a>
                                     </div>

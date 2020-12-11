@@ -32,11 +32,11 @@
                 <div class="row">
                     <div class="col-lg-6 col-sm-12 mb-2">
                         <div class="stickydiv">
-                            <h4 class="my-2 text-primary">Top Article</h4>
+                            <h4 class="my-2 text-primary">TOP ARTICLE</h4>
                             @foreach ($top_creation as $idx => $p)
                             @if ($idx == 0)
                             <div class="card border-0 mb-2">
-                                <a href="{{ route('post.detail',$p->slug) }}" class="card-block clearfix">
+                                <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="card-block clearfix">
                                     <div class="card-img-wrap bd-radius-4">
                                         <img class="img-fluid img-imagepost-headline" loading="lazy"
                                             data-max-height="400px" src="{{ asset('storage/' . $p->photo()) }}" alt="">
@@ -46,7 +46,7 @@
                                     </div>
                                 </a>
                                 <div class="my-2">
-                                    <a href="{{ route('post.detail',$p->slug) }}" class="no-pm">
+                                    <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="no-pm">
                                         <h3>{{ $p->title }}</h3>
                                     </a>
                                     <p class="card-text">
@@ -68,7 +68,7 @@
                         <div class="card border-0 my-3">
                             <div class="row no-gutters">
                                 <div class="col-sm-4">
-                                    <a href="{{ route('post.detail',$p->slug) }}" class="card-block clearfix">
+                                    <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="card-block clearfix">
                                         <div class="card-img-wrap bd-radius-4">
                                             <img class="card-img img-imagepost-headline" loading="lazy" height="150vh"
                                                 src="{{ asset('storage/' . $p->photo()) }}" alt="">
@@ -80,7 +80,7 @@
                                         <a href="" class="text-primary">
                                             <h6>{{ $p->category->name }}</h6>
                                         </a>
-                                        <a href="{{ route('post.detail',$p->slug) }}" class="card-title">
+                                        <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="card-title">
                                             <h4>
                                                 {{ $p->title }}
                                             </h4>
@@ -115,24 +115,24 @@
             <div class="row">
                 @foreach ($review as $p)
                 <div class="col-lg-3 col-md-6 col-sm-6 my-2">
-                    <div class="card bd-radius-8 shadow border-0 h-100">
-                        <div class="card-body mt-2">
-                            <a href="{{ route('review.detail',$p->slug) }}" class="card-block clearfix">
-                                <div class="card-img-wrap mb-2 bd-radius-2">
-                                    <img class="img-fluid img-imagereview" loading="lazy"
-                                        src="{{ asset('storage/' . $p->photo()) }}" alt="">
-                                </div>
-                                <h4 class="no-pm"><a class="text-dark font-weight-bold"
-                                        href="{{ route('review.detail',$p->slug) }}">{{ $p->title }}</a></h4>
-                            </a>
+                    <div class="card bd-radius-2 shadow border-0 h-100">
+                        <a href="{{ route('review.detail',[$p->user->username,$p->slug]) }}" class="card-img-top border-0 clearfix">
+                            <div class="card-img-wrap mb-2">
+                                <img class="img-fluid img-imagereview" loading="lazy"
+                                    src="{{ asset('storage/' . $p->photo()) }}" alt="">
+                            </div>
+                        </a>
+                        <div class="card-body">
+                            <h5 class="no-pm"><a class="text-dark font-weight-bold"
+                                    href="{{ route('review.detail',[$p->user->username,$p->slug]) }}">{{ $p->title }}</a></h5>
                         </div>
                         <div class="card-footer">
-                            <div class="text-center">
+                            {{-- <div class="text-center"> --}}
                                 <p class="text-secondary no-pm">
                                     {{ Carbon\Carbon::parse($p->created_at)->diffForHumans() }} &middot; <a
                                         href="{{ url('creator/' . $p->user->username) }}">{{ strtoupper($p->user->username) }}</a>
                                 </p>
-                            </div>
+                            {{-- </div> --}}
                         </div>
                     </div>
                     

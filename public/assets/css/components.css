@@ -1392,7 +1392,7 @@ tr:first-child > td > .fc-day-grid-event {
 
 .pw-very-weak .bar {
   background: #d00;
-  width: 30px;
+  width: 20%;
 }
 .pw-very-weak .label {
   color: #d00;
@@ -1400,7 +1400,7 @@ tr:first-child > td > .fc-day-grid-event {
 
 .pw-weak .bar {
   background: #d00;
-  width: 60px;
+  width: 30%;
 }
 .pw-weak .label {
   color: #d00;
@@ -1408,23 +1408,23 @@ tr:first-child > td > .fc-day-grid-event {
 
 .pw-mediocre .bar {
   background: #f3f01a;
-  width: 90px;
+  width: 50%;
 }
 .pw-mediocre .label {
   color: #f3f01a;
 }
 
 .pw-strong .bar {
-  background: #f3b31a;
-  width: 120px;
+  background: #0d0;
+  width: 70%;
 }
 .pw-strong .label {
-  color: #f3b31a;
+  color: #0d0;
 }
 
 .pw-very-strong .bar {
   background: #0d0;
-  width: 150px;
+  width: 100%;
 }
 .pw-very-strong .label {
   color: #0d0;

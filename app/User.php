@@ -47,6 +47,15 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
+    public function hasPost(){
+        $post = $this->hasOne(PostPhoto::class)->first();
+        if($post){
+            return $post->slug;
+        }else{
+            return "no-image";
+        }
+    }
+
     public function latestPost()
     {
         return $this->hasOne(Post::class)->where('status', 'P')->latest();

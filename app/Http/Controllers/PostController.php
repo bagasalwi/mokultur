@@ -94,6 +94,7 @@ class PostController extends Controller
         if ($request->state == 'create') {
             $this->validate($request, [
                 'title' => 'required',
+                'slug' => 'unique:posts,slug',
                 'category_id' => 'required',
                 'description' => 'required',
                 'photo' => 'file|image|mimes:jpeg,png,jpg|required',
@@ -113,6 +114,7 @@ class PostController extends Controller
 
             $this->validate($request, [
                 'title' => 'required',
+                'slug' => 'unique:posts,slug,'.$request->id,
                 'category_id' => 'required',
                 'description' => 'required',
                 'photo' => 'file|image|mimes:jpeg,png,jpg',

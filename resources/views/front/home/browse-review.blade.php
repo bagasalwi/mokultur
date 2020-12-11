@@ -1,11 +1,13 @@
 @extends('front.layouts.master')
 
+@section('meta_title')Browse Review @endsection
+
 @section('content')
 <div class="section">
     <div class="container">
         <div class="my-4">
-            <p class="no-pm">{{ isset($search_meta ) ? 'Showing result for :' : 'Search an article :'  }}</p>
-            <form action="{{ route('post') }}" role="search">
+            <p class="no-pm">{{ isset($search_meta ) ? 'Showing result for :' : 'Search a Review :'  }}</p>
+            <form action="{{ route('review') }}" role="search">
                 <input type="text" id="search" name="search" class="inputSearch" placeholder="Search.."
                     value="{{ isset($search_meta ) ? $search_meta : ""  }}">
             </form>
@@ -15,14 +17,14 @@
                 <div id="reviews" class="row">
                     @foreach ($review as $p)
                     <div class="col-lg-3 col-md-4 col-sm-4">
-                        <a href="{{ route('review.detail',$p->slug) }}" class="card-block clearfix">
+                        <a href="{{ route('review.detail',[$p->user->username,$p->slug]) }}" class="card-block clearfix">
                             <div class="card border-0 mb-2">
                                 <div class="card-img-wrap mb-2 bd-radius-4">
                                     <img class="img-fluid img-imagereview" loading="lazy"
                                         src="{{ asset('storage/' . $p->photo()) }}" alt="">
                                 </div>
                                 <h5><a class="text-dark font-weight-bold"
-                                        href="{{ route('review.detail',$p->slug) }}">{{ $p->title }}</a></h5>
+                                        href="{{ route('review.detail',[$p->user->username,$p->slug]) }}">{{ $p->title }}</a></h5>
                                 <div class="text-secondary no-pm">
                                     {{ str_limit(strip_tags($p->content),70,'...') }}
                                 </div>

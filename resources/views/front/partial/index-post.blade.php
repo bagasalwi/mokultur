@@ -3,7 +3,7 @@
         @foreach ($creation as $p)
         <div class="card border-0 my-4">
             <img class="img-cover my-2" data-max-height="200" data-max-width="auto" src="{{ asset('storage/' . $p->photo()) }}" alt="">
-            <h2><a class="text-dark font-weight-bold" href="{{ route('post.detail',$p->slug) }}">{{ $p->title }}</a></h2>
+            <h2><a class="text-dark font-weight-bold" href="{{ route('post.detail',[$p->user->username,$p->slug]) }}">{{ $p->title }}</a></h2>
             <div class="text-secondary no-pm text-preview" data-font-size="14px">
                 {!! strlen($p->description) > 100 ? substr($p->description, 0, 150) . '...' : $p->description !!}
             </div>
@@ -18,7 +18,7 @@
                 </div>
                 <div class="col-6 d-flex flex-row-reverse">
                     <div class="align-self-end">
-                        <a href="{{ route('post.detail',$p->slug) }}" class="btn btn-outline-dark m-0">Read
+                        <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="btn btn-outline-dark m-0">Read
                             More</a>
                     </div>
                 </div>

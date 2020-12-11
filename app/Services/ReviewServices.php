@@ -115,7 +115,7 @@ class ReviewServices
         $review->review_studio = $request['review_studio'];
         $review->review_link = $request['review_link'];
         $review->title = $request['title'];
-        $review->slug = str_slug($request['title'], '-') . '-' . str_random(5);
+        $review->slug = str_slug($request['title'], '-');
         $review->content = $request['content'];
         $review->score = $request['score'];
         $review->recommend = $request['recommend'];
@@ -167,7 +167,7 @@ class ReviewServices
         $review->review_studio = $request['review_studio'];
         $review->review_link = $request['review_link'];
         $review->title = $request['title'];
-        $review->slug = str_slug($request['title'], '-') . '-' . str_random(5);
+        $review->slug = str_slug($request['title'], '-');
         $review->content = $request['content'];
         $review->score = $request['score'];
         $review->recommend = $request['recommend'];

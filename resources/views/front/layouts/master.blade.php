@@ -13,7 +13,7 @@
 	@yield('meta-tags')
 
 	<link rel="icon" href="{{ asset('gambar/logo/logo-mini.svg') }}">
-	<title>@yield('meta_title', 'Kreasibangsa')</title>
+	<title>Kreasibangsa - @yield('meta_title', 'Home')</title>
 
 	@include('front.layouts.css-extension')
 

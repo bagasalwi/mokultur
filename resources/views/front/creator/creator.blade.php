@@ -1,5 +1,7 @@
 @extends('front.layouts.master')
 
+@section('meta_title')Creators @endsection
+
 @section('content')
 <div class="section">
     <div class="container">

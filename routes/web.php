@@ -14,34 +14,32 @@
 Auth::routes();
 
 Route::get('/', 'Frontpanel\HomeController@index')->name('home');
-Route::get('/browse', 'Frontpanel\HomeController@browse')->name('browse');
 
 Route::prefix('topic')->group(function () {
     Route::get('/', 'Frontpanel\HomeController@topic')->name('topic');
     Route::get('/{category}', 'Frontpanel\HomeController@topic')->name('topic.detail');
 });
 
-Route::prefix('article')->group(function () {
-    Route::get('/', 'Frontpanel\FrontPostController@browsePost')->name('post');
-    Route::get('/{slug}', 'Frontpanel\FrontPostController@postChecker')->name('post.detail');
+Route::prefix('browse')->group(function () {
+    Route::get('/', 'Frontpanel\HomeController@browse')->name('browse');
+    Route::get('/article', 'Frontpanel\FrontPostController@browsePost')->name('post');
+    Route::get('/review', 'Frontpanel\FrontPostController@browseReview')->name('review');
 });
 
-Route::prefix('reviews')->group(function () {
-    Route::get('/', 'Frontpanel\FrontPostController@browseReview')->name('review');
-    Route::get('/{slug}', 'Frontpanel\FrontPostController@reviewDetail')->name('review.detail');
+Route::prefix('@{username?}')->group(function(){
+    Route::get('/{type?}', 'Frontpanel\CreatorController@creator_detail')->name('creator.detail');
+    Route::get('/article/{slug}', 'Frontpanel\FrontPostController@publishDetailPost')->name('post.detail');
+    Route::get('/review/{slug}', 'Frontpanel\FrontPostController@reviewDetail')->name('review.detail');
 });
 
-Route::prefix('creator')->group(function () {
-    Route::get('/', 'Frontpanel\CreatorController@creator')->name('creator');
-    Route::get('/{username}/{type?}', 'Frontpanel\CreatorController@creator_detail')->name('creator.detail');
-});
+Route::get('creator', 'Frontpanel\CreatorController@creator')->name('creator');
 
 Route::group(['middleware' => 'auth'], function () {
 
     // User Controller
     Route::prefix('profile')->group(function () {
         Route::get('/', 'ProfileController@index')->name('profile');
-        Route::get('/dashboard', 'ProfileController@dashboard')->name('dashboard');
+        Route::get('/dashboard/{type?}', 'ProfileController@dashboard')->name('dashboard');
         Route::post('save', 'ProfileController@save');
         Route::post('password/save', 'ProfileController@change_password');
     });
@@ -80,9 +78,8 @@ Route::group(['middleware' => 'auth'], function () {
         // Admin Controller
         Route::prefix('admin')->group(function (){
 
-            Route::get('/',function(){
-                return redirect('admin/user');
-            });
+            // Redirect
+            Route::redirect('/', 'admin/user');
 
             // Support Function
             Route::get('support','AdminController@support');

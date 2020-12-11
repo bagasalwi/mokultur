@@ -10,7 +10,10 @@
                         </div>
                     </div>
                     <div class="col-lg-10 col-md-8 d-flex flex-column align-self-center my-2">
-                        <h1>{{ $user->name }}</h1>
+                        <small>Active since {{ $user->created_at->format('M Y') }}</small>
+                        <div class="my-1">
+                            <h1 class="no-pm">{{ $user->name }}</h1>
+                        </div>
                         <p class="text-secondary">{{ $user->description }}</p>
                         <div class="flex-row">
                             @if ($user->facebook)

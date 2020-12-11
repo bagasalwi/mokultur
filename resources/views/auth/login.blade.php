@@ -1,5 +1,7 @@
 @extends('front.layouts.master')
 
+@section('meta_title')Login @endsection
+
 @section('content')
 <section class="section">
     <div class="container mt-4">

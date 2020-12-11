@@ -9,6 +9,7 @@ use App\Services\PostServices;
 use App\Services\ReviewServices;
 use App\Services\UserServices;
 use App\Post;
+use App\Review;
 use App\User;
 use Carbon\Carbon;
 use File, DB, Auth, Image, Session;
@@ -58,67 +59,73 @@ class FrontPostController extends Controller
 
     public function previewDetailPost($slug)
     {
-        if(auth()->user()){
+        if (auth()->user()) {
             $data['post'] = $this->postService->draftedDetailPost($slug);
             if ($data['post']->user_id == auth()->user()->id) {
                 $data['user'] = User::where('id', $data['post']->user_id)->first();
-    
+
                 $data['post_image'] = $data['post']->images()->get();
                 $data['post_count'] = Post::where('user_id', $data['user']->id)->count();
-    
+
                 $data['recomendation'] = Post::where('category_id', $data['post']->category_id)->take(3)->get()->except($data['post']->id);
-    
+
                 $words = str_word_count(strip_tags($data['post']->description));
                 $minutes = floor($words / 120);
                 $data['estimated_time'] = $minutes . ' minute' . ($minutes == 1 ? '' : 's');
-    
+
                 Post::where('id', $data['post']->id)->increment('view_count');
-    
+
                 return view('front.home.creation_detail', $data);
-            }
-        }else{
-            return redirect('/');
-        }
-    }
-
-    public function publishDetailPost($slug)
-    {
-        $data['post'] = $this->postService->publishedDetailPost($slug);
-        $data['user'] = User::where('id', $data['post']->user_id)->first();
-        $data['post_image'] = $data['post']->images()->get();
-        $data['post_count'] = Post::where('user_id', $data['user']->id)->count();
-
-        $data['recomendation'] = Post::where('category_id', $data['post']->category_id)->take(3)->get()->except($data['post']->id);
-
-        $words = str_word_count(strip_tags($data['post']->description));
-        $minutes = floor($words / 120);
-        $data['estimated_time'] = $minutes . ' minute' . ($minutes == 1 ? '' : 's');
-
-        $data['tags'] = $data['post']->tagNames();
-
-        Post::where('id', $data['post']->id)->increment('view_count');
-
-        return view('front.home.creation_detail', $data);
-    }
-
-    public function postChecker($slug)
-    {
-        $statusChecker = $this->postService->postStatusChecker($slug);
-
-        if ($statusChecker) {
-            if ($statusChecker == 'DRAFT') {
-               return $this->previewDetailPost($slug);
-            } elseif ($statusChecker == 'PUBLISH') {
-               return $this->publishDetailPost($slug);
             }
         } else {
             return redirect('/');
         }
     }
 
-    public function reviewDetail($slug){
+    public function publishDetailPost($username, $slug)
+    {
+        $data['topCategory'] = $this->categoryService->topCategory();
+        $data['user'] = User::where('username', $username)->first();
+        if ($data['user']) {
+            $data['post'] = $this->postService->publishedDetailPost($slug);
+            $data['post_image'] = $data['post']->images()->get();
+            $data['post_count'] = Post::where('user_id', $data['user']->id)->count();
+
+            $data['recomendation'] = Post::where('category_id', $data['post']->category_id)->take(3)->get()->except($data['post']->id);
+
+            $words = str_word_count(strip_tags($data['post']->description));
+            $minutes = floor($words / 120);
+            $data['estimated_time'] = $minutes . ' minute' . ($minutes == 1 ? '' : 's');
+
+            $data['tags'] = $data['post']->tagNames();
+
+            Post::where('id', $data['post']->id)->increment('view_count');
+
+            return view('front.home.creation_detail', $data);
+        } else {
+            return redirect()->back();
+        }
+    }
+
+    // public function postChecker($slug)
+    // {
+    //     $statusChecker = $this->postService->postStatusChecker($slug);
+
+    //     if ($statusChecker) {
+    //         if ($statusChecker == 'DRAFT') {
+    //            return $this->previewDetailPost($slug);
+    //         } elseif ($statusChecker == 'PUBLISH') {
+    //            return $this->publishDetailPost($slug);
+    //         }
+    //     } else {
+    //         return redirect('/');
+    //     }
+    // }
+
+    public function reviewDetail($username, $slug)
+    {
+        $data['user'] = User::where('username', $username)->first();
         $data['review'] = $this->reviewService->publishedDetailReview($slug);
-        $data['user'] = User::where('id', $data['review']->user_id)->first();
 
         $data['review_genre'] = $data['review']->tagNames();
 

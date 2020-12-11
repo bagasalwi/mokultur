@@ -1,7 +1,7 @@
 <div class="col-lg-3 d-none d-lg-block">
     <div class="stickydiv">
         @guest
-        <div class="card card-full no-bd-radius mb-4">
+        <div class="card card-full bd-radius-4 mb-4">
             <div class="card-body">
                 <h4 class="text-primary">Sign In to make a Post</h4>
                 <p class="text-dark">While you sign in to your account, you can share your stories through
@@ -9,7 +9,7 @@
             </div>
         </div>
         @else
-        <div class="card card-full mb-4">
+        <div class="card card-full bd-radius-4 mb-4">
             <div class="card-body">
                 <h6 class="text-primary no-pm">Hello,
                     <h4 class="text-dark">{{ auth()->user()->name }}</h4>
@@ -19,11 +19,11 @@
             </div>
         </div>
         @endguest
-        <div class="card card-full bd-radius-8 mb-4">
+        <div class="card card-full bd-radius-4 mb-4">
             <div class="card-body">
-                <h4 class="my-1 text-primary">Follow Our Instagram</h4>
+                <h5 class="my-1 text-primary">Follow Our Instagram</h5>
                 <div class="my-3" id="instagram" style="max-width: 200px; margin: 0 auto;"></div>
-                <a href="#" class="btn btn-sm btn-block btn-instagram">Follow</a>
+                <a href="https://www.instagram.com/bagasalwi/" class="btn btn-sm btn-block btn-instagram">Follow</a>
             </div>
         </div>
     </div>

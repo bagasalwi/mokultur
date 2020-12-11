@@ -1,5 +1,7 @@
 @extends('front.layouts.master')
 
+@section('meta_title')Topic's @endsection
+
 @section('content')
 
 <div class="owl-carousel owl-theme slider" id="slider2">

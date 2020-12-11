@@ -13,10 +13,10 @@
     $.pwstrength = function(password) {
         var score = 0, length = password.length, upperCase, lowerCase, digits, nonAlpha;
         
-        if(length < 5) score += 0;
-        else if(length < 8) score += 5;
-        else if(length < 16) score += 10;
-        else score += 15;
+        if(length < 4) score += 0;
+        else if(length < 6) score += 20;
+        else if(length < 8) score += 30;
+        else score += 30;
         
         lowerCase = password.match(/[a-z]/g);
         if(lowerCase) score += 1;
@@ -57,7 +57,7 @@
         var options = $.extend({
             label: '.label',
             classes: ['pw-very-weak', 'pw-weak', 'pw-mediocre', 'pw-strong', 'pw-very-strong'],
-            texts: ['very weak', 'weak', 'mediocre', 'strong', 'very strong']
+            texts: ['weaklings', 'still weak', 'Not Bad', 'stronk', 'very stronk']
         }, options || {});
         options.indicator = $('#' + this.data('indicator'));
         

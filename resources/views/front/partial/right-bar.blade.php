@@ -1,16 +1,15 @@
 <div class="col-lg-3 col-sm-12 d-none d-lg-block">
     <div class="stickydiv">
         <div class="card card-full bd-radius-4">
-            {{-- <div class="card-overlay bd-radius-4"></div> --}}
             <div class="card-body">
-                <div id="covid19" style="max-width: 400px; margin: 0 auto;"></div>
-                <h4 class="text-primary">Always wear Mask!</h4>
+                <div id="covid19" style="height: 180px; margin: 0 auto;"></div>
+                <h5 class="text-primary">Always wear Mask!</h5>
                 <p class="text-dark">Due to COVID19 pandemic, make your mask as a secondary weapon of life.
                 </p>
             </div>
         </div>
-        <hr>
-        <h4 class="text-dark">Top Topic's</h4>
+        
+        <h4 class="text-dark mt-3">Top Topic's</h4>
         <div class="list-group">
             @foreach ($topCategory as $category)
             <div class="card card-hover border-0 bd-radius-4 my-1" data-background="{{ asset('storage/' . $category->banner) }}">

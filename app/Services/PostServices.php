@@ -107,7 +107,8 @@ class PostServices
 
         $post = Post::create([
             'title' => $request['title'],
-            'slug' => str_slug($request['title'], '-') . '-' . str_random(5),
+            // 'slug' => str_slug($request['title'], '-') . '-' . str_random(5),
+            'slug' => $request['slug'],
             'user_id' => $user->id,
             'category_id' => $request['category_id'],
             'description' => $request['description'],
@@ -130,6 +131,7 @@ class PostServices
 
         Post::where('id', $request['id'])->where('user_id', $user->id)->update([
             'title' => $request['title'],
+            'slug' => $request['slug'],
             'category_id' => $request['category_id'],
             'description' => $request['description'],
             'date_published' => $request['status'] == 'P' ? Carbon::now() : null,

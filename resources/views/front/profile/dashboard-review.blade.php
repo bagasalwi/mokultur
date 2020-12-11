@@ -1,28 +1,18 @@
 @extends('front.layouts.master')
 
 @section('content')
-
-@include('front.creator.creator-hero')
-
-@php
-$fullname = $user->name;
-$fullname = trim($fullname); // remove double space
-$firstname = substr($fullname, 0, strpos($fullname, ' '));
-$lastname = substr($fullname, strpos($fullname, ' '), strlen($fullname));
-@endphp
-
-<section class="mini-section">
+<section class="section">
     <div class="container">
+        @include('front.profile.dashboard-hero')
         <div class="row">
-            <div class="col-md-12 col-sm-12">
-                @include('front.creator.creator-nav')
+            <div class="col-md-12 col-sm-12 my-4">
+                @include('front.profile.dashboard-nav')
+                <hr>
                 @if ($review[0] == null)
                 <div class="empty-state" data-height="400">
                     <img width="150" src="{{ URL::asset('gambar/sketch/7.svg')}}">
-                    <h2>Tidak ada Post</h2>
-                    <p class="lead">
-                        {{ $user->name }} belum mengupload Review saat ini
-                    </p>
+                    <h2>Tidak ada Review</h2>
+                    <a href="{{ route('review') }}" class="btn btn-primary">Buat Review</a>
                 </div>
                 @else
                 <div id="reviews" class="row">
@@ -64,7 +54,11 @@ $lastname = substr($fullname, strpos($fullname, ' '), strlen($fullname));
                     @endforeach
                 </div>
                 <div class="d-flex justify-content-center mt-4">
-                    {!! $review->render() !!}
+                    @if ($review->hasMorePages())
+                        {!! $review->render() !!}
+                    @else
+                    <h6 class="text-secondary">No More Data</h6>
+                    @endif
                 </div>
                 @endif
             </div>

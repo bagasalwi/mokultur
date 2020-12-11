@@ -1,10 +1,12 @@
 @extends('front.layouts.master')
 
+@section('meta_title')Register @endsection
+
 @section('content')
 <section class="section">
     <div class="container">
         <div class="my-4">
-            <h4 class="text-center font-weight-normal">Register your Account</h4>
+            <h4 class="text-center">Register your Account</h4>
         </div>
         <div class="row">
             <div class="col-md-6 offset-md-3">
@@ -56,7 +58,7 @@
                                 <input id="password" type="password" data-indicator="pwindicator"
                                     class="form-control pwstrength @error('password') is-invalid @enderror" name="password"
                                     required autocomplete="new-password">
-                                <div id="pwindicator" class="pwindicator">
+                                <div id="pwindicator" class="pwindicator w-100">
                                     <div class="bar"></div>
                                     <div class="label"></div>
                                 </div>

@@ -7,8 +7,16 @@
             <div class="mr-auto">
                 <ul class="nav nav-pills" id="post-bar" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link mr-1 {{ request()->is('post') ? 'active' : '' }}" href="{{ route('post.index') }}">My Article</a>
-                        <a class="nav-link mr-1 {{ request()->is('review') ? 'active' : '' }}" href="{{ route('review.index') }}">My Review</a>
+                        <a class="nav-link mr-1 {{ request()->is('post') ? 'active' : '' }}" href="{{ route('post.index') }}">
+                            <div class="p-1">
+                                <h6 class="no-pm">My Article</h6>
+                            </div>
+                        </a>
+                        <a class="nav-link mr-1 {{ request()->is('review') ? 'active' : '' }}" href="{{ route('review.index') }}">
+                            <div class="p-1">
+                                <h6 class="no-pm">My Review</h6>
+                            </div>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -40,7 +48,7 @@
 
                     <div class="card border-0">
                         <div class="d-flex flex-row">
-                            <a class="text-dark" href="{{ route('post.detail', $item->slug) }}">
+                            <a class="text-dark" href="{{ route('post.detail',[$item->user->username,$item->slug]) }}">
                                 <h4>{{ $item->title }}</h4>
                             </a>
                         </div>

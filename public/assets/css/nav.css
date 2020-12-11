@@ -129,4 +129,11 @@
 .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 	border-color: transparent;
 }
+
+.navbar-nav>.nav-item>.nav-link:hover {
+    color: #0093E9;
+}
+.navbar-nav>.nav-item.active>.nav-link:hover {
+    color: #0580c7;
+}
   

@@ -19,7 +19,7 @@
 </script>
 <script src="{{ asset('assets/modules/jquery-ui/jquery-ui.min.js')}}"></script>
 <script src="{{ asset('assets/modules/datatables/Select-1.2.4/js/dataTables.select.min.js')}}"></script>
-<script src="{{ asset('assets/modules/jquery-pwstrength/jquery.pwstrength.min.js')}}"></script>
+<script src="{{ asset('assets/modules/jquery-pwstrength/jquery.pwstrength.js')}}"></script>
 <script src="{{ asset('assets/modules/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
 <script src="{{ asset('assets/modules/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js')}}"></script>
 <script src="{{ asset('assets/modules/bootstrap-timepicker/js/bootstrap-timepicker.min.js')}}"></script>

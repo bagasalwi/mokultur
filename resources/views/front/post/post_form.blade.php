@@ -35,8 +35,15 @@
                             <div class="col-md-12 col-sm-12">
                                 <div class="form-group">
                                     <label>Title</label>
-                                    <input type="text" class="form-control" id="title" name="title" placeholder="Title"
+                                    <input type="text" class="form-control slugify" data-target="slug" id="title" name="title" placeholder="Title"
                                         value="{{ old('title', $fields->title) }}" required>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <label>Slug</label>
+                                    <input type="text" class="form-control" id="slug" name="slug" placeholder="slug"
+                                        value="{{ old('slug', $fields->slug) }}" required>
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-12">

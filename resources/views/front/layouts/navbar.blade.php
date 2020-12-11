@@ -22,7 +22,7 @@
         <ul class="navbar-nav">
             <li class="nav-item py-2">
                 <a class="nav-link" href="{{ route('browse') }}">
-                    <h6 class="no-pm {{ request()->is('browse') ? 'text-primary' : '' }}">BROWSE</h6>
+                    <h6 class="no-pm {{ request()->is('browse') || request()->is('browse/*') ? 'text-primary' : '' }}">BROWSE</h6>
                 </a>
             </li>
             <li class="nav-item py-2">
