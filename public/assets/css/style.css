@@ -23,6 +23,27 @@ body {
     }
 }
 
+p,
+ul:not(.list-unstyled),
+ol {
+    line-height: 24px;
+}
+
+.text-synopsis p{
+    font-weight: 200;
+    letter-spacing: 0.4px;
+    line-height: 18px !important;
+    font-size: 13px !important;
+}
+
+.span-synopsis{
+    background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 0.2em;
+    background-position: 0 88%;
+    transition: background-size 0.25s ease-in;
+}
+
 h1,
 h2,
 h3,
@@ -33,46 +54,26 @@ h6,
     font-family: 'DIN Next LT Pro', sans-serif;
     margin-bottom: 0.5rem !important;
     line-height: 1.2 !important;
+    font-weight: 600;
 }
 
 h1 {
-    font-size: 36px;
-}
-h2 {
-    font-size: 32px;
-}
-h3 {
     font-size: 28px;
 }
-h4 {
+h2 {
+    font-size: 26px;
+}
+h3 {
     font-size: 24px;
+}
+h4 {
+    font-size: 22px;
 }
 h5 {
     font-size: 20px;
 }
 h6 {
-    font-size: 16px;
-}
-
-@media only screen and (max-width: 768px) {
-    h1 {
-        font-size: 34px;
-    }
-    h2 {
-        font-size: 30px;
-    }
-    h3 {
-        font-size: 26px;
-    }
-    h4 {
-        font-size: 22px;
-    }
-    h5 {
-        font-size: 18px;
-    }
-    h6 {
-        font-size: 14px;
-    }
+    font-size: 18px;
 }
 
 .btn:focus,
@@ -86,7 +87,7 @@ h6 {
 
 a {
     color: #000000;
-    font-weight: 600;
+    font-weight: 400;
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
     -o-transition: all 0.5s;
@@ -220,21 +221,6 @@ a:not(.btn-social-icon):not(.btn-social):not(.page-link) .fab {
         font-size: 17px;
         line-height: 30px;
     }
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-weight: 600;
-}
-
-p,
-ul:not(.list-unstyled),
-ol {
-    line-height: 24px;
 }
 
 .shadow {
@@ -1561,7 +1547,7 @@ table tr:hover .table-links {
 /* 3.9 Nav */
 
 .nav-tabs .nav-item .nav-link {
-    color: #0093E9;
+    color: #a7a7a7;
 }
 
 .nav-tabs .nav-item .nav-link.active {
@@ -1662,10 +1648,10 @@ table tr:hover .table-links {
 .badge {
     vertical-align: middle;
     padding: 4px 10px 4px 10px;
-    /* font-weight: 400; */
+    font-weight: 400;
     letter-spacing: 0.5px;
     border-radius: 2px;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .badge.badge-warning {
@@ -2487,6 +2473,8 @@ h6 .badge {
 	border-color: transparent;
 }
 .nav-link {
+    font-family:'DIN Next LT Pro', sans-serif;
+    font-size: 16px;
 	position: relative;
 	padding-left: 18px !important;
     padding-right: 18px !important;
@@ -2976,6 +2964,12 @@ a.bb {
 .img-imagereview{
     width: 100%;
     height: 320px;
+    object-fit: cover;
+}
+
+.img-review{
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
@@ -3478,9 +3472,9 @@ pre {
 }
 
 .section .section-title {
-    font-size: 18px;
+    font-size: 14px;
     color: #191d21;
-    font-weight: 600;
+    font-weight: 400;
     position: relative;
     margin: 30px 0 25px 0;
 }
@@ -3488,13 +3482,13 @@ pre {
 .section .section-title:before {
     content: " ";
     border-radius: 5px;
-    height: 8px;
-    width: 30px;
+    height: 10px;
+    width: 20px;
     background-color: #0093E9;
     display: inline-block;
     float: left;
     margin-top: 6px;
-    margin-right: 15px;
+    margin-right: 6px;
 }
 
 .section .section-title+.section-lead {
@@ -4399,6 +4393,14 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
 .no-pm {
     margin: 0 !important;
     padding: 0 !important;
+}
+
+.no-p{
+    padding: 0 !important;
+}
+
+.no-m{
+    margin: 0 !important;
 }
 
 .text-primary-gradient{

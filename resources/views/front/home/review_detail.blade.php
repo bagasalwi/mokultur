@@ -8,81 +8,106 @@
 <section class="section">
     <div class="container">
         <div class="row">
-            <div class="col-md-3 col-sm-12">
-                <div class="card-img-wrap bd-radius-4">
-                    <img class="img-fluid  bd-radius-4 mx-auto d-block shadow-sm" loading="lazy"
-                        src="{{ asset('storage/' . $review->photo()) }}" alt="">
-                    <div class="card-img-overlay">
-                        <?php
-                        if($review->score < 7 && $review->score > 5){
-                            $score_color = 'warning';
-                        }elseif($review->score < 5){
-                            $score_color = 'danger';
-                        }else{
-                            $score_color = 'success';
-                        }   
-                        ?>
-                        <div class="badge badge-{{ $score_color }} align-self-center bd-radius-4 shadow">
-                            <span>Score</span>
-                            <h4 class="no-pm">{{ $review->score }}/10</h4>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="stickydiv my-4">
-                    <div class="card card-body border-0 bd-radius-4 shadow">
-                        <span class="text-dark mb-2">Title</span>
-                        <h5 class="ml-2">{{ $review->review_name }}</h5>
+            <div class="col-md-9 col-sm-12">
 
-                        <span class="text-dark mb-2">Release Date</span>
-                        <h5 class="ml-2">{{ $review->review_releasedate }}</h5>
-
-                        @if ($review_genre)
-                        <span class="text-dark mb-2">Genre</span>
-                        <div class="badges">
-                            @foreach ($review_genre as $tag)
-                            <a href="#" class="badge badge-primary" value="{{$tag}}">{{$tag}}</a>
-                            @endforeach
-                        </div>
-                        @endif
-
-                        @if ($review->review_studio)
-                        <span class="text-dark mb-2">Studio/Publisher</span>
-                        <h5 class="ml-2">{{ $review->review_studio }}</h5>
-                        @endif
-
-                        @if ($review->review_link)
-                        <span class="text-dark mb-2">Source</span>
-                        <a class="ml-2" href="https://{{ $review->review_link }}">
-                            <h5>{{ $review->review_link }}</h5>
-                        </a>
-                        @endif
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-sm-12">
-                <div class="card card-body border-0 bd-radius-4 shadow-sm d-flex flex-row">
+                {{-- <div class="card card-body d-flex flex-row my-2"> --}}
                     <div class="mr-auto align-self-center">
                         <a href="{{ url('creator/' . $review->user->username) }}">
                             <h6 class="text-primary">{{ $review->user->name }},</h6>
                         </a>
-                        <h3 class="no-pm">"{{ $review->title }}"</h3>
+                        <h1>"{{ $review->title }}"</h1>
                     </div>
-                </div>
-                <div class="card border-0 bd-radius-4 shadow my-2">
-                    <div class="card-header">
-                        <h4 class="no-pm">Synopsis / Plot</h4>
-                        <div class="card-header-action">
-                            <a data-collapse="#plot-collapse" class="btn btn-icon btn-primary" href="#"><i
-                                    class="fas fa-minus"></i></a>
+                {{-- </div> --}}
+
+                {{-- Reviews --}}
+                <div class="row no-pm">
+                    <div class="col-md-3 col-12 no-pm">
+                        <div class="card-img-wrap mb-2">
+                            <img class="img-review mx-auto d-block shadow-sm" loading="lazy"
+                                src="{{ asset('storage/' . $review->photo()) }}" alt="">
+                            <div class="card-img-overlay">
+                                <?php
+                                if($review->score < 7 && $review->score > 5){
+                                    $score_color = 'warning';
+                                }elseif($review->score < 5){
+                                    $score_color = 'danger';
+                                }else{
+                                    $score_color = 'success';
+                                }   
+                                ?>
+                                <div
+                                    class="badge badge-{{ $score_color }} align-self-center bd-radius-4 shadow">
+                                    <span>Score</span>
+                                    <h4 class="no-pm">{{ $review->score }}/10</h4>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="collapse show" id="plot-collapse">
-                        <div class="card-body">
-                            <p>{!! $review->review_synopsis !!}</p>
+                    <div class="col-md-9 col-12 no-pm">
+                        <ul class="nav nav-tabs" id="review-info-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link font-weight-bold active" id="review-info-tab2" data-toggle="tab"
+                                    href="#review-info" role="tab" aria-controls="home"
+                                    aria-selected="true">Review Information</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link font-weight-bold" id="profile-tab2" data-toggle="tab" href="#synopsis"
+                                    role="tab" aria-controls="profile" aria-selected="false">Synopsis/Plot</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content mx-3" id="myTab3Content">
+                            <div class="tab-pane fade show active" id="review-info" role="tabpanel"
+                                aria-labelledby="review-info">
+                                <div class="row">
+                                    <div class="col-12 col-md-6">
+                                        <span class="text-small">Title</span>
+                                        <h6>{{ $review->review_name }}</h6>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <span class="text-small">Release Date</span>
+                                        <h6>{{ $review->review_releasedate }}</h6>
+                                    </div>
+                                    @if ($review_genre)
+                                    <div class="col-12 col-md-12">
+                                        <span class="text-small">Genre</h6>
+                                            <div class="badges">
+                                                @foreach ($review_genre as $tag)
+                                                <a href="#" class="badge badge-primary"
+                                                    value="{{$tag}}">{{$tag}}</a>
+                                                @endforeach
+                                            </div>
+                                    </div>
+                                    @endif
+
+                                    @if ($review->review_studio)
+                                    <div class="col-12 col-md-6">
+                                        <span class="text-small">Studio/Publisher</span>
+                                        <h6>{{ $review->review_studio }}</h6>
+                                    </div>
+                                    @endif
+
+                                    @if ($review->review_link)
+                                    <div class="col-12 col-md-6">
+                                        <span class="text-small">Source</span>
+                                        <a href="https://{{ $review->review_link }}" target="_blank">
+                                            <h6>{{ $review->review_link }}</h6>
+                                        </a>
+                                    </div>
+                                    @endif
+
+                                    <div class="col-12 col-md-12">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="synopsis" role="tabpanel" aria-labelledby="synopsis">
+                                <div class="text-synopsis">{!! $review->review_synopsis !!}</div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                
                 <div class="card border-0 bd-radius-4 shadow my-2">
                     <div class="card-header">
                         <h4 class="no-pm">Review</h4>

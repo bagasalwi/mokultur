@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 align-self-center">
-                <h1 class="text-white font-weight-bold">Article, Stories, Reviews, whatever you
+                <h1 class="text-white font-weight-bold" data-font-size="32px"><span id="switchtext">Article</span>, whatever you
                     want to post!</h1>
                 <p class="mb-4 text-white">
                     In Kreasibangsa you can share all your creations to share with others!
