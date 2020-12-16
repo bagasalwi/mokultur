@@ -53,7 +53,7 @@ class CreatorController extends Controller
         if ($data['user']) {
             $data['active_since'] = $data['user']->created_at->format('d M Y');
             if ($type == 'article' || $type == '') {
-                $data['post'] = Post::orderBy('created_at', 'desc')->where('user_id', $data['user']->id)->paginate(9);
+                $data['post'] = Post::orderBy('created_at', 'desc')->where('user_id', $data['user']->id)->where('status','P')->paginate(9);
                 $data['post_count'] = Post::where('user_id', $data['user']->id)->count();
                 $data['total_post'] = $data['user']->totalPost();
 
@@ -66,7 +66,7 @@ class CreatorController extends Controller
 
                 return view('front.creator.creator-post', $data);
             }elseif($type == 'review'){
-                $data['review'] = Review::orderBy('created_at', 'desc')->where('user_id', $data['user']->id)->paginate(12);
+                $data['review'] = Review::orderBy('created_at', 'desc')->where('user_id', $data['user']->id)->where('status','P')->paginate(12);
                 $data['review_count'] = Review::where('user_id', $data['user']->id)->count();
                 $data['total_review'] = $data['user']->totalReview();
 
