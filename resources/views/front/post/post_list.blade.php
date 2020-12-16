@@ -7,22 +7,18 @@
             <div class="mr-auto">
                 <ul class="nav nav-pills" id="post-bar" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link mr-1 {{ request()->is('post') ? 'active' : '' }}" href="{{ route('post.index') }}">
-                            <div class="p-1">
-                                <h6 class="no-pm">My Article</h6>
-                            </div>
+                        <a class="nav-link {{ request()->is('post') ? 'active' : '' }}" href="{{ route('post.index') }}">
+                            <p class="no-pm">My Article</p>
                         </a>
-                        <a class="nav-link mr-1 {{ request()->is('review') ? 'active' : '' }}" href="{{ route('review.index') }}">
-                            <div class="p-1">
-                                <h6 class="no-pm">My Review</h6>
-                            </div>
+                        <a class="nav-link {{ request()->is('review') ? 'active' : '' }}" href="{{ route('review.index') }}">
+                            <p class="no-pm">My Review</p>
                         </a>
                     </li>
                 </ul>
             </div>
             <div class="ml-auto">
                 <button type="button" data-toggle="modal" data-target="#articleType"
-                    class="btn btn-dark px-4">Create New Post</button>
+                    class="btn btn-primary px-4">Create New Post</button>
             </div>
         </div>
     </div>
@@ -49,14 +45,14 @@
                     <div class="card border-0">
                         <div class="d-flex flex-row">
                             <a class="text-dark" href="{{ route('post.detail',[$item->user->username,$item->slug]) }}">
-                                <h4>{{ $item->title }}</h4>
+                                <h5>{{ $item->title }}</h5>
                             </a>
                         </div>
                         <div class="d-flex flex-row">
                             <div>
                                 <p>Created
                                         {{ $item->created_at->format('d M Y') }}<span
-                                        class="badge badge-{{ $s_color }} mx-2">{{ $status }}</span></p>
+                                        class="badge badge-pill badge-{{ $s_color }} mx-2">{{ $status }}</span></p>
                             </div>
                             <div class="ml-auto px-2">
                                 <a href="{{ $url_update }}/{{ $item->slug }}"

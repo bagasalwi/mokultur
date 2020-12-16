@@ -1,38 +1,36 @@
 @extends('front.layouts.master')
 
 @section('content')
-@guest
 <div class="jumbotron jumbotron-fluid primary-gradient mb-0"
     style="padding-bottom: 200px; margin-bottom: -250px !important;">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 align-self-center">
-                <h1 class="text-white font-weight-bold" data-font-size="32px"><span id="switchtext">Article</span>, whatever you
-                    want to post!</h1>
-                <p class="mb-4 text-white">
-                    In Kreasibangsa you can share all your creations to share with others!
+                <h1 class="text-white font-weight-bold" data-font-size="36px"><span id="switchtext">Article</span>, Post Whatever You Wanna Post, Freely!</h1>
+                <p class="mb-3 text-white">
+                    Kreasibangsa is Open Space for everyone who want to share their thoughts within an article or a reviews in every aspect like Geeks, Pop Culture, Movies, Technology, Design, and Many More.
                 </p>
                 <div class="d-none d-lg-block">
-                    <a class="btn btn-light btn-lg mr-2" href="{{ route('post') }}" role="button">Sign In</a>
-                    <a class="btn btn-outline-white btn-lg" href="{{ route('post') }}" role="button">Browse Creation</a>
+                    @guest
+                    <a class="btn btn-light px-4 mr-1" href="{{ route('post') }}" role="button">Sign In</a>
+                    @endguest
+                    <a class="btn btn-outline-white px-4 mr-1" href="{{ route('browse') }}" role="button">Browse</a>
                 </div>
             </div>
             <div class="col-lg-6 d-none d-lg-block">
-                <div class="m-0 w-90 animated" id="anijson"></div>
+                <div class="m-0 animated" id="anijson" style="width: 90%"></div>
             </div>
         </div>
     </div>
 </div>
-@endguest
 
 <div class="section">
     <div class="container">
-        <div class="card border-0 bd-radius-8 shadow my-4">
+        <div class="card border-0 bd-radius-8 shadow mb-4">
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-6 col-sm-12 mb-2">
                         <div class="stickydiv">
-                            <h4 class="my-2 text-primary">TOP ARTICLE</h4>
                             @foreach ($top_creation as $idx => $p)
                             @if ($idx == 0)
                             <div class="card border-0 mb-2">
@@ -40,9 +38,6 @@
                                     <div class="card-img-wrap bd-radius-4">
                                         <img class="img-fluid img-imagepost-headline" loading="lazy"
                                             data-max-height="400px" src="{{ asset('storage/' . $p->photo()) }}" alt="">
-                                        <div class="card-img-overlay text-white">
-                                            <h5 class="badge badge-light shadow">{{ $p->category->name }}</h5>
-                                        </div>
                                     </div>
                                 </a>
                                 <div class="my-2">
@@ -103,7 +98,7 @@
     <div class="jumbotron jumbotron-fluid pattern-1 bg-light">
         <div class="container">
             <a href="{{ route('review') }}" class="card-block clearfix">
-                <div class="hero primary-gradient text-white mb-3 card-hover bd-radius-4">
+                <div class="hero primary-pattern-1 text-white mb-3 card-hover bd-radius-4">
                     <div class="hero-inner">
                         <h1 class="text-white">Reviews</h1>
                         <p class="lead text-white">A place for you to share your personal opinion about Movies,
@@ -115,26 +110,50 @@
             <div class="row">
                 @foreach ($review as $p)
                 <div class="col-lg-3 col-md-6 col-sm-6 my-2">
-                    <div class="card bd-radius-2 shadow border-0 h-100">
-                        <a href="{{ route('review.detail',[$p->user->username,$p->slug]) }}" class="card-img-top border-0 clearfix">
-                            <div class="card-img-wrap mb-2">
-                                <img class="img-fluid img-imagereview" loading="lazy"
-                                    src="{{ asset('storage/' . $p->photo()) }}" alt="">
+                    <a href="{{ route('review.detail',[$p->user->username,$p->slug]) }}"
+                        class="card-block clearfix">
+                        <div class="card border-0 shadow">
+                            <div class="card-img-wrap">
+                                <img class="card-img-top img-fluid img-imagereview" loading="lazy"
+                                src="{{ asset('storage/' . $p->photo()) }}" alt="">
+                                <div class="card-img-overlay">
+                                    <?php
+                                    if($p->score < 7 && $p->score > 5){
+                                        $score_color = 'warning';
+                                    }elseif($p->score < 5){
+                                        $score_color = 'danger';
+                                    }else{
+                                        $score_color = 'success';
+                                    }   
+                                    ?>
+                                    <div class="badge badge-{{ $score_color }} align-self-center bd-radius-2">
+                                        <span>Score</span>
+                                        <h6 class="no-pm">{{ $p->score }}/10</h6>
+                                    </div>
+                                </div>
                             </div>
-                        </a>
-                        <div class="card-body">
-                            <h5 class="no-pm"><a class="text-dark font-weight-bold"
-                                    href="{{ route('review.detail',[$p->user->username,$p->slug]) }}">{{ $p->title }}</a></h5>
+                            <div class="card-body">
+                                @php
+                                $tags = explode(',',$p->review_genre);   
+                                @endphp
+                                <div class="scrolling-wrapper-flexbox mb-2">
+                                    <div class="badges">
+                                        @foreach ($tags as $tag)
+                                        <a href="#" class="badge badge-primary"
+                                            value="{{$tag}}">{{$tag}}</a>
+                                        @endforeach
+                                    </div>
+                                </div>
+                                <h6><a class="text-dark font-weight-bold"
+                                        href="{{ route('review.detail',[$p->user->username,$p->slug]) }}">{{ $p->title }}</a>
+                                </h6>
+                                <hr>
+                                <small class="text-secondary no-pm">
+                                    {{ Carbon\Carbon::parse($p->created_at)->diffForHumans() }} &middot; <a href="{{ url('creator/' . $p->user->username) }}">{{ '@'.strtoupper($p->user->username) }}</a>
+                                </small>
+                            </div>
                         </div>
-                        <div class="card-footer">
-                            {{-- <div class="text-center"> --}}
-                                <p class="text-secondary no-pm">
-                                    {{ Carbon\Carbon::parse($p->created_at)->diffForHumans() }} &middot; <a
-                                        href="{{ url('creator/' . $p->user->username) }}">{{ strtoupper($p->user->username) }}</a>
-                                </p>
-                            {{-- </div> --}}
-                        </div>
-                    </div>
+                    </a>
                     
                 </div>
                 @endforeach

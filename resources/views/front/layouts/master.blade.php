@@ -20,7 +20,7 @@
 	@yield('css')
 </head>
 
-<body class="layout-3 bg-light">
+<body class="layout-3 @yield('bg-color', 'bg-light')">
 	<div id="app">
 		@include('front.layouts.navbar')
 
@@ -57,24 +57,6 @@
 			path: '{{ asset('anijson/social.json') }}'
 		});
 
-		// Maximum offset for image
-		var maxDeltaX = 20,
-			maxDeltaY = 20;
-
-		$(document).on('mousemove', function(e) {
-
-			// Get viewport dimensions
-			var viewportWidth = document.documentElement.clientWidth,
-				viewportHeight = document.documentElement.clientHeight;
-
-			var mouseX = e.pageX / viewportWidth * 2 - 1,
-			mouseY = e.pageY / viewportHeight * 2 - 1;
-
-			// Calculate how much to transform the image
-			var translateX = mouseX * maxDeltaX,
-				translateY = mouseY * maxDeltaY;
-			$('.animated').css('transform', 'translate('+translateX+'px, '+translateY+'px)');
-		});
 	</script>
 </body>
 

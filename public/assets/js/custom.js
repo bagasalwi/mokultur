@@ -61,49 +61,81 @@ $(document).ready(function () {
         $('#'+$(this).data('target')).val(slugify($(this).val()))
     })
 
-});
-
-const words = [
-    "Article",
-    "Reviews",
-    "Stories",
-    "Geeks",
-    "Technology",
-    "Games",
-    "Foodies",
-    "Programming",
-    "Pop Culture",
-    "Design",
-  ];
-const timePerWord = 3000; // milliseconds
-const timePerLetter = 50; //milliseconds
-
-let current = words[0];
-const wordEl = document.getElementById("switchtext");
-
-setInterval(switchText, timePerWord);
-
-async function switchText() {
-    const index = words.indexOf(current);
-    const curLength = current.length;
-
-    for (let i = 0; i <= curLength; i += 1) {
-        await wait(timePerLetter);
-        current = current.substring(0, current.length - 1);
-        wordEl.innerText = current;
-    }
-
-    await wait(current.length * timePerLetter);
-
-    const newWord = words[index + 1] || words[0];
-        for (let idx = 0; idx <= newWord.length; idx += 1) {
+    // Start Text Typing
+    const words = [
+        "Article",
+        "Reviews",
+        "Stories",
+        "Geeks",
+        "Technology",
+        "Games",
+        "Foodies",
+        "Programming",
+        "Pop Culture",
+        "Design",
+      ];
+    const timePerWord = 3000; // milliseconds
+    const timePerLetter = 50; //milliseconds
+    
+    let current = words[0];
+    const wordEl = document.getElementById("switchtext");
+    
+    setInterval(switchText, timePerWord);
+    
+    async function switchText() {
+        const index = words.indexOf(current);
+        const curLength = current.length;
+    
+        for (let i = 0; i <= curLength; i += 1) {
             await wait(timePerLetter);
-            current = newWord.substring(0, idx);
+            current = current.substring(0, current.length - 1);
             wordEl.innerText = current;
         }
-}
+    
+        await wait(current.length * timePerLetter);
+    
+        const newWord = words[index + 1] || words[0];
+            for (let idx = 0; idx <= newWord.length; idx += 1) {
+                await wait(timePerLetter);
+                current = newWord.substring(0, idx);
+                wordEl.innerText = current;
+            }
+    }
+    
+    function wait(timeout) {
+        return new Promise((resolve) => setTimeout(() => resolve(), timeout));
+    }
+    // End Text Typing
 
-function wait(timeout) {
-    return new Promise((resolve) => setTimeout(() => resolve(), timeout));
-}
+    // Image Movement - Maximum offset for image
+		var maxDeltaX = 20,
+        maxDeltaY = 20;
+
+    $(document).on('mousemove', function(e) {
+
+        // Get viewport dimensions
+        var viewportWidth = document.documentElement.clientWidth,
+            viewportHeight = document.documentElement.clientHeight;
+
+        var mouseX = e.pageX / viewportWidth * 2 - 1,
+        mouseY = e.pageY / viewportHeight * 2 - 1;
+
+        // Calculate how much to transform the image
+        var translateX = mouseX * maxDeltaX,
+            translateY = mouseY * maxDeltaY;
+        $('.animated').css('transform', 'translate('+translateX+'px, '+translateY+'px)');
+    });
+    // Image Movement End
+
+    // Navbar Scroll
+    $(window).scroll(function() {
+        if($(window).width() > 767 && $(this).scrollTop() > 1) { 
+            $('.navbar').removeClass('navbar-transparent');
+            $('.navbar').addClass('border');
+        } else {
+            $('.navbar').addClass('navbar-transparent');
+            $('.navbar').removeClass('border');
+        }
+    });
+});
 

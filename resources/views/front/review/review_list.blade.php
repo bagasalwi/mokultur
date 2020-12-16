@@ -7,15 +7,11 @@
             <div class="mr-auto">
                 <ul class="nav nav-pills" id="post-bar" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link mr-1 {{ request()->is('post') ? 'active' : '' }}" href="{{ route('post.index') }}">
-                            <div class="p-1">
-                                <h6 class="no-pm">My Article</h6>
-                            </div>
+                        <a class="nav-link {{ request()->is('post') ? 'active' : '' }}" href="{{ route('post.index') }}">
+                            <p class="no-pm">My Article</p>
                         </a>
-                        <a class="nav-link mr-1 {{ request()->is('review') ? 'active' : '' }}" href="{{ route('review.index') }}">
-                            <div class="p-1">
-                                <h6 class="no-pm">My Review</h6>
-                            </div>
+                        <a class="nav-link {{ request()->is('review') ? 'active' : '' }}" href="{{ route('review.index') }}">
+                            <p class="no-pm">My Review</p>
                         </a>
                     </li>
                 </ul>

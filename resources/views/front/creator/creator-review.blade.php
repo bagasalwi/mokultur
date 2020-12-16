@@ -11,7 +11,7 @@ $firstname = substr($fullname, 0, strpos($fullname, ' '));
 $lastname = substr($fullname, strpos($fullname, ' '), strlen($fullname));
 @endphp
 
-<section class="mini-section">
+<section class="mt-3">
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-sm-12">

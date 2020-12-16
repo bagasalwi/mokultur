@@ -70,7 +70,7 @@
                                     </div>
                                     @if ($review_genre)
                                     <div class="col-12 col-md-12">
-                                        <span class="text-small">Genre</h6>
+                                        <span class="text-small">Genre</span>
                                             <div class="badges">
                                                 @foreach ($review_genre as $tag)
                                                 <a href="#" class="badge badge-primary"

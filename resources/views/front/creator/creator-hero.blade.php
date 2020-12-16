@@ -1,4 +1,4 @@
-<div class="jumbotron jumbotron-fluid pattern-1 mb-0">
+<div class="jumbotron jumbotron-fluid primary-pattern-1 mb-0">
     <div class="row">
         <div class="col-md-8 offset-md-2">
             <div class="card card-body bd-radius-8 shadow border-0 m-2">

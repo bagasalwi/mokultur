@@ -11,7 +11,7 @@
 
 <!-- d-lg-none -->
 
-<nav id="navbar_main" class="mobile-offcanvas navbar fixed-top navbar-expand-lg shadow-sm">
+<nav id="navbar_main" class="mobile-offcanvas navbar navbar-transparent fixed-top navbar-expand-lg">
     <div class="container nav-cont">
         <a class="navbar-brand d-none d-lg-block" href="{{ url('/') }}">
             <img src="{{ asset('gambar/logo/KREASIBANGSA.png')}}" alt="">
@@ -21,25 +21,25 @@
         </div>
         <ul class="navbar-nav">
             <li class="nav-item py-2">
-                <a class="nav-link" href="{{ route('browse') }}">
-                    <h6 class="no-pm {{ request()->is('browse') || request()->is('browse/*') ? 'text-primary' : '' }}">BROWSE</h6>
+                <a class="nav-link {{ request()->is('browse') || request()->is('browse/*') ? 'text-primary-border' : '' }}" href="{{ route('browse') }}">
+                    BROWSE
                 </a>
             </li>
             <li class="nav-item py-2">
-                <a class="nav-link" href="{{ route('topic') }}">
-                    <h6 class="no-pm {{ request()->is('topic') ? 'text-primary' : '' }}">TOPICS</h6>
+                <a class="nav-link {{ request()->is('topic') ? 'text-primary-border' : '' }}" href="{{ route('topic') }}">
+                    TOPICS
                 </a>
             </li>
             <li class="nav-item py-2">
-                <a class="nav-link" href="{{ route('creator') }}">
-                    <h6 class="no-pm {{ request()->is('creator') ? 'text-primary' : '' }}">CREATORS</h6>
+                <a class="nav-link {{ request()->is('creator') ? 'text-primary-border' : '' }}" href="{{ route('creator') }}">
+                    CREATORS
                 </a>
             </li>
             @guest
             <li class="nav-item py-2 dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                     aria-expanded="false">
-                    <h6 class="no-pm">MY ACCOUNT <i class="fas fa-chevron-down"></i></h6>
+                    <span class="no-pm">MY ACCOUNT <i class="fas fa-chevron-down"></i></span>
                 </a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="{{ url('login') }}">Login</a>
@@ -57,7 +57,7 @@
             <li class="nav-item py-2 dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                     aria-expanded="false">
-                    <h6 class="no-pm">{{ Str::upper(auth()->user()->username) }} <i class="fas fa-chevron-down"></i></h6>
+                    <span class="no-pm">{{ Str::upper(auth()->user()->username) }} <i class="fas fa-chevron-down"></i></span>
                 </a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item d-flex flex-row" href="#">
