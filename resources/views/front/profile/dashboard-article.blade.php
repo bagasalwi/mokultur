@@ -1,9 +1,9 @@
 @extends('front.layouts.master')
 
 @section('content')
-<section class="section">
+@include('front.profile.dashboard-hero')
+<section>
     <div class="container">
-        @include('front.profile.dashboard-hero')
         <div class="row">
             <div class="col-md-12 col-sm-12 my-4">
                 @include('front.profile.dashboard-nav')
@@ -45,7 +45,7 @@
                 </div>
                 <div class="d-flex justify-content-center mt-4">
                     @if ($post->hasMorePages())
-                        {!! $post->render() !!}
+                    {!! $post->render() !!}
                     @else
                     <h6 class="text-secondary">No More Data</h6>
                     @endif

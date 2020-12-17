@@ -1,23 +1,27 @@
-<div class="mb-2">
-    <h2 class="no-pm">My Activities</h2>
-    <small class="no-pm text-secondary">Your Account active since {{ auth()->user()->created_at->format('M Y') }}</small>
-</div>
-<div class="row">
-    <div class="col-md-12 col-sm-12">
-        <div class="card card-body">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="d-flex justify-content-center">
-                        <img class="rounded-circle" width="150" height="150"
-                            src="{{ asset('storage/' . $user->profile_pic) }}" alt="...">
-                    </div>
-                </div>
-                <div class="col-md-9 d-flex flex-column align-self-center">
-                    <h1><span class="text-primary">{{ $greetings }},</span> {{ $user->name }} !</h1>
-                    <p class="text-secondary">{{ $user->description }}</p>
-                    <div class="flex-row">
-                        <a class="btn btn-sm btn-dark px-2" href="{{ route('profile') }}">Edit Profile</a>
-                        <a class="btn btn-sm btn-primary px-2" href="{{ route('post.index') }}">Manage My Post</a>
+<div class="jumbotron jumbotron-fluid primary-pattern-1 mb-0">
+    <div class="mini-section">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="card card-body bd-radius-8 shadow border-0 m-2">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-4 col-sm-12 my-2">
+                            <div class="d-flex justify-content-center">
+                                <img class="rounded-circle" width="120" height="120"
+                                    src="{{ asset('storage/' . $user->profile_pic) }}" alt="...">
+                            </div>
+                        </div>
+                        <div class="col-lg-10 col-md-8 d-flex flex-column align-self-center my-2">
+                            <h6>Active since {{ $user->created_at->format('M Y') }}</h6>
+                            <div class="my-1">
+                                <h1><span class="text-primary">{{ $greetings }},</span> {{ $user->name }} !</h1>
+                            </div>
+                            <p class="text-secondary">{{ $user->description }}</p>
+                            <div class="flex-row">
+                                <a class="btn btn-dark px-2" href="{{ route('profile') }}">Edit Profile</a>
+                                <a class="btn btn-primary px-2" href="{{ route('post.index') }}">Manage My
+                                    Post</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

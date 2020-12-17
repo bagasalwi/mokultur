@@ -1,15 +1,18 @@
-@extends('front.layouts.master')
+@extends('front.layouts.master-auth')
 
 @section('meta_title')Login @endsection
-@section('bg-color')primary-gradient @endsection
+@section('bg-color')primary-pattern-1 @endsection
 
 @section('content')
 <section class="section">
-    <div class="container mt-4">
+    <div class="container mt-5">
+        <div class="login-brand">
+            <img src="{{ asset('gambar/logo/KREASIBANGSA.png')}}" alt="logo" width="250">
+        </div>
         <div class="row">
             <div class="col-md-4 offset-md-4">
                 <div class="card card-body bd-radius-4">
-                    <div class="my-2">
+                    <div class="mb-4">
                         <h2 class="text-center text-primary no-pm">SIGN IN</h2>
                         <div class="text-center">
                             <small>Make an Article or Reviews of Yours, Share the Joy!</small>
@@ -53,16 +56,16 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-dark btn-block" tabindex="4">
+                            <button type="submit" class="btn btn-primary btn-block" tabindex="4">
                                 Login
                             </button>
                         </div>
                     </form>
                     <div class="text-center">
-                        <p class="no-pm text-muted">Don't have an Account ?
-                            <a class="text-dark mx-2" href="{{ url('register') }}">Create Account</a>
+                        <p class="text-muted">Don't have an Account ?
+                            <a class="text-primary mx-2" href="{{ url('register') }}">Create Account</a>
                         </p>
-                        <p class="no-pm">
+                        <p>
                             <a class="text-dark" href="{{ url('/') }}">Back to Home</a>
                         </p>
                     </div>

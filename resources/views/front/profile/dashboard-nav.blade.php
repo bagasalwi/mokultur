@@ -2,14 +2,14 @@
     <li class="nav-item">
         <a class="nav-link mr-1 {{ request()->type == 'article' || request()->type == ''  ? 'active' : '' }}"
             href="{{ route('dashboard','article') }}">
-            <div class="p-1">
-                <h6 class="no-pm">My Article</h6>
+            <div>
+                <span class="no-pm">My Article</span>
             </div>
         </a>
         <a class="nav-link mr-1 {{ request()->type == 'review' ? 'active' : '' }}"
             href="{{ route('dashboard','review') }}">
-            <div class="p-1">
-                <h6 class="no-pm">My Review</h6>
+            <div>
+                <span class="no-pm">My Review</span>
             </div>
         </a>
     </li>
