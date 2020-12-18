@@ -1,82 +1,106 @@
 @extends('front.layouts.master')
+{{-- @section('bg-color')primary-pattern-4 @endsection --}}
 
 @section('content')
-<section class="section">
-    <div class="container mb-3">
-        <div class="card card-body d-flex flex-row">
-            <div class="mr-auto">
-                <ul class="nav nav-pills" id="post-bar" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->is('post') ? 'active' : '' }}" href="{{ route('post.index') }}">
-                            <p class="no-pm">My Article</p>
-                        </a>
-                        <a class="nav-link {{ request()->is('review') ? 'active' : '' }}" href="{{ route('review.index') }}">
-                            <p class="no-pm">My Review</p>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="ml-auto">
-                <button type="button" data-toggle="modal" data-target="#articleType"
-                    class="btn btn-primary px-4">Create New Post</button>
+<div class="jumbotron jumbotron-fluid primary-pattern-4 mb-0"
+    style="padding-bottom: 80px; margin-bottom: -190px !important;">
+    <div class="container section">
+        <div class="row">
+            <div class="col-12 align-self-center">
+                <h1 class="text-white font-weight-bold">Your Article & Reviews List!</h1>
+                <p class="mb-3 text-white">
+                    Create, Edit, Update Your Article & Reviews Easily. 
+                </p>
             </div>
         </div>
     </div>
+</div>
+<section class="section">
     <div class="container">
-        <div class="row">
-            <div class="col-md-12 col-sm-12">
-                @if ($post)
-                <div id="posts" class="my-4">
-                    @foreach ($post as $item)
+        <div class="card card-body border-0 bd-radius-8 shadow">
+            <div class="d-flex flex-row">
+                <div class="mr-auto">
+                    <ul class="nav nav-pills" id="post-bar" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('post') ? 'active' : '' }}"
+                                href="{{ route('post.index') }}">
+                                My Article
+                            </a>
+                            <a class="nav-link {{ request()->is('review') ? 'active' : '' }}"
+                                href="{{ route('review.index') }}">
+                                My Review
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="ml-auto">
+                    <button type="button" data-toggle="modal" data-target="#articleType"
+                        class="btn btn-primary px-4">Create New Post</button>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    @if ($post->isNotEmpty())
+                    <div id="posts" class="my-4">
+                        @foreach ($post as $item)
 
-                    @php
-                    if($item->status == 'P'){
+                        @php
+                        if($item->status == 'P'){
                         $status = 'Published';
                         $s_color = 'success';
-                    }else if($item->status == 'D'){
+                        }else if($item->status == 'D'){
                         $status = 'Draft';
                         $s_color = 'danger';
-                    }else{
+                        }else{
                         $status = 'null';
                         $s_color = 'danger';
-                    }
-                    @endphp
+                        }
+                        @endphp
 
-                    <div class="card border-0">
-                        <div class="d-flex flex-row">
-                            <a class="text-dark" href="{{ route('post.detail',[$item->user->username,$item->slug]) }}">
-                                <h5>{{ $item->title }}</h5>
-                            </a>
-                        </div>
-                        <div class="d-flex flex-row">
-                            <div>
-                                <p>Created
+                        <div class="card border-0">
+                            <div class="d-flex flex-row">
+                                <a class="text-dark"
+                                    href="{{ route('post.detail',[$item->user->username,$item->slug]) }}">
+                                    <h5>{{ $item->title }}</h5>
+                                </a>
+                            </div>
+                            <div class="d-flex flex-row">
+                                <div>
+                                    <p>Created
                                         {{ $item->created_at->format('d M Y') }}<span
-                                        class="badge badge-pill badge-{{ $s_color }} mx-2">{{ $status }}</span></p>
-                            </div>
-                            <div class="ml-auto px-2">
-                                <a href="{{ $url_update }}/{{ $item->slug }}"
-                                    class="btn btn-outline-dark btn-sm px-4">Edit</a>
-                                <button onclick="deletePost({{ $item->id }})"
-                                    class="btn btn-outline-danger btn-sm px-2">
-                                    <i class="fas fa-trash"></i>
-                                </button>
+                                            class="badge badge-pill badge-{{ $s_color }} mx-2">{{ $status }}</span></p>
+                                </div>
+                                <div class="ml-auto px-2">
+                                    <a href="{{ $url_update }}/{{ $item->slug }}"
+                                        class="btn btn-outline-dark btn-sm px-4">Edit</a>
+                                    <button onclick="deletePost({{ $item->id }})"
+                                        class="btn btn-outline-danger btn-sm px-2">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
+                        <hr>
+                        @endforeach
                     </div>
-                    <hr>
-                    @endforeach
+                    <div class="float-right">
+                        {!! $post->render() !!}
+                    </div>
+                    @else
+                    <div class="empty-state" data-height="400">
+                        <img width="150" src="{{ URL::asset('gambar/sketch/7.svg')}}">
+                        <h2>Tidak ada Post</h2>
+                        <p class="lead">
+                            Kamu Belum Mengupload Article Saat Ini!
+                        </p>
+                    </div>
+                    @endif
                 </div>
-                {!! $post->render() !!}
-                @else
-                <div class="empty-state" data-height="400">
-                    <img width="150" src="{{ URL::asset('gambar/sketch/7.svg')}}">
-                    <h2>Tidak ada Post</h2>
-                </div>
-                @endif
             </div>
         </div>
     </div>
+    
 </section>
 
 <!-- Modal -->
@@ -87,11 +111,13 @@
                 <div class="card card-topic no-bd-radius">
                     <div class="card-body d-flex row">
                         <div class="col-2 align-self-center">
-                            <img class="img-fluid" src="{{ asset('gambar/icon/article.png') }}" width="70" height="70" alt="">
+                            <img class="img-fluid" src="{{ asset('gambar/icon/article.png') }}" width="70" height="70"
+                                alt="">
                         </div>
                         <div class="col-10 align-self-center">
                             <h4 class="text-dark no-pm">Simple Article</h4>
-                            <small class="text-secondary">Make an simple article about your stories, reviews, tutorials and more!</small>
+                            <small class="text-secondary">Make an simple article about your stories, reviews, tutorials
+                                and more!</small>
                             <a class="stretched-link" href="{{ route('post.create', 'type=article') }}"></a>
                         </div>
                     </div>
@@ -99,11 +125,13 @@
                 <div class="card card-topic no-bd-radius">
                     <div class="card-body d-flex row">
                         <div class="col-2 align-self-center">
-                            <img class="img-fluid" src="{{ asset('gambar/icon/gallery.png') }}" width="70" height="70" alt="">
+                            <img class="img-fluid" src="{{ asset('gambar/icon/gallery.png') }}" width="70" height="70"
+                                alt="">
                         </div>
                         <div class="col-10 align-self-center">
                             <h4 class="text-dark no-pm">Slideshow Article</h4>
-                            <small class="text-secondary">Make an Slideshow photo article about your stories, reviews, tutorials and more!</small>
+                            <small class="text-secondary">Make an Slideshow photo article about your stories, reviews,
+                                tutorials and more!</small>
                             <a class="stretched-link" href="{{ route('post.create', 'type=photo') }}"></a>
                         </div>
                     </div>

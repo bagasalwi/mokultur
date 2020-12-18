@@ -10,6 +10,9 @@ use App\PostPhoto;
 use App\Tag;
 use App\PostCategory;
 use App\Sidebar;
+
+use App\Rules\ContainBadWords;
+
 use File, DB, Auth, Image;
 use Carbon\Carbon;
 
@@ -93,10 +96,10 @@ class PostController extends Controller
     {
         if ($request->state == 'create') {
             $this->validate($request, [
-                'title' => 'required',
+                'title' => ['required', new ContainBadWords],
                 'slug' => 'unique:posts,slug',
                 'category_id' => 'required',
-                'description' => 'required',
+                'description' => ['required', new ContainBadWords],
                 'photo' => 'file|image|mimes:jpeg,png,jpg|required',
                 'status' => 'required',
             ]);
@@ -113,10 +116,10 @@ class PostController extends Controller
         if ($request->state == 'update') {
 
             $this->validate($request, [
-                'title' => 'required',
+                'title' => ['required', new ContainBadWords()],
                 'slug' => 'unique:posts,slug,'.$request->id,
                 'category_id' => 'required',
-                'description' => 'required',
+                'description' => ['required', new ContainBadWords()],
                 'photo' => 'file|image|mimes:jpeg,png,jpg',
                 'status' => 'required',
             ]);

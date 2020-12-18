@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="jumbotron jumbotron-fluid primary-gradient mb-0"
-    style="padding-bottom: 200px; margin-bottom: -250px !important;">
+    style="padding-bottom: 250px; margin-bottom: -250px !important;">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 align-self-center">

@@ -1,3 +1,4 @@
+<!-- Main Navbar Mobile -->
 <b class="screen-overlay"></b>
 <nav class="navbar2 navbar d-lg-none fixed-top navbar-expand-lg navbar-light">
     <div class="container">
@@ -9,8 +10,7 @@
     </div>
 </nav>
 
-<!-- d-lg-none -->
-
+<!-- Main Navbar -->
 <nav id="navbar_main" class="mobile-offcanvas navbar navbar-transparent fixed-top navbar-expand-lg">
     <div class="container nav-cont">
         <a class="navbar-brand d-none d-lg-block" href="{{ url('/') }}">
@@ -21,25 +21,22 @@
         </div>
         <ul class="navbar-nav">
             <li class="nav-item py-2">
-                <a class="nav-link {{ request()->is('browse') || request()->is('browse/*') ? 'text-primary-border' : '' }}" href="{{ route('browse') }}">
-                    BROWSE
-                </a>
+                <a class="nav-link {{ request()->is('browse') || request()->is('browse/*') ? 'text-primary-border' : '' }}"
+                    href="{{ route('browse') }}">Browse</a>
             </li>
             <li class="nav-item py-2">
-                <a class="nav-link {{ request()->is('topic') ? 'text-primary-border' : '' }}" href="{{ route('topic') }}">
-                    TOPICS
-                </a>
+                <a class="nav-link {{ request()->is('topic') ? 'text-primary-border' : '' }}"
+                    href="{{ route('topic') }}">Topics</a>
             </li>
             <li class="nav-item py-2">
-                <a class="nav-link {{ request()->is('creator') ? 'text-primary-border' : '' }}" href="{{ route('creator') }}">
-                    CREATORS
-                </a>
+                <a class="nav-link {{ request()->is('creator') ? 'text-primary-border' : '' }}"
+                    href="{{ route('creator') }}">Creators</a>
             </li>
             @guest
             <li class="nav-item py-2 dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                     aria-expanded="false">
-                    <span class="no-pm">MY ACCOUNT <i class="fas fa-chevron-down"></i></span>
+                    <span class="no-pm">Account <i class="fas fa-chevron-down"></i></span>
                 </a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="{{ url('login') }}">Login</a>
@@ -57,7 +54,8 @@
             <li class="nav-item py-2 dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                     aria-expanded="false">
-                    <span class="no-pm">{{ Str::upper(auth()->user()->username) }} <i class="fas fa-chevron-down"></i></span>
+                    <span class="no-pm">{{ Str::upper(auth()->user()->username) }} <i
+                            class="fas fa-chevron-down"></i></span>
                 </a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item d-flex flex-row" href="#">
