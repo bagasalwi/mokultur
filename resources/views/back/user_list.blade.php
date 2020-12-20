@@ -37,7 +37,7 @@
                             <td>{{ $row->email }}</td>
                             <td>{{ $row->instagram }}</td>
                             <td class="text-center">
-                                <a href="{{ url('creator/'. $row->username ) }}" class="btn btn-info"><i
+                                <a href="{{ route('creator.detail', $row->username) }}" class="btn btn-info"><i
                                         class="fas fa-eye"></i></a>
                             </td>
                         </tr>

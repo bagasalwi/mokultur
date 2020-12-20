@@ -3,17 +3,30 @@
 @section('meta_title')Browse Article @endsection
 
 @section('content')
+<div class="jumbotron jumbotron-fluid primary-pattern-1 mb-0"
+    style="padding-bottom: 80px; margin-bottom: -170px !important;">
+    <div class="container section">
+        <div class="row">
+            <div class="col-12 align-self-center">
+                <h1 class="text-white font-weight-bold" data-font-size="38px">Article's Room!</h1>
+                <p class="mb-3 text-white" data-font-size="18px">
+                    Browse published article within all creators right here, Explore!
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="section">
     <div class="container">
-        <div class="my-4">
-            <p class="no-pm">{{ isset($search_meta ) ? 'Showing result for :' : 'Search an article :'  }}</p>
-            <form action="{{ route('post') }}" role="search">
-                <input type="text" id="search" name="search" class="inputSearch" placeholder="Search.."
-                    value="{{ isset($search_meta ) ? $search_meta : ""  }}">
-            </form>
-        </div>
         <div class="row">
             <div class="col-lg-9 col-sm-12">
+                <div class="card card-body border-0 bd-radius-4 shadow-sm mb-4">
+                    <p class="no-pm">{{ isset($search_meta ) ? 'Showing result for :' : 'Search an article :'  }}</p>
+                    <form action="{{ route('post') }}" role="search">
+                        <input type="text" id="search" name="search" class="inputSearch" placeholder="Search.."
+                            value="{{ isset($search_meta ) ? $search_meta : ""  }}">
+                    </form>
+                </div>
                 <div id="posts" class="row">
                     @foreach ($creation as $p)
                     <div class="col-md-6">
@@ -31,7 +44,7 @@
                                 <div class="align-items-end mt-2">
                                     <p class="text-secondary">
                                         {{ Carbon\Carbon::parse($p->date_published)->diffForHumans() }} &middot; <a
-                                            href="{{ url('creator/' . $p->user->username) }}">{{ strtoupper($p->user->name) }}</a>
+                                            href="{{ route('creator.detail', $p->user->username) }}">{{ strtoupper($p->user->name) }}</a>
                                     </p>
                                 </div>
                             </div>

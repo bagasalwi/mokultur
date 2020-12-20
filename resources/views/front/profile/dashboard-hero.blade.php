@@ -1,7 +1,6 @@
-<div class="jumbotron jumbotron-fluid primary-pattern-1 mb-0">
+<div class="jumbotron jumbotron-fluid primary-pattern-1 pb-0 mb-0">
     <div class="mini-section">
-        <div class="row">
-            <div class="col-md-10 offset-md-1">
+        <div class="container">
                 <div class="card card-body bd-radius-8 shadow border-0 m-2">
                     <div class="row">
                         <div class="col-lg-2 col-md-4 col-sm-12 my-2">
@@ -11,7 +10,8 @@
                             </div>
                         </div>
                         <div class="col-lg-10 col-md-8 d-flex flex-column align-self-center my-2">
-                            <h6>Active since {{ $user->created_at->format('M Y') }}</h6>
+                            <i><h6>Active since {{ $user->created_at->format('M Y') }}</h6></i>
+                            
                             <div class="my-1">
                                 <h1><span class="text-primary">{{ $greetings }},</span> {{ $user->name }} !</h1>
                             </div>
@@ -24,7 +24,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
 </div>

@@ -28,10 +28,9 @@
                                     </div>
                                 </div>
                                 <div class="mt-1">
-                                    <h4 class="no-pm">
-                                        <a
-                                            href="{{ route('post.detail',[$p->user->username,$p->slug]) }}">{{ $p->title }}</a>
-                                    </h4>
+                                    <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}">
+                                        <h4 class="no-pm">{{ $p->title }}</h4>
+                                    </a>
                                 </div>
                                 <small class="text-secondary">
                                     {{ Carbon\Carbon::parse($p->date_published)->format('d M Y') }} &middot;

@@ -882,7 +882,7 @@ select.form-control:not([size]):not([multiple]) {
 .card .card-body,
 .card .card-footer {
     background-color: transparent;
-    padding: 15px 20px;
+    padding: 10px 15px;
 }
 
 .card .navbar {
@@ -941,7 +941,7 @@ select.form-control:not([size]):not([multiple]) {
     align-self: center;
     width: 100%;
     min-height: 30px;
-    padding: 15px 25px;
+    padding: 15px 15px;
     display: flex;
     align-items: center;
 }
@@ -952,7 +952,7 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 .card .card-header .btn:not(.note-btn) {
-    border-radius: 30px;
+    border-radius: 4px;
 }
 
 .card .card-header .btn:hover {
@@ -2453,7 +2453,7 @@ h6 .badge {
 }
 
 .dropdown-menu a {
-    font-size: 16px;
+    font-size: 12px;
 }
 
 .dropdown-menu .dropdown-title {
@@ -4433,7 +4433,7 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
     border-bottom:1px solid rgb(0, 0, 0);
     letter-spacing:0;
     font-style:normal;
-    font-weight:300;
+    font-weight:400;
     font-size:24px;
     height:auto;
     padding:0;

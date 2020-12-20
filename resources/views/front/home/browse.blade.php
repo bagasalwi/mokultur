@@ -71,7 +71,7 @@
                                     </h6>
                                     <hr>
                                     <small class="text-secondary no-pm">
-                                        {{ Carbon\Carbon::parse($p->created_at)->diffForHumans() }} &middot; <a href="{{ url('creator/' . $p->user->username) }}">{{ '@'.strtoupper($p->user->username) }}</a>
+                                        {{ Carbon\Carbon::parse($p->created_at)->diffForHumans() }} &middot; <a href="{{ route('creator.detail', $p->user->username) }}">{{ '@'.strtoupper($p->user->username) }}</a>
                                     </small>
                                 </div>
                             </div>
@@ -107,7 +107,7 @@
                                 <div class="align-items-end mt-2">
                                     <p class="text-secondary">
                                         {{ Carbon\Carbon::parse($p->date_published)->diffForHumans() }} &middot; <a
-                                            href="{{ url('creator/' . $p->user->username) }}">{{ strtoupper($p->user->name) }}</a>
+                                            href="{{ route('creator.detail', $p->user->username) }}">{{ strtoupper($p->user->name) }}</a>
                                     </p>
                                 </div>
                             </div>

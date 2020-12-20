@@ -38,7 +38,7 @@
                         <div class="align-self-center">
                             <h6 class="no-pm">
                                 <a class="text-dark"
-                                    href="{{ url('creator/' . $post->user->username) }}">{{ $post->user->name }}</a>
+                                    href="{{ route('creator.detail', $post->user->username) }}">{{ $post->user->name }}</a>
                             </h6>
                             <p class="no-pm"><small class="text-secondary">{{ $estimated_time }} read</small></p>
                         </div>

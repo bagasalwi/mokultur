@@ -5,12 +5,12 @@
 @section('meta_desc'){{ str_limit(strip_tags($review->content),180,'...') }}@endsection
 
 @section('content')
-<div class="jumbotron jumbotron-fluid primary-pattern-5 mb-0"
+<div class="jumbotron jumbotron-fluid primary-pattern-1 mb-0"
     style="padding-bottom: 80px; margin-bottom: -190px !important;">
     <div class="container section">
         <div class="row">
             <div class="col-12 align-self-center">
-                <a href="{{ url('creator/' . $review->user->username) }}">
+                <a href="{{ route('creator.detail', $review->user->username) }}">
                     <h4 class="text-primary text-shadow">{{ $review->user->name }},</h4>
                 </a>
                 <h1 class="text-white font-weight-bold" data-font-size="40px">"{{ $review->title }}"</h1>
@@ -187,6 +187,7 @@
 <script>
     $(document).ready(function(){
         $('#posting img').addClass('img-fluid');
+        $("iframe").addClass("embed-responsive embed-responsive-1by1 embed-responsive-item");
     });
 
     $("#carousel-post").owlCarousel({

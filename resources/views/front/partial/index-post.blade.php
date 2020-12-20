@@ -12,7 +12,7 @@
                     <div class="align-items-end">
                         <p class="text-secondary" data-font-size="14px">
                             {{ Carbon\Carbon::parse($p->date_published)->diffForHumans() }} &middot; <a
-                                href="{{ url('creator/' . $p->user->username) }}">{{ strtoupper($p->user->name) }}</a>
+                                href="{{ route('creator.detail', $p->user->username) }}">{{ strtoupper($p->user->name) }}</a>
                         </p>
                     </div>
                 </div>

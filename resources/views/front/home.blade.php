@@ -27,6 +27,12 @@
 <div class="section">
     <div class="container">
         <div class="card border-0 bd-radius-8 shadow mb-4">
+            <div class="card-header pb-0 mb-0">
+                <div class="mr-auto">
+                    <h5 class="no-pm">Top Article</h5>
+                </div>
+                <a href="{{ route('post') }}" class="btn btn-primary px-4 mx-1">Browse Article</a>
+            </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-6 col-sm-12 mb-2">
@@ -102,8 +108,7 @@
                     <div class="hero-inner">
                         <h1 class="text-white">Reviews</h1>
                         <p class="lead text-white">A place for you to share your personal opinion about Movies,
-                            Anime, Comics, Tv Series or Game. <span class="font-weight-bold">Click This Banner For
-                                More</span></p>
+                            Anime, Comics, Tv Series or Game.</p>
                     </div>
                 </div>
             </a>
@@ -112,7 +117,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 my-2">
                     <a href="{{ route('review.detail',[$p->user->username,$p->slug]) }}"
                         class="card-block clearfix">
-                        <div class="card border-0 shadow">
+                        <div class="card border-0 shadow h-100">
                             <div class="card-img-wrap">
                                 <img class="card-img-top img-fluid img-imagereview" loading="lazy"
                                 src="{{ asset('storage/' . $p->photo()) }}" alt="">
@@ -149,7 +154,7 @@
                                 </h6>
                                 <hr>
                                 <small class="text-secondary no-pm">
-                                    {{ Carbon\Carbon::parse($p->created_at)->diffForHumans() }} &middot; <a href="{{ url('creator/' . $p->user->username) }}">{{ '@'.strtoupper($p->user->username) }}</a>
+                                    {{ Carbon\Carbon::parse($p->created_at)->diffForHumans() }} &middot; <a href="{{ route('creator.detail', $p->user->username) }}"">{{ '@'.strtoupper($p->user->username) }}</a>
                                 </small>
                             </div>
                         </div>

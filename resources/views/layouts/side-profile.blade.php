@@ -5,7 +5,7 @@
                 <img class="rounded-circle my-2" width="150" height="150" 
                     src="{{ asset('storage/' . $user->profile_pic) }}" alt="...">
             </div>
-            <a href="{{ url('creator/'. $user->username) }}" class="text-primary text-center"><h4 >{{ $user->name }}</h4></a>
+            <a href="{{ route('creator.detail', $user->username) }}" class="text-primary text-center"><h4 >{{ $user->name }}</h4></a>
             <div class="profile-widget">
                 <div class="profile-widget-header">
                     <div class="profile-widget-items">
