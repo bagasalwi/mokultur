@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="jumbotron jumbotron-fluid primary-gradient mb-0"
-    style="padding-bottom: 250px; margin-bottom: -250px !important;">
-    <div class="container">
+    style="padding-bottom: 80px; margin-bottom: -225px !important;">
+    <div class="container section">
         <div class="row">
             <div class="col-lg-6 align-self-center">
                 <h1 class="text-white font-weight-bold" data-font-size="36px"><span id="switchtext">Article</span>, Post Whatever You Wanna Post, Freely!</h1>
