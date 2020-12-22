@@ -29,7 +29,8 @@ class HomeController extends Controller
         $data['top_creation'] = Post::where('status', 'P')->orderBy('view_count', 'desc')->take(5)->get();
         $data['creation'] = Post::where('status', 'P')->orderBy('created_at', 'desc')->paginate(10);
         $data['review'] = $this->reviewService->takePublishReview(4);
-        $data['topCategory'] = $this->categoryService->topCategory();
+        $data['top_category'] = $this->categoryService->topCategory();
+        $data['top_tags'] = \Conner\Tagging\Model\Tag::orderBy('count','desc')->take(5)->get();
 
         return view('front.home', $data);
     }
@@ -37,14 +38,16 @@ class HomeController extends Controller
     public function topic($category = null){
         if($category){
             $data['category'] = $this->categoryService->findSlug($category);
-            $data['topCategory'] = $this->categoryService->topCategory();
+            $data['top_category'] = $this->categoryService->topCategory();
+            $data['top_tags'] = \Conner\Tagging\Model\Tag::orderBy('count','desc')->take(5)->get();
             $data['creation'] = $this->postService->postByCategories($data['category']->id);
             
             return view('front.category.category-detail', $data);
         }else{
             $data['category_slide'] = $this->categoryService->categoryTake(5);
             $data['category'] = $this->categoryService->allCategory();
-            $data['topCategory'] = $this->categoryService->topCategory();
+            $data['top_category'] = $this->categoryService->topCategory();
+            $data['top_tags'] = \Conner\Tagging\Model\Tag::orderBy('count','desc')->take(5)->get();
             $data['creation'] = Post::where('status', 'P')->orderBy('created_at', 'desc')->paginate(10);
 
             return view('front.category.category', $data);
@@ -55,7 +58,8 @@ class HomeController extends Controller
     public function browse(Request $request){
         $data['creation'] = $this->postService->takePublishPost(9);
         $data['review'] = $this->reviewService->takePublishReview(8);
-        $data['topCategory'] = $this->categoryService->topCategory();
+        $data['top_category'] = $this->categoryService->topCategory();
+        $data['top_tags'] = \Conner\Tagging\Model\Tag::orderBy('count','desc')->take(5)->get();
     
         return view('front.home.browse', $data);
         

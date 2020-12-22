@@ -33,12 +33,29 @@ class FrontPostController extends Controller
 
             $data['creation']->appends(['search' => $request->search]);
 
-            $data['topCategory'] = $this->categoryService->topCategory();
+            $data['top_category'] = $this->categoryService->topCategory();
+            $data['top_tags'] = \Conner\Tagging\Model\Tag::orderBy('count','desc')->take(5)->get();
         } else {
             $data['creation'] = $this->postService->latestPublishedPost(8);
-            $data['topCategory'] = $this->categoryService->topCategory();
+            $data['top_category'] = $this->categoryService->topCategory();
+            $data['top_tags'] = \Conner\Tagging\Model\Tag::orderBy('count','desc')->take(5)->get();
         }
         return view('front.home.browse-post', $data);
+    }
+
+    public function browseTag(Request $request){
+        if ($request->has('tag')) {
+            $data['post'] = Post::withAnyTag($request->tag)->paginate(1, ['*'], 'article');
+            $data['review'] = Review::withAnyTag($request->tag)->paginate(1, ['*'], 'review');
+            $data['post']->appends(['tag' => $request->tag]);
+            $data['review']->appends(['tag' => $request->tag]);
+        }
+        
+        $data['all_tags'] = \Conner\Tagging\Model\Tag::get();
+        $data['top_category'] = $this->categoryService->topCategory();
+        $data['top_tags'] = \Conner\Tagging\Model\Tag::orderBy('count','desc')->take(5)->get();
+
+        return view('front.home.browse-tag',$data);
     }
 
     public function browseReview(Request $request)
@@ -49,10 +66,12 @@ class FrontPostController extends Controller
                 ->orderBy('created_at', 'desc')
                 ->where('title', 'like', "%" . $request->search . "%")->paginate(8);
 
-            $data['topCategory'] = $this->categoryService->topCategory();
+            $data['top_category'] = $this->categoryService->topCategory();
+            $data['top_tags'] = \Conner\Tagging\Model\Tag::orderBy('count','desc')->take(5)->get();
         } else {
             $data['review'] = $this->reviewService->latestPublishedReview(8);
-            $data['topCategory'] = $this->categoryService->topCategory();
+            $data['top_category'] = $this->categoryService->topCategory();
+            $data['top_tags'] = \Conner\Tagging\Model\Tag::orderBy('count','desc')->take(5)->get();
         }
         return view('front.home.browse-review', $data);
     }
@@ -84,7 +103,8 @@ class FrontPostController extends Controller
 
     public function publishDetailPost($username, $slug)
     {
-        $data['topCategory'] = $this->categoryService->topCategory();
+        $data['top_category'] = $this->categoryService->topCategory();
+        $data['top_tags'] = \Conner\Tagging\Model\Tag::orderBy('count','desc')->take(5)->get();
         $data['user'] = User::where('username', $username)->first();
         if ($data['user']) {
             $data['post'] = $this->postService->publishedDetailPost($slug);
@@ -101,7 +121,7 @@ class FrontPostController extends Controller
 
             Post::where('id', $data['post']->id)->increment('view_count');
 
-            return view('front.home.creation_detail', $data);
+            return view('front.home.article_detail', $data);
         } else {
             return redirect()->back();
         }
@@ -129,7 +149,8 @@ class FrontPostController extends Controller
 
         $data['review_genre'] = $data['review']->tagNames();
 
-        $data['topCategory'] = $this->categoryService->topCategory();
+        $data['top_category'] = $this->categoryService->topCategory();
+        $data['top_tags'] = \Conner\Tagging\Model\Tag::orderBy('count','desc')->take(5)->get();
 
         $words = str_word_count(strip_tags($data['review']->content));
         $minutes = floor($words / 120);

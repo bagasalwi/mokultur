@@ -9,7 +9,7 @@
 
 body {
     background-color: #f4f6f9;
-    font-size: 14px;
+    font-size: 0.9rem;
     font-weight: 200;
     letter-spacing: 0.2px;
     font-family: 'Poppins', sans-serif;
@@ -19,7 +19,7 @@ body {
 
 @media only screen and (max-width: 768px) {
     body {
-        font-size: 14px;
+        font-size: 0.85rem;
     }
 }
 
@@ -58,22 +58,22 @@ h6,
 }
 
 h1 {
-    font-size: 28px;
+    font-size: 2.25rem;
 }
 h2 {
-    font-size: 26px;
+    font-size: 2rem;
 }
 h3 {
-    font-size: 24px;
+    font-size: 1.75rem;
 }
 h4 {
-    font-size: 22px;
+    font-size: 1.5rem;
 }
 h5 {
-    font-size: 20px;
+    font-size: 1.25rem;
 }
 h6 {
-    font-size: 18px;
+    font-size: 1rem;
 }
 
 .btn:focus,
@@ -718,6 +718,13 @@ select.form-control:not([size]):not([multiple]) {
 
 .list-unstyled-noborder li:last-child {
     border-bottom: none;
+}
+
+.list-group-item-action:hover{
+    z-index: 1;
+    color: #fdfeff;
+    text-decoration: none;
+    background-color: #0093E9;
 }
 
 .list-group-item.active {

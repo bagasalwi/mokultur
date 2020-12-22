@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Services\PostServices;
 use App\User;
 use App\Post;
@@ -94,12 +95,20 @@ class PostController extends Controller
 
     public function save(Request $request)
     {
+        
+        // $arr = file(public_path('wordlist/badword.list'), FILE_IGNORE_NEW_LINES);
+
+        // foreach($request->tags as $tags){
+        //     dd(Str::contains($tags,$arr));
+        // }
+        
         if ($request->state == 'create') {
             $this->validate($request, [
                 'title' => ['required', new ContainBadWords],
                 'slug' => 'unique:posts,slug',
                 'category_id' => 'required',
-                'description' => ['required', new ContainBadWords],
+                'description' => 'required',
+                'tags.*' => new ContainBadWords,
                 'photo' => 'file|image|mimes:jpeg,png,jpg|required',
                 'status' => 'required',
             ]);
@@ -119,7 +128,7 @@ class PostController extends Controller
                 'title' => ['required', new ContainBadWords()],
                 'slug' => 'unique:posts,slug,'.$request->id,
                 'category_id' => 'required',
-                'description' => ['required', new ContainBadWords()],
+                'description' => ['required'],
                 'photo' => 'file|image|mimes:jpeg,png,jpg',
                 'status' => 'required',
             ]);

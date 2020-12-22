@@ -10,6 +10,12 @@ class Post extends Model
     use Taggable;
 
     protected $guarded = [];
+    protected $appends = ['type'];
+
+    public function getTypeAttribute()
+    {
+        return 'article';
+    }
 
     public function user(){
         return $this->belongsTo(User::class);

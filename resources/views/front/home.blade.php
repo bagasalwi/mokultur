@@ -29,9 +29,9 @@
         <div class="card border-0 bd-radius-8 shadow mb-4">
             <div class="card-header pb-0 mb-0">
                 <div class="mr-auto">
-                    <h5 class="no-pm">Top Article</h5>
+                    <h3 class="no-pm">Top Article</h3>
                 </div>
-                <a href="{{ route('post') }}" class="btn btn-primary px-4 mx-1">Browse Article</a>
+                <a href="{{ route('post') }}" class="btn btn-primary px-4 mx-1 d-none d-lg-block">Browse Article</a>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -48,7 +48,7 @@
                                 </a>
                                 <div class="my-2">
                                     <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="no-pm">
-                                        <h3>{{ $p->title }}</h3>
+                                        <h4>{{ $p->title }}</h4>
                                     </a>
                                     <p class="card-text">
                                         {{ str_limit(strip_tags($p->description),180,'...') }}
@@ -159,7 +159,6 @@
                             </div>
                         </div>
                     </a>
-                    
                 </div>
                 @endforeach
             </div>
@@ -175,3 +174,53 @@
 </div>
 
 @endsection
+
+@push('script')
+    <script>
+    // Start Text Typing
+    const words = [
+        "Article",
+        "Reviews",
+        "Stories",
+        "Geeks",
+        "Technology",
+        "Games",
+        "Foodies",
+        "Programming",
+        "Pop Culture",
+        "Design",
+      ];
+    const timePerWord = 3000; // milliseconds
+    const timePerLetter = 50; //milliseconds
+    
+    let current = words[0];
+    const wordEl = document.getElementById("switchtext");
+    
+    setInterval(switchText, timePerWord);
+    
+    async function switchText() {
+        const index = words.indexOf(current);
+        const curLength = current.length;
+    
+        for (let i = 0; i <= curLength; i += 1) {
+            await wait(timePerLetter);
+            current = current.substring(0, current.length - 1);
+            wordEl.innerText = current;
+        }
+    
+        await wait(current.length * timePerLetter);
+    
+        const newWord = words[index + 1] || words[0];
+            for (let idx = 0; idx <= newWord.length; idx += 1) {
+                await wait(timePerLetter);
+                current = newWord.substring(0, idx);
+                wordEl.innerText = current;
+            }
+    }
+    
+    function wait(timeout) {
+        return new Promise((resolve) => setTimeout(() => resolve(), timeout));
+    }
+    // End Text Typing
+    </script>
+@endpush

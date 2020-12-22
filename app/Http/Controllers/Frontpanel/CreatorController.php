@@ -35,10 +35,12 @@ class CreatorController extends Controller
                 ->where('name', 'like', "%" . $request->search . "%")->paginate(9);
 
             $data['creator']->appends(['search' => $request->search]);
-            $data['topCategory'] = $this->categoryService->topCategory();
+            $data['top_category'] = $this->categoryService->topCategory();
+            $data['top_tags'] = \Conner\Tagging\Model\Tag::orderBy('count','desc')->take(5)->get();
         } else {
             $data['creator'] = User::with('latestPost')->paginate(9);
-            $data['topCategory'] = $this->categoryService->topCategory();
+            $data['top_category'] = $this->categoryService->topCategory();
+            $data['top_tags'] = \Conner\Tagging\Model\Tag::orderBy('count','desc')->take(5)->get();
         }
 
         return view('front.creator.creator', $data);

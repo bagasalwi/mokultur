@@ -3,6 +3,7 @@
 namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Support\Str;
 
 class ContainBadWords implements Rule
 {
@@ -25,10 +26,9 @@ class ContainBadWords implements Rule
      */
     public function passes($attribute, $value)
     {
-        $lists = file_get_contents(
-            sprintf("%s/%s", public_path("wordlist"), 'badword.list')
-        );
-        if(strpos($value,$lists) !== false){
+        $arr = file(public_path('wordlist/badword.list'), FILE_IGNORE_NEW_LINES);
+        
+        if(Str::contains($value,$arr) == true){
             return false;
         }else{
             return true;
@@ -42,6 +42,6 @@ class ContainBadWords implements Rule
      */
     public function message()
     {
-        return ':CONTAIN BAD WORDS!';
+        return ':attribute CONTAINS BAD WORDS!';
     }
 }

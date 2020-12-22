@@ -24,6 +24,7 @@ Route::prefix('browse')->group(function () {
     Route::get('/', 'Frontpanel\HomeController@browse')->name('browse');
     Route::get('/article', 'Frontpanel\FrontPostController@browsePost')->name('post');
     Route::get('/review', 'Frontpanel\FrontPostController@browseReview')->name('review');
+    Route::get('/tag', 'Frontpanel\FrontPostController@browseTag')->name('tag');
 });
 
 Route::prefix('@{username?}')->group(function(){

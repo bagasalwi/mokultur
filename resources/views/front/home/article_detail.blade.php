@@ -76,6 +76,12 @@
                     {!! $post->description !!}
                 </div>
 
+                <div class="badges">
+                    @foreach ($tags as $tag)
+                    <a href="#" class="badge badge-primary" value="{{$tag}}">{{$tag}}</a>
+                    @endforeach
+                </div>
+
                 <div class="mt-2" id="disqus_thread"></div>
 
                 @if ($recomendation->isNotEmpty())
@@ -132,8 +138,6 @@
     (d.head || d.body).appendChild(s);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments
-        powered by Disqus.</a></noscript>
 <script>
     $(document).ready(function(){
         $('#posting img').addClass('img-fluid');
@@ -147,5 +151,25 @@
         dots: false,
         navText: ['<i class="fas fa-chevron-left"></i>','<i class="fas fa-chevron-right"></i>']
     });
+
+    // var filter = ['tai','laravel'];
+    // $.get("{{ asset('wordlist/badword.list') }}", function(data){
+    //     var filter = data.split('\n');
+    // });
+
+    // console.log(filter[0],filter[1],filter[2])
+    
+    // $('body').html(function(i, txt){
+    //   // iterate over all words
+    //   for(var i=0; i<filter.length; i++){
+    //     // Create a regular expression and make it global
+    //     var pattern = new RegExp('\\b' + filter[i] + '\\b', 'g');
+    //     // Create a new string filled with '*'
+    //     var replacement = '*'.repeat(filter[i].length);
+    //     txt = txt.replace(pattern, replacement);
+    //   }
+    //   // returning txt will set the new text value for the current element
+    //   return txt;
+    // });
 </script>
 @endsection
