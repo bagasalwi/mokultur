@@ -186,7 +186,7 @@
         powered by Disqus.</a></noscript>
 <script>
     $(document).ready(function(){
-        $('#posting img').addClass('img-fluid');
+        $('#review-collapse img').addClass('img-fluid');
         $("iframe").addClass("embed-responsive embed-responsive-1by1 embed-responsive-item");
     });
 
