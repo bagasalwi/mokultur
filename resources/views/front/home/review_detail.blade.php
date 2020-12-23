@@ -3,6 +3,9 @@
 @section('meta_title'){{ $review->title }}@endsection
 @section('meta_keyword'){{ $review->review_genre }}@endsection
 @section('meta_desc'){{ str_limit(strip_tags($review->content),180,'...') }}@endsection
+@section('meta-tags')
+    <meta name="og:image" content="{{ asset('storage/' . $review->photo()) }}"/>
+@endsection
 
 @section('content')
 <div class="jumbotron jumbotron-fluid primary-pattern-1 mb-0"
