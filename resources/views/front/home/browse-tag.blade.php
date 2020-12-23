@@ -82,6 +82,11 @@
                         <div class="d-flex justify-content-center my-2">
                             {!! $post->render() !!}
                         </div>
+                        @else
+                        <div class="empty-state" data-height="400">
+                            <img width="150" src="{{ URL::asset('gambar/sketch/7.svg')}}">
+                            <h2>Tidak ada Article terkait</h2>
+                        </div>
                         @endif
                     </div>
                     <div class="tab-pane fade" id="review-tag" role="tabpanel" aria-labelledby="review-tab3">
@@ -140,6 +145,11 @@
                         </div>
                         <div class="d-flex justify-content-center my-2">
                             {{ $review->fragment('review-tag')->links() }}
+                        </div>
+                        @else
+                        <div class="empty-state" data-height="400">
+                            <img width="150" src="{{ URL::asset('gambar/sketch/7.svg')}}">
+                            <h2>Tidak ada Review terkait</h2>
                         </div>
                         @endif
                     </div>
