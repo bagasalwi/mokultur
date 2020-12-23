@@ -1,7 +1,7 @@
 @extends('front.layouts.master')
 
 @section('meta_title'){{ $post->title }}@endsection
-@section('meta_keyword'){{ implode(', ', $tags) }}@endsection
+@section('meta_keyword'){{ implode(', ', $meta_tags) }}@endsection
 @section('meta_desc'){{ str_limit(strip_tags($post->description),180,'...') }}@endsection
 
 @section('content')
@@ -76,9 +76,10 @@
                     {!! $post->description !!}
                 </div>
 
-                <div class="badges">
+                <div class="badges my-4">
+                    <h4>Tags</h4>
                     @foreach ($tags as $tag)
-                    <a href="#" class="badge badge-primary" value="{{$tag}}">{{$tag}}</a>
+                        <a href="{{ route('tag','tag='.$tag->slug) }}" class="badge badge-primary">{{$tag->name}}</a>
                     @endforeach
                 </div>
 

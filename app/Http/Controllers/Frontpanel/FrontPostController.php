@@ -45,8 +45,8 @@ class FrontPostController extends Controller
 
     public function browseTag(Request $request){
         if ($request->has('tag')) {
-            $data['post'] = Post::withAnyTag($request->tag)->paginate(1, ['*'], 'article');
-            $data['review'] = Review::withAnyTag($request->tag)->paginate(1, ['*'], 'review');
+            $data['post'] = Post::withAnyTag($request->tag)->paginate(8, ['*'], 'article');
+            $data['review'] = Review::withAnyTag($request->tag)->paginate(9, ['*'], 'review');
             $data['post']->appends(['tag' => $request->tag]);
             $data['review']->appends(['tag' => $request->tag]);
         }
@@ -117,7 +117,8 @@ class FrontPostController extends Controller
             $minutes = floor($words / 120);
             $data['estimated_time'] = $minutes . ' minute' . ($minutes == 1 ? '' : 's');
 
-            $data['tags'] = $data['post']->tagNames();
+            $data['tags'] = $data['post']->existingTags();
+            $data['meta_tags'] = $data['post']->tagNames();
 
             Post::where('id', $data['post']->id)->increment('view_count');
 
@@ -147,7 +148,7 @@ class FrontPostController extends Controller
         $data['user'] = User::where('username', $username)->first();
         $data['review'] = $this->reviewService->publishedDetailReview($slug);
 
-        $data['review_genre'] = $data['review']->tagNames();
+        $data['review_genre'] = $data['review']->existingTags();
 
         $data['top_category'] = $this->categoryService->topCategory();
         $data['top_tags'] = \Conner\Tagging\Model\Tag::orderBy('count','desc')->take(5)->get();

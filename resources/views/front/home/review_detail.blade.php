@@ -75,7 +75,7 @@
                                             <span class="text-small">Genre</span>
                                             <div class="badges">
                                                 @foreach ($review_genre as $tag)
-                                                <a href="#" class="badge badge-primary" value="{{$tag}}">{{$tag}}</a>
+                                                <a href="{{ route('tag','tag='.$tag->slug) }}" class="badge badge-primary">{{$tag->name}}</a>
                                                 @endforeach
                                             </div>
                                         </div>
