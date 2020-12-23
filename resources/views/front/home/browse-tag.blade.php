@@ -131,7 +131,6 @@
                                             <h6><a class="text-dark font-weight-bold"
                                                     href="{{ route('review.detail',[$p->user->username,$p->slug]) }}">{{ $p->title }}</a>
                                             </h6>
-                                            {{ str_limit(strip_tags($p->content),70,'...') }}
                                             <hr>
                                             <small class="text-secondary no-pm">
                                                 {{ Carbon\Carbon::parse($p->created_at)->diffForHumans() }} &middot; <a
