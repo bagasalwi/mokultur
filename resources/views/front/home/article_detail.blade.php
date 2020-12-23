@@ -78,7 +78,7 @@
 
                 <div class="badges my-4">
                     <h4>Tags</h4>
-                    @foreach ($tags as $tag)
+                    @foreach ($post->tags as $tag)
                         <a href="{{ route('tag','tag='.$tag->slug) }}" class="badge badge-primary">{{$tag->name}}</a>
                     @endforeach
                 </div>

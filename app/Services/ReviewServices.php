@@ -43,7 +43,7 @@ class ReviewServices
 
     public function publishedDetailReview($slug)
     {
-        return Review::where('slug', $slug)->where('status', 'P')->first();
+        return Review::where('slug', $slug)->where('status', 'P')->with('tagged')->first();
     }
 
     public function allReviewUser($paginate = null)

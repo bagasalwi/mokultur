@@ -70,11 +70,11 @@
                                             <span class="text-small">Release Date</span>
                                             <h6>{{ $review->review_releasedate }}</h6>
                                         </div>
-                                        @if ($review_genre)
+                                        @if ($review->tags[0])
                                         <div class="col-12 col-md-12">
                                             <span class="text-small">Genre</span>
                                             <div class="badges">
-                                                @foreach ($review_genre as $tag)
+                                                @foreach ($review->tags as $tag)
                                                 <a href="{{ route('tag','tag='.$tag->slug) }}" class="badge badge-primary">{{$tag->name}}</a>
                                                 @endforeach
                                             </div>

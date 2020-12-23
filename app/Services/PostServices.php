@@ -44,7 +44,7 @@ class PostServices
 
     public function publishedDetailPost($slug)
     {
-        return Post::where('slug', $slug)->where('status', 'P')->first();
+        return Post::where('slug', $slug)->where('status', 'P')->with('tagged')->first();
     }
 
     public function allPostUser($paginate = null)
