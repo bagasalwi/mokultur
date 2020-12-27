@@ -16,7 +16,8 @@
                         <tr>
                             <th class="text-center">No</th>
                             <th>title</th>
-                            <th>slug</th>
+                            <th>Date Published</th>
+                            <th>View</th>
                             <th class="text-center">Action</th>
                         </tr>
                     </thead>
@@ -30,6 +31,7 @@
                             <td class="text-center">{{ $no++ }}</td>
                             <td>{{ $row->title }}</td>
                             <td>{{ $row->date_published }}</td>
+                            <td>{{ $row->view_count }}</td>
                             <td class="text-center">
                                 <a href="{{ route('post.detail',[$row->user->username,$row->slug]) }}" class="btn btn-info"><i
                                         class="fas fa-eye"></i></a>
