@@ -21,6 +21,7 @@ class FrontPostController extends Controller
         $this->postService = $postService;
         $this->reviewService = $reviewService;
         $this->categoryService = $categoryService;
+        $this->top_tags = \Conner\Tagging\Model\Tag::orderBy('count','desc')->take(3)->get();
     }
 
     public function browsePost(Request $request)
@@ -34,11 +35,11 @@ class FrontPostController extends Controller
             $data['creation']->appends(['search' => $request->search]);
 
             $data['top_category'] = $this->categoryService->topCategory();
-            $data['top_tags'] = \Conner\Tagging\Model\Tag::orderBy('count','desc')->take(5)->get();
+            $data['top_tags'] = $this->top_tags;
         } else {
             $data['creation'] = $this->postService->latestPublishedPost(8);
             $data['top_category'] = $this->categoryService->topCategory();
-            $data['top_tags'] = \Conner\Tagging\Model\Tag::orderBy('count','desc')->take(5)->get();
+            $data['top_tags'] = $this->top_tags;
         }
         return view('front.home.browse-post', $data);
     }
@@ -53,7 +54,7 @@ class FrontPostController extends Controller
         
         $data['all_tags'] = \Conner\Tagging\Model\Tag::get();
         $data['top_category'] = $this->categoryService->topCategory();
-        $data['top_tags'] = \Conner\Tagging\Model\Tag::orderBy('count','desc')->take(5)->get();
+        $data['top_tags'] = $this->top_tags;
 
         return view('front.home.browse-tag',$data);
     }
@@ -67,11 +68,11 @@ class FrontPostController extends Controller
                 ->where('title', 'like', "%" . $request->search . "%")->paginate(8);
 
             $data['top_category'] = $this->categoryService->topCategory();
-            $data['top_tags'] = \Conner\Tagging\Model\Tag::orderBy('count','desc')->take(5)->get();
+            $data['top_tags'] = $this->top_tags;
         } else {
             $data['review'] = $this->reviewService->latestPublishedReview(8);
             $data['top_category'] = $this->categoryService->topCategory();
-            $data['top_tags'] = \Conner\Tagging\Model\Tag::orderBy('count','desc')->take(5)->get();
+            $data['top_tags'] = $this->top_tags;
         }
         return view('front.home.browse-review', $data);
     }
@@ -104,7 +105,7 @@ class FrontPostController extends Controller
     public function publishDetailPost($username, $slug)
     {
         $data['top_category'] = $this->categoryService->topCategory();
-        $data['top_tags'] = \Conner\Tagging\Model\Tag::orderBy('count','desc')->take(5)->get();
+        $data['top_tags'] = $this->top_tags;
         $data['user'] = User::where('username', $username)->first();
         if ($data['user']) {
             $data['post'] = $this->postService->publishedDetailPost($slug);
@@ -119,7 +120,11 @@ class FrontPostController extends Controller
 
             $data['meta_tags'] = $data['post']->tagNames();
 
-            Post::where('id', $data['post']->id)->increment('view_count');
+            $counter = 'post_' . $data['post']->id;
+            if (!Session::has($counter)) {
+                $data['post']->where('id', $data['post']->id)->increment('view_count');
+                Session::put($counter, 1);
+            }
 
             return view('front.home.article_detail', $data);
         } else {
@@ -148,11 +153,17 @@ class FrontPostController extends Controller
         $data['review'] = $this->reviewService->publishedDetailReview($slug);
 
         $data['top_category'] = $this->categoryService->topCategory();
-        $data['top_tags'] = \Conner\Tagging\Model\Tag::orderBy('count','desc')->take(5)->get();
+        $data['top_tags'] = $this->top_tags;
 
         $words = str_word_count(strip_tags($data['review']->content));
         $minutes = floor($words / 120);
         $data['estimated_time'] = $minutes . ' minute' . ($minutes == 1 ? '' : 's');
+
+        $counter = 'review_' . $data['review']->id;
+        if (!Session::has($counter)) {
+            $data['review']->where('id', $data['review']->id)->increment('view_count');
+            Session::put($counter, 1);
+        }
 
         return view('front.home.review_detail', $data);
     }

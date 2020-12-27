@@ -49,3 +49,30 @@
     </div>
 </div>
 @endsection
+
+{{-- @section('script')
+    <script>
+    function deleteReview(id){       
+        swal({
+            title: "Are you sure?",
+            text: "Are your sure want to delete this row data?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                url: "{{ url('admin/review/delete') }}" + "/" + id,
+                success: function(){
+                    swal("Done!","It was succesfully deleted!","success");
+                    setInterval('window.location.reload()', 1000);
+                },
+                error: function(){
+                    swal("Error!", "", "Error");
+                }});
+            }
+        });
+    }
+    </script>
+@endsection --}}

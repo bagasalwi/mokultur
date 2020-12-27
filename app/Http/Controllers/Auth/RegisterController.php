@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
+use App\Rules\ContainBadWords;
+
 class RegisterController extends Controller
 {
     /*
@@ -50,8 +52,8 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'min:2','max:255'],
-            'username' => ['required', 'unique:users', 'string', 'min:3', 'max:10'],
+            'name' => ['required', 'string', 'min:2','max:255', new ContainBadWords],
+            'username' => ['required', 'unique:users', 'string', 'min:3', 'max:10', new ContainBadWords],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);

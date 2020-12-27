@@ -24,6 +24,7 @@ class CreatorController extends Controller
         $this->categoryService = $categoryService;
         $this->userService = $userService;
         $this->reviewService = $reviewService;
+        $this->top_tags = \Conner\Tagging\Model\Tag::orderBy('count','desc')->take(3)->get();
     }
 
     public function creator(Request $request)
@@ -36,11 +37,11 @@ class CreatorController extends Controller
 
             $data['creator']->appends(['search' => $request->search]);
             $data['top_category'] = $this->categoryService->topCategory();
-            $data['top_tags'] = \Conner\Tagging\Model\Tag::orderBy('count','desc')->take(5)->get();
+            $data['top_tags'] = $this->top_tags;
         } else {
             $data['creator'] = User::with('latestPost')->paginate(9);
             $data['top_category'] = $this->categoryService->topCategory();
-            $data['top_tags'] = \Conner\Tagging\Model\Tag::orderBy('count','desc')->take(5)->get();
+            $data['top_tags'] = $this->top_tags;
         }
 
         return view('front.creator.creator', $data);

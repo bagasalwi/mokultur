@@ -11,6 +11,8 @@ use App\Sidebar;
 use File, DB, Auth, Image;
 use Carbon\Carbon;
 
+use App\Rules\ContainBadWords;
+
 class ReviewController extends Controller
 {
     public function __construct(ReviewServices $reviewService)
@@ -65,11 +67,11 @@ class ReviewController extends Controller
 
         if($request->state == 'create'){
             $this->validate($request, [
-                'review_name' => 'required',
+                'review_name' => ['required', new ContainBadWords],
                 'review_image' => 'file|image|mimes:jpeg,png,jpg|required',
                 'review_synopsis' => 'required',
                 'review_releasedate' => 'required',
-                'title' => 'required',
+                'title' => ['required', new ContainBadWords],
                 'slug' => 'unique:reviews,slug',
                 'content' => 'required',
                 'score' => 'required',
@@ -81,11 +83,11 @@ class ReviewController extends Controller
             return redirect('review')->with('success', 'Review baru berhasil dibuat!');
         }else if($request->state == 'update'){
             $this->validate($request, [
-                'review_name' => 'required',
+                'review_name' => ['required', new ContainBadWords],
                 'review_image' => 'file|image|mimes:jpeg,png,jpg',
                 'review_synopsis' => 'required',
                 'review_releasedate' => 'required',
-                'title' => 'required',
+                'title' => ['required', new ContainBadWords],
                 'slug' => 'unique:reviews,slug,' . $request->id,
                 'content' => 'required',
                 'score' => 'required',

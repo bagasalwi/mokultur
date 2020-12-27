@@ -88,10 +88,12 @@ Route::group(['middleware' => 'auth'], function () {
 
             // User Function
             Route::get('user','AdminController@user');
+            // Route::get('user/disable/{id}','AdminController@disable_user');
 
             // Post Function
             Route::get('post','Adminpanel\PostAdminController@post');
             Route::get('post/delete/{id}', 'Adminpanel\PostAdminController@post_delete');
+            Route::get('review/delete/{id}', 'Adminpanel\PostAdminController@review_delete');
 
             // Category Function
             Route::get('category','CategoryController@category')->name('category');

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
 use App\Post;
+use App\Review;
 use App\PostPhoto;
 use App\Tag;
 use App\PostCategory;
@@ -15,13 +16,15 @@ use Carbon\Carbon;
 
 use App\Services\PostServices;
 use App\Services\CategoryServices;
+use App\Services\ReviewServices;
 
 class PostAdminController extends Controller
 {
-    public function __construct(CategoryServices $categoryService, PostServices $postService)
+    public function __construct(CategoryServices $categoryService, PostServices $postService, ReviewServices $reviewService)
     {
         $this->categoryService = $categoryService;
         $this->postService = $postService;
+        $this->reviewService = $reviewService;
         $this->middleware(['auth']);
     }
 
@@ -30,6 +33,7 @@ class PostAdminController extends Controller
         $data['sidebar'] = Sidebar::where('role_id', 2)->get(); 
         
         $data['post'] = Post::get();
+        $data['review'] = Review::get();
    
         return view('back.post_list', $data);
     }
@@ -46,5 +50,9 @@ class PostAdminController extends Controller
         }
         
         Post::where('id', $id)->delete();
+    }
+
+    public function review_delete($id){
+        $this->reviewService->delete($id);
     }
 }

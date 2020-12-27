@@ -7,6 +7,7 @@ use App\User;
 use App\Tag;
 use App\PostCategory;
 use App\Post;
+use App\Review;
 use App\Sidebar;
 use Auth;
 use DB;
@@ -47,7 +48,17 @@ class AdminController extends Controller
         $data['user'] = User::get();
    
         return view('back.user_list', $data);
-    }
+    }   
+
+    // public function disable_user($id){
+    //     $data['user'] = User::find($id);
+
+    //     if($data['user']){
+    //         User::where('id', $data['user']->id)->update([
+    //             'status' => 'D'
+    //         ]);
+    //     }
+    // }
 
 
     /*=======================================================*/
@@ -58,6 +69,8 @@ class AdminController extends Controller
         $data['sidebar'] = Sidebar::where('role_id', 2)->get(); 
         
         $data['post'] = Post::get();
+        $data['review'] = Review::get();
+        dd($data);
    
         return view('back.post_list', $data);
     }
