@@ -50,13 +50,13 @@ class PostController extends Controller
         $data['post_count'] = $this->postService->userPostCount();
 
         $data['fields'] = new Post;
-        
+
         $data['state'] = 'create';
 
-        if($request->type == 'photo'){
+        if ($request->type == 'photo') {
             $data['type'] = 'photo';
             return view('front.post.post_photo_form', $data);
-        }elseif($request->type == 'article'){
+        } elseif ($request->type == 'article') {
             $data['type'] = 'article';
             return view('front.post.post_form', $data);
         }
@@ -65,43 +65,41 @@ class PostController extends Controller
     public function update($slug)
     {
         $post = Post::where('slug', $slug)->first();
-        
-        if($post->user_id == auth()->user()->id){
+
+        if ($post->user_id == auth()->user()->id) {
             $data['title'] = 'My Post';
             $data['sidebar'] = Sidebar::where('role_id', 1)->get();
             $data['post_category'] = PostCategory::get();
 
             $data['post_count'] = Post::where('user_id', Auth::user()->id)->count();
-            
+
             $data['state'] = 'update';
             $data['fields'] = $this->postService->find($post->id);
 
             $data['tags'] = $post->tagNames();
 
-            if($post->type == 'photo'){
+            if ($post->type == 'photo') {
                 $data['type'] = 'photo';
-                $data['post_image'] = PostPhoto::where('post_id',$post->id)->get();
+                $data['post_image'] = PostPhoto::where('post_id', $post->id)->get();
 
                 return view('front.post.post_photo_form', $data);
-            }elseif($post->type == 'article'){
+            } elseif ($post->type == 'article') {
                 $data['type'] = 'article';
 
                 return view('front.post.post_form', $data);
             }
-        }else{
+        } else {
             return redirect()->route('post.create');
         }
     }
 
     public function save(Request $request)
     {
-        
+        // $str = 'Sequel, Prequel, Remake, Reboot & Spin Off Perbedaannya?';
         // $arr = file(public_path('wordlist/badword.list'), FILE_IGNORE_NEW_LINES);
 
-        // foreach($request->tags as $tags){
-        //     dd(Str::contains($tags,$arr));
-        // }
-        
+        // dd(Str::contains($str, $arr));
+
         if ($request->state == 'create') {
             $this->validate($request, [
                 'title' => ['required', new ContainBadWords],
@@ -112,21 +110,21 @@ class PostController extends Controller
                 'photo' => 'file|image|mimes:jpeg,png,jpg|required',
                 'status' => 'required',
             ]);
-                
+
             $post = $this->postService->create($request->all());
 
             if ($request->hasFile('photo')) {
-                $this->postService->createImage($post->id,$request->file('photo'));
+                $this->postService->createImage($post->id, $request->file('photo'));
             }
 
             return redirect('post')->with('success', 'Post baru berhasil dibuat!');
         }
-        
+
         if ($request->state == 'update') {
 
             $this->validate($request, [
                 'title' => ['required', new ContainBadWords()],
-                'slug' => 'unique:posts,slug,'.$request->id,
+                'slug' => 'unique:posts,slug,' . $request->id,
                 'category_id' => 'required',
                 'description' => ['required'],
                 'photo' => 'file|image|mimes:jpeg,png,jpg',
@@ -138,14 +136,15 @@ class PostController extends Controller
             $post = $this->postService->find($request->id);
 
             if ($request->hasFile('photo')) {
-                $this->postService->updateImage($post->id,$request->file('photo'));
+                $this->postService->updateImage($post->id, $request->file('photo'));
             }
 
             return redirect('post')->with('success', 'Post berhasil di update!');
         }
     }
 
-    public function savePhoto(Request $request){
+    public function savePhoto(Request $request)
+    {
 
         $this->validate($request, [
             'title' => 'required',
@@ -155,23 +154,23 @@ class PostController extends Controller
             'status' => 'required',
         ]);
 
-        if($request->state == 'create'){
+        if ($request->state == 'create') {
             $post = $this->postService->create($request->all());
 
             if ($request->hasFile('photo')) {
                 $image = $request->file('photo');
 
-                $this->postService->createMultipleImage($post->id,$image);
+                $this->postService->createMultipleImage($post->id, $image);
             }
 
             return redirect('post')->with('success', 'Post baru berhasil dibuat!');
-        }elseif($request->state == 'update'){
+        } elseif ($request->state == 'update') {
             $post = $this->postService->update($request->all());
 
             if ($request->hasFile('photo')) {
                 $image = $request->file('photo');
 
-                $this->postService->updateMultipleImage($post->id,$image);
+                $this->postService->updateMultipleImage($post->id, $image);
             }
 
             return redirect('post')->with('success', 'Post berhasil di update!');
@@ -182,19 +181,20 @@ class PostController extends Controller
     {
         $post = $this->postService->find($id);
 
-        if($post->type == 'article'){
+        if ($post->type == 'article') {
             $this->postService->deleteImage($id);
             $this->postService->delete($id);
-        }elseif($post->type == 'photo'){
+        } elseif ($post->type == 'photo') {
             $this->postService->deleteMultipleImage($id);
             $this->postService->delete($id);
         }
     }
 
-    public function ajaxTags(Request $request){
-        if($request->has('q')){
+    public function ajaxTags(Request $request)
+    {
+        if ($request->has('q')) {
             $search = $request->q;
-            $data = Tag::select('id','name')->where('name', 'like', "%".$search."%")->get();
+            $data = Tag::select('id', 'name')->where('name', 'like', "%" . $search . "%")->get();
 
             return response()->json($data);
         }

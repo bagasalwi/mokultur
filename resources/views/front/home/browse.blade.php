@@ -91,7 +91,7 @@
                 </a>
                 <div id="posts" class="row">
                     @foreach ($creation as $p)
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="card-block clearfix">
                             <div class="card border-0 mb-2">
                                 <div class="card-img-wrap mb-2 bd-radius-4">

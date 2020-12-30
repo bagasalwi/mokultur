@@ -34,7 +34,7 @@ $lastname = substr($fullname, strpos($fullname, ' '), strlen($fullname));
                         <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="card-block clearfix">
                             <div class="card border-0 my-2">
                                 <div class="card-img-wrap bd-radius-8">
-                                    <img class="img-fluid img-imagepost" src="{{ asset('storage/' . $p->photo()) }}"
+                                    <img class="img-fluid img-article" src="{{ asset('storage/' . $p->photo()) }}"
                                         alt="">
                                     <div class="card-img-overlay text-white">
                                         <h5 class="badge badge-light shadow">{{ $p->category->name }}</h5>

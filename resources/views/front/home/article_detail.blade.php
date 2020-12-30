@@ -21,7 +21,16 @@
 <section class="mini-section">
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-sm-12 offset-md-2">
+            <div class="col-md-6 col-sm-12 offset-md-3">
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-2">
+        <div class="row">
+            @include('front.partial.left-bar')
+            <div class="col-md-6 col-sm-12">
                 <h4>
                     @if ($post->checkStatus() == 'DRAFT')
                         <span class="badge badge-danger px-4">{{ $post->checkStatus() }}</span>
@@ -52,13 +61,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container mt-2">
-        <div class="row">
-            <div class="col-md-8 col-sm-12 offset-md-2">
                 @if ($post->type == 'photo')
                 <div class="owl-carousel owl-theme slider" id="carousel-post">
                     @foreach ($post->images()->get() as $image)
@@ -69,7 +71,7 @@
                     @if ($post->photo() == "no-image")
                     
                     @else
-                    <img src="{{ asset('storage/' . $post->photo()) }}" class="img-fluid img-article w-100 bd-radius-4">
+                    <img src="{{ asset('storage/' . $post->photo()) }}" class="img-fluid mx-auto d-block img-article bd-radius-4">
                     @endif
                 @endif
                 <div id="posting" class="my-4">
@@ -77,7 +79,7 @@
                 </div>
 
                 <div class="badges my-4">
-                    <h4>Tags</h4>
+                    <hr>
                     @foreach ($post->tags as $tag)
                         <a href="{{ route('tag','tag='.$tag->slug) }}" class="badge badge-primary">{{$tag->name}}</a>
                     @endforeach
@@ -94,7 +96,7 @@
                             <div class="card border my-2 shadow bd-radius-4">
                                 <div class="card-img-top">
                                     <div class="card-img-wrap bd-radius-4">
-                                        <img class="img-fluid img-imagepost" loading="lazy" src="{{ asset('storage/' . $p->photo()) }}"
+                                        <img class="img-fluid img-article" loading="lazy" src="{{ asset('storage/' . $p->photo()) }}"
                                             alt="">
                                         <div class="card-img-overlay text-white">
                                             <h4 class="badge badge-primary shadow">{{ $p->category->name }}</h4>
@@ -120,6 +122,7 @@
                 @endif
 
             </div>
+            @include('front.partial.right-bar')
         </div>
     </div>
 </section>

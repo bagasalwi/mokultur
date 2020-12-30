@@ -42,7 +42,7 @@
                             <div class="card border-0 mb-2">
                                 <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="card-block clearfix">
                                     <div class="card-img-wrap bd-radius-4">
-                                        <img class="img-fluid img-imagepost-headline" loading="lazy"
+                                        <img class="img-fluid img-article" loading="lazy"
                                             data-max-height="400px" src="{{ asset('storage/' . $p->photo()) }}" alt="">
                                     </div>
                                 </a>

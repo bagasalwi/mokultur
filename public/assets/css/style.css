@@ -2870,8 +2870,8 @@ a.bb {
 
 .img-article{
     object-fit: cover;
-    width: 700px;
-    height: 400px;
+    width: 100%;
+    height: auto;
 }
 
 .img-index{
@@ -2886,9 +2886,17 @@ a.bb {
 }
 
 .img-imagepost {
-    width: 250px;
-    height: 250px;
+    width: 400px;
+    height: 400px;
     object-fit: cover;
+}
+
+@media only screen and (max-width: 768px) {
+    .img-imagepost{
+        object-fit: cover;
+        width: 100%;
+        height: auto;
+    }
 }
 
 .img-imagepost-hr{

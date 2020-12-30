@@ -4,13 +4,10 @@
         @foreach ($creation as $p)
         <div class="col-lg-12 col-sm-12">
             <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="card-block clearfix">
-                <div class="card border-0 my-2">
+                <div class="card border-0 mb-4">
                     <div class="card-img-wrap bd-radius-4">
-                        <img class="img-fluid img-imagepost" loading="lazy" src="{{ asset('storage/' . $p->photo()) }}"
+                        <img class="img-fluid img-article" loading="lazy" src="{{ asset('storage/' . $p->photo()) }}"
                             alt="">
-                        <div class="card-img-overlay text-white">
-                            <h4 class="badge badge-primary shadow">{{ $p->category->name }}</h4>
-                        </div>
                     </div>
                     <div class="mt-2">
                         <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="no-pm">
