@@ -23,9 +23,9 @@
                                 <div class="card-img-wrap bd-radius-4">
                                     <img class="img-fluid img-imagepost" src="{{ asset('storage/' . $p->photo()) }}"
                                         alt="">
-                                    <div class="card-img-overlay text-white">
+                                    {{-- <div class="card-img-overlay text-white">
                                         <h5 class="badge badge-light shadow">{{ $p->category->name }}</h5>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="mt-1">
                                     <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}">

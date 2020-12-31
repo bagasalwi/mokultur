@@ -4,7 +4,7 @@
 @section('meta_keyword'){{ $review->review_genre }}@endsection
 @section('meta_desc'){{ str_limit(strip_tags($review->content),180,'...') }}@endsection
 @section('meta-tags')
-    <meta name="og:image" content="{{ asset('storage/' . $review->photo()) }}"/>
+<meta name="og:image" content="{{ asset('storage/' . $review->photo()) }}" />
 @endsection
 
 @section('content')
@@ -29,7 +29,8 @@
                     {{-- Reviews --}}
                     <div class="row no-pm">
                         <div class="col-md-3 col-12 no-pm">
-                            <div class="card-img-wrap mb-2" data-toggle="tooltip" data-placement="top" title="{{ $review->review_name }}">
+                            <div class="card-img-wrap mb-2" data-toggle="tooltip" data-placement="top"
+                                title="{{ $review->review_name }}">
                                 <img class="img-review mx-auto d-block shadow-sm" loading="lazy"
                                     src="{{ asset('storage/' . $review->photo()) }}" alt="">
                                 <div class="card-img-overlay">
@@ -53,13 +54,21 @@
                             <ul class="nav nav-tabs" id="review-info-tab" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link font-weight-bold active" id="review-info-tab2" data-toggle="tab"
-                                        href="#review-info" role="tab" aria-controls="home" aria-selected="true">Information</a>
+                                        href="#review-info" role="tab" aria-controls="home"
+                                        aria-selected="true">Information</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link font-weight-bold" id="profile-tab2" data-toggle="tab"
                                         href="#synopsis" role="tab" aria-controls="profile"
                                         aria-selected="false">Plot</a>
                                 </li>
+                                @if ($review->review_link)
+                                <li class="nav-item">
+                                    <a class="nav-link font-weight-bold" id="profile-tab2" data-toggle="tab"
+                                        href="#trailer" role="tab" aria-controls="profile"
+                                        aria-selected="false">Trailer</a>
+                                </li>
+                                @endif
                             </ul>
                             <div class="tab-content mx-3" id="myTab3Content">
                                 <div class="tab-pane fade show active" id="review-info" role="tabpanel"
@@ -78,36 +87,33 @@
                                             <span class="text-small">Genre</span>
                                             <div class="badges">
                                                 @foreach ($review->tags as $tag)
-                                                <a href="{{ route('tag','tag='.$tag->slug) }}" class="badge badge-primary">{{$tag->name}}</a>
+                                                <a href="{{ route('tag','tag='.$tag->slug) }}"
+                                                    class="badge badge-primary">{{$tag->name}}</a>
                                                 @endforeach
                                             </div>
                                         </div>
                                         @endif
-    
+
                                         @if ($review->review_studio)
                                         <div class="col-12 col-md-6">
                                             <span class="text-small">Studio/Publisher</span>
                                             <h6>{{ $review->review_studio }}</h6>
                                         </div>
                                         @endif
-    
-                                        @if ($review->review_link)
-                                        <div class="col-12 col-md-6">
-                                            <span class="text-small">Source</span>
-                                            <a href="https://{{ $review->review_link }}" target="_blank">
-                                                <h6>{{ $review->review_link }}</h6>
-                                            </a>
-                                        </div>
-                                        @endif
-    
-                                        <div class="col-12 col-md-12">
-    
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="synopsis" role="tabpanel" aria-labelledby="synopsis">
                                     <div class="text-synopsis">{!! $review->review_synopsis !!}</div>
                                 </div>
+                                @if ($review->review_link)
+                                <div class="tab-pane fade" id="trailer" role="tabpanel" aria-labelledby="synopsis">
+                                    <div class="embed-responsive embed-responsive-16by9">
+                                        <iframe class="embed-responsive-item"
+                                            src="https://www.youtube.com/embed/{{ $review->review_link }}"
+                                            allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                                @endif
                             </div>
                         </div>
                     </div>

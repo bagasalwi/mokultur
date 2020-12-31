@@ -120,8 +120,10 @@
                                 </div>
                                 <div class="col-md-4 col-sm-12">
                                     <div class="form-group">
-                                        <label>Link to Source</label>
+                                        <label>Trailer Link (Youtube)</label>
                                         <input type="text" class="form-control" id="review_link" name="review_link"
+                                            data-toggle="tooltip" data-placement="top"
+                                            title="Kode terakhir youtube https://www.youtube.com/watch?v={kode}"
                                             placeholder="Official Source, Redirect link.."
                                             value="{{ old('review_link', $fields->review_link) }}" required>
                                     </div>
