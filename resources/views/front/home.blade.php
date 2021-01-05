@@ -42,8 +42,7 @@
                             <div class="card border-0 mb-2">
                                 <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="card-block clearfix">
                                     <div class="card-img-wrap bd-radius-4">
-                                        <img class="img-fluid img-article" loading="lazy"
-                                            data-max-height="400px" src="{{ asset('storage/' . $p->photo()) }}" alt="">
+                                        <img class="img-fluid img-article" loading="lazy" src="{{ asset('storage/' . $p->photo()) }}" alt="">
                                     </div>
                                 </a>
                                 <div class="my-2">
@@ -71,7 +70,7 @@
                                 <div class="col-sm-4">
                                     <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="card-block clearfix">
                                         <div class="card-img-wrap bd-radius-4">
-                                            <img class="card-img img-imagepost-headline" loading="lazy" height="150vh"
+                                            <img class="card-img img-imagepost-headline" loading="lazy"
                                                 src="{{ asset('storage/' . $p->photo()) }}" alt="">
                                         </div>
                                     </a>
