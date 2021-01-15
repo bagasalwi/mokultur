@@ -4586,7 +4586,7 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
     color: #000000;
 }
 
-.content p strong, .content strong{
+.content p strong, .content strong, .content b{
     font-size: 1.1rem;
     font-weight: 500;
     letter-spacing: 0.4px;
