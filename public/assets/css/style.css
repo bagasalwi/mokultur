@@ -9,7 +9,7 @@
 
 body {
     background-color: #f4f6f9;
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 200;
     letter-spacing: 0.2px;
     font-family: 'Poppins', sans-serif;
@@ -4575,4 +4575,47 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
 
 .text-shadow{
     text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+}
+
+.content p {
+    font-size: 1.1rem;
+    font-weight: 300 !important;
+    letter-spacing: 0.4px;
+    line-height: 1.6 !important;
+    font-family: 'Rubik', sans-serif;
+    color: #000000;
+}
+.content a {
+    color: #0087d5;
+    font-weight: 500 !important;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+}
+
+.content a:hover{
+    text-decoration: none;
+    color: #00a2ff;
+    transition: all 0.9s;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+}
+
+.content blockquote{
+    width:90%;
+    margin:10px auto;
+    font-style:italic;
+    color: #ffffff;
+    padding:1em 10px 1em 15px;
+    border-radius: 0;
+    border-left:5px solid #00a2ff ;
+    position: relative;
+    background:#f7f7f7;
+  }
+
+.content blockquote p{
+    margin-bottom: 0;
+    font-size: 1.2em;
+    line-height:1.6;
+    font-family: 'Times New Roman', Times, serif;
 }

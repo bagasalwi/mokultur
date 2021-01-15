@@ -129,7 +129,7 @@
                     </div>
                     <div class="collapse show" id="review-collapse">
                         <div class="card-body">
-                            <p>{!! $review->content !!}</p>
+                            <div class="content">{!! $review->content !!}</div>
                         </div>
                     </div>
                 </div>
