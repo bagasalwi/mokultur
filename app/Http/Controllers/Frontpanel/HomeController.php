@@ -20,7 +20,7 @@ class HomeController extends Controller
         $this->postService = $postService;
         $this->reviewService = $reviewService;
         $this->categoryService = $categoryService;
-        $this->top_tags = \Conner\Tagging\Model\Tag::orderBy('count','desc')->take(3)->get();
+        $this->top_tags = \Conner\Tagging\Model\Tag::orderBy('count','desc')->take(5)->get();
     }
 
     

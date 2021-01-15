@@ -19,10 +19,9 @@
             @endforeach
         </div>
 
-        <h5 class="text-dark mt-3">Top Topic's</h5>
+        {{-- <h5 class="text-dark mt-3">Top Topic's</h5>
         <div class="list-group">
             @foreach ($top_category as $category)
-            {{-- <a href="#" class="list-group-item list-group-item-action">{{ $category->name }}</a> --}}
             <div class="card card-hover border-0 bd-radius-2 my-1"
                 data-background="{{ asset('storage/' . $category->banner) }}">
                 <div class="card-overlay bd-radius-2"></div>
@@ -35,6 +34,6 @@
                 </div>
             </div>
             @endforeach
-        </div>
+        </div> --}}
     </div>
 </div>

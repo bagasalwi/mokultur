@@ -74,7 +74,7 @@
                     <img src="{{ asset('storage/' . $post->photo()) }}" class="img-fluid mx-auto d-block img-article bd-radius-4">
                     @endif
                 @endif
-                <div id="posting" class="my-4">
+                <div id="posting" class="content my-4">
                     {!! $post->description !!}
                 </div>
 

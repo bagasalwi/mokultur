@@ -164,7 +164,7 @@
                                 </div>
                             </div>
                             <div class="col-md-12 col-sm-12">
-                                <div class="form-group">
+                                <div class="form-group content">
                                     <label>Your Review Content</label>
                                     <textarea name="content" rows="2" cols="50"
                                         class="summernote form-control">{{ old('content', $fields->content) }}</textarea>

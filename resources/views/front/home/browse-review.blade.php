@@ -27,57 +27,7 @@
                             value="{{ isset($search_meta ) ? $search_meta : ""  }}">
                     </form>
                 </div>
-                <div id="reviews" class="row">
-                    @foreach ($review as $p)
-                    <div class="col-lg-4 col-md-6 col-sm-6 my-2">
-                        <a href="{{ route('review.detail',[$p->user->username,$p->slug]) }}"
-                            class="card-block clearfix">
-                            <div class="card border-0 shadow h-100">
-                                <div class="card-img-wrap">
-                                    <img class="card-img-top img-fluid img-imagereview" loading="lazy"
-                                    src="{{ asset('storage/' . $p->photo()) }}" alt="">
-                                    <div class="card-img-overlay">
-                                        <?php
-                                        if($p->score < 7 && $p->score > 5){
-                                            $score_color = 'warning';
-                                        }elseif($p->score < 5){
-                                            $score_color = 'danger';
-                                        }else{
-                                            $score_color = 'success';
-                                        }   
-                                        ?>
-                                        <div class="badge badge-{{ $score_color }} align-self-center bd-radius-2">
-                                            <h6 class="no-pm">{{ $p->score }}/10</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    @php
-                                    $tags = explode(',',$p->review_genre);   
-                                    @endphp
-                                    <div class="scrolling-wrapper-flexbox mb-2">
-                                        <div class="badges">
-                                            @foreach ($tags as $tag)
-                                            <a href="#" class="badge badge-primary"
-                                                value="{{$tag}}">{{$tag}}</a>
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                    <h6><a class="text-dark font-weight-bold"
-                                            href="{{ route('review.detail',[$p->user->username,$p->slug]) }}">{{ $p->title }}</a>
-                                    </h6>
-                                    {{ str_limit(strip_tags($p->content),70,'...') }}
-                                    <hr>
-                                    <small class="text-secondary no-pm">
-                                        {{ Carbon\Carbon::parse($p->created_at)->diffForHumans() }} &middot; <a href="{{ route('creator.detail', $p->user->username) }}">{{ '@'.strtoupper($p->user->username) }}</a>
-                                    </small>
-                                </div>
-                            </div>
-                        </a>
-                        
-                    </div>
-                    @endforeach
-                </div>
+                @include('front.layouts.review-card', ['col' => '4'])
                 {!! $review->render() !!}
                 <div class="text-center mt-4">
                     @if ($review->hasMorePages())
