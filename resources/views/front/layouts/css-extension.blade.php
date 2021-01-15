@@ -29,5 +29,5 @@ href="{{ URL::asset('assets/modules/bootstrap-timepicker/css/bootstrap-timepicke
 {{-- font --}}
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet"> 
 <link rel="stylesheet" href="{{ URL::asset('assets/css/fonts/DinLT/stylesheet.css')}}">
