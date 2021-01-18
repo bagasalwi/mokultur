@@ -9,7 +9,7 @@
 
 body {
     background-color: #f4f6f9;
-    font-size: 1rem;
+    font-size: 14px;
     font-weight: 300;
     letter-spacing: 0.2px;
     font-family: 'Poppins', sans-serif;
@@ -30,7 +30,7 @@ ol {
 }
 
 .text-synopsis p{
-    font-weight: 200;
+    font-weight: 300;
     letter-spacing: 0.4px;
     line-height: 18px !important;
     font-size: 13px !important;
@@ -44,6 +44,12 @@ ol {
     transition: background-size 0.25s ease-in;
 }
 
+.fw-300{ font-weight: 300 !important;}
+.fw-400{ font-weight: 400 !important;}
+.fw-500{ font-weight: 500 !important;}
+.fw-600{ font-weight: 600 !important;}
+.fw-700{ font-weight: 700 !important;}
+
 h1,
 h2,
 h3,
@@ -51,7 +57,7 @@ h4,
 h5,
 h6,
 .noto {
-    font-family: 'DIN Next LT Pro', sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin-bottom: 0.5rem !important;
     line-height: 1.2 !important;
     font-weight: 600;
@@ -114,7 +120,7 @@ a:not(.btn-social-icon):not(.btn-social):not(.page-link) .fab {
 }
 
 .bg-secondary {
-    background-color: #cdd3d8 !important;
+    background-color: #fafafa !important;
 }
 
 .bg-success {
@@ -157,7 +163,7 @@ a:not(.btn-social-icon):not(.btn-social):not(.page-link) .fab {
 .text-secondary-all *,
 .text-secondary-all *:before,
 .text-secondary-all *:after {
-    color: #5b5b5b !important;
+    color: #707070 !important;
 }
 
 .text-success,
@@ -992,9 +998,9 @@ select.form-control:not([size]):not([multiple]) {
 .card .card-header h4+.card-header-action .btn,
 .card .card-header h4+.card-header-form .btn {
     font-size: 12px;
-    border-radius: 8px !important;
-    padding-left: 16px !important;
-    padding-right: 16px !important;
+    border-radius: 50% !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
 }
 
 .card .card-header h4+.card-header-action .btn.active,
@@ -1659,10 +1665,10 @@ table tr:hover .table-links {
 
 .badge {
     vertical-align: middle;
-    padding: 4px 10px 4px 10px;
-    font-weight: 400;
+    padding: 6px 10px 6px 10px;
+    font-weight: 500;
     letter-spacing: 0.5px;
-    border-radius: 10px;
+    border-radius: 4px;
     font-size: 12px;
 }
 
@@ -1785,10 +1791,10 @@ h6 .badge {
 
 .btn {
     font-weight: 500;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
     line-height: 24px;
-    padding: 0.3rem 0.8rem;
+    padding: 0.5rem 1rem;
     letter-spacing: 0px;
 }
 
@@ -4582,6 +4588,7 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
     font-weight: 300 !important;
     letter-spacing: 0.4px;
     line-height: 1.6;
+    word-spacing: 2px;
     font-family: 'Rubik', sans-serif;
     color: #000000;
 }
@@ -4593,6 +4600,7 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
     line-height: 1.6;
     font-family: 'Rubik', sans-serif;
     color: #000000;
+    margin-bottom: 1rem;
 }
 
 .content a {
@@ -4609,6 +4617,15 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
     transition: all 0.9s;
     -webkit-transition: all 0.5s;
     -o-transition: all 0.5s;
+}
+
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6{
+    font-weight: 700;
 }
 
 .content blockquote{
@@ -4628,4 +4645,11 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
     margin-bottom: 0;
     line-height:1.6;
     font-family: 'Times New Roman', Times, serif !important;
+}
+
+
+/* Review-Info */
+
+.review-info .review-text{
+    
 }

@@ -50,9 +50,9 @@ class PostServices
     public function allPostUser($paginate = null)
     {
         if ($paginate) {
-            return Post::where('user_id', auth()->user()->id)->paginate($paginate);
+            return Post::where('user_id', auth()->user()->id)->orderBy('created_at', 'DESC')->paginate($paginate);
         } else {
-            return Post::where('user_id', auth()->user()->id)->get();
+            return Post::where('user_id', auth()->user()->id)->orderBy('created_at', 'DESC')->get();
         }
     }
 

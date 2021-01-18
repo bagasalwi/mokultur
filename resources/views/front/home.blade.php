@@ -6,7 +6,7 @@
     <div class="container section">
         <div class="row">
             <div class="col-lg-6 align-self-center">
-                <h1 class="text-white font-weight-bold" data-font-size="36px"><span id="switchtext">Article</span>, Post Whatever You Wanna Post, Freely!</h1>
+                <h1 class="text-white fw-700" data-font-size="36px"><span id="switchtext">Article</span>, Post Whatever You Wanna Post, Freely!</h1>
                 <p class="mb-3 text-white">
                     Kreasibangsa is Open Space for everyone who want to share their thoughts within an article or a reviews in every aspect like Geeks, Pop Culture, Movies, Technology, Design, and Many More.
                 </p>
@@ -27,15 +27,9 @@
 <div class="section">
     <div class="container">
         <div class="card border-0 bd-radius-8 shadow mb-4">
-            <div class="card-header pb-0 mb-0">
-                <div class="mr-auto">
-                    <h3 class="no-pm">Top Article</h3>
-                </div>
-                <a href="{{ route('post') }}" class="btn btn-primary px-4 mx-1 d-none d-lg-block">Browse Article</a>
-            </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-lg-6 col-sm-12 mb-2">
+                    <div class="col-lg-5 col-sm-12 mb-2">
                         <div class="stickydiv">
                             @foreach ($top_creation as $idx => $p)
                             @if ($idx == 0)
@@ -47,25 +41,21 @@
                                 </a>
                                 <div class="my-2">
                                     <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="no-pm">
-                                        <h4>{{ $p->title }}</h4>
+                                        <h4 class="fw-700">{{ $p->title }}</h4>
                                     </a>
-                                    <p class="card-text">
-                                        {{ str_limit(strip_tags($p->description),180,'...') }}
+                                    <p class="card-text text-secondary">
+                                        {{ str_limit(strip_tags($p->description),160,'...') }}
                                     </p>
                                 </div>
-                                <small class="text-secondary mt-2">
-                                    {{ Carbon\Carbon::parse($p->date_published)->format('d M Y') }} &middot;
-                                    {{ $p->user->name }}
-                                </small>
                             </div>
                             @endif
                             @endforeach
                         </div>
                     </div>
-                    <div class="col-lg-6 col-sm-12 mb-2 d-none d-lg-block">
+                    <div class="col-lg-7 col-sm-12 mb-2 d-none d-lg-block">
                         @foreach ($top_creation as $idx => $p)
                         @if($idx > 0)
-                        <div class="card border-0 my-3">
+                        <div class="card border-0 mb-3">
                             <div class="row no-gutters">
                                 <div class="col-sm-4">
                                     <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="card-block clearfix">
@@ -76,17 +66,16 @@
                                     </a>
                                 </div>
                                 <div class="col-sm-8">
-                                    <div class="mx-2 py-0">
-                                        <a href="" class="text-primary">
-                                            <h6>{{ $p->category->name }}</h6>
+                                    <div class="mx-2 mt-2 py-0">
+                                        <a href="{{ url('topic/'.$p->category->slug) }}" class="text-primary text-uppercase fw-600">{{ $p->category->name }}
                                         </a>
                                         <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="card-title">
-                                            <h4>
+                                            <h5 class="fw-700">
                                                 {{ $p->title }}
-                                            </h4>
+                                            </h5>
                                         </a>
-                                        <p class="card-text">
-                                            {{ str_limit(strip_tags($p->description),80,'...') }}
+                                        <p class="card-text text-secondary no-pm">
+                                            {{ str_limit(strip_tags($p->description),120,'...') }}
                                         </p>
                                     </div>
                                 </div>

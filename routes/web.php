@@ -14,6 +14,7 @@
 Auth::routes();
 
 Route::get('/', 'Frontpanel\HomeController@index')->name('home');
+Route::get('/special', 'Frontpanel\HomeController@special')->name('special');
 
 Route::prefix('topic')->group(function () {
     Route::get('/', 'Frontpanel\HomeController@topic')->name('topic');

@@ -49,9 +49,9 @@ class ReviewServices
     public function allReviewUser($paginate = null)
     {
         if ($paginate) {
-            return Review::where('user_id', auth()->user()->id)->paginate($paginate);
+            return Review::where('user_id', auth()->user()->id)->orderBy('created_at', 'DESC')->paginate($paginate);
         } else {
-            return Review::where('user_id', auth()->user()->id)->get();
+            return Review::where('user_id', auth()->user()->id)->orderBy('created_at', 'DESC')->get();
         }
     }
 

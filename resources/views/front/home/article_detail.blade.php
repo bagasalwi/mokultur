@@ -11,22 +11,14 @@
     <div class="container mt-4">
         <div class="row">
             <div class="col-md-8 col-sm-12 offset-md-2 text-center">
-                <h1 class="text-white font-weight-bold">{{ $post->category->name }}</h1>
-                <h4><span class="badge badge-dark px-4">{{ $post->category->description }}</span></h4>
+                <h2 class="text-white fw-700">{{ $post->category->name }}</h2>
+                <span class="text-white">{{ $post->category->description }}</span>
             </div>
         </div>
     </div>
 </div>
 
 <section class="mini-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-sm-12 offset-md-3">
-                
-            </div>
-        </div>
-    </div>
-
     <div class="container mt-2">
         <div class="row">
             @include('front.partial.left-bar')
@@ -36,7 +28,7 @@
                         <span class="badge badge-danger px-4">{{ $post->checkStatus() }}</span>
                     @endif
                 </h4>
-                <h1 class="text-dark my-4">{{ $post->title }}</h1>
+                <h1 class="text-dark fw-700 mb-4">{{ $post->title }}</h1>
                 <div class="row my-2">
                     <div class="col-6 d-flex flex-row">
                         <div class="align-self-center mr-2">

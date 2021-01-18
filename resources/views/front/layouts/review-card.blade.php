@@ -35,7 +35,7 @@
                             @endforeach
                         </div>
                     </div>
-                    <h5><a class="text-dark font-weight-bold"
+                    <h5><a class="text-dark fw-600"
                             href="{{ route('review.detail',[$p->user->username,$p->slug]) }}">{{ $p->title }}</a>
                     </h5>
                 </div>

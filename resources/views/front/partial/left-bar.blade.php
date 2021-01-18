@@ -21,7 +21,7 @@
         @endguest
         <div class="card card-full bd-radius-4 mb-4">
             <div class="card-body">
-                <h5 class="my-1 text-primary">Follow Our Instagram</h5>
+                <h5 class="my-1">Follow <span class="text-primary fw-700">Our Instagram</span></h5>
                 <div class="my-3" id="instagram" style="max-width: 200px; margin: 0 auto;"></div>
                 <a href="https://www.instagram.com/bagasalwi/" class="btn btn-sm btn-block btn-instagram">Follow</a>
             </div>

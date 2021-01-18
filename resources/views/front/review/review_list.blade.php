@@ -34,6 +34,7 @@
                     <a class="btn btn-primary px-4" href="{{ url($url_create) }}">Create New Review</a>
                 </div>
             </div>
+            <hr>
             <div class="row">
                 <div class="col-md-12 col-sm-12">
                     @if ($review->isNotEmpty())
@@ -56,7 +57,7 @@
                         <div class="card border-0">
                             <div class="d-flex flex-row">
                                 <a class="text-dark" href="{{ route('review.detail',[$item->user->username,$item->slug]) }}">
-                                    <h4>{{ $item->title }}</h4>
+                                    <h5>{{ $item->title }}</h5>
                                 </a>
                             </div>
                             <div class="d-flex flex-row">
