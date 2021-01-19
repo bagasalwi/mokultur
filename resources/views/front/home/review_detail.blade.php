@@ -133,15 +133,15 @@
                     {{ $review->created_at->format('d-M-Y') }}</small></p>
 
                 <a href="{{ route('creator.detail', $review->user->username) }}" class="clearfix">
-                    <div class="card card-hover bd-radius-4 shadow-sm py-1 px-2 my-4">
-                        <div class="row">
-                            <div class="col-lg-2 col-md-4 col-sm-12">
+                    <div class="card card-hover bd-radius-4 shadow py-2 px-4 my-4">
+                        <div class="row align-items-center">
+                            <div class="col-3 col-lg-2 col-md-4 col-sm-12">
                                 <div class="d-flex justify-content-center">
-                                    <img class="rounded-circle" width="100" height="100"
+                                    <img class="img-fluid rounded-circle"
                                         src="{{ asset('storage/' . $user->profile_pic) }}" alt="...">
                                 </div>
                             </div>
-                            <div class="col-lg-10 col-md-8 align-self-center my-2">
+                            <div class="col-9 col-lg-10 col-md-8 ml-0 my-2">
                                 <span class="badge badge-info">Reviewer</span>
                                 <div class="my-1">
                                     <h4 class="no-pm">{{ $user->name }}</h4>
@@ -216,7 +216,7 @@
         powered by Disqus.</a></noscript>
 <script>
     $(document).ready(function(){
-        $('#review-collapse img').addClass('img-fluid');
+        $('.content img').addClass('img-fluid');
         $("iframe").addClass("embed-responsive embed-responsive-1by1 embed-responsive-item");
     });
 

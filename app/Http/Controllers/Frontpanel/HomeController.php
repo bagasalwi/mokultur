@@ -65,4 +65,8 @@ class HomeController extends Controller
         return view('front.home.browse', $data);
         
     }
+
+    public function special(){
+        return view('front.home.special');
+    }
 }

@@ -1,6 +1,15 @@
 @charset "UTF-8";
 @import url("//fonts.googleapis.com/css?family=Nunito:400,600,700,800");
 
+@font-face {
+    font-family: slayer;
+    src: url(fonts/slayer/slayer11.TTF);
+  }
+
+.slayer{
+    font-family: slayer !important;
+}
+
 @media (min-width: 1205px) {
     .container{
       max-width: 1200px !important;
@@ -145,6 +154,10 @@ a:not(.btn-social-icon):not(.btn-social):not(.page-link) .fab {
 
 .bg-dark {
     background-color: #191d21 !important;
+}
+
+.bg-black{
+    background-color: #000000 !important;
 }
 
 .text-primary,
