@@ -21,7 +21,7 @@ class FrontPostController extends Controller
         $this->postService = $postService;
         $this->reviewService = $reviewService;
         $this->categoryService = $categoryService;
-        $this->top_tags = \Conner\Tagging\Model\Tag::orderBy('count','desc')->take(3)->get();
+        $this->top_tags = \Conner\Tagging\Model\Tag::orderBy('count','desc')->take(5)->get();
     }
 
     public function browsePost(Request $request)
@@ -126,6 +126,16 @@ class FrontPostController extends Controller
                 Session::put($counter, 1);
             }
 
+            // get previous user id
+            $next = Post::where('id', '<', $data['post']->id)->where('status', 'P')->orderBy('id','desc')->first();
+            $previous = Post::where('id', '>', $data['post']->id)->where('status', 'P')->orderBy('id','desc')->first();
+            
+            if($next == null){
+                $data['selanjutnya'] = $previous;
+            }else{
+                $data['selanjutnya'] = $next;
+            }
+
             return view('front.home.article_detail', $data);
         } else {
             return redirect()->back();
@@ -163,6 +173,16 @@ class FrontPostController extends Controller
         if (!Session::has($counter)) {
             $data['review']->where('id', $data['review']->id)->increment('view_count');
             Session::put($counter, 1);
+        }
+
+        // get previous user id
+        $next = Review::where('id', '<', $data['review']->id)->where('status', 'P')->orderBy('id','desc')->first();
+        $previous = Review::where('id', '>', $data['review']->id)->where('status', 'P')->orderBy('id','desc')->first();
+        
+        if($next == null){
+            $data['selanjutnya'] = $previous;
+        }else{
+            $data['selanjutnya'] = $next;
         }
 
         return view('front.home.review_detail', $data);

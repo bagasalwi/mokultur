@@ -32,7 +32,7 @@
                 @include('front.layouts.review-card', ['col' => '4'])
 
                 <a href="{{ route('post') }}" class="card-block clearfix">
-                    <div class="hero primary-gradient text-white mb-3 card-hover bd-radius-4">
+                    <div class="hero primary-gradient text-white my-3 card-hover bd-radius-4">
                         <div class="hero-inner">
                             <h1 class="text-white">Articles</h1>
                             <p class="lead text-white">A place for you to share your Stories, Knowledge, Experience,

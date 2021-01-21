@@ -17,6 +17,14 @@
     }else{
         $score_color = 'success';
     }   
+
+    if($selanjutnya->score < 7 && $selanjutnya->score > 5){
+        $score_color2 = 'warning';
+    }elseif($selanjutnya->score < 5){
+        $score_color2 = 'danger';
+    }else{
+        $score_color2 = 'success';
+    }   
 ?>
 
 <div class="jumbotron jumbotron-fluid primary-pattern-1 mb-0"
@@ -76,30 +84,38 @@
                                 <div class="tab-pane fade show active review-info" id="review-info" role="tabpanel"
                                     aria-labelledby="review-info">
                                     <div class="row">
-                                        <div class="col-12">
-                                            <span class="text-small">Title</span>
-                                            <h6>{{ $review->review_name }}</h6>
+                                        <div class="col-12 review-text">
+                                            <p class="text-primary text-small fw-600 text-uppercase">Title</p>
+                                            <div class="review-box">
+                                                <h5>{{ $review->review_name }}</h5>
+                                            </div>
                                         </div>
-                                        <div class="col-12">
-                                            <span class="text-small">Release Date</span>
-                                            <h6>{{ $review->review_releasedate }}</h6>
+                                        <div class="col-12 review-text">
+                                            <p class="text-primary text-small fw-600 text-uppercase">Release Date</p>
+                                            <div class="review-box">
+                                                <h5>{{ $review->review_releasedate }}</h5>
+                                            </div>
                                         </div>
                                         @if ($review->tags[0])
-                                        <div class="col-12">
-                                            <span class="text-small">Genre</span>
-                                            <div class="badges">
-                                                @foreach ($review->tags as $tag)
-                                                <a href="{{ route('tag','tag='.$tag->slug) }}"
-                                                    class="badge badge-primary">{{$tag->name}}</a>
-                                                @endforeach
+                                        <div class="col-12 review-text">
+                                            <p class="text-primary text-small fw-600 text-uppercase">Genre</p>
+                                            <div class="review-box">
+                                                <div class="badges">
+                                                    @foreach ($review->tags as $tag)
+                                                    <a href="{{ route('tag','tag='.$tag->slug) }}"
+                                                        class="badge badge-primary">{{$tag->name}}</a>
+                                                    @endforeach
+                                                </div>
                                             </div>
                                         </div>
                                         @endif
 
                                         @if ($review->review_studio)
-                                        <div class="col-12">
-                                            <span class="text-small">Studio/Publisher</span>
-                                            <h6>{{ $review->review_studio }}</h6>
+                                        <div class="col-12 review-text">
+                                            <p class="text-primary text-small fw-600 text-uppercase">Studio/Publisher</p>
+                                            <div class="review-box">
+                                                <h5>{{ $review->review_studio }}</h5>
+                                            </div>
                                         </div>
                                         @endif
                                     </div>
@@ -186,6 +202,33 @@
                     </div>
                 </div>
                 @endif
+
+                <div class="my-4">
+                    <a href="{{ route('review.detail',[$selanjutnya->user->username,$selanjutnya->slug]) }}" class="clearfix">
+                        <div class="card card-hover bd-radius-4 shadow py-2 px-2 my-4">
+                            <div class="row align-items-center">
+                                <div class="col-4 col-lg-2 col-md-4 col-sm-12">
+                                    <div class="d-flex justify-content-center">
+                                        <img class="img-fluid d-block shadow-sm bd-radius-4" height="200" loading="lazy"
+                                    src="{{ asset('storage/' . $selanjutnya->photo()) }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-8 col-lg-10 col-md-8 ml-0 pl-1">
+                                    <span class="badge badge-info">BACA SELANJUTNYA</span>
+                                    <span class="badge badge-{{ $score_color2 }} d-none d-lg-block align-self-center bd-radius-2 shadow">
+                                        Score : {{ $selanjutnya->score }}/10
+                                    </span>
+                                    <div class="my-1">
+                                        <h5 class="no-pm">{{ $selanjutnya->title }}</h5>
+                                    </div>
+                                    <div class="d-none d-lg-block">
+                                        <div class="text-secondary text-small no-pm ">{{ str_limit(strip_tags($selanjutnya->review_synopsis),280,'...') }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
                 <div class="card border-0 my-4">
                     <div class="card-body">
                         <div class="mt-2" id="disqus_thread"></div>

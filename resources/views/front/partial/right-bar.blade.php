@@ -9,7 +9,11 @@
             </div>
         </div>
 
-        <h5 class="mt-4 fw-700">Top <span class="text-primary">Tag's</span></h5>
+        <div class="heading2">
+            <a href="{{ route('tag') }}">
+                <h5 class="mt-4 fw-700">Top <span class="text-primary">Tag's</span></h5>
+            </a>
+        </div>
         <div class="list-group">
             @foreach ($top_tags as $p)
             <a href="{{ route('tag','tag='.$p->slug) }}"

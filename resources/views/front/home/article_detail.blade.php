@@ -77,22 +77,47 @@
                     @endforeach
                 </div>
 
+                <hr>
+
+                <a href="{{ route('post.detail',[$selanjutnya->user->username,$selanjutnya->slug]) }}" class="clearfix">
+                    <div class="card card-hover bd-radius-4 shadow py-2 px-2 my-4">
+                        <div class="row align-items-center">
+                            <div class="col-4 col-lg-4 col-md-4 col-sm-12">
+                                <div class="d-flex justify-content-center">
+                                    <img class="img-fluid img-article bd-radius-4" loading="lazy" src="{{ asset('storage/' . $selanjutnya->photo()) }}" alt="">
+                                </div>
+                            </div>
+                            <div class="col-8 col-lg-8 col-md-8 ml-0 pl-0">
+                                <span class="badge badge-info">BACA SELANJUTNYA</span>
+                                <div class="my-1">
+                                    <h5 class="no-pm">{{ $selanjutnya->title }}</h5>
+                                </div>
+                                <div class="d-none d-lg-block">
+                                    <div class="text-secondary text-small no-pm ">{{ str_limit(strip_tags($selanjutnya->description),100,'...') }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
                 <div class="mt-2" id="disqus_thread"></div>
 
                 @if ($recomendation->isNotEmpty())
-                <h4 class="text-dark my-4">Topik Rekomendasi</h4>
+                <div class="heading2">
+                    <h5 class="mt-4 fw-700">Topik <span class="text-primary">Rekomendasi</span></h5>    
+                </div>
                 <div class="row">
                     @foreach ($recomendation as $p)
-                    <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="col-md-6 col-lg-6 mb-4">
                         <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="card-block clearfix">
                             <div class="card border my-2 shadow bd-radius-4">
                                 <div class="card-img-top">
                                     <div class="card-img-wrap bd-radius-4">
                                         <img class="img-fluid img-article" loading="lazy" src="{{ asset('storage/' . $p->photo()) }}"
                                             alt="">
-                                        <div class="card-img-overlay text-white">
+                                        {{-- <div class="card-img-overlay text-white">
                                             <h4 class="badge badge-primary shadow">{{ $p->category->name }}</h4>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                                 <div class="card-body">

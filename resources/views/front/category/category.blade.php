@@ -19,7 +19,9 @@
 </div>
 
 <div class="container mt-4">
-    <h5 class="text-primary">All Topic Categories</h5>
+    <div class="heading2">
+        <h4 class="fw-700">All <span class="text-primary">Topic Categories</span></h4>
+    </div>
     <div class="row">
         @foreach ($category as $category)
         <div class="col-lg-4 cat">
