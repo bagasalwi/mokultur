@@ -3,62 +3,58 @@
         <h4 class="fw-700">All <span class="text-primary">Post</span></h4>
     </div>
     <div id="posts" class="row">
-        @foreach ($creation as $p)
-        <div class="col-lg-12 col-sm-12">
-            <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="card-block clearfix">
-                <div class="card border-0 mb-4">
-                    <div class="card-img-wrap bd-radius-4">
-                        <img class="img-fluid img-article" loading="lazy" src="{{ asset('storage/' . $p->photo()) }}"
-                            alt="">
-                    </div>
-                    <div class="mt-2">
-                        <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="no-pm">
-                            <h4>{{ $p->title }}</h4>
-                        </a>
-                    </div>
-                    <small class="text-secondary">
-                        {{ Carbon\Carbon::parse($p->date_published)->format('d M Y') }} &middot;
-                        {{ $p->user->name }}
-                    </small>
-                </div>
-            </a>
-        </div>
-        <hr>
-        @endforeach
-    </div>
-    {!! $creation->render() !!}
-    <div class="text-center my-4">
-        @if ($creation->hasMorePages())
-        <button id="see-more" class="btn btn-block btn-dark" data-page="2" data-link="{{ url()->current().'?page=' }}"
-            data-div="#posts">Reach More</button>
-        @else
-        <h6 class="text-secondary">You reach the bottom of Knowledge!</h6>
-        @endif
+        {{-- Ajax called --}}
     </div>
 </div>
 
 
 @section('script')
-<script>
-    $("ul.pagination").hide();
+<script>    
+    $(document).ready(function(){
+        var _token = $('meta[name="csrf-token"]').attr('content');
+        load_data('', _token);
 
-    $("#see-more").click(function() {
-        $div = $($(this).data('div')); //div to append
-        $link = $(this).data('link'); //current URL
+        function load_data(id="", _token){
+            $.ajax({
+                url:"{{ route('post.load_data') }}",
+                method:"POST",
+                data:{id:id, _token:_token},
+                success:function(data){
+                    $('#counter').remove();
+                    $('#loadpost').remove();
+                    $('#posts').append(data);
+                }
+            })
+        }
 
-        $page = $(this).data('page'); //get the next page #
-        $href = $link + $page; //complete URL
-        $.get($href, function(response) { //append data
-            $html = $(response).find("#posts").html(); 
-            alert($html);
-            if($html.length < 40){
-                $('#see-more').replaceWith('<h6 class="text-secondary">You reach the bottom of Knowledge!</h6>')          
-            }else{
-                $div.append($html);
-            }
+        // var scrollLoad = true;
+        // $(window).scroll(function(){
+        //     if (scrollLoad && ($(document).height() - $(window).height())-$(window).scrollTop()<=100){
+        //         // fetch data when we are 800px above the document end
+        //         var id = $('#counter').data('id');
+        //         alert(id);
+        //         // $('#counter').html('<b>Loading...</b>');
+        //         load_data(id, _token);
+        //         scrollLoad = false;
+        //     }
+        // });
+
+        // $(window).scroll(function() {
+        //     if($(window).height() + $(window).scrollTop() == $(document).height()) {
+        //         var id = $('#counter').data('id');
+        //         alert(id);
+        //         // $('#counter').html('<b>Loading...</b>');
+        //         load_data(id, _token);
+        //     }
+        // });
+
+        $(document).on('click', '#loadpost', function(){
+            var id = $(this).data('id');
+            $('#loadpost').html('<b>Loading...</b>');
+            load_data(id, _token);
         });
 
-        $(this).data('page', (parseInt($page) + 1)); //update page #
     });
+
 </script>
 @endsection

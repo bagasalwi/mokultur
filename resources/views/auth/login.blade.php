@@ -1,7 +1,7 @@
 @extends('front.layouts.master-auth')
 
 @section('meta_title')Login @endsection
-@section('bg-color')primary-pattern-1 @endsection
+@section('bg-color')primary-pattern-6 @endsection
 
 @section('content')
 <section class="section">
@@ -10,14 +10,9 @@
             <img src="{{ asset('gambar/logo/KREASIBANGSA.png')}}" alt="logo" width="250">
         </div>
         <div class="row">
-            <div class="col-md-4 offset-md-4">
-                <div class="card card-body bd-radius-4">
-                    <div class="mb-4">
-                        <h2 class="text-center text-primary no-pm">SIGN IN</h2>
-                        <div class="text-center">
-                            <small>Make an Article or Reviews of Yours, Share the Joy!</small>
-                        </div>
-                    </div>
+            <div class="col-md-6 offset-md-3">
+                <div class="card card-body bd-radius-2 shadow">
+                    <h3 class="text-center text-primary fw-700">Sign In</h3>
                     <form method="POST" action="#" class="needs-validation" novalidate="">
                         @csrf
                         <div class="form-group">
@@ -33,8 +28,8 @@
                         <div class="form-group">
                             <div class="d-block">
                                 <div class="float-right">
-                                    <a href="{{ route('password.request') }}" class="text-small">
-                                        Lupa Password?
+                                    <a href="{{ route('password.request') }}" class="text-small text-danger">
+                                        Forgot Password?
                                     </a>
                                 </div>
                             </div>
@@ -62,8 +57,8 @@
                         </div>
                     </form>
                     <div class="text-center">
-                        <p class="text-muted">Don't have an Account ?
-                            <a class="text-primary mx-2" href="{{ url('register') }}">Create Account</a>
+                        <p class="text-secondary">Don't have an Account ?
+                            <a class="text-primary fw-500" href="{{ url('register') }}">Create Account</a>
                         </p>
                         <p>
                             <a class="text-dark" href="{{ url('/') }}">Back to Home</a>

@@ -219,7 +219,7 @@
                                         Score : {{ $selanjutnya->score }}/10
                                     </span>
                                     <div class="my-1">
-                                        <h5 class="no-pm">{{ $selanjutnya->title }}</h5>
+                                        <h6 class="no-pm">{{ $selanjutnya->title }}</h6>
                                     </div>
                                     <div class="d-none d-lg-block">
                                         <div class="text-secondary text-small no-pm ">{{ str_limit(strip_tags($selanjutnya->review_synopsis),280,'...') }}</div>

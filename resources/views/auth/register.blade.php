@@ -5,20 +5,14 @@
 
 @section('content')
 <section class="section">
-    <div class="login-brand">
-        <img src="{{ asset('gambar/logo/KREASIBANGSA.png')}}" alt="logo" width="250">
-    </div>
-    <div class="container">
-
+    <div class="container mt-5">
+        <div class="login-brand">
+            <img src="{{ asset('gambar/logo/KREASIBANGSA.png')}}" alt="logo" width="250">
+        </div>
         <div class="row">
             <div class="col-md-6 offset-md-3">
-                <div class="card card-body bd-radius-4 shadow">
-                    <div class="mb-4">
-                        <h2 class="text-center text-primary no-pm">Register Your Account</h2>
-                        <div class="text-center">
-                            <small>Basically, You need to Register before login.. So Make your Account!</small>
-                        </div>
-                    </div>
+                <div class="card card-body bd-radius-2 shadow">
+                    <h3 class="text-center text-primary fw-700 mb-4">Register Your Account</h3>
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
                         <div class="row">
@@ -103,12 +97,10 @@
                         </div>
                     </form>
                     <div class="text-center">
-                        <p class="text-muted">Sudah punya akun ?
-                            <a class="text-dark mx-2" href="{{ url('login') }}">Sign In</a>
+                        <p class="text-secondary">Have an Account ?
+                            <a class="text-primary fw-600" href="{{ url('login') }}">Sign In</a>
                         </p>
-                        <p>
-                            <a class="text-dark" href="{{ url('/') }}">Back to Home</a>
-                        </p>
+                        <a class="text-dark" href="{{ url('/') }}">Back to Home</a>
                     </div>
                 </div>
             </div>

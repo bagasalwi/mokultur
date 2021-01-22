@@ -1,6 +1,6 @@
 <div class="row">
     @foreach ($review as $p)
-    <div class="col-lg-{{ $col }} col-md-6 col-sm-6 my-2">
+    <div class="col-6 col-lg-{{ $col }} col-md-6 col-sm-6 my-2">
         <a href="{{ route('review.detail',[$p->user->username,$p->slug]) }}"
             class="card-block clearfix">
             <div class="card border-0 bd-radius-4 shadow h-100">
@@ -23,21 +23,26 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-body">
+                <div class="card-body d-flex flex-column">
                     @php
                     $tags = explode(',',$p->review_genre);   
                     @endphp
-                    <div class="scrolling-wrapper-flexbox mb-2">
-                        <div class="badges">
-                            @foreach ($tags as $tag)
-                            <a href="#" class="badge badge-primary"
-                                value="{{$tag}}">{{$tag}}</a>
-                            @endforeach
+                    <div class="d-none d-lg-block ">
+                        <div class="scrolling-wrapper-flexbox mb-2">
+                            <div class="badges">
+                                @foreach ($tags as $tag)
+                                <a href="#" class="badge badge-primary"
+                                    value="{{$tag}}">{{$tag}}</a>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
-                    <h5><a class="text-dark fw-600"
+                    <h6><a class="fw-600"
                             href="{{ route('review.detail',[$p->user->username,$p->slug]) }}">{{ $p->title }}</a>
-                    </h5>
+                    </h6>
+
+                    <p class="text-small text-secondary mt-auto">{{ \Carbon\Carbon::parse($p->created_at)->format('d M Y') }} &middot;
+                        {{ $p->user->name }}</p>
                 </div>
             </div>
         </a>

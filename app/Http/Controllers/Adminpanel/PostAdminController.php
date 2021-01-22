@@ -55,4 +55,12 @@ class PostAdminController extends Controller
     public function review_delete($id){
         $this->reviewService->delete($id);
     }
+
+    public function tag_ajax(Request $request){
+        if ($request->has('q')) {
+            $cari = $request->q;
+            $data = \Conner\Tagging\Model\Tag::where('name', 'LIKE', '%'.$cari.'%')->get();
+    		return response()->json($data);
+    	}
+    }
 }

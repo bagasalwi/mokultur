@@ -24,6 +24,7 @@ Route::prefix('topic')->group(function () {
 Route::prefix('browse')->group(function () {
     Route::get('/', 'Frontpanel\HomeController@browse')->name('browse');
     Route::get('/article', 'Frontpanel\FrontPostController@browsePost')->name('post');
+    Route::post('/loadpost', 'Frontpanel\FrontPostController@load_post')->name('post.load_data');
     Route::get('/review', 'Frontpanel\FrontPostController@browseReview')->name('review');
     Route::get('/tag', 'Frontpanel\FrontPostController@browseTag')->name('tag');
 });
@@ -95,6 +96,7 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('post','Adminpanel\PostAdminController@post');
             Route::get('post/delete/{id}', 'Adminpanel\PostAdminController@post_delete');
             Route::get('review/delete/{id}', 'Adminpanel\PostAdminController@review_delete');
+            Route::get('tag_ajax','Adminpanel\PostAdminController@tag_ajax');
 
             // Category Function
             Route::get('category','CategoryController@category')->name('category');

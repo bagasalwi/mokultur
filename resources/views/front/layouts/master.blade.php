@@ -9,6 +9,7 @@
 	<meta itemprop="name" content="@yield('meta_title', '')Kreasibangsa">
 	<meta itemprop="description" content="@yield('meta_desc', 'Kreasi bangsa merupakan sarana untuk mengenalkan kreasi - kreasi anak bangsa, mulai dari sketch, UI hingga ilustrasi.')">
 	<meta itemprop="image" content="https://kreasibangsa.com/gambar/logo.png">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 
 	@yield('meta-tags')
 

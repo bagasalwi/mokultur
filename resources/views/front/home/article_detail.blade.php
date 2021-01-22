@@ -29,7 +29,7 @@
                     @endif
                 </h4>
                 <h1 class="text-dark fw-700 mb-4">{{ $post->title }}</h1>
-                <div class="row my-2">
+                <div class="row my-3">
                     <div class="col-6 d-flex flex-row">
                         <div class="align-self-center mr-2">
                             <img alt="image" width="50" height="50"
@@ -70,8 +70,8 @@
                     {!! $post->description !!}
                 </div>
 
+                <hr>
                 <div class="badges my-4">
-                    <hr>
                     @foreach ($post->tags as $tag)
                         <a href="{{ route('tag','tag='.$tag->slug) }}" class="badge badge-primary">{{$tag->name}}</a>
                     @endforeach
@@ -90,7 +90,7 @@
                             <div class="col-8 col-lg-8 col-md-8 ml-0 pl-0">
                                 <span class="badge badge-info">BACA SELANJUTNYA</span>
                                 <div class="my-1">
-                                    <h5 class="no-pm">{{ $selanjutnya->title }}</h5>
+                                    <h6 class="no-pm">{{ $selanjutnya->title }}</h6>
                                 </div>
                                 <div class="d-none d-lg-block">
                                     <div class="text-secondary text-small no-pm ">{{ str_limit(strip_tags($selanjutnya->description),100,'...') }}</div>

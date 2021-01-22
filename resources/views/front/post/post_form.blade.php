@@ -106,7 +106,7 @@
                             <div class="col-md-8 col-sm-12">
                                 <div class="form-group">
                                     <label>Tag</label>
-                                    <select type="text" id="tags-input" class="form-control" name="tags[]"
+                                    <select type="text" id="tags-input" class="form-control cari" name="tags[]"
                                         multiple="multiple">
                                         @if(old('tags'))
                                         @foreach(old('tags') as $tag)
@@ -123,7 +123,7 @@
                                 </div>
                             </div>
                             <div class="col-md-12 col-sm-12">
-                                <div class="form-group">
+                                <div class="form-group content">
                                     <label>Content</label>
                                     <textarea name="description"
                                         class="summernote form-control">{{ old('description', $fields->description) }}</textarea>
@@ -167,8 +167,9 @@
 
             // $('.cari').select2({
             //     placeholder: 'Cari...',
+            //     tags: true,
             //     ajax: {
-            //     url: '{{ url('post/tags') }}',
+            //     url: '{{ url('admin/tag_ajax') }}',
             //     dataType: 'json',
             //     delay: 250,
             //     processResults: function (data) {
@@ -204,11 +205,9 @@
             function readURL(input) {
                 if (input.files && input.files[0]) {
                     var reader = new FileReader();
-                    
                     reader.onload = function (e) {
                         $('#img-upload').attr('src', e.target.result);
                     }
-                    
                     reader.readAsDataURL(input.files[0]);
                 }
             }

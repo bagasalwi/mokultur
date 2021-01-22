@@ -28,7 +28,7 @@ class HomeController extends Controller
     {        
         $data['title'] = 'Home';
         $data['top_creation'] = Post::where('status', 'P')->orderBy('view_count', 'desc')->take(5)->get();
-        $data['creation'] = Post::where('status', 'P')->orderBy('created_at', 'desc')->paginate(10);
+        // $data['creation'] = Post::where('status', 'P')->orderBy('created_at', 'desc')->paginate(10);
         $data['review'] = $this->reviewService->takePublishReview(4);
         $data['top_category'] = $this->categoryService->topCategory();
         $data['top_tags'] = $this->top_tags;

@@ -44,6 +44,73 @@ class FrontPostController extends Controller
         return view('front.home.browse-post', $data);
     }
 
+    public function load_post(Request $request){
+
+        // dd($request);
+        if($request->ajax()){
+            if($request->id > 0){
+                $data = Post::where('id', '<', $request->id)
+                    ->where('status', 'P')
+                    ->orderBy('id', 'DESC')
+                    ->limit(2)
+                    ->get();
+            }else{
+                $data = Post::where('status', 'P')
+                    ->orderBy('id', 'DESC')
+                    ->limit(2)
+                    ->get();
+            }
+
+            $output = "";
+            $last_id = 0;
+
+            if(!$data->isEmpty()){
+                foreach($data as $row){
+                    $last_id = $row->id;
+                    $output .= '
+                        <div class="col-lg-12 col-sm-12">
+                            <a href="'. route('post.detail',[$row->user->username,$row->slug]) .'" class="card-block clearfix">
+                                <div class="card border-0 mb-4">
+                                    <div class="card-img-wrap bd-radius-4">
+                                        <img class="img-fluid img-article" loading="lazy" src="'. asset('storage/' . $row->photo()) .'"
+                                            alt="">
+                                    </div>
+                                    <div class="mt-2">
+                                        <a href="'. route('post.detail',[$row->user->username,$row->slug]) .'" class="no-pm">
+                                            <h4>'.$row->title.'</h4>
+                                        </a>
+                                    </div>
+                                    <div id="counter" data-id="'.$last_id.'"></div>
+                                    <small class="text-secondary">
+                                        '. \Carbon\Carbon::parse($row->date_published)->format('d M Y') .' &middot;
+                                        '.$row->user->name.'
+                                    </small>
+                                </div>
+                            </a>
+                        </div>';
+                    
+                }
+
+                $output .= '
+                <div id="load_more" class="col-12 text-center">
+                    <button id="loadpost" class="btn btn-block btn-dark" data-id="'.$last_id.'">
+                        Reach More
+                    </button>
+                </div>
+                ';
+            }else{
+                $output .= '
+                <div id="load_more" class="col-12 text-center">
+                    <h6 class="text-secondary">You reach the bottom of Knowledge!</h6>
+                </div>
+                ';
+                
+            }
+
+            echo $output;
+        }
+    }
+
     public function browseTag(Request $request){
         if ($request->has('tag')) {
             $data['post'] = Post::withAnyTag($request->tag)->paginate(8, ['*'], 'article');
