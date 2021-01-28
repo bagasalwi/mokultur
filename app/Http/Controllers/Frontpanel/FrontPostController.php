@@ -52,11 +52,13 @@ class FrontPostController extends Controller
                 $data = Post::where('id', '<', $request->id)
                     ->where('status', 'P')
                     ->orderBy('id', 'DESC')
+                    ->orderBy('date_published', 'DESC')
                     ->limit(2)
                     ->get();
             }else{
                 $data = Post::where('status', 'P')
                     ->orderBy('id', 'DESC')
+                    ->orderBy('date_published', 'DESC')
                     ->limit(2)
                     ->get();
             }

@@ -56,7 +56,7 @@ class CreatorController extends Controller
         if ($data['user']) {
             $data['active_since'] = $data['user']->created_at->format('d M Y');
             if ($type == 'article' || $type == '') {
-                $data['post'] = Post::orderBy('created_at', 'desc')->where('user_id', $data['user']->id)->where('status','P')->paginate(9);
+                $data['post'] = Post::orderBy('date_published', 'desc')->where('user_id', $data['user']->id)->where('status','P')->paginate(9);
                 $data['post_count'] = Post::where('user_id', $data['user']->id)->count();
                 $data['total_post'] = $data['user']->totalPost();
 
