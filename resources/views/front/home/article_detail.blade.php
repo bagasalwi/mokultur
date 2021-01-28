@@ -3,6 +3,12 @@
 @section('meta_title'){{ $post->title }}@endsection
 @section('meta_keyword'){{ implode(', ', $meta_tags) }}@endsection
 @section('meta_desc'){{ str_limit(strip_tags($post->description),180,'...') }}@endsection
+@section('meta-tags')
+<meta property="og:title" content="{{ $post->title }}">
+<meta property="og:description" content="{{ str_limit(strip_tags($post->description),180,'...') }}">
+<meta property="og:url" content="{{ url()->current() }}">
+<meta name="og:image" content="{{ asset('storage/' . $post->photo()) }}" />
+@endsection
 
 @section('content')
 
@@ -47,6 +53,9 @@
                     <div class="col-6 d-flex flex-row-reverse">
                         <div class="align-self-end">
                             @if ($post->date_published != null)
+                            <p class="p-0 m-0"><small class="text-dark">Published
+                                {{ $post->date_published->format('d-M-Y') }}</small></p>
+                            @else
                             <p class="p-0 m-0"><small class="text-dark">Published
                                 {{ $post->created_at->format('d-M-Y') }}</small></p>
                             @endif
