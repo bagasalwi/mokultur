@@ -54,7 +54,7 @@
                         <div class="align-self-end">
                             @if ($post->date_published != null)
                             <p class="p-0 m-0"><small class="text-dark">Published
-                                {{ $post->date_published->format('d-M-Y') }}</small></p>
+                                {{ Carbon\Carbon::parse($post->date_published)->format('d-M-Y') }}</small></p>
                             @else
                             <p class="p-0 m-0"><small class="text-dark">Published
                                 {{ $post->created_at->format('d-M-Y') }}</small></p>
