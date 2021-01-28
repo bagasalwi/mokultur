@@ -170,7 +170,7 @@
 </script>
 <script>
     $(document).ready(function(){
-        $('#posting img').addClass('img-fluid');
+        $('#posting img').addClass('img-fluid').data('loading','lazy');
     });
 
     $("#carousel-post").owlCarousel({
