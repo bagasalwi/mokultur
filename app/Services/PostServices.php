@@ -158,13 +158,25 @@ class PostServices
     public function createImage($id, $image)
     {
         $user = auth()->user();
+        
+        // $path = $image->store('images');
 
-        $path = $image->store('images');
+        $photo = $image;
+        $file_name = $user->username . '_' . time().'.'.$photo->getClientOriginalExtension();
+
+        $path = storage_path('app\public\images');
+        $img = Image::make($photo);
+        $img->resize(700, 400, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save($path . '/' . $file_name);
+
+        $dir_name = 'images/' . $file_name;
+        // dd($dir_name);
 
         PostPhoto::create([
             'user_id' => $user->id,
             'post_id' => $id,
-            'name' => $path,
+            'name' => $dir_name,
             'status' => 'A'
         ]);
     }
