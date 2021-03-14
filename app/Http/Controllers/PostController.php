@@ -145,6 +145,7 @@ class PostController extends Controller
 
     public function savePhoto(Request $request)
     {
+        dd($request->file());
 
         $this->validate($request, [
             'title' => 'required',
