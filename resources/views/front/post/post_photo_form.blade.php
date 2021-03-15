@@ -56,7 +56,7 @@
             @endif
             <div id="photo-form" class="form-group">
                 <label>Photo</label>
-                <input type="file" class="form-control" name="photo[]" data-slide="0" id="photo-form-0" />
+                <input type="file" class="form-control my-1" name="photo[]" data-slide="0" id="photo-form-0" />
             </div>
             <div id="append-photo"></div>
             <div id="groupContButton" class="form-group w-100 text-right">
@@ -167,6 +167,7 @@
                 $('#btn-del-photo').prop('disabled',false);
                 // $(`#section-photos-${countimg} [name='order_image[]']`).val(countimg + 1);
                 $(`#photo-form-${countimg}`).val('');
+                $(`#photo-form-${countimg}`).attr('data-slide', countimg);
                 // $(`#photo-slide-${countimg}`).attr('src', src);
                 // $(`#section-photos-${countimg} .btn-insert`).attr('id',`btn-insert-${countimg}`);
                 console.log(countimg)
@@ -205,17 +206,23 @@
                 }
             }
 
-            $("input[name='photo[]']").change(function(){
+            $('#photo-form').on('change', 'input[id^=photo-form-]', function() {
                 alert($(this).attr('data-slide'));
                 var photoid = $(this).attr('data-slide');
-                // if( $("input[name='photo[]']").val()!=""){
-                //     $('#blah').show('slow');
-                // }
-                // else{
-                //     $('#remove').hide();$('#blah').hide('slow');
-                // }
                 readURL(this,photoid);
             });
+
+            // $("input[name='photo[]']").change(function(){
+            //     alert($(this).attr('data-slide'));
+            //     var photoid = $(this).attr('data-slide');
+            //     // if( $("input[name='photo[]']").val()!=""){
+            //     //     $('#blah').show('slow');
+            //     // }
+            //     // else{
+            //     //     $('#remove').hide();$('#blah').hide('slow');
+            //     // }
+            //     readURL(this,photoid);
+            // });
 
         });
     </script>

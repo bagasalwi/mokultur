@@ -14,7 +14,7 @@
 <nav id="navbar_main" class="mobile-offcanvas navbar navbar-transparent fixed-top navbar-expand-lg">
     <div class="container nav-cont">
         <a class="navbar-brand d-none d-lg-block" href="{{ url('/') }}">
-            <img src="{{ asset('gambar/logo/KREASIBANGSA.png')}}" alt="">
+            {{-- <img src="{{ asset('gambar/logo/KREASIBANGSA.png')}}" alt=""> --}}My Playground
         </a>
         <div class="offcanvas-header">
             <button class="navbar-toggler btn-close"><span class="fas fa-bars"></span></button>
