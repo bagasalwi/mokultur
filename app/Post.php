@@ -9,12 +9,14 @@ class Post extends Model
 {
     use Taggable;
 
-    protected $guarded = [];
-    protected $appends = ['type'];
+    protected $fillable = [];
+    protected $table = 'posts';
+    protected $primaryKey = 'id';
+    protected $appends = ['tipe_post'];
 
     public function getTypeAttribute()
     {
-        return 'article';
+        return $this->tipe_post;
     }
 
     public function user(){

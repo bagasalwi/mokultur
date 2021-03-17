@@ -21,7 +21,7 @@
 
             <input type="hidden" name="id" value="{{ $fields->id }}">
             <input type="hidden" name="state" value="{{ $state }}">
-            <input type="hidden" name="type" value="{{ $type }}">
+            <input type="hidden" name="tipe_post" value="{{ $tipe_post }}">
 
             <div class="row">
                 <div class="col-md-4">

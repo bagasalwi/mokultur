@@ -21,9 +21,9 @@
 
             <input type="hidden" name="id" value="{{ $fields->id }}">
             <input type="hidden" name="state" value="{{ $state }}">
-            <input type="hidden" name="type" value="{{ $type }}">
+            <input type="hidden" name="tipe_post" value="{{ $tipe_post }}">
 
-            {{-- <div class="row">
+            <div class="row">
                 <div class="col-sm-12 col-md-8 col-lg-8">
                     <div class="mr-auto">
                         <h2 class="text-dark">Post Content</h2>
@@ -33,101 +33,143 @@
                     <div class="row">
                         <div class="col-6 my-2">
                             <a href="{{ route('post.index') }}" class="btn btn-danger btn-block">Cancel</a>
-    </div>
-    <div class="col-6 my-2">
-        <button type="submit" class="btn btn-dark btn-block">Submit</button>
-    </div>
-    </div>
-    </div>
-    </div> --}}
-    <hr>
-    <div class="row">
-        <div class="col-md-4 card card-body">
-            @if (isset($post_image))
-            <div class="owl-carousel owl-theme slider" id="gallery">
-                @foreach ($post_image as $img)
-                <div><img alt="image" src="{{ asset('storage/' . $img->name) }}"></div>
-                @endforeach
+                        </div>
+                        <div class="col-6 my-2">
+                            <button type="submit" class="btn btn-dark btn-block">Submit</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            @else
-            <div class="owl-carousel owl-theme slider" id="gallery">
-                <div id="photo-slide-0"><img alt="image" src="{{ asset('gambar/no-image.jpg') }}"></div>
-            </div>
-            @endif
-            <div id="photo-form" class="form-group">
-                <label>Photo</label>
-                <input type="file" class="form-control my-1" name="photo[]" data-slide="0" id="photo-form-0" />
-            </div>
-            <div id="append-photo"></div>
-            <div id="groupContButton" class="form-group w-100 text-right">
-                <button id="btn-del-photo" type="button" class="btn btn-primary" disabled="">-</button>
-                <button id="btn-add-photo" type="button" class="btn btn-primary">+</button>
-            </div>
-        </div>
-        <div class="col-md-8 card card-body">
+            <hr>
             <div class="row">
-                <div class="col-md-12 col-sm-12">
-                    <div class="form-group">
-                        <label>Title</label>
-                        <input type="text" class="form-control" id="title" name="title" placeholder="Title"
-                            value="{{ old('title', $fields->title) }}" required>
+                <div class="col-md-4 card card-body">
+                    @if (isset($post_image))
+                    <div class="owl-carousel owl-theme slider" id="gallery">
+                        @foreach ($post_image as $idx=> $img)
+                        <div id="photo-slide-{{ $idx + 1 }}"><img alt="image" src="{{ asset('storage/' . $img->name) }}"></div>
+                        @endforeach
+                    </div>
+                    @else
+                    <div class="owl-carousel owl-theme slider" id="gallery">
+                        <div id="photo-slide-1"><img alt="image" src="{{ asset('gambar/no-image.jpg') }}"></div>
+                    </div>
+                    @endif
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div id="order-photo" class="form-group">
+                                <label>Order</label>
+                                @if (isset($post_image))
+                                    @foreach ($post_image as $idx=> $img)
+                                    <input type="text" class="form-control mb-1" name="order_photo[]" readonly value="{{ $img->order }}" id="order-photo-{{ $idx + 1 }}" />
+                                    @endforeach
+                                @else
+                                    <input type="text" class="form-control mb-1" name="order_photo[]" readonly value="1" id="order-photo-1" />
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div id="photo-form" class="form-group">
+                                <label>Photo</label>
+                                @if (isset($post_image))
+                                    @foreach ($post_image as $idx=> $img)
+                                    <input type="file" class="form-control mb-1" name="photo[]" value="{{ $img->name }}" data-slide="{{ $idx + 1 }}" id="photo-form-{{ $idx + 1 }}" />
+                                    @endforeach
+                                @else
+                                    <input type="file" class="form-control mb-1" name="photo[]" data-slide="1" id="photo-form-1" />
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div id="append-photo"></div>
+                    <div id="groupContButton" class="form-group w-100 text-right">
+                        <button id="btn-del-photo" type="button" class="btn btn-primary" disabled="">-</button>
+                        <button id="btn-add-photo" type="button" class="btn btn-primary">+</button>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-12">
-                    <div class="form-group">
-                        <label>Category</label>
-                        <select class="form-control select2" id="category_id" name="category_id">
-                            @foreach ($post_category as $r)
-                            <option value="{{ $r->id }}" {{ $fields->category_id == $r->id ? 'selected' : '' }}>
-                                {{ $r->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-12">
-                    <div class="form-group">
-                        <label>Tag</label>
-                        <select type="text" id="tags-input" class="form-control" name="tags[]" multiple="multiple">
-                            @if(old('tags'))
-                            @foreach(old('tags') as $tag)
-                            <option value="{{$tag}}">{{$tag}}</option>
-                            @endforeach
-                            @else
-                            @if (isset($tags))
-                            @foreach ($tags as $tag)
-                            <option value="{{$tag}}">{{$tag}}</option>
-                            @endforeach
-                            @endif
-                            @endif
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-12">
-                    <div class="form-group">
-                        <label>Status</label>
-                        <select class="form-control selectric" name="status">
-                            <option value="P">Publish</option>
-                            <option value="D">Draft</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label>Content</label>
-                        <textarea name="description"
-                            class="summernote form-control">{{ old('description', $fields->description) }}</textarea>
+                <div class="col-md-8 card card-body">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="form-group">
+                                <label>Title</label>
+                                <input type="text" class="form-control slugify" data-target="slug" id="title"
+                                    name="title" placeholder="Title" value="{{ old('title', $fields->title) }}"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12">
+                            <div class="form-group">
+                                <label>Slug</label>
+                                <input type="text" class="form-control" id="slug" name="slug" placeholder="slug"
+                                    value="{{ old('slug', $fields->slug) }}" required>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <div class="form-group">
+                                <label>Category</label>
+                                <select class="form-control select2" id="category_id" name="category_id">
+                                    @foreach ($post_category as $r)
+                                    <option value="{{ $r->id }}" {{ $fields->category_id == $r->id ? 'selected' : '' }}>
+                                        {{ $r->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <div class="form-group">
+                                <label>Tag</label>
+                                <select type="text" id="tags-input" class="form-control" name="tags[]"
+                                    multiple="multiple">
+                                    @if(old('tags'))
+                                    @foreach(old('tags') as $tag)
+                                    <option value="{{$tag}}">{{$tag}}</option>
+                                    @endforeach
+                                    @else
+                                    @if (isset($tags))
+                                    @foreach ($tags as $tag)
+                                    <option value="{{$tag}}">{{$tag}}</option>
+                                    @endforeach
+                                    @endif
+                                    @endif
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <div class="form-group">
+                                <label>Status</label>
+                                <select class="form-control selectric" name="status">
+                                    <option value="P">Publish</option>
+                                    <option value="D">Draft</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Content</label>
+                                <textarea name="description"
+                                    class="summernote form-control">{{ old('description', $fields->description) }}</textarea>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    </form>
+        </form>
     </div>
     </div>
 
     @endsection
 
     @section('script')
+    @php
+    if(isset($post_image)){
+        if(count($post_image) > 1){
+            $countimg = count($post_image);
+        } else {
+            $countimg = 1;
+        }
+    }else{
+        $countimg = 1;
+    }
+    @endphp
 
     <script>
         @if ($errors->any())
@@ -143,6 +185,10 @@
 
     <script>
         $(document).ready( function() {
+
+            var owl = $("#gallery");
+            var countimg= {{ $countimg }};
+
             $("#gallery").owlCarousel({
                 items:1,
                 // margin:10,
@@ -152,35 +198,58 @@
                 navText: ['<i class="fas fa-chevron-left"></i>','<i class="fas fa-chevron-right"></i>']
             });
 
-            var countimg = 0;
+            owl.on('changed.owl.carousel', function (e) {
+                console.log("current: ",e.relatedTarget.current())
+                console.log("current: ",e.item.index) //same
+                console.log("total: ",e.item.count)   //total
+            })
+
+            if(countimg > 1){
+                $('#btn-del-photo').prop('disabled',false);
+            }else{
+                $('#btn-del-photo').prop('disabled',true);
+            }
+
+            $('#title').on('keyup', function(){
+                alert(countimg);
+            });
 
             $('#btn-add-photo').click(function(){
                 countimg++;
-                var src="{{ asset('gambar/no-image.jpg') }}";
-                var clone_photoform= $('#photo-form-0').clone().attr('id',`photo-form-${countimg}`);
-                // var clone_photoslide= $('#photo-slide-0').clone().attr('id',`photo-slide-0-${countimg}`);
+
+                alert(countimg);
+
+                var src ="{{ asset('gambar/no-image.jpg') }}";
+                var clone_photoform = $('#photo-form-1').clone().attr('id',`photo-form-${countimg}`);
+                var clone_orderphoto = $('#order-photo-1').clone().attr('id',`order-photo-${countimg}`);
+
                 $('#gallery').trigger('add.owl.carousel', ['<div id="photo-slide-'+countimg+'"><img alt="image" src="'+src+'"></div>'])
                     .trigger('refresh.owl.carousel');
 
                 $('#photo-form').append(clone_photoform);
-                // $('#gallery').append(clone_photoslide);
+                $('#order-photo').append(clone_orderphoto);
+                
                 $('#btn-del-photo').prop('disabled',false);
-                // $(`#section-photos-${countimg} [name='order_image[]']`).val(countimg + 1);
+                
+                $(`#order-photo-${countimg}`).val(countimg);
                 $(`#photo-form-${countimg}`).val('');
                 $(`#photo-form-${countimg}`).attr('data-slide', countimg);
-                // $(`#photo-slide-${countimg}`).attr('src', src);
-                // $(`#section-photos-${countimg} .btn-insert`).attr('id',`btn-insert-${countimg}`);
+
                 console.log(countimg)
             });
 
             $('#btn-del-photo').click(function(){
-                $("#gallery").trigger('remove.owl.carousel', [countimg]).trigger('refresh.owl.carousel');
+                // $("#gallery").trigger('remove.owl.carousel', [1]).trigger('refresh.owl.carousel');
+                alert(countimg);
+                var count_caro = countimg - 1;
+                $('#gallery').owlCarousel('remove', count_caro).owlCarousel('update');
                 $(`#photo-form-${countimg}`).remove();
-                if(countimg > 1){
+                $(`#order-photo-${countimg}`).remove();
+                if(countimg > 2){
                     countimg--;
                 } else {
                     $(this).prop('disabled',true);
-                    countimg=0;
+                    countimg = 1;
                 }
                 console.log(countimg)
             });

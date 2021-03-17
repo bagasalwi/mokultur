@@ -118,7 +118,7 @@
                             <h4 class="text-dark no-pm">Simple Article</h4>
                             <small class="text-secondary">Make an simple article about your stories, reviews, tutorials
                                 and more!</small>
-                            <a class="stretched-link" href="{{ route('post.create', 'type=article') }}"></a>
+                            <a class="stretched-link" href="{{ route('post.create', 'tipe_post=article') }}"></a>
                         </div>
                     </div>
                 </div>
@@ -132,7 +132,7 @@
                             <h4 class="text-dark no-pm">Slideshow Article</h4>
                             <small class="text-secondary">Make an Slideshow photo article about your stories, reviews,
                                 tutorials and more!</small>
-                            <a class="stretched-link" href="{{ route('post.create', 'type=photo') }}"></a>
+                            <a class="stretched-link" href="{{ route('post.create', 'tipe_post=photo') }}"></a>
                         </div>
                     </div>
                 </div>

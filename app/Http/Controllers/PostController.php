@@ -53,11 +53,11 @@ class PostController extends Controller
 
         $data['state'] = 'create';
 
-        if ($request->type == 'photo') {
-            $data['type'] = 'photo';
+        if ($request->tipe_post == 'photo') {
+            $data['tipe_post'] = 'photo';
             return view('front.post.post_photo_form', $data);
-        } elseif ($request->type == 'article') {
-            $data['type'] = 'article';
+        } elseif ($request->tipe_post == 'article') {
+            $data['tipe_post'] = 'article';
             return view('front.post.post_form', $data);
         }
     }
@@ -78,13 +78,13 @@ class PostController extends Controller
 
             $data['tags'] = $post->tagNames();
 
-            if ($post->type == 'photo') {
-                $data['type'] = 'photo';
+            if ($post->tipe_post == 'photo') {
+                $data['tipe_post'] = 'photo';
                 $data['post_image'] = PostPhoto::where('post_id', $post->id)->get();
 
                 return view('front.post.post_photo_form', $data);
-            } elseif ($post->type == 'article') {
-                $data['type'] = 'article';
+            } elseif ($post->tipe_post == 'article') {
+                $data['tipe_post'] = 'article';
 
                 return view('front.post.post_form', $data);
             }
@@ -145,7 +145,7 @@ class PostController extends Controller
 
     public function savePhoto(Request $request)
     {
-        dd($request->file());
+        // dd($request->file());
 
         $this->validate($request, [
             'title' => 'required',
@@ -182,10 +182,10 @@ class PostController extends Controller
     {
         $post = $this->postService->find($id);
 
-        if ($post->type == 'article') {
+        if ($post->tipe_post == 'article') {
             $this->postService->deleteImage($id);
             $this->postService->delete($id);
-        } elseif ($post->type == 'photo') {
+        } elseif ($post->tipe_post == 'photo') {
             $this->postService->deleteMultipleImage($id);
             $this->postService->delete($id);
         }

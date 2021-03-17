@@ -114,7 +114,7 @@ class PostServices
             'description' => $request['description'],
             'view_count' => 0,
             'date_published' => $request['status'] == 'P' ? Carbon::now() : null,
-            'type' => $request['type'],
+            'tipe_post' => $request['tipe_post'],
             'status' => $request['status'],
         ]);
 
