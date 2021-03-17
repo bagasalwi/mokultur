@@ -1,19 +1,15 @@
 "use strict";
 
-// ChartJS
-if(window.Chart) {
-  Chart.defaults.global.defaultFontFamily = "'Nunito', 'Segoe UI', 'Arial'";
-  Chart.defaults.global.defaultFontSize = 11;
-  Chart.defaults.global.defaultFontStyle = 500;
-  Chart.defaults.global.defaultFontColor = "#999";
-  Chart.defaults.global.tooltips.backgroundColor = '#000';
-  Chart.defaults.global.tooltips.titleFontFamily = "'Nunito', 'Segoe UI', 'Arial'";
-  Chart.defaults.global.tooltips.titleFontColor = '#fff';
-  Chart.defaults.global.tooltips.titleFontSize = 20;
-  Chart.defaults.global.tooltips.xPadding = 10;
-  Chart.defaults.global.tooltips.yPadding = 10;
-  Chart.defaults.global.tooltips.cornerRadius = 3;
-}
+$("#slider1,#slider2").owlCarousel({
+  items:1,
+  // margin:10,
+  autoHeight:true,
+  nav: true,
+  dots: false,
+  navText: ['<i class="fas fa-chevron-left"></i>','<i class="fas fa-chevron-right"></i>']
+});
+
+$(".pwstrength").pwstrength();
 
 // DropzoneJS
 if(window.Dropzone) {
@@ -632,4 +628,44 @@ $(function() {
       }
     });
   }
+});
+
+// datatables
+$("[data-checkboxes]").each(function() {
+  var me = $(this),
+    group = me.data('checkboxes'),
+    role = me.data('checkbox-role');
+
+  me.change(function() {
+    var all = $('[data-checkboxes="' + group + '"]:not([data-checkbox-role="dad"])'),
+      checked = $('[data-checkboxes="' + group + '"]:not([data-checkbox-role="dad"]):checked'),
+      dad = $('[data-checkboxes="' + group + '"][data-checkbox-role="dad"]'),
+      total = all.length,
+      checked_length = checked.length;
+
+    if(role == 'dad') {
+      if(me.is(':checked')) {
+        all.prop('checked', true);
+      }else{
+        all.prop('checked', false);
+      }
+    }else{
+      if(checked_length >= total) {
+        dad.prop('checked', true);
+      }else{
+        dad.prop('checked', false);
+      }
+    }
+  });
+});
+
+$("#table-1").dataTable({
+  "columnDefs": [
+    { "sortable": false, "targets": [2,3] }
+  ]
+});
+$("#table-2").dataTable({
+  "columnDefs": [
+    { "sortable": false, "targets": [0,2,3] }
+  ]
 });

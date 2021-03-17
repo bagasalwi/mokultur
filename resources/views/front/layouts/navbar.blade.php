@@ -36,6 +36,10 @@
                 <a class="nav-link {{ request()->is('special') ? 'text-primary-border' : '' }}"
                     href="{{ route('special') }}">Special</a>
             </li>
+            <li class="nav-item py-2">
+                <a class="nav-link {{ request()->is('genshin') ? 'text-primary-border' : '' }}"
+                    href="{{ route('genshin') }}">Genshin</a>
+            </li>
             @guest
             <li class="nav-item py-2 dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
