@@ -72,7 +72,8 @@ class GenshinController extends Controller
                 $newArr[] = (object) array(
                             'name' => $image,
                             'portrait' => $this->get_images($image, $this->portrait),
-                            'icon' => $this->get_images($image, $this->icon)
+                            'icon' => $this->get_images($image, $this->icon),
+                            'elements' => $this->get_character_attribute($image, 'vision')
                         );
             }
 
@@ -85,12 +86,42 @@ class GenshinController extends Controller
 
     }
 
+    public function get_character_attribute($name, $atr = null){
+        $pathData = $this->data . $this->characters . '/' . $name . '/en.json';
+
+        if (!file_exists($pathData)) {
+            return "Fail name";
+        }else{
+            $data = json_decode(file_get_contents($pathData), true);
+            
+            if($atr){
+                return $data[$atr];
+            }else{
+                return $data;
+            }
+        }
+    }
+
     public function get_images($name = null, $type){
         $pathImages = $this->images . $this->characters . '/' . $name . '/' . $type;
 
         // dd($type);
 
         if (!file_exists($pathImages)) {
+            return "Fail name";
+        }else{
+            $base64 = 'data:image/png;base64,';
+            $image = base64_encode(file_get_contents($pathImages));
+
+            // dd($data);
+            return ($base64 . $image);
+        }
+    }
+
+    public function get_element_images($name){
+        $pathImages = $this->images . $this->elements . '/' . $name . '/icon';
+
+        if(!file_exists($pathImages)){
             return "Fail name";
         }else{
             $base64 = 'data:image/png;base64,';
