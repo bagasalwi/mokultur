@@ -16,13 +16,6 @@ Auth::routes();
 Route::get('/', 'Frontpanel\HomeController@index')->name('home');
 Route::get('/special', 'Frontpanel\HomeController@special')->name('special');
 
-Route::prefix('/genshin')->group(function (){
-    Route::get('/', 'Frontpanel\GenshinController@index')->name('genshin');
-    Route::get('/characters', 'Frontpanel\GenshinController@characters');
-    Route::get('/characters/{name}', 'Frontpanel\GenshinController@characters');
-    Route::get('/artifacts', 'Frontpanel\GenshinController@artifacts')->name('genshin.artifacts');
-});
-
 Route::prefix('topic')->group(function () {
     Route::get('/', 'Frontpanel\HomeController@topic')->name('topic');
     Route::get('/{category}', 'Frontpanel\HomeController@topic')->name('topic.detail');
