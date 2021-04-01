@@ -22,6 +22,7 @@
             <input type="hidden" name="id" value="{{ $fields->id }}">
             <input type="hidden" name="state" value="{{ $state }}">
             <input type="hidden" name="tipe_post" value="{{ $tipe_post }}">
+            <input type="hidden" name="order_delete">
 
             <div class="row">
                 <div class="col-sm-12 col-md-8 col-lg-8">
@@ -137,8 +138,8 @@
                             <div class="form-group">
                                 <label>Status</label>
                                 <select class="form-control selectric" name="status">
-                                    <option value="P">Publish</option>
-                                    <option value="D">Draft</option>
+                                    <option value="P" {{ $fields->status == 'P' ? 'selected' : '' }}>Publish</option>
+                                    <option value="D" {{ $fields->status == 'D' ? 'selected' : '' }}>Draft</option>
                                 </select>
                             </div>
                         </div>
@@ -188,6 +189,7 @@
 
             var owl = $("#gallery");
             var countimg= {{ $countimg }};
+            var ord_del = [];
 
             $("#gallery").owlCarousel({
                 items:1,
@@ -198,11 +200,11 @@
                 navText: ['<i class="fas fa-chevron-left"></i>','<i class="fas fa-chevron-right"></i>']
             });
 
-            owl.on('changed.owl.carousel', function (e) {
-                console.log("current: ",e.relatedTarget.current())
-                console.log("current: ",e.item.index) //same
-                console.log("total: ",e.item.count)   //total
-            })
+            // owl.on('changed.owl.carousel', function (e) {
+            //     console.log("current: ",e.relatedTarget.current())
+            //     console.log("current: ",e.item.index) //same
+            //     console.log("total: ",e.item.count)   //total
+            // })
 
             if(countimg > 1){
                 $('#btn-del-photo').prop('disabled',false);
@@ -211,13 +213,13 @@
             }
 
             $('#title').on('keyup', function(){
-                alert(countimg);
+                // alert(countimg);
             });
 
             $('#btn-add-photo').click(function(){
                 countimg++;
 
-                alert(countimg);
+                // alert(countimg);
 
                 var src ="{{ asset('gambar/no-image.jpg') }}";
                 var clone_photoform = $('#photo-form-1').clone().attr('id',`photo-form-${countimg}`);
@@ -235,12 +237,12 @@
                 $(`#photo-form-${countimg}`).val('');
                 $(`#photo-form-${countimg}`).attr('data-slide', countimg);
 
-                console.log(countimg)
+                // console.log(countimg)
             });
 
             $('#btn-del-photo').click(function(){
                 // $("#gallery").trigger('remove.owl.carousel', [1]).trigger('refresh.owl.carousel');
-                alert(countimg);
+                // alert(countimg);
                 var count_caro = countimg - 1;
                 $('#gallery').owlCarousel('remove', count_caro).owlCarousel('update');
                 $(`#photo-form-${countimg}`).remove();
@@ -251,7 +253,11 @@
                     $(this).prop('disabled',true);
                     countimg = 1;
                 }
-                console.log(countimg)
+                // console.log(countimg)
+
+                ord_del.push(countimg + 1);
+                $('input[name=order_delete]').val(ord_del);
+                // alert(ord_del);
             });
 
             $('#tags-input').tagsinput();

@@ -147,6 +147,8 @@ class PostController extends Controller
     {
         // dd($request->file());
 
+        // dd($request->file());
+
         $this->validate($request, [
             'title' => 'required',
             'category_id' => 'required',
@@ -158,21 +160,25 @@ class PostController extends Controller
         if ($request->state == 'create') {
             $post = $this->postService->create($request->all());
 
-            if ($request->hasFile('photo')) {
-                $image = $request->file('photo');
+            if ($request->file()) {
+                $image = $request->file();
+                $order = $request->order_photo;
 
-                $this->postService->createMultipleImage($post->id, $image);
+                $this->postService->createMultipleImage($post->id, $image, $order);
             }
 
             return redirect('post')->with('success', 'Post baru berhasil dibuat!');
         } elseif ($request->state == 'update') {
             $post = $this->postService->update($request->all());
 
-            if ($request->hasFile('photo')) {
-                $image = $request->file('photo');
+            $order = $request->order_photo;
+            $order_delete = explode(',', $request->order_delete);
+            asort($order_delete);
 
-                $this->postService->updateMultipleImage($post->id, $image);
-            }
+            // dd($order_delete);
+            $image = $request->file() ? $request->file() : null;
+
+            $this->postService->updateMultipleImage($post->id, $image, $order_delete);
 
             return redirect('post')->with('success', 'Post berhasil di update!');
         }

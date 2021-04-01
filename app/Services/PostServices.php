@@ -140,7 +140,7 @@ class PostServices
 
         $post = $this->find($request['id']);
 
-        if ($request['tags']) {
+        if (isset($request['tags'])) {
             $post->retag($request['tags']);
         }
         return $post;
@@ -169,26 +169,126 @@ class PostServices
         ]);
     }
 
-    public function createMultipleImage($id, $image)
+    public function createMultipleImage($id, $image, $order)
     {
+        // dd($image);
         $user = auth()->user();
 
-        foreach ($image as $img) {
-            $path = $img->store('images');
+        foreach ($image as $key => $img) {
+            foreach($img as $key2 => $k){
 
-            PostPhoto::create([
-                'user_id' => $user->id,
-                'post_id' => $id,
-                'name' => $path,
-                'status' => 'A'
-            ]);
+                $path = $k->store('images');
+
+                PostPhoto::create([
+                    'user_id' => $user->id,
+                    'post_id' => $id,
+                    'name' => $path,
+                    'order' => $key2 + 1,
+                    'status' => 'A'
+                ]);
+            }
         }
     }
 
-    public function updateMultipleImage($id, $image)
+    public function updateMultipleImage($id, $image = null, $order_delete = null)
     {
-        $this->deleteMultipleImage($id);
-        $this->createMultipleImage($id, $image);
+        $user = auth()->user();
+        $post = $this->find($id);
+
+        // dd($order_delete);
+        
+        if($image && $order_delete){
+            foreach($image as $key => $img){
+                foreach($img as $key2 => $k){
+                    $order = $key2 + 1;
+                    // dd($order);
+
+                    foreach($order_delete as $od){
+                        $if_order = $od == $order;
+        
+                        // dd($if_order);
+                        if($if_order == false){
+                            $postPhoto = PostPhoto::where('post_id', $id)->where('order',$od)->first();
+        
+                            if($postPhoto){
+                                $image = public_path('storage/' . $postPhoto->name);
+            
+                                if (File::exists($image)) {
+                                    unlink($image);
+                                }
+            
+                                PostPhoto::where('post_id', $id)->where('order',$od)->delete();
+                            }
+                        }
+                    }
+
+                    $post_photo = PostPhoto::where('post_id',$id)->where('order',$order)->first();
+    
+                    if($post_photo){
+                        $lastImage = public_path('storage/' . $post_photo->name);
+    
+                        if (File::exists($lastImage)) { // unlink or remove previous image from folder
+                            unlink($lastImage);
+                        }
+                    }
+    
+                    $path = $k->store('images');
+    
+                    PostPhoto::where('post_id', $post->id)->where('order', $order)->update([
+                        'user_id' => $user->id,
+                        'post_id' => $post->id,
+                        'name' => $path,
+                        'order' => $order,
+                        'status' => 'A'
+                    ]);
+                }
+            }
+        }else if($order_delete){
+            foreach($order_delete as $od){
+                $if_order = $od == $order;
+
+                // dd($if_order);
+                if($if_order == false){
+                    $postPhoto = PostPhoto::where('post_id', $id)->where('order',$od)->first();
+
+                    if($postPhoto){
+                        $image = public_path('storage/' . $postPhoto->name);
+    
+                        if (File::exists($image)) {
+                            unlink($image);
+                        }
+    
+                        PostPhoto::where('post_id', $id)->where('order',$od)->delete();
+                    }
+                }
+            }
+        }else if ($image){
+            foreach($image as $key => $img){
+                foreach($img as $key2 => $k){
+                    $order = $key2 + 1;
+
+                    $post_photo = PostPhoto::where('post_id',$id)->where('order',$order)->first();
+    
+                    if($post_photo){
+                        $lastImage = public_path('storage/' . $post_photo->name);
+    
+                        if (File::exists($lastImage)) { // unlink or remove previous image from folder
+                            unlink($lastImage);
+                        }
+                    }
+    
+                    $path = $k->store('images');
+    
+                    PostPhoto::where('post_id', $post->id)->where('order', $order)->update([
+                        'user_id' => $user->id,
+                        'post_id' => $post->id,
+                        'name' => $path,
+                        'order' => $order,
+                        'status' => 'A'
+                    ]);
+                }
+            }
+        }
     }
 
     public function updateImage($id, $image)

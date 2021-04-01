@@ -9,7 +9,7 @@ class Post extends Model
 {
     use Taggable;
 
-    protected $fillable = [];
+    protected $guarded = [];
     protected $table = 'posts';
     protected $primaryKey = 'id';
     protected $appends = ['tipe_post'];
