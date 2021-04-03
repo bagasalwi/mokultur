@@ -52,12 +52,12 @@ class FrontPostController extends Controller
                 $data = Post::where('id', '<', $request->id)
                     ->where('status', 'P')
                     ->orderBy('id', 'DESC')
-                    ->limit(2)
+                    ->limit(5)
                     ->get();
             }else{
                 $data = Post::where('status', 'P')
                     ->orderBy('id', 'DESC')
-                    ->limit(2)
+                    ->limit(5)
                     ->get();
             }
 
@@ -94,14 +94,14 @@ class FrontPostController extends Controller
                 $output .= '
                 <div id="load_more" class="col-12 text-center">
                     <button id="loadpost" class="btn btn-block btn-dark" data-id="'.$last_id.'">
-                        Reach More
+                        Jangkau Lebih Jauh
                     </button>
                 </div>
                 ';
             }else{
                 $output .= '
                 <div id="load_more" class="col-12 text-center">
-                    <h6 class="text-secondary">You reach the bottom of Knowledge!</h6>
+                    <h6 class="text-secondary">Selamat, Kamu sudah meng-kulturi semua artikel!</h6>
                 </div>
                 ';
                 
@@ -109,6 +109,12 @@ class FrontPostController extends Controller
 
             echo $output;
         }
+    }
+
+    public function load_review(Request $request){
+        $review = $this->reviewService->takeLatestOneReview();
+
+        return view('front.partial.load-review', compact('review'));
     }
 
     public function browseTag(Request $request){
@@ -208,21 +214,6 @@ class FrontPostController extends Controller
             return redirect()->back();
         }
     }
-
-    // public function postChecker($slug)
-    // {
-    //     $statusChecker = $this->postService->postStatusChecker($slug);
-
-    //     if ($statusChecker) {
-    //         if ($statusChecker == 'DRAFT') {
-    //            return $this->previewDetailPost($slug);
-    //         } elseif ($statusChecker == 'PUBLISH') {
-    //            return $this->publishDetailPost($slug);
-    //         }
-    //     } else {
-    //         return redirect('/');
-    //     }
-    // }
 
     public function reviewDetail($username, $slug)
     {

@@ -26,6 +26,7 @@ Route::prefix('browse')->group(function () {
     Route::get('/article', 'Frontpanel\FrontPostController@browsePost')->name('post');
     Route::post('/loadpost', 'Frontpanel\FrontPostController@load_post')->name('post.load_data');
     Route::get('/review', 'Frontpanel\FrontPostController@browseReview')->name('review');
+    Route::get('/loadreview', 'Frontpanel\FrontPostController@load_review')->name('review.load_data');
     Route::get('/tag', 'Frontpanel\FrontPostController@browseTag')->name('tag');
 });
 

@@ -64,6 +64,10 @@ class ReviewServices
         }
     }
 
+    public function takeLatestOneReview(){
+        return Review::where('status', 'P')->orderBy('created_at', 'desc')->take(1)->first();
+    }
+
     public function takePublishReview($take){
         if ($take) {
             return Review::where('status', 'P')->orderBy('created_at', 'desc')->take($take)->get();
