@@ -1141,19 +1141,21 @@ tr:first-child > td > .fc-day-grid-event {
   background-color: #fdfdff;
   border-color: #e4e6fc;
   display: block;
-  height: 100%;
+  height: auto;
   box-shadow: none;
   overflow: auto;
 }
 .bootstrap-tagsinput input {
   height: 100%;
   padding: 0 8px;
-  margin: 10px;
 }
 .bootstrap-tagsinput .tag {
-  background-color: #000000;
-  border-radius: 3px;
-  padding: 5px 10px;
+  background: #000000;
+  border: 1px solid black;
+  padding: 0 6px;
+  margin-right: 2px;
+  color: white;
+  border-radius: 4px;
 }
 .bootstrap-tagsinput .tag:first-child {
   margin-left: 5px;

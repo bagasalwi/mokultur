@@ -175,8 +175,19 @@ class PostController extends Controller
             $order_delete = explode(',', $request->order_delete);
             asort($order_delete);
 
-            // dd($order_delete);
             $image = $request->file() ? $request->file() : null;
+
+            // $cover_image = [];
+            // foreach ($image as $i => $ih) {  
+            //     foreach($ih as $key => $k){
+            //         array_push($cover_image,[
+            //             'file' => $k,
+            //             'order' => $key+1 != $order[$key] ? $order[$key] : $key,
+            //             'image_id' => $key+1
+            //         ]);  
+            //     }
+            // }
+            // dd($cover_image);
 
             $this->postService->updateMultipleImage($post->id, $image, $order_delete);
 

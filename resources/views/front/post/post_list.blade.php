@@ -9,7 +9,7 @@
             <div class="col-12 align-self-center">
                 <h1 class="text-white font-weight-bold">Your Article & Reviews List!</h1>
                 <p class="mb-3 text-white">
-                    Create, Edit, Update Your Article & Reviews Easily. 
+                    Create, Edit, Update Your Article & Reviews Easily.
                 </p>
             </div>
         </div>
@@ -58,6 +58,7 @@
                         }
                         @endphp
 
+                        <span class="badge badge-dark mb-1">{{ strtoupper($item->tipe_post) }}</span>
                         <div class="card border-0">
                             <div class="d-flex flex-row">
                                 <a class="text-dark"
@@ -68,8 +69,10 @@
                             <div class="d-flex flex-row">
                                 <div>
                                     <p>Created
-                                        {{ $item->created_at->format('d M Y') }}<span
-                                            class="badge badge-pill badge-{{ $s_color }} mx-2">{{ $status }}</span></p>
+                                        {{ $item->created_at->format('d M Y') }}
+                                        <span class="font-weight-bold mx-1">&#183;</span>
+                                        <span class="font-weight-bold text-{{ $s_color }}">{{ $status }}</span>
+                                    </p>
                                 </div>
                                 <div class="ml-auto px-2">
                                     <a href="{{ $url_update }}/{{ $item->slug }}"
@@ -100,7 +103,7 @@
             </div>
         </div>
     </div>
-    
+
 </section>
 
 <!-- Modal -->

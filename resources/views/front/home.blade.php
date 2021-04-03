@@ -6,9 +6,9 @@
     <div class="container section">
         <div class="row">
             <div class="col-lg-6 align-self-center">
-                <h1 class="text-white fw-700" data-font-size="36px"><span id="switchtext">Article</span>, Post Whatever You Wanna Post, Freely!</h1>
+                <h1 class="text-white fw-700" data-font-size="36px">Ber-kulturisasi dengan update yang lagi happening! Seperti <span id="switchtext">Geek</span></h1>
                 <p class="mb-3 text-white">
-                    Kreasibangsa is Open Space for everyone who want to share their thoughts within an article or a reviews in every aspect like Geeks, Pop Culture, Movies, Technology, Design, and Many More.
+                    Mokultur adalah ruang terbuka untuk kalian yang mempunyai tingak kulturasi tinggi, disini gue akan berbagi macam-macam tulisan random mulai dari Geeks, Pop Culture, Film, Teknologi dan lainnya. Stay Tune!!
                 </p>
                 <div class="d-none d-lg-block">
                     @guest
@@ -118,16 +118,13 @@
     <script>
     // Start Text Typing
     const words = [
-        "Article",
-        "Reviews",
-        "Stories",
-        "Geeks",
-        "Technology",
-        "Games",
-        "Foodies",
-        "Programming",
-        "Pop Culture",
-        "Design",
+        "Geek..",
+        "Anime..",
+        "Fandom..",
+        "Film..",
+        "Teknologi..",
+        "Games..",
+        "Design..",
       ];
     const timePerWord = 3000; // milliseconds
     const timePerLetter = 50; //milliseconds
