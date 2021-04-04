@@ -23,24 +23,24 @@
         </div>
         <ul class="navbar-nav">
             <li class="nav-item py-2">
-                <a class="nav-link {{ request()->is('browse') || request()->is('browse/*') ? 'text-primary' : '' }}"
+                <a class="nav-link {{ request()->is('browse') || request()->is('browse/*') ? 'text-primary' : 'text-light' }}"
                     href="{{ route('browse') }}">Browse</a>
             </li>
             <li class="nav-item py-2">
-                <a class="nav-link {{ request()->is('topic') ? 'text-primary' : '' }}"
+                <a class="nav-link {{ request()->is('topic') ? 'text-primary' : 'text-light' }}"
                     href="{{ route('topic') }}">Topics</a>
             </li>
             <li class="nav-item py-2">
-                <a class="nav-link {{ request()->is('creator') ? 'text-primary' : '' }}"
+                <a class="nav-link {{ request()->is('creator') ? 'text-primary' : 'text-light' }}"
                     href="{{ route('creator') }}">Creators</a>
             </li>
             <li class="nav-item py-2">
-                <a class="nav-link {{ request()->is('special') ? 'text-primary' : '' }}"
+                <a class="nav-link {{ request()->is('special') ? 'text-primary' : 'text-light' }}"
                     href="{{ route('special') }}">Special</a>
             </li>
             @guest
             <li class="nav-item py-2 dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                <a class="nav-link text-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                     aria-expanded="false">
                     <span class="no-pm">Account <i class="fas fa-chevron-down"></i></span>
                 </a>
@@ -58,7 +58,7 @@
             $lastname = substr($fullname, strpos($fullname, ' '), strlen($fullname));
             @endphp
             <li class="nav-item py-2 dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                <a class="nav-link text-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                     aria-expanded="false">
                     <span class="no-pm">{{ Str::upper(auth()->user()->username) }} <i
                             class="fas fa-chevron-down"></i></span>

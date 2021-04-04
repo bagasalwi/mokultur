@@ -6,7 +6,7 @@
 
 @section('content')
 
-<div class="jumbotron jumbotron-fluid mb-0" data-background-topic="{{ asset('storage/' . $post->category->banner) }}">
+<div class="jumbotron mini-section jumbotron-fluid mb-0" data-background-topic="{{ asset('storage/' . $post->category->banner) }}">
     <div class="jumbotron-overlay"></div>
     <div class="container mt-4">
         <div class="row">
@@ -18,7 +18,7 @@
     </div>
 </div>
 
-<section class="mini-section">
+<section class="">
     <div class="container mt-2">
         <div class="row">
             @include('front.partial.left-bar')
