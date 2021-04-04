@@ -155,7 +155,7 @@
         overflow-y: scroll;
         overflow-x: hidden;
         transition: visibility 0.2s ease-in-out, transform 0.2s ease-in-out;
-        background-color: #fff !important;
+        background-color: #000 !important;
     }
     
     html:lang(ar) .mobile-offcanvas {
