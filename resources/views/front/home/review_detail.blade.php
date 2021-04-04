@@ -153,7 +153,7 @@
                         <div class="row align-items-center">
                             <div class="col-3 col-lg-2 col-md-4 col-sm-12">
                                 <div class="d-flex justify-content-center">
-                                    <img class="img-fluid rounded-circle"
+                                    <img class="img-profile rounded-circle"
                                         src="{{ asset('storage/' . $user->profile_pic) }}" alt="...">
                                 </div>
                             </div>

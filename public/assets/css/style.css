@@ -4327,8 +4327,9 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
 }
 
 .img-profile {
-    max-width: 150px !important;
-    height: 150px !important;
+    object-fit: cover;
+    max-width: 70px !important;
+    height: 70px !important;
     border-radius: 50% !important;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
 }

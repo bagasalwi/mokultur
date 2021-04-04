@@ -34,7 +34,7 @@
                         <div class="align-self-center mr-2">
                             <img alt="image" width="50" height="50"
                                 src="{{ asset('storage/' . $post->user->profile_pic) }}"
-                                class="rounded-circle">
+                                class="rounded-circle img-cover">
                         </div>
                         <div class="align-self-center">
                             <h6 class="no-pm">

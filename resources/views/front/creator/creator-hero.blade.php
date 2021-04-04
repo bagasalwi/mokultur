@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="col-lg-2 col-md-4 col-sm-12 my-2">
                         <div class="d-flex justify-content-center">
-                            <img class="rounded-circle" width="120" height="120"
+                            <img class="rounded-circle img-cover" width="120" height="120"
                                 src="{{ asset('storage/' . $user->profile_pic) }}" alt="...">
                         </div>
                     </div>
