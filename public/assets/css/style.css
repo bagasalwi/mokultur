@@ -4328,8 +4328,8 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
 
 .img-profile {
     object-fit: cover;
-    max-width: 70px !important;
-    height: 70px !important;
+    max-width: 85px !important;
+    height: 85px !important;
     border-radius: 50% !important;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
 }
