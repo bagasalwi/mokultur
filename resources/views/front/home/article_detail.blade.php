@@ -6,9 +6,9 @@
 
 @section('content')
 
-<div class="jumbotron mini-section jumbotron-fluid mb-0" data-background-topic="{{ asset('storage/' . $post->category->banner) }}">
+<div class="jumbotron jumbotron-fluid mb-0" data-background-topic="{{ asset('storage/' . $post->category->banner) }}">
     <div class="jumbotron-overlay"></div>
-    <div class="container mt-4">
+    <div class="container mini-section">
         <div class="row">
             <div class="col-md-8 col-sm-12 offset-md-2 text-center">
                 <h2 class="text-white fw-700">{{ $post->category->name }}</h2>
