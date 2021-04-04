@@ -151,13 +151,13 @@
                 <a href="{{ route('creator.detail', $review->user->username) }}" class="clearfix">
                     <div class="card card-hover bd-radius-4 shadow py-2 px-4 my-4">
                         <div class="row align-items-center">
-                            <div class="col-2 col-lg-2 col-md-4 col-sm-4">
+                            <div class="col-3 col-lg-2 col-md-4 col-sm-4">
                                 <div class="d-flex justify-content-center">
                                     <img class="img-profile rounded-circle"
                                         src="{{ asset('storage/' . $user->profile_pic) }}" alt="...">
                                 </div>
                             </div>
-                            <div class="col-10 col-lg-10 col-md-8 col-sm-8 ml-0 my-2">
+                            <div class="col-9 col-lg-10 col-md-8 col-sm-8 ml-0 my-2">
                                 <span class="badge badge-info">Reviewer</span>
                                 <div class="my-1">
                                     <h4 class="no-pm">{{ $user->name }}</h4>
