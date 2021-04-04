@@ -85,10 +85,10 @@ $(document).ready(function () {
     $(window).scroll(function() {
         if($(window).width() > 767 && $(this).scrollTop() > 1) { 
             $('.navbar').removeClass('navbar-transparent');
-            $('.navbar').addClass('border');
+            // $('.navbar').addClass('border');
         } else {
             $('.navbar').addClass('navbar-transparent');
-            $('.navbar').removeClass('border');
+            // $('.navbar').removeClass('border');
         }
     });
 });

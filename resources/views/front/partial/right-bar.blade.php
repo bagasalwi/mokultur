@@ -8,7 +8,9 @@
                 </p>
             </div>
         </div>
-
+        {{-- <div class="my-4">
+            <a href="https://www.instagram.com/bagasalwi/" class="btn btn-block btn-dark">Join Mokultur!</a>
+        </div> --}}
         <div class="heading2">
             <a href="{{ route('tag') }}">
                 <h5 class="mt-4 fw-700">Mokultur <span class="text-primary">Top Tag's</span></h5>
@@ -21,6 +23,9 @@
                 <span class="badge badge-primary badge-pill">{{ $p->count }}</span>
             </a>
             @endforeach
+        </div>
+        <div class="mt-4">
+            <p class="text-center">Made with <i class="fas fa-heart" style="color:#000000"></i></p>
         </div>
     </div>
 </div>

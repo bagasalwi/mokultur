@@ -1,9 +1,8 @@
 <div class="col-lg-6 col-sm-12">
     <div class="heading2">
-        <h4 class="fw-700">Artikel <span class="text-primary">Mokultur</span></h4>
+        <h4 class="fw-700">Mokultur <span class="text-primary">Blog</span></h4>
     </div>
-    <div id="posts" class="row">
-        {{-- Ajax called --}}
+    <div id="posts" class="row">        
     </div>
 </div>
 
@@ -13,6 +12,15 @@
     $(document).ready(function(){
         var _token = $('meta[name="csrf-token"]').attr('content');
         load_data('', _token);
+
+        $("#carousel-post").owlCarousel({
+            items:1,
+            // margin:10,
+            autoHeight:true,
+            nav: true,
+            dots: false,
+            navText: ['<i class="fas fa-chevron-left"></i>','<i class="fas fa-chevron-right"></i>']
+        });
 
         function load_data(id="", _token){
             $.ajax({

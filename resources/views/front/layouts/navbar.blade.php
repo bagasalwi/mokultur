@@ -1,41 +1,41 @@
 <!-- Main Navbar Mobile -->
 <b class="screen-overlay"></b>
-<nav class="navbar2 navbar d-lg-none fixed-top navbar-expand-lg navbar-light">
+<nav class="navbar2 navbar d-lg-none fixed-top navbar-expand-lg bg-black navbar-dark">
     <div class="container">
         <button data-trigger="#navbar_main" class="navbar-toggler" type="button"><span
                 class="fas fa-bars"></span></button>
         <a class="navbar-brand mx-auto" href="{{ url('/') }}">
-            {{-- <img src="{{ asset('gambar/logo/KREASIBANGSA.png')}}" alt=""> --}}
-            <h4 class="no-pm nav-link">MOKultur</h4>
+            <img src="{{ asset('gambar/logo/mokultur-logo-1.png')}}" alt="">
+            {{-- <h4 class="no-pm nav-link">MOKultur</h4> --}}
         </a>
     </div>
 </nav>
 
 <!-- Main Navbar -->
-<nav id="navbar_main" class="mobile-offcanvas navbar navbar-transparent fixed-top navbar-expand-lg">
+<nav id="navbar_main" class="mobile-offcanvas navbar navbar-dark navbar-transparent fixed-top navbar-expand-lg">
     <div class="container nav-cont">
         <a class="navbar-brand d-none d-lg-block" href="{{ url('/') }}">
-            {{-- <img src="{{ asset('gambar/logo/KREASIBANGSA.png')}}" alt=""> --}}
-            <h4 class="no-pm nav-link">MOKultur</h4>
+            <img src="{{ asset('gambar/logo/mokultur-logo-1.png')}}" alt="">
+            {{-- <h4 class="no-pm nav-link">MOKultur</h4> --}}
         </a>
         <div class="offcanvas-header">
             <button class="navbar-toggler btn-close"><span class="fas fa-bars"></span></button>
         </div>
         <ul class="navbar-nav">
             <li class="nav-item py-2">
-                <a class="nav-link {{ request()->is('browse') || request()->is('browse/*') ? 'text-primary-border' : '' }}"
+                <a class="nav-link {{ request()->is('browse') || request()->is('browse/*') ? 'text-primary' : '' }}"
                     href="{{ route('browse') }}">Browse</a>
             </li>
             <li class="nav-item py-2">
-                <a class="nav-link {{ request()->is('topic') ? 'text-primary-border' : '' }}"
+                <a class="nav-link {{ request()->is('topic') ? 'text-primary' : '' }}"
                     href="{{ route('topic') }}">Topics</a>
             </li>
             <li class="nav-item py-2">
-                <a class="nav-link {{ request()->is('creator') ? 'text-primary-border' : '' }}"
+                <a class="nav-link {{ request()->is('creator') ? 'text-primary' : '' }}"
                     href="{{ route('creator') }}">Creators</a>
             </li>
             <li class="nav-item py-2">
-                <a class="nav-link {{ request()->is('special') ? 'text-primary-border' : '' }}"
+                <a class="nav-link {{ request()->is('special') ? 'text-primary' : '' }}"
                     href="{{ route('special') }}">Special</a>
             </li>
             @guest

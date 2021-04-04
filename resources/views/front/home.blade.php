@@ -6,15 +6,13 @@
     <div class="container section">
         <div class="row">
             <div class="col-lg-6 align-self-center">
-                <h1 class="text-white fw-700" data-font-size="36px">Ber-kulturisasi dengan update yang lagi happening! Seperti <span id="switchtext">Geek</span></h1>
+                <h1 class="text-white fw-700" data-font-size="36px">Ber-kulturisasi dengan update yang lagi happening! Seperti <span id="switchtext">Geeks</span>!</h1>
                 <p class="mb-3 text-white">
                     Mokultur adalah ruang terbuka untuk kalian yang mempunyai tingak kulturasi tinggi, disini gue akan berbagi macam-macam tulisan random mulai dari Geeks, Pop Culture, Film, Teknologi dan lainnya. Stay Tune!!
                 </p>
                 <div class="d-none d-lg-block">
-                    @guest
-                    <a class="btn btn-light px-4 mr-1" href="{{ route('post') }}" role="button">Sign In</a>
-                    @endguest
-                    <a class="btn btn-outline-white px-4 mr-1" href="{{ route('browse') }}" role="button">Browse</a>
+                    <a class="btn btn-light px-4 mr-1" href="{{ route('browse') }}" role="button">Browse</a>
+                    <a class="btn btn-dark px-4 mr-1" href="{{ route('creator') }}" role="button">Mokultur Creator</a>
                 </div>
             </div>
             <div class="col-lg-6 d-none d-lg-block">
@@ -92,10 +90,10 @@
     <div class="jumbotron jumbotron-fluid pattern-1 bg-light">
         <div class="container">
             <a href="{{ route('review') }}" class="card-block clearfix">
-                <div class="hero primary-pattern-1 text-white mb-3 card-hover bd-radius-4">
+                <div class="hero bg-black text-white mb-3 card-hover bd-radius-4">
                     <div class="hero-inner">
                         <h1 class="text-white">Mokultur Reviews</h1>
-                        <p class="lead text-white">Tempat review-review film atau anime dari kreator paling edgy di mokultur, Semua reviewnya se-enak jidatnya! Tapi jangan khawatir karena dia salah satu Man of Culture.</p>
+                        <p class="lead text-white no-pm">Tempat review-review film atau anime dari kreator paling edgy di mokultur, Semua reviewnya se-enak jidatnya! Tapi jangan khawatir karena dia salah satu Man of Culture.</p>
                     </div>
                 </div>
             </a>
@@ -117,13 +115,13 @@
     <script>
     // Start Text Typing
     const words = [
-        "Geek..",
-        "Anime..",
-        "Fandom..",
-        "Film..",
-        "Teknologi..",
-        "Games..",
-        "Design..",
+        "Geeks",
+        "Anime",
+        "Fandom",
+        "Film",
+        "Teknologi",
+        "Games",
+        "Design",
       ];
     const timePerWord = 3000; // milliseconds
     const timePerLetter = 50; //milliseconds

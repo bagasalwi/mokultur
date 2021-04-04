@@ -144,7 +144,7 @@
                     </div>
                 </div>
 
-                <h1 class="fw-700 mt-4" data-font-size="46px">{{ $review->title }}</h1>
+                <h1 class="fw-700 mt-4" >{{ $review->title }}</h1>
                 <p class="p-0 m-0"><small class="text-dark">Published
                     {{ $review->created_at->format('d-M-Y') }}</small></p>
 

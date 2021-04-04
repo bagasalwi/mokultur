@@ -41,8 +41,10 @@
 	border-color: transparent;
 }
 .nav-link {
-    font-family:'Poppins', sans-serif;
-    font-size:  14px;
+    font-family:'Oswald', sans-serif;
+    color: #fff !important;
+    font-size:  16px;
+    letter-spacing: 1.5px !important;
     font-weight: bold;
     text-transform: uppercase;
 	position: relative;
@@ -75,14 +77,14 @@
 }
 
 .navbar-brand img{
-	height: 20px;
+	height: 40px;
 	width: auto;
 	display: block;
 	-webkit-transition : all 0.3s ease-out;
 	transition : all 0.3s ease-out;
 }
 .navbar {
-    background: #fff;
+    background: #000;
     position: fixed;
 	width: 100%;
 	top: 0;
@@ -224,7 +226,7 @@
 	border-color: transparent;
 }
 
-.navbar-nav>.nav-item>.nav-link:hover {
+/* .navbar-nav>.nav-item>.nav-link:hover {
     color: #0093E9;
     text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
 }
@@ -232,7 +234,7 @@
     color: #0580c7;
     text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
     
-}
+} */
 
 .smart-scroll{
     position: fixed;
