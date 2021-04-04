@@ -7,7 +7,7 @@
 <section class="section">
     <div class="container mt-5">
         <div class="login-brand">
-            <img src="{{ asset('gambar/logo/KREASIBANGSA.png')}}" alt="logo" width="250">
+            <img src="{{ asset('gambar/logo/mokultur-logo-1.png')}}" alt="logo" width="250">
         </div>
         <div class="row">
             <div class="col-md-6 offset-md-3">
@@ -57,8 +57,8 @@
                         </div>
                     </form>
                     <div class="text-center">
-                        <p class="text-secondary">Don't have an Account ?
-                            <a class="text-primary fw-500" href="{{ url('register') }}">Create Account</a>
+                        <p class="text-secondary">Need Account ?
+                            <a class="text-primary fw-500" href="#">Register Account still Closed!</a>
                         </p>
                         <p>
                             <a class="text-dark" href="{{ url('/') }}">Back to Home</a>
