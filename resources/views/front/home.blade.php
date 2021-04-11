@@ -92,7 +92,7 @@
             <a href="{{ route('review') }}" class="card-block clearfix">
                 <div class="hero bg-black text-white mb-3 card-hover no-bd">
                     <div class="hero-inner">
-                        <h1 class="text-white">Mokultur Reviews</h1>
+                        <h1 class="text-white">Mokultur <span class="text-primary">Reviews</span></h1>
                         <p class="lead text-white no-pm">Tempat review-review film atau anime dari kreator paling edgy di mokultur, Semua reviewnya se-enak jidatnya! Tapi jangan khawatir karena dia salah satu Man of Culture.</p>
                     </div>
                 </div>

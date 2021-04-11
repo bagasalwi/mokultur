@@ -27,7 +27,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {        
         $data['title'] = 'Home';
-        $data['top_creation'] = Post::where('status', 'P')->orderBy('view_count', 'desc')->take(5)->get();
+        $data['top_creation'] = Post::where('status', 'P')->orderBy('view_count', 'desc')->take(4)->get();
         // $data['creation'] = Post::where('status', 'P')->orderBy('created_at', 'desc')->paginate(10);
         $data['review'] = $this->reviewService->takePublishReview(4);
         $data['top_category'] = $this->categoryService->topCategory();
@@ -58,7 +58,7 @@ class HomeController extends Controller
 
     public function browse(Request $request){
         $data['creation'] = $this->postService->takePublishPost(9);
-        $data['review'] = $this->reviewService->takePublishReview(8);
+        $data['review'] = $this->reviewService->takePublishReview(6);
         $data['top_category'] = $this->categoryService->topCategory();
         $data['top_tags'] = $this->top_tags;
     

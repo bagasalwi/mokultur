@@ -30,14 +30,14 @@ class FrontPostController extends Controller
             $data['search_meta'] = $request->search;
             $data['creation'] = Post::where('status', 'P')
                 ->orderBy('created_at', 'desc')
-                ->where('title', 'like', "%" . $request->search . "%")->paginate(8);
+                ->where('title', 'like', "%" . $request->search . "%")->paginate(2);
 
             $data['creation']->appends(['search' => $request->search]);
 
             $data['top_category'] = $this->categoryService->topCategory();
             $data['top_tags'] = $this->top_tags;
         } else {
-            $data['creation'] = $this->postService->latestPublishedPost(8);
+            $data['creation'] = $this->postService->latestPublishedPost(2);
             $data['top_category'] = $this->categoryService->topCategory();
             $data['top_tags'] = $this->top_tags;
         }
@@ -46,7 +46,6 @@ class FrontPostController extends Controller
 
     public function load_post(Request $request){
 
-        // dd($request);
         if($request->ajax()){
             if($request->id > 0){
                 $data = Post::where('id', '<', $request->id)
@@ -65,51 +64,6 @@ class FrontPostController extends Controller
             $last_id = 0;
 
             return view('front.partial.load-post', compact('data','last_id'));
-
-            // if(!$data->isEmpty()){
-            //     foreach($data as $row){
-            //         $last_id = $row->id;
-            //         $output .= '
-            //             <div class="col-lg-12 col-sm-12">
-            //                 <a href="'. route('post.detail',[$row->user->username,$row->slug]) .'" class="card-block clearfix">
-            //                     <div class="card border-0 mb-4">
-            //                         <div class="card-img-wrap bd-radius-4">
-            //                             <img class="img-fluid img-article" loading="lazy" src="'. asset('storage/' . $row->photo()) .'"
-            //                                 alt="">
-            //                         </div>
-            //                         <div class="mt-2">
-            //                             <a href="'. route('post.detail',[$row->user->username,$row->slug]) .'" class="no-pm">
-            //                                 <h4>'.$row->title.'</h4>
-            //                             </a>
-            //                         </div>
-            //                         <div id="counter" data-id="'.$last_id.'"></div>
-            //                         <small class="text-secondary">
-            //                             '. \Carbon\Carbon::parse($row->date_published)->format('d M Y') .' &middot;
-            //                             '.$row->user->name.'
-            //                         </small>
-            //                     </div>
-            //                 </a>
-            //             </div>';
-                    
-            //     }
-
-            //     $output .= '
-            //     <div id="load_more" class="col-12 text-center">
-            //         <button id="loadpost" class="btn btn-block btn-dark" data-id="'.$last_id.'">
-            //             Jangkau Lebih Jauh
-            //         </button>
-            //     </div>
-            //     ';
-            // }else{
-            //     $output .= '
-            //     <div id="load_more" class="col-12 text-center">
-            //         <h6 class="text-secondary">Selamat, Kamu sudah meng-kulturi semua artikel!</h6>
-            //     </div>
-            //     ';
-                
-            // }
-
-            // echo $output;
         }
     }
 
@@ -140,12 +94,12 @@ class FrontPostController extends Controller
             $data['search_meta'] = $request->search;
             $data['review'] = Review::where('status', 'P')
                 ->orderBy('created_at', 'desc')
-                ->where('title', 'like', "%" . $request->search . "%")->paginate(8);
+                ->where('title', 'like', "%" . $request->search . "%")->paginate(3);
 
             $data['top_category'] = $this->categoryService->topCategory();
             $data['top_tags'] = $this->top_tags;
         } else {
-            $data['review'] = $this->reviewService->latestPublishedReview(8);
+            $data['review'] = $this->reviewService->latestPublishedReview(3);
             $data['top_category'] = $this->categoryService->topCategory();
             $data['top_tags'] = $this->top_tags;
         }

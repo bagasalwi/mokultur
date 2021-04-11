@@ -28,9 +28,17 @@
                     </a>
                 </div>
                 <div id="counter" data-id="{{ $last_id }}"></div>
-                <small class="text-secondary">
-                    {!! \Carbon\Carbon::parse($row->date_published)->format('d M Y') . '<span class="font-weight-bold mx-1">&#183;</span>' . $row->user->name !!}
-                </small>
+                <div class="text-secondary no-pm">
+                    {{ str_limit(strip_tags($row->description),140,'...') }}
+                </div>
+                <div class="align-items-end mt-2">
+                    <p class="text-secondary">
+                        <small>
+                            {{ Carbon\Carbon::parse($row->date_published)->diffForHumans() }} &middot; <a
+                            href="{{ route('creator.detail', $row->user->username) }}">{{ '@'.$row->user->username }}</a>
+                        </small>
+                    </p>
+                </div>
             </div>
         </a>
     </div>

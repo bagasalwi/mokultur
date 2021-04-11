@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" id="reviews">
     @foreach ($review as $p)
     <div class="col-6 col-lg-{{ $col }} col-md-6 col-sm-6 my-2">
         <a href="{{ route('review.detail',[$p->user->username,$p->slug]) }}"

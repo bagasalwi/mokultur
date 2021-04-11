@@ -21,22 +21,20 @@
         <div class="row">
             <div class="col-lg-9 col-sm-12">
                 <a href="{{ route('review') }}" class="card-block clearfix">
-                    <div class="hero primary-gradient text-white mb-3 card-hover bd-radius-4">
+                    <div class="hero bg-black text-white mb-3 card-hover no-bd">
                         <div class="hero-inner">
-                            <h1 class="text-white">Reviews</h1>
-                            <p class="lead text-white">A place for you to share your personal opinion about Movies,
-                                Anime, Comics, Tv Series or Game.</p>
+                            <h1 class="text-white">Mokultur <span class="text-primary">Review's</span></h1>
+                            <p class="lead text-white no-pm">Tempat review-review film atau anime dari kreator paling edgy di mokultur, Semua reviewnya se-enak jidatnya! <span class="font-weight-bold">Klik disini untuk liat lengkapnya!</span></p>
                         </div>
                     </div>
                 </a>
                 @include('front.layouts.review-card', ['col' => '4'])
 
                 <a href="{{ route('post') }}" class="card-block clearfix">
-                    <div class="hero primary-gradient text-white my-3 card-hover bd-radius-4">
+                    <div class="hero bg-black text-white mb-3 card-hover no-bd">
                         <div class="hero-inner">
-                            <h1 class="text-white">Articles</h1>
-                            <p class="lead text-white">A place for you to share your Stories, Knowledge, Experience,
-                                Tutorials, Foodies and more.</p>
+                            <h1 class="text-white">Mokultur <span class="text-primary">Article's</span></h1>
+                            <p class="lead text-white no-pm">Tempat Sharing para author Mokultur! Biasanya Sharing artikel random berupa Stories, Knowledge, Experience, Tutorial dan Lainnya.. <span class="font-weight-bold">Klik disini untuk liat lengkapnya!</span></p>
                         </div>
                     </div>
                 </a>
@@ -49,16 +47,17 @@
                                     <img class="img-fluid img-imagepost" loading="lazy"
                                         src="{{ asset('storage/' . $p->photo()) }}" alt="">
                                 </div>
-                                <h4><a class="text-dark font-weight-bold"
-                                        href="{{ route('post.detail',[$p->user->username,$p->slug]) }}">{{ $p->title }}</a>
-                                </h4>
+                                <h5><a class="text-dark fw-700"
+                                        href="{{ route('post.detail',[$p->user->username,$p->slug]) }}">{{ $p->title }}</a></h5>
                                 <div class="text-secondary no-pm">
                                     {{ str_limit(strip_tags($p->description),100,'...') }}
                                 </div>
                                 <div class="align-items-end mt-2">
                                     <p class="text-secondary">
-                                        {{ Carbon\Carbon::parse($p->date_published)->diffForHumans() }} &middot; <a
-                                            href="{{ route('creator.detail', $p->user->username) }}">{{ strtoupper($p->user->name) }}</a>
+                                        <small>
+                                            {{ Carbon\Carbon::parse($p->date_published)->diffForHumans() }} &middot; <a
+                                            href="{{ route('creator.detail', $p->user->username) }}">{{ '@'.$p->user->username }}</a>
+                                        </small>
                                     </p>
                                 </div>
                             </div>

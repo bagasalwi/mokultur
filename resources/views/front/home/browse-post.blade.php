@@ -36,15 +36,17 @@
                                     <img class="img-fluid img-imagepost" loading="lazy"
                                         src="{{ asset('storage/' . $p->photo()) }}" alt="">
                                 </div>
-                                <h4><a class="text-dark font-weight-bold"
-                                        href="{{ route('post.detail',[$p->user->username,$p->slug]) }}">{{ $p->title }}</a></h4>
+                                <h5><a class="text-dark fw-700"
+                                        href="{{ route('post.detail',[$p->user->username,$p->slug]) }}">{{ $p->title }}</a></h5>
                                 <div class="text-secondary no-pm">
                                     {{ str_limit(strip_tags($p->description),100,'...') }}
                                 </div>
                                 <div class="align-items-end mt-2">
                                     <p class="text-secondary">
-                                        {{ Carbon\Carbon::parse($p->date_published)->diffForHumans() }} &middot; <a
-                                            href="{{ route('creator.detail', $p->user->username) }}">{{ strtoupper($p->user->name) }}</a>
+                                        <small>
+                                            {{ Carbon\Carbon::parse($p->date_published)->diffForHumans() }} &middot; <a
+                                            href="{{ route('creator.detail', $p->user->username) }}">{{ '@'.$p->user->username }}</a>
+                                        </small>
                                     </p>
                                 </div>
                             </div>
@@ -55,8 +57,8 @@
                 {!! $creation->render() !!}
                 <div class="text-center my-2">
                     @if ($creation->hasMorePages())
-                    <button id="see-more" class="btn btn-outline-dark" data-page="2"
-                        data-link="{{ url()->current().'?page=' }}" data-div="#posts">See more</button>
+                    <button id="see-more" class="btn btn-dark" data-page="2"
+                        data-link="{{ url()->current().'?page=' }}" data-div="#posts">Jangkau Lebih Jauh..</button>
                     @else
                     <h6 class="text-secondary">You reach the bottom of Knowledge!</h6>
                     @endif

@@ -3,6 +3,7 @@
 @section('meta_title'){{ $post->title }}@endsection
 @section('meta_keyword'){{ implode(', ', $meta_tags) }}@endsection
 @section('meta_desc'){{ str_limit(strip_tags($post->description),180,'...') }}@endsection
+@section('meta_img'){{ $post->type == 'photo' ? asset('storage/' . $post->images()->first()->name) : asset('storage/' . $image->name) }}@endsection
 
 @section('content')
 
