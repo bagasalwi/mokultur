@@ -83,7 +83,7 @@ class ProfileController extends Controller
             'name' => 'required|min:3',
             // 'email' => 'required|email|unique:users,email,'. $user->id,
             'username' => 'required|min:3|max:10|unique:users,username,'. $user->id,
-            'profile_pic' => 'file|image|mimes:jpeg,png,jpg',
+            'profile_pic' => 'file|image|mimes:jpeg,png,jpg,gif',
         ]);
 
         $this->userService->updateProfile($request->all(),$request->file('profile_pic'));

@@ -4345,7 +4345,7 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
     position: sticky;
     position: -webkit-sticky;
     top: 70px;
-    z-index: 9999;
+    /* z-index: 9999; */
 }
 
 .img-slider {

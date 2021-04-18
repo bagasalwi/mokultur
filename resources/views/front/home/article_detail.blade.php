@@ -169,29 +169,9 @@
         items:1,
         // margin:10,
         autoHeight:true,
-        nav: true,
-        dots: false,
+        nav: false,
+        dots: true,
         navText: ['<i class="fas fa-chevron-left"></i>','<i class="fas fa-chevron-right"></i>']
     });
-
-    // var filter = ['tai','laravel'];
-    // $.get("{{ asset('wordlist/badword.list') }}", function(data){
-    //     var filter = data.split('\n');
-    // });
-
-    // console.log(filter[0],filter[1],filter[2])
-    
-    // $('body').html(function(i, txt){
-    //   // iterate over all words
-    //   for(var i=0; i<filter.length; i++){
-    //     // Create a regular expression and make it global
-    //     var pattern = new RegExp('\\b' + filter[i] + '\\b', 'g');
-    //     // Create a new string filled with '*'
-    //     var replacement = '*'.repeat(filter[i].length);
-    //     txt = txt.replace(pattern, replacement);
-    //   }
-    //   // returning txt will set the new text value for the current element
-    //   return txt;
-    // });
 </script>
 @endsection

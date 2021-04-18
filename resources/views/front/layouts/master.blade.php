@@ -16,6 +16,17 @@
 	<link rel="icon" href="{{ asset('gambar/logo/mokultur-logo.png') }}">
 	<title>Mokultur - @yield('meta_title', 'Home')</title>
 
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167875262-1"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'UA-167875262-1');
+	</script>
+
+
 	@include('front.layouts.css-extension')
 
 	@yield('css')

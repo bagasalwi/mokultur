@@ -1639,7 +1639,7 @@ tr:first-child > td > .fc-day-grid-event {
   padding: 0px 0;
 }
 .owl-theme .owl-dots {
-  margin-top: 20px !important;
+  margin-top: 5px !important;
 }
 .owl-theme .owl-dots .owl-dot.active span {
   background-color: #000000;

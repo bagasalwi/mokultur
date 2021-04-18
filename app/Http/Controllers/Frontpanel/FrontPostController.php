@@ -94,12 +94,12 @@ class FrontPostController extends Controller
             $data['search_meta'] = $request->search;
             $data['review'] = Review::where('status', 'P')
                 ->orderBy('created_at', 'desc')
-                ->where('title', 'like', "%" . $request->search . "%")->paginate(3);
+                ->where('title', 'like', "%" . $request->search . "%")->paginate(6);
 
             $data['top_category'] = $this->categoryService->topCategory();
             $data['top_tags'] = $this->top_tags;
         } else {
-            $data['review'] = $this->reviewService->latestPublishedReview(3);
+            $data['review'] = $this->reviewService->latestPublishedReview(6);
             $data['top_category'] = $this->categoryService->topCategory();
             $data['top_tags'] = $this->top_tags;
         }
