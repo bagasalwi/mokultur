@@ -5,7 +5,7 @@
         <button data-trigger="#navbar_main" class="navbar-toggler" type="button"><span
                 class="fas fa-bars"></span></button>
         <a class="navbar-brand mx-auto" href="{{ url('/') }}">
-            <img src="{{ asset('gambar/logo/mokultur-logo-1.png')}}" alt="">
+            <img src="{{ asset('gambar/logo/logo.png')}}" alt="">
             {{-- <h4 class="no-pm nav-link">MOKultur</h4> --}}
         </a>
     </div>
@@ -15,32 +15,27 @@
 <nav id="navbar_main" class="mobile-offcanvas navbar navbar-dark navbar-transparent fixed-top navbar-expand-lg">
     <div class="container nav-cont">
         <a class="navbar-brand d-none d-lg-block" href="{{ url('/') }}">
-            <img src="{{ asset('gambar/logo/mokultur-logo-1.png')}}" alt="">
-            {{-- <h4 class="no-pm nav-link">MOKultur</h4> --}}
+            <img src="{{ asset('gambar/logo/logo.png')}}" alt="">
         </a>
         <div class="offcanvas-header">
             <button class="navbar-toggler btn-close"><span class="fas fa-bars"></span></button>
         </div>
         <ul class="navbar-nav">
             <li class="nav-item py-2">
-                <a class="nav-link {{ request()->is('browse') || request()->is('browse/*') ? 'text-primary' : 'text-white' }}"
+                <a class="nav-link font-tokyo {{ request()->is('browse') || request()->is('browse/*') ? 'text-primary' : 'text-white' }}"
                     href="{{ route('browse') }}">Browse</a>
             </li>
             <li class="nav-item py-2">
-                <a class="nav-link {{ request()->is('topic') ? 'text-primary' : 'text-white' }}"
+                <a class="nav-link font-tokyo {{ request()->is('topic') ? 'text-primary' : 'text-white' }}"
                     href="{{ route('topic') }}">Topics</a>
             </li>
             <li class="nav-item py-2">
-                <a class="nav-link {{ request()->is('creator') ? 'text-primary' : 'text-white' }}"
+                <a class="nav-link font-tokyo {{ request()->is('creator') ? 'text-primary' : 'text-white' }}"
                     href="{{ route('creator') }}">Creators</a>
             </li>
-            {{-- <li class="nav-item py-2">
-                <a class="nav-link {{ request()->is('special') ? 'text-primary' : 'text-white' }}"
-                    href="{{ route('special') }}">Special</a>
-            </li> --}}
             @guest
             <li class="nav-item py-2 dropdown">
-                <a class="nav-link text-white" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                <a class="nav-link font-tokyo text-white" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                     aria-expanded="false">
                     <span class="no-pm">Account <i class="fas fa-chevron-down"></i></span>
                 </a>

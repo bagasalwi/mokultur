@@ -7,20 +7,28 @@
     <div class="col-lg-12 col-sm-12">
         <a href="{{ route('post.detail',[$row->user->username,$row->slug]) }}" class="card-block clearfix">
             <div class="card border-0 mb-4">
-                {{-- @if ($row->type == 'photo')
-                <div class="owl-carousel owl-theme slider" id="carousel-post">
-                    @foreach ($row->images()->get() as $image)
-                    <img src="{{ asset('storage/' . $image->name) }}" class="img-fluid img-cover w-100 bd-radius-4">
-                    @endforeach
-                </div>
-                @else --}}
                     @if ($row->photo() == "no-image")
                 
                     @else
-                    <div class="card-img-wrap bd-radius-4">
+                    <div class="card-img-wrap">
                         <img class="img-fluid img-article" loading="lazy" src="{{ asset('storage/' . $row->photo()) }}" alt="">
                     </div>
                     @endif
+
+                    {{-- @if ($row->type == 'photo')
+                    <div class="owl-carousel owl-theme slider container-mobile no-pm" id="carousel-post">
+                        @foreach ($row->images()->get() as $image)
+                        <img src="{{ asset('storage/' . $image->name) }}" class="img-fluid img-cover w-100">
+                        @endforeach
+                    </div>
+                    @else
+                        @if ($row->photo() == "no-image")
+
+                        @else
+                        <img src="{{ asset('storage/' . $row->photo()) }}" class="img-fluid mx-auto d-block img-article">
+                    @endif
+                    @endif --}}
+                    
                 {{-- @endif --}}
                 <div class="mt-2">
                     <a href="{{ route('post.detail',[$row->user->username,$row->slug]) }}" class="no-pm">
@@ -53,3 +61,15 @@
         <h6 class="text-secondary">Selamat, Kamu sudah meng-kulturi semua artikel!</h6>
     </div>
 @endif
+
+
+<script>
+    $("#carousel-post").owlCarousel({
+        items:1,
+        // margin:10,
+        autoHeight:true,
+        nav: false,
+        dots: true,
+        navText: ['<i class="fas fa-chevron-left"></i>','<i class="fas fa-chevron-right"></i>']
+    });
+</script>

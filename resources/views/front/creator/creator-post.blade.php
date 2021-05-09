@@ -30,28 +30,15 @@ $lastname = substr($fullname, strpos($fullname, ' '), strlen($fullname));
                 @else
                 <div id="posts" class="row">
                     @foreach ($post as $p)
-                    <div class="col-lg-4 col-md-4 col-sm-12">
+                    <div class="col-lg-4 col-md-4">
                         <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="card-block clearfix">
-                            <div class="card border-0 my-2">
-                                <div class="card-img-wrap bd-radius-8">
+                            <div class="card border-0 my-2 px-0">
+                                <div class="card-img-wrap">
                                     <img class="img-fluid img-imagepost" src="{{ asset('storage/' . $p->photo()) }}"
                                         alt="">
-                                    {{-- <div class="card-img-overlay text-white">
-                                        <h5 class="badge badge-light shadow">{{ $p->category->name }}</h5>
-                                    </div> --}}
                                 </div>
-                                <div class="mt-2">
-                                    <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}">
-                                        <h4 class="no-pm">{{ $p->title }}</h4>
-                                    </a>
-                                </div>
-                                <small class="text-secondary">
-                                    {{ Carbon\Carbon::parse($p->date_published)->format('d M Y') }} &middot;
-                                    {{ $p->user->name }}
-                                </small>
                             </div>
                         </a>
-
                     </div>
                     @endforeach
                 </div>

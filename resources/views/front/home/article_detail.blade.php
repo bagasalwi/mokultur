@@ -26,7 +26,7 @@
             <div class="col-md-6 col-sm-12">
                 <h4>
                     @if ($post->checkStatus() == 'DRAFT')
-                        <span class="badge badge-danger px-4">{{ $post->checkStatus() }}</span>
+                    <span class="badge badge-danger px-4">{{ $post->checkStatus() }}</span>
                     @endif
                 </h4>
                 <h1 class="text-dark fw-700 mb-4">{{ $post->title }}</h1>
@@ -49,23 +49,23 @@
                         <div class="align-self-end">
                             @if ($post->date_published != null)
                             <p class="p-0 m-0"><small class="text-dark">Published
-                                {{ $post->created_at->format('d-M-Y') }}</small></p>
+                                    {{ $post->created_at->format('d-M-Y') }}</small></p>
                             @endif
                         </div>
                     </div>
                 </div>
                 @if ($post->type == 'photo')
-                <div class="owl-carousel owl-theme slider" id="carousel-post">
+                <div class="owl-carousel owl-theme slider container-mobile no-pm" id="carousel-post">
                     @foreach ($post->images()->get() as $image)
-                        <img src="{{ asset('storage/' . $image->name) }}" class="img-fluid img-cover w-100 bd-radius-4">
+                    <img src="{{ asset('storage/' . $image->name) }}" class="img-fluid img-cover w-100">
                     @endforeach
                 </div>
                 @else
-                    @if ($post->photo() == "no-image")
-                    
-                    @else
-                    <img src="{{ asset('storage/' . $post->photo()) }}" class="img-fluid mx-auto d-block img-article bd-radius-4">
-                    @endif
+                @if ($post->photo() == "no-image")
+
+                @else
+                <img src="{{ asset('storage/' . $post->photo()) }}" class="img-fluid mx-auto d-block img-article">
+                @endif
                 @endif
                 <div id="posting" class="content my-4">
                     {!! $post->description !!}
@@ -74,27 +74,29 @@
                 <hr>
                 <div class="badges my-4">
                     @foreach ($post->tags as $tag)
-                        <a href="{{ route('tag','tag='.$tag->slug) }}" class="badge badge-primary">{{$tag->name}}</a>
+                    <a href="{{ route('tag','tag='.$tag->slug) }}" class="badge badge-primary">{{$tag->name}}</a>
                     @endforeach
                 </div>
 
                 <hr>
 
                 <a href="{{ route('post.detail',[$selanjutnya->user->username,$selanjutnya->slug]) }}" class="clearfix">
-                    <div class="card card-hover bd-radius-4 shadow py-2 px-2 my-4">
+                    <div class="card card-hover shadow">
                         <div class="row align-items-center">
-                            <div class="col-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="col-4 col-lg-4 col-md-4 no-pm">
                                 <div class="d-flex justify-content-center">
-                                    <img class="img-fluid img-article bd-radius-4" loading="lazy" src="{{ asset('storage/' . $selanjutnya->photo()) }}" alt="">
+                                    <img class="img-fluid img-imagepost-headline" loading="lazy"
+                                        src="{{ asset('storage/' . $selanjutnya->photo()) }}" alt="">
                                 </div>
                             </div>
-                            <div class="col-8 col-lg-8 col-md-8 ml-0 pl-0">
+                            <div class="col-8 col-lg-8 col-md-8">
                                 <span class="badge badge-info">BACA SELANJUTNYA</span>
                                 <div class="my-1">
                                     <h6 class="no-pm">{{ $selanjutnya->title }}</h6>
                                 </div>
                                 <div class="d-none d-lg-block">
-                                    <div class="text-secondary text-small no-pm ">{{ str_limit(strip_tags($selanjutnya->description),100,'...') }}</div>
+                                    <div class="text-secondary text-small">
+                                        {{ str_limit(strip_tags($selanjutnya->description),100,'...') }}</div>
                                 </div>
                             </div>
                         </div>
@@ -105,43 +107,40 @@
 
                 @if ($recomendation->isNotEmpty())
                 <div class="heading2">
-                    <h5 class="mt-4 fw-700">Topik <span class="text-primary">Rekomendasi</span></h5>    
+                    <h5 class="mt-4 fw-700">Topik <span class="text-primary">Rekomendasi</span></h5>
                 </div>
                 <div class="row">
                     @foreach ($recomendation as $p)
                     <div class="col-md-6 col-lg-6 mb-4">
                         <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="card-block clearfix">
-                            <div class="card border my-2 shadow bd-radius-4">
+                            <div class="card border my-2 shadow">
                                 <div class="card-img-top">
-                                    <div class="card-img-wrap bd-radius-4">
-                                        <img class="img-fluid img-article" loading="lazy" src="{{ asset('storage/' . $p->photo()) }}"
-                                            alt="">
-                                        {{-- <div class="card-img-overlay text-white">
-                                            <h4 class="badge badge-primary shadow">{{ $p->category->name }}</h4>
-                                        </div> --}}
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="mt-2">
-                                        <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="no-pm">
-                                            <h6>{{ $p->title }}</h6>
-                                        </a>
-                                    </div>
-                                    <small class="text-secondary">
-                                        {{ Carbon\Carbon::parse($p->date_published)->format('d M Y') }} &middot;
-                                        {{ $p->user->name }}
-                                    </small>
+                                    <div class="card-img-wrap">
+                                        <img class="img-fluid img-article" loading="lazy"
+                                            src="{{ asset('storage/' . $p->photo()) }}" alt="">
                                 </div>
                             </div>
-                        </a>
+                            <div class="card-body">
+                                <div class="mt-2">
+                                    <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="no-pm">
+                                        <h6>{{ $p->title }}</h6>
+                                    </a>
+                                </div>
+                                <small class="text-secondary">
+                                    {{ Carbon\Carbon::parse($p->date_published)->format('d M Y') }} &middot;
+                                    {{ $p->user->name }}
+                                </small>
+                            </div>
                     </div>
-                    @endforeach
+                    </a>
                 </div>
-                @endif
-
+                @endforeach
             </div>
-            @include('front.partial.right-bar')
+            @endif
+
         </div>
+        @include('front.partial.right-bar')
+    </div>
     </div>
 </section>
 

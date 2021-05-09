@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'ML Tokyo Aurora';
+    src: local('ML Tokyo Aurora Sans'), local('ML-Tokyo-Aurora-Sans'),
+        url('MLTokyoAurora-Sans.woff2') format('woff2'),
+        url('MLTokyoAurora-Sans.woff') format('woff'),
+        url('MLTokyoAurora-Sans.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }

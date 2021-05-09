@@ -24,7 +24,7 @@
 
 <div class="section">
     <div class="container">
-        <div class="card border-0 bd-radius-8 shadow mb-4">
+        <div class="card border-0 shadow mb-4">
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-5 col-sm-12 mb-2">
@@ -33,7 +33,7 @@
                             @if ($idx == 0)
                             <div class="card border-0 mb-2">
                                 <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="card-block clearfix">
-                                    <div class="card-img-wrap bd-radius-4">
+                                    <div class="card-img-wrap">
                                         <img class="img-fluid img-article" loading="lazy" src="{{ asset('storage/' . $p->photo()) }}" alt="">
                                     </div>
                                 </a>
@@ -57,7 +57,7 @@
                             <div class="row no-gutters">
                                 <div class="col-sm-4">
                                     <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="card-block clearfix">
-                                        <div class="card-img-wrap bd-radius-4">
+                                        <div class="card-img-wrap">
                                             <img class="card-img img-imagepost-headline" loading="lazy"
                                                 src="{{ asset('storage/' . $p->photo()) }}" alt="">
                                         </div>

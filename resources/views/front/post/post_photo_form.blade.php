@@ -283,7 +283,7 @@
             }
 
             $('#photo-form').on('change', 'input[id^=photo-form-]', function() {
-                alert($(this).attr('data-slide'));
+                // alert($(this).attr('data-slide'));
                 var photoid = $(this).attr('data-slide');
                 readURL(this,photoid);
             });
