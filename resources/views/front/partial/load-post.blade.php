@@ -6,41 +6,27 @@
     
     <div class="col-lg-12 col-sm-12">
         <a href="{{ route('post.detail',[$row->user->username,$row->slug]) }}" class="card-block clearfix">
-            <div class="card border-0 mb-4">
-                    @if ($row->photo() == "no-image")
-                
-                    @else
-                    <div class="card-img-wrap">
-                        <img class="img-fluid img-article" loading="lazy" src="{{ asset('storage/' . $row->photo()) }}" alt="">
-                    </div>
-                    @endif
-
-                    {{-- @if ($row->type == 'photo')
-                    <div class="owl-carousel owl-theme slider container-mobile no-pm" id="carousel-post">
-                        @foreach ($row->images()->get() as $image)
-                        <img src="{{ asset('storage/' . $image->name) }}" class="img-fluid img-cover w-100">
-                        @endforeach
-                    </div>
-                    @else
-                        @if ($row->photo() == "no-image")
-
-                        @else
-                        <img src="{{ asset('storage/' . $row->photo()) }}" class="img-fluid mx-auto d-block img-article">
-                    @endif
-                    @endif --}}
+            <div class="card border mb-4">
+                @if ($row->photo() == "no-image")
+            
+                @else
+                <div class="card-img-wrap border-bottom">
+                    <img class="img-fluid img-article" loading="lazy" src="{{ asset('storage/' . $row->photo()) }}" alt="">
+                </div>
+                @endif
                     
                 {{-- @endif --}}
-                <div class="mt-2">
+                <div class="mt-2 px-4">
                     <a href="{{ route('post.detail',[$row->user->username,$row->slug]) }}" class="no-pm">
                         <h4 class="fw-700">{{ $row->title }}</h4>
                     </a>
                 </div>
                 <div id="counter" data-id="{{ $last_id }}"></div>
-                <div class="text-secondary no-pm">
+                <div class="text-secondary px-4">
                     {{ str_limit(strip_tags($row->description),140,'...') }}
                 </div>
-                <div class="align-items-end mt-2">
-                    <p class="text-secondary">
+                <div class="align-items-end mt-2 px-4">
+                    <p class="align-items-center py-2 m-0">
                         <small>
                             {{ Carbon\Carbon::parse($row->date_published)->diffForHumans() }} &middot; <a
                             href="{{ route('creator.detail', $row->user->username) }}">{{ '@'.$row->user->username }}</a>

@@ -225,16 +225,6 @@
 	border-color: transparent;
 }
 
-/* .navbar-nav>.nav-item>.nav-link:hover {
-    color: #0093E9;
-    text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
-}
-.navbar-nav>.nav-item.active>.nav-link:hover {
-    color: #0580c7;
-    text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
-    
-} */
-
 .smart-scroll{
     position: fixed;
     top: 0;

@@ -21,6 +21,11 @@ Route::prefix('topic')->group(function () {
     Route::get('/{category}', 'Frontpanel\HomeController@topic')->name('topic.detail');
 });
 
+Route::prefix('forum')->group(function () {
+    Route::get('/', 'ForumController@index')->name('forum');
+    Route::get('/{slug}', 'ForumController@view')->name('forum.detail');
+});
+
 Route::prefix('browse')->group(function () {
     Route::get('/', 'Frontpanel\HomeController@browse')->name('browse');
     Route::get('/article', 'Frontpanel\FrontPostController@browsePost')->name('post');

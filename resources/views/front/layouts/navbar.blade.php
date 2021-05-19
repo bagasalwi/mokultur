@@ -33,6 +33,10 @@
                 <a class="nav-link font-tokyo {{ request()->is('creator') ? 'text-primary' : 'text-white' }}"
                     href="{{ route('creator') }}">Creators</a>
             </li>
+            <li class="nav-item py-2">
+                <a class="nav-link font-tokyo {{ request()->is('creator') ? 'text-primary' : 'text-white' }}"
+                    href="{{ route('forum') }}">Forums</a>
+            </li>
             @guest
             <li class="nav-item py-2 dropdown">
                 <a class="nav-link font-tokyo text-white" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
