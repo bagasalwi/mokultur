@@ -1,6 +1,6 @@
 <div class="col-lg-6 col-sm-12">
     <div class="heading2">
-        <h4 class="fw-700">Mokultur <span class="text-primary">Blog</span></h4>
+        <h4 class="fw-800"><span class="bg-dark text-white px-2 py-2">MOKULTUR <span class="text-primary">BLOG</span></span></h4>
     </div>
     <div id="posts" class="row">        
     </div>

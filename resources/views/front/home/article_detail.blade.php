@@ -83,11 +83,9 @@
                 <a href="{{ route('post.detail',[$selanjutnya->user->username,$selanjutnya->slug]) }}" class="clearfix">
                     <div class="card card-hover shadow">
                         <div class="row align-items-center">
-                            <div class="col-4 col-lg-4 col-md-4 no-pm">
-                                <div class="d-flex justify-content-center">
-                                    <img class="img-fluid img-imagepost-headline" loading="lazy"
+                            <div class="col-4 col-lg-4 col-md-4 pr-0">
+                                    <img class="img-fluid img-imagepost" loading="lazy"
                                         src="{{ asset('storage/' . $selanjutnya->photo()) }}" alt="">
-                                </div>
                             </div>
                             <div class="col-8 col-lg-8 col-md-8">
                                 <span class="badge badge-info">BACA SELANJUTNYA</span>
@@ -103,7 +101,7 @@
                     </div>
                 </a>
 
-                <div class="mt-2" id="disqus_thread"></div>
+                <div class="mt-4" id="disqus_thread"></div>
 
                 @if ($recomendation->isNotEmpty())
                 <div class="heading2">

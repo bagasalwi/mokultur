@@ -1,16 +1,16 @@
 @extends('front.layouts.master')
 
 @section('content')
-<div class="jumbotron jumbotron-fluid primary-gradient mb-0"
+<div class="jumbotron jumbotron-fluid primary-pattern-2 mb-0"
     style="padding-bottom: 80px; margin-bottom: -225px !important;">
     <div class="container section">
         <div class="row">
             <div class="col-lg-6 align-self-center">
-                <h1 class="text-white fw-700" data-font-size="36px">Ber-kulturisasi dengan update yang lagi happening! Seperti <span id="switchtext">Geeks</span>!</h1>
-                <p class="mb-3 text-white">
+                <h1 class="text-white fw-800 bg-dark px-2" data-font-size="36px">Ber-kulturisasi dengan update yang lagi happening! Seperti <span id="switchtext">Geeks</span>!</h1>
+                <p class="mb-3 text-white fw-400 bg-dark px-2">
                     Mokultur adalah ruang terbuka untuk kalian yang mempunyai tingak kulturasi tinggi, disini gue akan berbagi macam-macam tulisan random mulai dari Geeks, Pop Culture, Film, Teknologi dan lainnya. Stay Tune!!
                 </p>
-                <div class="d-none d-lg-block">
+                <div class="d-none d-lg-block ">
                     <a class="btn btn-light px-4 mr-1" href="{{ route('browse') }}" role="button">Browse</a>
                     <a class="btn btn-dark px-4 mr-1" href="{{ route('creator') }}" role="button">Mokultur Creator</a>
                 </div>
@@ -92,7 +92,7 @@
             <a href="{{ route('review') }}" class="card-block clearfix">
                 <div class="hero bg-black text-white mb-3 card-hover no-bd">
                     <div class="hero-inner">
-                        <h1 class="text-white">Mokultur <span class="text-primary">Reviews</span></h1>
+                        <h1 class="text-white fw-800">MOKULTUR <span class="text-primary">REVIEWS</span></h1>
                         <p class="lead text-white no-pm">Tempat review-review film atau anime dari kreator paling edgy di mokultur, Semua reviewnya se-enak jidatnya! Tapi jangan khawatir karena dia salah satu Man of Culture.</p>
                     </div>
                 </div>

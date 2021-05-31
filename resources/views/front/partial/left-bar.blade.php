@@ -19,9 +19,9 @@
         @endguest
         <div class="card card-full bd-radius-4 mb-4">
             <div class="card-body">
-                <h5 class="my-1">Follow <span class="text-primary fw-700">My Instagram</span></h5>
+                <h6 class="my-1 fw-800">FOLLOW <span class="text-primary fw-800">OUR INSTAGRAM</span></h6>
                 <div class="my-3" id="instagram" style="max-width: 200px; margin: 0 auto;"></div>
-                <a href="https://www.instagram.com/bagasalwi/" class="btn btn-sm btn-block btn-instagram">Follow</a>
+                <a href="https://www.instagram.com/mokultur/" class="btn btn-sm btn-block btn-dark">Follow @mokultur</a>
             </div>
         </div>
     </div>

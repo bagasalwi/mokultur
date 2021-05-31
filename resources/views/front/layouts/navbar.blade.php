@@ -3,10 +3,9 @@
 <nav class="navbar2 navbar d-lg-none fixed-top navbar-expand-lg bg-black navbar-dark">
     <div class="container">
         <button data-trigger="#navbar_main" class="navbar-toggler" type="button"><span
-                class="fas fa-bars"></span></button>
+                class="fas fa-bars text-white"></span></button>
         <a class="navbar-brand mx-auto" href="{{ url('/') }}">
             <img src="{{ asset('gambar/logo/logo.png')}}" alt="">
-            {{-- <h4 class="no-pm nav-link">MOKultur</h4> --}}
         </a>
     </div>
 </nav>
@@ -33,10 +32,10 @@
                 <a class="nav-link font-tokyo {{ request()->is('creator') ? 'text-primary' : 'text-white' }}"
                     href="{{ route('creator') }}">Creators</a>
             </li>
-            <li class="nav-item py-2">
+            {{-- <li class="nav-item py-2">
                 <a class="nav-link font-tokyo {{ request()->is('creator') ? 'text-primary' : 'text-white' }}"
                     href="{{ route('forum') }}">Forums</a>
-            </li>
+            </li> --}}
             @guest
             <li class="nav-item py-2 dropdown">
                 <a class="nav-link font-tokyo text-white" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"

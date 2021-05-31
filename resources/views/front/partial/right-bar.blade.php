@@ -8,12 +8,9 @@
                 </p>
             </div>
         </div>
-        {{-- <div class="my-4">
-            <a href="https://www.instagram.com/bagasalwi/" class="btn btn-block btn-dark">Join Mokultur!</a>
-        </div> --}}
         <div class="heading2">
             <a href="{{ route('tag') }}">
-                <h5 class="mt-4 fw-700">Mokultur <span class="text-primary">Top Tag's</span></h5>
+                <h6 class="mt-4 fw-800"> <span class="bg-main-dark p-1">MOKULTUR <span class="text-primary">TOP TAG'S</span></span></h6>
             </a>
         </div>
         <div class="list-group">
