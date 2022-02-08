@@ -20,7 +20,7 @@
 
 <div class="container mt-4">
     <div class="heading2">
-        <h4 class="fw-700">All <span class="text-primary">Topic Categories</span></h4>
+        <h4 class="fw-700">All <span class="text-dark">Topic Categories</span></h4>
     </div>
     <div class="row">
         @foreach ($category as $category)
@@ -40,7 +40,7 @@
             </div>
         </div>
         @endforeach
-        <a id="show-cat" class="col-12 text-center arrow-down bounce" href="#"><i class="fas fa-chevron-down fa-2x text-primary"></i></a>
+        <a id="show-cat" class="col-12 text-center arrow-down bounce" href="#"><i class="fas fa-chevron-down fa-2x text-dark"></i></a>
     </div>
 </div>
 

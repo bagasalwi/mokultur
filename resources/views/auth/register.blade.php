@@ -7,7 +7,7 @@
 <section class="section">
     <div class="container mt-5">
         <div class="login-brand">
-            <img src="{{ asset('gambar/logo/mokultur-logo-1.png')}}" alt="logo" width="250">
+            <img src="{{ asset('gambar/logo/logo.png')}}" alt="logo" width="250">
         </div>
         <div class="row">
             <div class="col-md-6 offset-md-3">

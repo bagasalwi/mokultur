@@ -1,4 +1,4 @@
-<h5 class="my-1">Mokultur <span class="text-primary fw-700">Review's</span></h5>
+<h5 class="my-1">MOKULTUR <span class="text-primary fw-700">REVIEW'S</span></h5>
 <div class="card-img-wrap bd-radius-2">
     <img class="card-img-top img-fluid img-imagereview" loading="lazy"
         src="{{ asset('storage/' . $review->photo()) }}" alt="">

@@ -79,35 +79,38 @@
                 </div>
 
                 <hr>
-
+                {{-- {{ dd($selanjutnya) }} --}}
+                @if ($selanjutnya)
                 <a href="{{ route('post.detail',[$selanjutnya->user->username,$selanjutnya->slug]) }}" class="clearfix">
-                    <div class="card card-hover shadow">
+                    <div class="card card-hover shadow mb-4">
                         <div class="row align-items-center">
-                            <div class="col-4 col-lg-4 col-md-4 no-pm">
+                            <div class="col-4 col-lg-4 col-md-4 pr-0">
                                 <div class="d-flex justify-content-center">
                                     <img class="img-fluid img-imagepost-headline" loading="lazy"
                                         src="{{ asset('storage/' . $selanjutnya->photo()) }}" alt="">
                                 </div>
                             </div>
                             <div class="col-8 col-lg-8 col-md-8">
-                                <span class="badge badge-info">BACA SELANJUTNYA</span>
-                                <div class="my-1">
-                                    <h6 class="no-pm">{{ $selanjutnya->title }}</h6>
+                                <span class="badge badge-dark">BACA SELANJUTNYA</span>
+                                <div class="my-2">
+                                    <h5 class="no-pm">{{ $selanjutnya->title }}</h5>
                                 </div>
-                                <div class="d-none d-lg-block">
+                                <div class=" d-lg-block">
                                     <div class="text-secondary text-small">
-                                        {{ str_limit(strip_tags($selanjutnya->description),100,'...') }}</div>
+                                        {{ str_limit(strip_tags($selanjutnya->description),100,'...') }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </a>
+                @endif
 
                 <div class="mt-2" id="disqus_thread"></div>
 
                 @if ($recomendation->isNotEmpty())
                 <div class="heading2">
-                    <h5 class="mt-4 fw-700">Topik <span class="text-primary">Rekomendasi</span></h5>
+                    <h4 class="mt-4 fw-600">TOPIK REKOMENDASI</h4>
                 </div>
                 <div class="row">
                     @foreach ($recomendation as $p)
@@ -123,7 +126,7 @@
                             <div class="card-body">
                                 <div class="mt-2">
                                     <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="no-pm">
-                                        <h6>{{ $p->title }}</h6>
+                                        <h4>{{ $p->title }}</h4>
                                     </a>
                                 </div>
                                 <small class="text-secondary">

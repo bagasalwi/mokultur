@@ -11,8 +11,8 @@
                     Mokultur adalah ruang terbuka untuk kalian yang mempunyai tingak kulturasi tinggi, disini gue akan berbagi macam-macam tulisan random mulai dari Geeks, Pop Culture, Film, Teknologi dan lainnya. Stay Tune!!
                 </p>
                 <div class="d-none d-lg-block">
-                    <a class="btn btn-light px-4 mr-1" href="{{ route('browse') }}" role="button">Browse</a>
-                    <a class="btn btn-dark px-4 mr-1" href="{{ route('creator') }}" role="button">Mokultur Creator</a>
+                    <a class="btn btn-light text-dark px-4 mr-1 rounded-sm" href="{{ route('browse') }}" role="button">Browse</a>
+                    <a class="btn btn-dark px-4 mr-1 rounded-sm" href="{{ route('creator') }}" role="button">Mokultur Creator</a>
                 </div>
             </div>
             <div class="col-lg-6 d-none d-lg-block">
@@ -65,7 +65,7 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <div class="mx-2 mt-2 py-0">
-                                        <a href="{{ url('topic/'.$p->category->slug) }}" class="text-primary text-uppercase fw-600">{{ $p->category->name }}
+                                        <a href="{{ url('topic/'.$p->category->slug) }}" class="text-dark text-uppercase fw-600">{{ $p->category->name }}
                                         </a>
                                         <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="card-title">
                                             <h5 class="fw-700">
@@ -92,8 +92,8 @@
             <a href="{{ route('review') }}" class="card-block clearfix">
                 <div class="hero bg-black text-white mb-3 card-hover no-bd">
                     <div class="hero-inner">
-                        <h1 class="text-white">Mokultur <span class="text-primary">Reviews</span></h1>
-                        <p class="lead text-white no-pm">Tempat review-review film atau anime dari kreator paling edgy di mokultur, Semua reviewnya se-enak jidatnya! Tapi jangan khawatir karena dia salah satu Man of Culture.</p>
+                        <h1 class="text-white">Mokultur Reviews</h1>
+                        <p class="text-white no-pm">Tempat review-review film atau anime dari kreator paling edgy di mokultur, Semua reviewnya se-enak jidatnya! Tapi jangan khawatir karena dia salah satu Man of Culture.</p>
                     </div>
                 </div>
             </a>

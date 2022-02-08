@@ -41,17 +41,17 @@
 	border-color: transparent;
 }
 .nav-link {
-    font-family:'ML Tokyo Aurora Sans', sans-serif;
-    font-size:  16px;
-    letter-spacing: 1.5px !important;
-    /* font-weight: bold; */
-    /* text-transform: uppercase; */
-	position: relative;
-	padding-left: 18px !important;
-    padding-right: 18px !important;
+    font-family: 'Proxima Nova Rg';
+    font-size: 16px;
+    letter-spacing: 0.8px !important;
+    font-weight: 400;
+    text-transform: uppercase;
+    position: relative;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
     padding-top: 6px !important;
     padding-bottom: 6px !important;
-	display: inline-block;
+    display: inline-block;
 }
 .nav-item:after{
 	position: absolute;
@@ -76,7 +76,7 @@
 }
 
 .navbar-brand img{
-	height: 30px;
+	height: 20px;
 	width: auto;
 	display: block;
 	-webkit-transition : all 0.3s ease-out;

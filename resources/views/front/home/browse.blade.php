@@ -23,8 +23,8 @@
                 <a href="{{ route('review') }}" class="card-block clearfix">
                     <div class="hero bg-black text-white mb-3 card-hover no-bd">
                         <div class="hero-inner">
-                            <h1 class="text-white">Mokultur <span class="text-primary">Review's</span></h1>
-                            <p class="lead text-white no-pm">Tempat review-review film atau anime dari kreator paling edgy di mokultur, Semua reviewnya se-enak jidatnya! <span class="font-weight-bold">Klik disini untuk liat lengkapnya!</span></p>
+                            <h1 class="text-white">Mokultur <span class="text-white">Review's</span></h1>
+                            <p class="text-white no-pm">Tempat review-review film atau anime dari kreator paling edgy di mokultur, Semua reviewnya se-enak jidatnya! <span class="font-weight-bold">Klik disini untuk liat lengkapnya!</span></p>
                         </div>
                     </div>
                 </a>
@@ -33,8 +33,8 @@
                 <a href="{{ route('post') }}" class="card-block clearfix">
                     <div class="hero bg-black text-white mb-3 card-hover no-bd">
                         <div class="hero-inner">
-                            <h1 class="text-white">Mokultur <span class="text-primary">Article's</span></h1>
-                            <p class="lead text-white no-pm">Tempat Sharing para author Mokultur! Biasanya Sharing artikel random berupa Stories, Knowledge, Experience, Tutorial dan Lainnya.. <span class="font-weight-bold">Klik disini untuk liat lengkapnya!</span></p>
+                            <h1 class="text-white">Mokultur <span class="text-white">Article's</span></h1>
+                            <p class="text-white no-pm">Tempat Sharing para author Mokultur! Biasanya Sharing artikel random berupa Stories, Knowledge, Experience, Tutorial dan Lainnya.. <span class="font-weight-bold">Klik disini untuk liat lengkapnya!</span></p>
                         </div>
                     </div>
                 </a>
@@ -43,7 +43,7 @@
                     <div class="col-md-6">
                         <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="card-block clearfix">
                             <div class="card border-0 mb-2">
-                                <div class="card-img-wrap mb-2 bd-radius-4">
+                                <div class="card-img-wrap mb-2 bd-radius-2">
                                     <img class="img-fluid img-imagepost" loading="lazy"
                                         src="{{ asset('storage/' . $p->photo()) }}" alt="">
                                 </div>

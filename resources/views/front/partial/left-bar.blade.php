@@ -9,7 +9,7 @@
         @else
         <div class="card card-full bd-radius-4 mb-4">
             <div class="card-body">
-                <h6 class="text-primary no-pm">Hello,
+                <h6 class="text-primary no-pm">HELLO,
                     <h4 class="text-dark">{{ auth()->user()->name }}</h4>
                 </h6>
                 <p class="text-dark">You can create a post now, share your stories with others!</p>
@@ -19,9 +19,9 @@
         @endguest
         <div class="card card-full bd-radius-4 mb-4">
             <div class="card-body">
-                <h5 class="my-1">Follow <span class="text-primary fw-700">My Instagram</span></h5>
+                <h5 class="my-1">FOLLOW <span class="text-primary fw-700">OUR INSTAGRAM</span></h5>
                 <div class="my-3" id="instagram" style="max-width: 200px; margin: 0 auto;"></div>
-                <a href="https://www.instagram.com/bagasalwi/" class="btn btn-sm btn-block btn-instagram">Follow</a>
+                <a href="https://www.instagram.com/mokultur/" class="btn btn-sm btn-block btn-outline-primary">FOLLOW US</a>
             </div>
         </div>
     </div>

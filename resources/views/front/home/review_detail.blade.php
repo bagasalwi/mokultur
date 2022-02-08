@@ -18,13 +18,15 @@
         $score_color = 'success';
     }   
 
-    if($selanjutnya->score < 7 && $selanjutnya->score > 5){
-        $score_color2 = 'warning';
-    }elseif($selanjutnya->score < 5){
-        $score_color2 = 'danger';
-    }else{
-        $score_color2 = 'success';
-    }   
+    if($selanjutnya){
+        if($selanjutnya->score < 7 && $selanjutnya->score > 5){
+            $score_color2 = 'warning';
+        }elseif($selanjutnya->score < 5){
+            $score_color2 = 'danger';
+        }else{
+            $score_color2 = 'success';
+        }   
+    }
 ?>
 
 <div class="jumbotron jumbotron-fluid primary-pattern-1 mb-0"
@@ -44,7 +46,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-9 col-sm-12">
-                <div class="card card-body bd-radius-4">
+                <div class="card card-body bd-radius-2">
                     {{-- Reviews --}}
                     <div class="row no-pm">
                         <div class="col-md-3 col-12 no-pm">
@@ -63,18 +65,18 @@
                         <div class="col-md-7 col-12 no-pm">
                             <ul class="nav nav-tabs" id="review-info-tab" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link font-weight-bold active" id="review-info-tab2" data-toggle="tab"
+                                    <a class="nav-link active" id="review-info-tab2" data-toggle="tab"
                                         href="#review-info" role="tab" aria-controls="home"
                                         aria-selected="true">Information</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link font-weight-bold" id="profile-tab2" data-toggle="tab"
+                                    <a class="nav-link" id="profile-tab2" data-toggle="tab"
                                         href="#synopsis" role="tab" aria-controls="profile"
                                         aria-selected="false">Plot</a>
                                 </li>
                                 @if ($review->review_link)
                                 <li class="nav-item">
-                                    <a class="nav-link font-weight-bold" id="profile-tab2" data-toggle="tab"
+                                    <a class="nav-link" id="profile-tab2" data-toggle="tab"
                                         href="#trailer" role="tab" aria-controls="profile"
                                         aria-selected="false">Trailer</a>
                                 </li>
@@ -85,25 +87,25 @@
                                     aria-labelledby="review-info">
                                     <div class="row">
                                         <div class="col-12 review-text">
-                                            <p class="text-primary text-small fw-600 text-uppercase">Title</p>
+                                            <p class="text-dark text-small fw-500 text-uppercase">Title</p>
                                             <div class="review-box">
                                                 <h5>{{ $review->review_name }}</h5>
                                             </div>
                                         </div>
                                         <div class="col-12 review-text">
-                                            <p class="text-primary text-small fw-600 text-uppercase">Release Date</p>
+                                            <p class="text-dark text-small fw-500 text-uppercase">Release Date</p>
                                             <div class="review-box">
                                                 <h5>{{ $review->review_releasedate }}</h5>
                                             </div>
                                         </div>
                                         @if ($review->tags[0])
                                         <div class="col-12 review-text">
-                                            <p class="text-primary text-small fw-600 text-uppercase">Genre</p>
+                                            <p class="text-dark text-small fw-500 text-uppercase">Genre</p>
                                             <div class="review-box">
                                                 <div class="badges">
                                                     @foreach ($review->tags as $tag)
                                                     <a href="{{ route('tag','tag='.$tag->slug) }}"
-                                                        class="badge badge-primary">{{$tag->name}}</a>
+                                                        class="badge badge-dark">{{$tag->name}}</a>
                                                     @endforeach
                                                 </div>
                                             </div>
@@ -112,7 +114,7 @@
 
                                         @if ($review->review_studio)
                                         <div class="col-12 review-text">
-                                            <p class="text-primary text-small fw-600 text-uppercase">Studio/Publisher</p>
+                                            <p class="text-dark text-small fw-500 text-uppercase">Studio/Publisher</p>
                                             <div class="review-box">
                                                 <h5>{{ $review->review_studio }}</h5>
                                             </div>
@@ -135,7 +137,7 @@
                             </div>
                         </div>
                         <div class="col-md-2 col-12 no-pm d-none d-lg-block">
-                            <div class="card card-block bd-radius-4 d-flex bg-{{ $score_color }}">
+                            <div class="card card-block bd-radius-2 d-flex bg-{{ $score_color }}">
                                 <div class="card-body align-items-center d-flex justify-content-center">
                                     <h2 class="fw-700 no-pm">{{ $review->score }}/10</h2>
                                 </div>
@@ -149,7 +151,7 @@
                     {{ $review->created_at->format('d-M-Y') }}</small></p>
 
                 <a href="{{ route('creator.detail', $review->user->username) }}" class="clearfix">
-                    <div class="card card-hover bd-radius-4 shadow py-2 px-4 my-4">
+                    <div class="card card-hover bd-radius-2 shadow py-2 px-4 my-4">
                         <div class="row align-items-center">
                             <div class="col-3 col-lg-2 col-md-4 col-sm-4">
                                 <div class="d-flex justify-content-center">
@@ -158,11 +160,11 @@
                                 </div>
                             </div>
                             <div class="col-9 col-lg-10 col-md-8 col-sm-8 ml-0 my-2">
-                                <span class="badge badge-info">Reviewer</span>
+                                <span class="badge badge-primary">Reviewer</span>
                                 <div class="my-1">
                                     <h4 class="no-pm">{{ $user->name }}</h4>
                                 </div>
-                                <p class="text-secondary no-pm">{{ $user->description }}</p>
+                                <p class="text-secondary no-pm">{{ str_limit(strip_tags($user->description),180,'...') }}</p>
                             </div>
                         </div>
                     </div>
@@ -173,11 +175,11 @@
                 @if ($review->recommend)
                 <div class="card my-3">
                     <div class="card-header bg-primary">
-                        <h4 class="no-pm text-white">Sangat Rekomendasi Jika..</h4>
-                        <div class="card-header-action">
+                        <div class="card-header-action mr-3 align-items-center">
                             <a data-collapse="#recommend-collapse" class="btn btn-icon btn-light" href="#"><i
-                                    class="fas fa-minus"></i></a>
+                                    class="fas fa-minus text-dark"></i></a>
                         </div>
+                        <h4 class="no-pm text-white align-items-center">Sangat Rekomendasi Jika..</h4>
                     </div>
                     <div class="collapse show" id="recommend-collapse">
                         <div class="card-body bg-secondary">
@@ -203,18 +205,19 @@
                 </div>
                 @endif
 
+                @if ($selanjutnya)
                 <div class="my-4">
                     <a href="{{ route('review.detail',[$selanjutnya->user->username,$selanjutnya->slug]) }}" class="clearfix">
-                        <div class="card card-hover bd-radius-4 shadow py-2 px-2 my-4">
+                        <div class="card card-hover bd-radius-2 shadow py-2 px-2 my-4">
                             <div class="row align-items-center">
                                 <div class="col-4 col-lg-2 col-md-4 col-sm-4">
                                     <div class="d-flex justify-content-center">
-                                        <img class="img-fluid d-block shadow-sm bd-radius-4" height="200" loading="lazy"
+                                        <img class="img-fluid d-block shadow-sm bd-radius-2" height="200" loading="lazy"
                                     src="{{ asset('storage/' . $selanjutnya->photo()) }}" alt="">
                                     </div>
                                 </div>
                                 <div class="col-8 col-lg-10 col-md-8 col-sm-8 ml-0 pl-1">
-                                    <span class="badge badge-info">NEXT REVIEW</span>
+                                    <span class="badge badge-primary">NEXT REVIEW</span>
                                     <span class="badge badge-{{ $score_color2 }} align-self-center bd-radius-2 shadow">
                                         Score : {{ $selanjutnya->score }}/10
                                     </span>
@@ -229,6 +232,8 @@
                         </div>
                     </a>
                 </div>
+                @endif
+                
                 <div class="card border-0 my-4">
                     <div class="card-body">
                         <div class="mt-2" id="disqus_thread"></div>

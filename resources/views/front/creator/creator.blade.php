@@ -20,8 +20,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-9">
-                <div class="card card-body border-0 bd-radius-4 shadow-sm mb-4">
-                    <h6 class="text-primary no-pm">Search Creator :</h6>
+                <div class="card card-body border-0 bd-radius-2 shadow-sm mb-4">
+                    <h6 class="text-dark no-pm">Search Your Favorite Creator :</h6>
                     <form action="{{ url('creator') }}" role="search">
                         <input type="text" id="search" name="search" class="inputSearch" placeholder="Search.."
                             value="{{ isset($search_meta ) ? $search_meta : ""  }}">
@@ -29,9 +29,9 @@
                 </div>
                 <div class="row">
                     @foreach ($creator as $cr)
-                    <div class="col-md-3 col-sm-12">
+                    <div class="col-md-3 col-sm-6 col-6 mb-3">
                         <a href="{{ route('creator.detail',$cr->username) }}" class="card-block clearfix">
-                            <div class="card card-hover h-100 shadow-sm bd-radius-8">
+                            <div class="card card-hover h-100 shadow-sm bd-radius-2">
                                 <div class="card-body">
                                     <div class="text-center">
                                         <img class="rounded-circle img-cover" width="90" height="90"
