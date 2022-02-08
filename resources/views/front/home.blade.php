@@ -1,8 +1,9 @@
 @extends('front.layouts.master')
 
 @section('content')
-<div class="jumbotron jumbotron-fluid primary-gradient mb-0"
+<div class="jumbotron jumbotron-fluid primary-gradient mb-0 starback"
     style="padding-bottom: 80px; margin-bottom: -225px !important;">
+    <canvas id="canvas" style="width: 100%;height: 100%;position: absolute;inset: 0;"></canvas>
     <div class="container section">
         <div class="row">
             <div class="col-lg-6 align-self-center">

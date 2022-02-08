@@ -33,6 +33,7 @@
 </head>
 
 <body class="layout-3 @yield('bg-color', 'bg-light')">
+	
 	<div id="app">
 		@include('front.layouts.navbar')
 
@@ -45,6 +46,27 @@
 
 	@yield('script')
 	@stack('script')
+
+	<script src="https://unpkg.com/starback@2.0.1/dist/starback.js"></script>
+	
+	<script>
+	
+	let wrapper = document.querySelector('.starback')
+
+	const starback = new Starback("#canvas", {
+		width: wrapper.clientWidth,
+		height: wrapper.clientHeight,
+		type: 'dot',
+		quantity: 100,
+		starSize: [1,3],
+		direction: 20,
+		starColor: '#ffffff',
+		randomOpacity: [0.3, 0.7],
+		backgroundColor: 'transparent'
+	})
+
+
+	</script>
 
 	<script>
 		lottie.loadAnimation({
