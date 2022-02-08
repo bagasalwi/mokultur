@@ -20,7 +20,7 @@
 </div>
 
 <section class="">
-    <div class="container mt-2">
+    <div class="container mt-4">
         <div class="row">
             @include('front.partial.left-bar')
             <div class="col-md-6 col-sm-12">
