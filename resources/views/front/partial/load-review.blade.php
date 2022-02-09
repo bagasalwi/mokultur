@@ -19,4 +19,4 @@
     </div>
 </div>
 <p class="text-dark my-2 m-0 fw-600">{{ $review->title }}</p>
-<a href="{{ route('review.detail',[$review->user->username,$review->slug]) }}" class="btn btn-sm btn-block btn-dark">Baca Review</a>
+<a href="{{ route('review.detail',[$review->user->username,$review->id,$review->slug]) }}" class="btn btn-sm btn-block btn-dark">Baca Review</a>
