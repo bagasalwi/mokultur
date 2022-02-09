@@ -207,7 +207,7 @@
 
                 @if ($selanjutnya)
                 <div class="my-4">
-                    <a href="{{ route('review.detail',[$selanjutnya->user->username,$selanjutnya->slug]) }}" class="clearfix">
+                    <a href="{{ route('review.detail',[$selanjutnya->user->username,$selanjutnya->id,$selanjutnya->slug]) }}" class="clearfix">
                         <div class="card card-hover bd-radius-2 shadow py-2 px-2 my-4">
                             <div class="row align-items-center">
                                 <div class="col-4 col-lg-2 col-md-4 col-sm-4">
