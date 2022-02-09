@@ -37,6 +37,10 @@ ol {
     line-height: 24px;
 }
 
+.bolder-text{
+    font-family: 'Proxima Nova Bl' !important;
+}
+
 .text-synopsis{
     font-weight: 300;
     letter-spacing: 0.4px;
@@ -75,19 +79,19 @@ h1 {
     font-size: 1.8rem;
 }
 h2 {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
 }
 h3 {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
 }
 h4 {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }
 h5 {
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 h6 {
-    font-size: 0.8rem;
+    font-size: 1rem;
 }
 
 .btn:focus,
@@ -4622,8 +4626,8 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
 }
 
 .content a {
-    color: #0087d5;
-    font-weight: 500 !important;
+    color: #400000;
+    font-weight: 600 !important;
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
     -o-transition: all 0.5s;
@@ -4631,7 +4635,7 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
 
 .content a:hover{
     text-decoration: none;
-    color: #00a2ff;
+    color: #640000;
     transition: all 0.9s;
     -webkit-transition: all 0.5s;
     -o-transition: all 0.5s;
@@ -4643,7 +4647,8 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
 .content h4,
 .content h5,
 .content h6{
-    font-weight: 700;
+    font-family: 'Proxima Nova Bl';
+    font-weight: 600;
 }
 
 .content blockquote{
@@ -4654,7 +4659,7 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
     color: #000;
     padding:1.1em 10px 1.1em 35px;
     border-radius: 0;
-    border-left:5px solid #00a2ff ;
+    border-left:5px solid #640000 ;
     position: relative;
     background:#f7f7f7;
   }

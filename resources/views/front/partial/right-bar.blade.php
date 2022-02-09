@@ -3,7 +3,7 @@
         <div class="card card-full bd-radius-4">
             <div class="card-body">
                 <div id="covid19" style="height: 180px; margin: 0 auto;"></div>
-                <h2 class="text-center">Wibukiawan, Pakai <span class="text-primary fw-700">MASKERNYA</span></h2>
+                <h4 class="text-center ">Wibukiawan, Pakai <span class="text-primary fw-600 bolder-text">MASKERNYA</span></h4>
                 <p class="text-center">Kalo keluar rumah, Tolong di pakai ya Maskernya!! Nanti kaya subaru, ter-isekai-ed.
                 </p>
             </div>
@@ -13,7 +13,7 @@
         </div> --}}
         <div class="heading2">
             <a href="{{ route('tag') }}">
-                <h5 class="mt-4 fw-700">MOKULTUR <span class="text-primary">TOP TAGS</span></h5>
+                <h5 class="mt-4 fw-700 bolder-text">MOKULTUR <span class="text-primary">TOP TAGS</span></h5>
             </a>
         </div>
         <div class="list-group">

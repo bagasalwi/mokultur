@@ -5,7 +5,7 @@
     @endphp    
     
     <div class="col-lg-12 col-sm-12">
-        <a href="{{ route('post.detail',[$row->user->username,$row->slug]) }}" class="card-block clearfix">
+        <a href="{{ route('post.detail',[$row->user->username,$row->id,$row->slug]) }}" class="card-block clearfix">
             <div class="card border-0 mb-4">
                     @if ($row->photo() == "no-image")
                 
@@ -31,7 +31,7 @@
                     
                 {{-- @endif --}}
                 <div class="mt-2">
-                    <a href="{{ route('post.detail',[$row->user->username,$row->slug]) }}" class="no-pm">
+                    <a href="{{ route('post.detail',[$row->user->username,$row->id,$row->slug]) }}" class="no-pm">
                         <h4 class="fw-700">{{ $row->title }}</h4>
                     </a>
                 </div>

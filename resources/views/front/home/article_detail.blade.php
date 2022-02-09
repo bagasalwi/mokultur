@@ -81,7 +81,7 @@
                 <hr>
                 {{-- {{ dd($selanjutnya) }} --}}
                 @if ($selanjutnya)
-                <a href="{{ route('post.detail',[$selanjutnya->user->username,$selanjutnya->slug]) }}" class="clearfix">
+                <a href="{{ route('post.detail',[$selanjutnya->user->username,$selanjutnya->id,$selanjutnya->slug]) }}" class="clearfix">
                     <div class="card card-hover shadow mb-4">
                         <div class="row align-items-center">
                             <div class="col-4 col-lg-4 col-md-4 pr-0">
@@ -115,7 +115,7 @@
                 <div class="row">
                     @foreach ($recomendation as $p)
                     <div class="col-md-6 col-lg-6 mb-4">
-                        <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="card-block clearfix">
+                        <a href="{{ route('post.detail',[$p->user->username,$p->id,$p->slug]) }}" class="card-block clearfix">
                             <div class="card border my-2 shadow">
                                 <div class="card-img-top">
                                     <div class="card-img-wrap">
@@ -125,7 +125,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="mt-2">
-                                    <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="no-pm">
+                                    <a href="{{ route('post.detail',[$p->user->username,$p->id,$p->slug]) }}" class="no-pm">
                                         <h4>{{ $p->title }}</h4>
                                     </a>
                                 </div>

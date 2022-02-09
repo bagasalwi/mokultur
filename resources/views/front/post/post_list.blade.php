@@ -62,7 +62,7 @@
                         <div class="card border-0">
                             <div class="d-flex flex-row">
                                 <a class="text-dark"
-                                    href="{{ route('post.detail',[$item->user->username,$item->slug]) }}">
+                                    href="{{ route('post.detail',[$item->user->username,$item->id,$item->slug]) }}">
                                     <h5>{{ $item->title }}</h5>
                                 </a>
                             </div>

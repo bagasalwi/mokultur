@@ -18,7 +18,7 @@
                 <div id="posts" class="row">
                     @foreach ($post as $p)
                     <div class="col-lg-4 col-sm-12">
-                        <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="card-block clearfix">
+                        <a href="{{ route('post.detail',[$p->user->username,$p->id,$p->slug]) }}" class="card-block clearfix">
                             <div class="card border-0 my-2">
                                 <div class="card-img-wrap bd-radius-4">
                                     <img class="img-fluid img-imagepost" src="{{ asset('storage/' . $p->photo()) }}"
@@ -28,7 +28,7 @@
                                     </div> --}}
                                 </div>
                                 <div class="mt-1">
-                                    <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}">
+                                    <a href="{{ route('post.detail',[$p->user->username,$p->id,$p->slug]) }}">
                                         <h4 class="no-pm">{{ $p->title }}</h4>
                                     </a>
                                 </div>

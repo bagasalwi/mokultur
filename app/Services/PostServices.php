@@ -42,6 +42,10 @@ class PostServices
         return Post::where('slug', $slug)->where('status', 'D')->first();
     }
 
+    public function publishedDetailPostByID($id){
+        return Post::where('id', $id)->where('status', 'P')->with('tagged')->first();
+    }
+
     public function publishedDetailPost($slug)
     {
         return Post::where('slug', $slug)->where('status', 'P')->with('tagged')->first();

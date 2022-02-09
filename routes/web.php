@@ -32,8 +32,8 @@ Route::prefix('browse')->group(function () {
 
 Route::prefix('@{username?}')->group(function(){
     Route::get('/{type?}', 'Frontpanel\CreatorController@creator_detail')->name('creator.detail');
-    Route::get('/article/{slug}', 'Frontpanel\FrontPostController@publishDetailPost')->name('post.detail');
-    Route::get('/review/{slug}', 'Frontpanel\FrontPostController@reviewDetail')->name('review.detail');
+    Route::get('/article-{id}/{slug}', 'Frontpanel\FrontPostController@publishDetailPost')->name('post.detail');
+    Route::get('/review-{id}/{slug}', 'Frontpanel\FrontPostController@reviewDetail')->name('review.detail');
 });
 
 Route::get('creator', 'Frontpanel\CreatorController@creator')->name('creator');

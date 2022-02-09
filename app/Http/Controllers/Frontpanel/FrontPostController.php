@@ -131,13 +131,13 @@ class FrontPostController extends Controller
         }
     }
 
-    public function publishDetailPost($username, $slug)
+    public function publishDetailPost($username, $id, $slug)
     {
         $data['top_category'] = $this->categoryService->topCategory();
         $data['top_tags'] = $this->top_tags;
         $data['user'] = User::where('username', $username)->first();
         if ($data['user']) {
-            $data['post'] = $this->postService->publishedDetailPost($slug);
+            $data['post'] = $this->postService->publishedDetailPostByID($id);
             $data['post_image'] = $data['post']->images()->get();
             $data['post_count'] = Post::where('user_id', $data['user']->id)->count();
 
@@ -171,10 +171,10 @@ class FrontPostController extends Controller
         }
     }
 
-    public function reviewDetail($username, $slug)
+    public function reviewDetail($username, $id, $slug)
     {
         $data['user'] = User::where('username', $username)->first();
-        $data['review'] = $this->reviewService->publishedDetailReview($slug);
+        $data['review'] = $this->reviewService->publishedDetailReviewByID($id);
 
         $data['top_category'] = $this->categoryService->topCategory();
         $data['top_tags'] = $this->top_tags;

@@ -41,6 +41,10 @@ class ReviewServices
         return Review::where('slug', $slug)->where('status', 'D')->first();
     }
 
+    public function publishedDetailReviewByID($id){
+        return Review::where('id', $id)->where('status', 'P')->with('tagged')->first();
+    }
+
     public function publishedDetailReview($slug)
     {
         return Review::where('slug', $slug)->where('status', 'P')->with('tagged')->first();

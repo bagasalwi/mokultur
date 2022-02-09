@@ -56,7 +56,7 @@
     
                         <div class="card border-0">
                             <div class="d-flex flex-row">
-                                <a class="text-dark" href="{{ route('review.detail',[$item->user->username,$item->slug]) }}">
+                                <a class="text-dark" href="{{ route('review.detail',[$item->user->username,$item->id,$item->slug]) }}">
                                     <h5>{{ $item->title }}</h5>
                                 </a>
                             </div>

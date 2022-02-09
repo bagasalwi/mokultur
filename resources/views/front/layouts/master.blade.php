@@ -93,6 +93,14 @@
 			path: '{{ asset('anijson/social.json') }}'
 		});
 
+		lottie.loadAnimation({
+			container: document.getElementById('animejson'),
+			renderer: 'svg',
+			loop: true,
+			autoplay: true,
+			path: '{{ asset('anijson/anime-1.json') }}'
+		});
+
 	</script>
 </body>
 

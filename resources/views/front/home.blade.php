@@ -7,7 +7,7 @@
     <div class="container section">
         <div class="row">
             <div class="col-lg-6 align-self-center">
-                <h1 class="text-white fw-700" data-font-size="36px">Ber-kulturisasi dengan update yang lagi happening! Seperti <span id="switchtext">Geeks</span>!</h1>
+                <h1 class="text-white fw-700" data-font-size="36px">Ber-kulturisasi dengan update yang lagi happening! Seperti <span id="switchtext" class="bolder-text">Geeks</span>!</h1>
                 <p class="mb-3 text-white">
                     Mokultur adalah ruang terbuka untuk kalian yang mempunyai tingak kulturasi tinggi, disini gue akan berbagi macam-macam tulisan random mulai dari Geeks, Pop Culture, Film, Teknologi dan lainnya. Stay Tune!!
                 </p>
@@ -17,7 +17,9 @@
                 </div>
             </div>
             <div class="col-lg-6 d-none d-lg-block">
-                <div class="m-0 animated" id="anijson" style="width: 90%"></div>
+                <div class="m-0 animated" id="" style="width: 100%">
+                    <img class="img-fluid" src="{{ asset('gambar/mokusan.png') }}" alt="">
+                </div>
             </div>
         </div>
     </div>
@@ -33,13 +35,13 @@
                             @foreach ($top_creation as $idx => $p)
                             @if ($idx == 0)
                             <div class="card border-0 mb-2">
-                                <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="card-block clearfix">
+                                <a href="{{ route('post.detail',[$p->user->username,$p->id,$p->slug]) }}" class="card-block clearfix">
                                     <div class="card-img-wrap">
                                         <img class="img-fluid img-article" loading="lazy" src="{{ asset('storage/' . $p->photo()) }}" alt="">
                                     </div>
                                 </a>
                                 <div class="my-2">
-                                    <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="no-pm">
+                                    <a href="{{ route('post.detail',[$p->user->username,$p->id,$p->slug]) }}" class="no-pm">
                                         <h4 class="fw-700">{{ $p->title }}</h4>
                                     </a>
                                     <p class="card-text text-secondary">
@@ -57,7 +59,7 @@
                         <div class="card border-0 mb-3">
                             <div class="row no-gutters">
                                 <div class="col-sm-4">
-                                    <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="card-block clearfix">
+                                    <a href="{{ route('post.detail',[$p->user->username,$p->id,$p->slug]) }}" class="card-block clearfix">
                                         <div class="card-img-wrap">
                                             <img class="card-img img-imagepost-headline" loading="lazy"
                                                 src="{{ asset('storage/' . $p->photo()) }}" alt="">
@@ -68,7 +70,7 @@
                                     <div class="mx-2 mt-2 py-0">
                                         <a href="{{ url('topic/'.$p->category->slug) }}" class="text-dark text-uppercase fw-600">{{ $p->category->name }}
                                         </a>
-                                        <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="card-title">
+                                        <a href="{{ route('post.detail',[$p->user->username,$p->id,$p->slug]) }}" class="card-title">
                                             <h5 class="fw-700">
                                                 {{ $p->title }}
                                             </h5>
@@ -91,7 +93,7 @@
     <div class="jumbotron jumbotron-fluid pattern-1 bg-light">
         <div class="container">
             <a href="{{ route('review') }}" class="card-block clearfix">
-                <div class="hero bg-black text-white mb-3 card-hover no-bd">
+                <div class="hero text-white mb-3 card-hover no-bd primary-pattern-1">
                     <div class="hero-inner">
                         <h1 class="text-white">Mokultur Reviews</h1>
                         <p class="text-white no-pm">Tempat review-review film atau anime dari kreator paling edgy di mokultur, Semua reviewnya se-enak jidatnya! Tapi jangan khawatir karena dia salah satu Man of Culture.</p>

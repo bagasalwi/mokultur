@@ -5,14 +5,14 @@
     <div id="posts" class="row">
         @foreach ($creation as $p)
         <div class="col-lg-12 col-sm-12">
-            <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="card-block clearfix">
+            <a href="{{ route('post.detail',[$p->user->username,$p->id,$p->slug]) }}" class="card-block clearfix">
                 <div class="card border-0 mb-4">
                     <div class="card-img-wrap bd-radius-4">
                         <img class="img-fluid img-article" loading="lazy" src="{{ asset('storage/' . $p->photo()) }}"
                             alt="">
                     </div>
                     <div class="mt-2">
-                        <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="no-pm">
+                        <a href="{{ route('post.detail',[$p->user->username,$p->id,$p->slug]) }}" class="no-pm">
                             <h4>{{ $p->title }}</h4>
                         </a>
                     </div>

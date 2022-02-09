@@ -1,6 +1,6 @@
 <div class="col-lg-6 col-sm-12">
     <div class="heading2">
-        <h4 class="fw-600">MOKULTUR <span class="font-weight-bold">BLOG</span></h4>
+        <h4 class="fw-600 bolder-text">MOKULTUR <span class="font-weight-bold">BLOG</span></h4>
     </div>
     <div id="posts" class="row">        
     </div>

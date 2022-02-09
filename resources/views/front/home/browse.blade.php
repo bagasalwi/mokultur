@@ -11,7 +11,7 @@
             <div class="col-12 align-self-center">
                 <h1 class="text-white font-weight-bold" data-font-size="38px">Browse Article & Reviews here!</h1>
                 <p class="mb-3 text-white" data-font-size="18px">
-                    Its Just Browse another and another bla bla.. Get your kind of interest Article or Reviews, here.
+                    Cari bacaan favorit kamu disini, mulai dari berita, informasi, opini, stories dan review!!
                 </p>
             </div>
         </div>
@@ -42,14 +42,14 @@
                 <div id="posts" class="row">
                     @foreach ($creation as $p)
                     <div class="col-md-6">
-                        <a href="{{ route('post.detail',[$p->user->username,$p->slug]) }}" class="card-block clearfix">
+                        <a href="{{ route('post.detail',[$p->user->username,$p->id,$p->slug]) }}" class="card-block clearfix">
                             <div class="card border-0 mb-2">
                                 <div class="card-img-wrap mb-2 bd-radius-2">
                                     <img class="img-fluid img-imagepost" loading="lazy"
                                         src="{{ asset('storage/' . $p->photo()) }}" alt="">
                                 </div>
                                 <h5><a class="text-dark fw-700"
-                                        href="{{ route('post.detail',[$p->user->username,$p->slug]) }}">{{ $p->title }}</a></h5>
+                                        href="{{ route('post.detail',[$p->user->username,$p->id,$p->slug]) }}">{{ $p->title }}</a></h5>
                                 <div class="text-secondary no-pm">
                                     {{ str_limit(strip_tags($p->description),100,'...') }}
                                 </div>
