@@ -42,10 +42,15 @@ class CategoryServices{
         return PostCategory::take($num)->get();
     }
 
-    public function create($request,$image = null){
+    public function create($request,$image){
+        // dd($request);
         $user = auth()->user();
 
-        $path = $image->store('images/category');
+        if($image){
+            $path = $image->store('images/category');
+        }else{
+            $path = 'images/category/default-banner.png';
+        }
         
         $category = PostCategory::create([
             'name' => $request['name'],
@@ -55,10 +60,13 @@ class CategoryServices{
             'status' => 'A'
         ]);
 
+        // dd($category);
+
         return $category;
     }
 
     public function update($id,$request,$image){
+        // dd($image);
         $cat = $this->find($id);
         $path = '';
 
@@ -73,16 +81,29 @@ class CategoryServices{
         }else{
             $path = $image->store('images/category');
         }
-        
-        $category = PostCategory::where('id',$id)->update([
-            'name' => $request['name'],
-            'slug' => str_slug($request['name'], '-'),
-            'description' => $request['description'],
-            'banner' => $path,
-            'status' => 'A'
-        ]);
 
-        return $category;
+        $cat->name = $request['name'];
+        $cat->slug = str_slug($request['name'], '-');
+        $cat->description = $request['description'];
+        
+        if ($path != null){
+            $cat->banner = $path;
+        }
+
+        $cat->status = 'A';
+        $cat->save();
+
+        // return redirect('/');
+        
+        // $category = PostCategory::where('id',$id)->update([
+        //     'name' => $request['name'],
+        //     'slug' => str_slug($request['name'], '-'),
+        //     'description' => $request['description'],
+        //     'banner' => $path,
+        //     'status' => 'A'
+        // ]);
+
+        return $cat;
     }
 
     public function delete($id){

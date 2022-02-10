@@ -3,7 +3,8 @@
 @section('meta_title'){{ $post->title }}@endsection
 @section('meta_keyword'){{ implode(', ', $meta_tags) }}@endsection
 @section('meta_desc'){{ str_limit(strip_tags($post->description),180,'...') }}@endsection
-@section('meta_img'){{ $post->type == 'photo' ? asset('storage/' . $post->images()->first()->name) : asset('storage/' . $post->photo()) }}@endsection
+@section('meta_img'){{ $post->type == 'photo' ? asset('storage/' . $post->images()->first()->name) : asset('storage/' .
+$post->photo()) }}@endsection
 
 @section('content')
 
@@ -39,8 +40,8 @@
                         </div>
                         <div class="align-self-center">
                             <h6 class="no-pm">
-                                <a class="text-dark"
-                                    href="{{ route('creator.detail', $post->user->username) }}">{{ $post->user->name }}</a>
+                                <a class="text-dark" href="{{ route('creator.detail', $post->user->username) }}">{{
+                                    $post->user->name }}</a>
                             </h6>
                             <p class="no-pm"><small class="text-secondary">{{ $estimated_time }} read</small></p>
                         </div>
@@ -81,8 +82,10 @@
                 <hr>
                 {{-- {{ dd($selanjutnya) }} --}}
                 @if ($selanjutnya)
-                <a href="{{ route('post.detail',[$selanjutnya->user->username,$selanjutnya->id,$selanjutnya->slug]) }}" class="clearfix">
-                    <div class="card card-hover shadow mb-4">
+                <h4 class="mt-4 fw-600">BACA <span class="text-primary">SELANJUTNYA</span> :</h4>
+                <a href="{{ route('post.detail',[$selanjutnya->user->username,$selanjutnya->id,$selanjutnya->slug]) }}"
+                    class="clearfix">
+                    <div class="card card-hover shadow mb-4 bd-radius-2">
                         <div class="row align-items-center">
                             <div class="col-4 col-lg-4 col-md-4 pr-0">
                                 <div class="d-flex justify-content-center">
@@ -90,15 +93,13 @@
                                         src="{{ asset('storage/' . $selanjutnya->photo()) }}" alt="">
                                 </div>
                             </div>
-                            <div class="col-8 col-lg-8 col-md-8">
-                                <span class="badge badge-dark">BACA SELANJUTNYA</span>
+                            <div class="col-8 col-lg-8 col-md-8 px-2">
+                                {{-- <span class="badge badge-dark">BACA SELANJUTNYA</span> --}}
                                 <div class="my-2">
                                     <h5 class="no-pm">{{ $selanjutnya->title }}</h5>
                                 </div>
-                                <div class=" d-lg-block">
-                                    <div class="text-secondary text-small">
-                                        {{ str_limit(strip_tags($selanjutnya->description),100,'...') }}
-                                    </div>
+                                <div class="d-lg-block">
+                                    <div class="text-secondary text-small">{{ str_limit(strip_tags($selanjutnya->description),50,'...') }}</div>
                                 </div>
                             </div>
                         </div>
@@ -110,40 +111,75 @@
 
                 @if ($recomendation->isNotEmpty())
                 <div class="heading2">
-                    <h4 class="mt-4 fw-600">TOPIK REKOMENDASI</h4>
+                    <h4 class="mt-4 fw-600">YOU MAY <span class="text-primary">LIKE THIS</span></h4>
                 </div>
                 <div class="row">
                     @foreach ($recomendation as $p)
-                    <div class="col-md-6 col-lg-6 mb-4">
-                        <a href="{{ route('post.detail',[$p->user->username,$p->id,$p->slug]) }}" class="card-block clearfix">
-                            <div class="card border my-2 shadow">
-                                <div class="card-img-top">
-                                    <div class="card-img-wrap">
-                                        <img class="img-fluid img-article" loading="lazy"
+                    <div class="col-md-12 mb-3">
+                        <a href="{{ route('post.detail',[$selanjutnya->user->username,$selanjutnya->id,$selanjutnya->slug]) }}"
+                            class="clearfix">
+                            <div class="row align-items-center">
+                                <div class="col-4 col-lg-4 col-md-4 pr-0">
+                                    <div class="d-flex justify-content-center">
+                                        <img class="img-fluid img-imagepost-headline bd-radius-2" loading="lazy"
                                             src="{{ asset('storage/' . $p->photo()) }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-8 col-lg-8 col-md-8">
+                                    <span class="badge badge-primary">{{ $p->category->name }}</span>
+                                    <div class="my-2">
+                                        <h5 class="no-pm">{{ $p->title }}</h5>
+                                    </div>
+                                    <div class=" d-lg-block">
+                                        <div class="text-secondary text-small">
+                                            {{ str_limit(strip_tags($p->description),100,'...') }}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="card-body">
-                                <div class="mt-2">
-                                    <a href="{{ route('post.detail',[$p->user->username,$p->id,$p->slug]) }}" class="no-pm">
-                                        <h4>{{ $p->title }}</h4>
-                                    </a>
-                                </div>
-                                <small class="text-secondary">
-                                    {{ Carbon\Carbon::parse($p->date_published)->format('d M Y') }} &middot;
-                                    {{ $p->user->name }}
-                                </small>
-                            </div>
+                        </a>
                     </div>
-                    </a>
+                    @endforeach
                 </div>
-                @endforeach
-            </div>
-            @endif
+                @endif
 
+                @if ($latest_post->isNotEmpty())
+                <div class="heading2">
+                    <h4 class="mt-4 fw-600">LATEST <span class="text-primary">ARTICLE</span></h4>
+                </div>
+                <div class="row">
+                    @foreach ($latest_post as $p)
+                    <div class="col-md-12 mb-3">
+                        <a href="{{ route('post.detail',[$selanjutnya->user->username,$selanjutnya->id,$selanjutnya->slug]) }}"
+                            class="clearfix">
+                            <div class="row align-items-center">
+                                <div class="col-4 col-lg-4 col-md-4 pr-0">
+                                    <div class="d-flex justify-content-center">
+                                        <img class="img-fluid img-imagepost-headline bd-radius-2" loading="lazy"
+                                            src="{{ asset('storage/' . $p->photo()) }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-8 col-lg-8 col-md-8">
+                                    <span class="badge badge-primary">{{ $p->category->name }}</span>
+                                    <div class="my-2">
+                                        <h5 class="no-pm">{{ $p->title }}</h5>
+                                    </div>
+                                    <div class=" d-lg-block">
+                                        <div class="text-secondary text-small">
+                                            {{ str_limit(strip_tags($p->description),100,'...') }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    @endforeach
+                </div>
+                @endif
+
+            </div>
+            @include('front.partial.right-bar')
         </div>
-        @include('front.partial.right-bar')
-    </div>
     </div>
 </section>
 

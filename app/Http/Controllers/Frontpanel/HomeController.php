@@ -11,6 +11,7 @@ use DB;
 use App\Services\CategoryServices;
 use App\Services\PostServices;
 use App\Services\ReviewServices;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -27,7 +28,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {        
         $data['title'] = 'Home';
-        $data['top_creation'] = Post::where('status', 'P')->orderBy('view_count', 'desc')->take(4)->get();
+        $data['top_creation'] = Post::where('status', 'P')->whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->orderBy('view_count', 'desc')->take(4)->get();
         // $data['creation'] = Post::where('status', 'P')->orderBy('created_at', 'desc')->paginate(10);
         $data['review'] = $this->reviewService->takePublishReview(4);
         $data['top_category'] = $this->categoryService->topCategory();
@@ -68,5 +69,9 @@ class HomeController extends Controller
 
     public function special(){
         return view('front.home.special');
+    }
+
+    public function link(){
+        return view('front.home.link-profile');
     }
 }

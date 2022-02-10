@@ -1,6 +1,6 @@
 @extends('back.layouts.master')
 
-@section('content')
+@section('adminContent')
 <!-- Main Content -->
 @foreach ($fields as $fields)
 <div class="main-content">

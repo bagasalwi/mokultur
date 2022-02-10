@@ -73,7 +73,7 @@
                             <td>{{ $row->title }}</td>
                             <td>{{ $row->view_count }}</td>
                             <td class="text-center">
-                                <a href="{{ route('review.detail',[$row->user->username,$row->,$row->slug]) }}" class="btn btn-info"><i
+                                <a href="{{ route('review.detail',[$row->user->username,$row->id,$row->slug]) }}" class="btn btn-info"><i
                                         class="fas fa-eye"></i></a>
                                 <button class="btn btn-danger" onclick="deleteReview({{ $row->id }})"><i
                                         class="fas fa-trash"></i></button>

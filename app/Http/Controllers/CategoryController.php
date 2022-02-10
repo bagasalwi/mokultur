@@ -13,7 +13,7 @@ class CategoryController extends Controller
     public function __construct(CategoryServices $categoryService)
     {
         $this->categoryService = $categoryService;
-        $this->middleware(['auth']);
+        // $this->middleware(['auth']);
     }
 
     public function category(){
@@ -68,8 +68,9 @@ class CategoryController extends Controller
             $this->validate($request, [
                 'name' => 'required',
                 'description' => 'required',
-                'banner' => 'file|image|mimes:jpeg,png,jpg|required'
+                // 'banner' => 'image|mimes:jpeg,png,jpg'
             ]);
+            // dd($request->post());
 
             $this->categoryService->create($request->all(),$request->file('banner'));
         }else{
@@ -79,7 +80,7 @@ class CategoryController extends Controller
                 'name' => 'required',
                 'slug' => 'unique:post_categories,slug,'. $cat->id,
                 'description' => 'required',
-                'banner' => 'file|image|mimes:jpeg,png,jpg|required'
+                'banner' => 'image|mimes:jpeg,png,jpg'
             ]);
 
             $this->categoryService->update($request->id,$request->all(),$request->file('banner'));

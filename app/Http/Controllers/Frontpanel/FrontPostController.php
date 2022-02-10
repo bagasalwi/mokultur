@@ -67,6 +67,31 @@ class FrontPostController extends Controller
         }
     }
 
+    public function load_post_category(Request $request){
+
+        if($request->ajax()){
+            if($request->id > 0){
+                $data = Post::where('id', '<', $request->id)
+                    ->where('status', 'P')
+                    ->where('category_id', $request->cat_id)
+                    ->orderBy('id', 'DESC')
+                    ->limit(5)
+                    ->get();
+            }else{
+                $data = Post::where('status', 'P')
+                    ->where('category_id', $request->cat_id)
+                    ->orderBy('id', 'DESC')
+                    ->limit(5)
+                    ->get();
+            }
+
+            $output = "";
+            $last_id = 0;
+
+            return view('front.partial.load-post', compact('data','last_id'));
+        }
+    }
+
     public function load_review(Request $request){
         $review = $this->reviewService->takeLatestOneReview();
 
@@ -141,6 +166,7 @@ class FrontPostController extends Controller
             $data['post_image'] = $data['post']->images()->get();
             $data['post_count'] = Post::where('user_id', $data['user']->id)->count();
 
+            $data['latest_post'] = Post::take(3)->get()->except($data['post']->id);
             $data['recomendation'] = Post::where('category_id', $data['post']->category_id)->take(3)->get()->except($data['post']->id);
 
             $words = str_word_count(strip_tags($data['post']->description));

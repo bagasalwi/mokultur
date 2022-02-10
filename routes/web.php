@@ -14,6 +14,7 @@
 Auth::routes();
 
 Route::get('/', 'Frontpanel\HomeController@index')->name('home');
+Route::get('/link', 'Frontpanel\HomeController@link')->name('link-profile');
 Route::get('/special', 'Frontpanel\HomeController@special')->name('special');
 
 Route::prefix('topic')->group(function () {
@@ -25,6 +26,7 @@ Route::prefix('browse')->group(function () {
     Route::get('/', 'Frontpanel\HomeController@browse')->name('browse');
     Route::get('/article', 'Frontpanel\FrontPostController@browsePost')->name('post');
     Route::post('/loadpost', 'Frontpanel\FrontPostController@load_post')->name('post.load_data');
+    Route::post('/loadpostcat', 'Frontpanel\FrontPostController@load_post_category')->name('post.load_data_cat');
     Route::get('/review', 'Frontpanel\FrontPostController@browseReview')->name('review');
     Route::get('/loadreview', 'Frontpanel\FrontPostController@load_review')->name('review.load_data');
     Route::get('/tag', 'Frontpanel\FrontPostController@browseTag')->name('tag');

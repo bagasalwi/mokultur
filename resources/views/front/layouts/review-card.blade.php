@@ -37,10 +37,10 @@
                             </div>
                         </div>
                     </div>
-                    <a class="fw-600" href="{{ route('review.detail',[$p->user->username,$p->id,$p->slug]) }}">
+                    <a class="fw-600 text-center" href="{{ route('review.detail',[$p->user->username,$p->id,$p->slug]) }}">
                         <h4>{{ $p->title }}</h4>
                     </a>
-                    <p class="text-small text-secondary mt-auto no-pm">{{ \Carbon\Carbon::parse($p->created_at)->format('d M Y') }} &middot;
+                    <p class="text-small text-center text-secondary mt-auto no-pm">{{ \Carbon\Carbon::parse($p->created_at)->format('d M Y') }} &middot;
                         {{ $p->user->name }}</p>
                 </div>
             </div>
