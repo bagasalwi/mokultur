@@ -116,7 +116,7 @@ $post->photo()) }}@endsection
                 <div class="row">
                     @foreach ($recomendation as $p)
                     <div class="col-md-12 mb-3">
-                        <a href="{{ route('post.detail',[$selanjutnya->user->username,$selanjutnya->id,$selanjutnya->slug]) }}"
+                        <a href="{{ route('post.detail',[$p->user->username,$p->id,$p->slug]) }}"
                             class="clearfix">
                             <div class="row align-items-center">
                                 <div class="col-4 col-lg-4 col-md-4 pr-0">
@@ -150,7 +150,7 @@ $post->photo()) }}@endsection
                 <div class="row">
                     @foreach ($latest_post as $p)
                     <div class="col-md-12 mb-3">
-                        <a href="{{ route('post.detail',[$selanjutnya->user->username,$selanjutnya->id,$selanjutnya->slug]) }}"
+                        <a href="{{ route('post.detail',[$p->user->username,$p->id,$p->slug]) }}"
                             class="clearfix">
                             <div class="row align-items-center">
                                 <div class="col-4 col-lg-4 col-md-4 pr-0">
