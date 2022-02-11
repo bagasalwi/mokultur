@@ -89,7 +89,7 @@ $post->photo()) }}@endsection
                         <div class="row align-items-center">
                             <div class="col-4 col-lg-4 col-md-4 pr-0">
                                 <div class="d-flex justify-content-center">
-                                    <img class="img-fluid img-imagepost-headline" loading="lazy"
+                                    <img class="img-fluid img-square" loading="lazy"
                                         src="{{ asset('storage/' . $selanjutnya->photo()) }}" alt="">
                                 </div>
                             </div>
@@ -121,7 +121,7 @@ $post->photo()) }}@endsection
                             <div class="row align-items-center">
                                 <div class="col-4 col-lg-4 col-md-4 pr-0">
                                     <div class="d-flex justify-content-center">
-                                        <img class="img-fluid img-imagepost-headline bd-radius-2" loading="lazy"
+                                        <img class="img-fluid img-square bd-radius-2" loading="lazy"
                                             src="{{ asset('storage/' . $p->photo()) }}" alt="">
                                     </div>
                                 </div>
@@ -155,7 +155,7 @@ $post->photo()) }}@endsection
                             <div class="row align-items-center">
                                 <div class="col-4 col-lg-4 col-md-4 pr-0">
                                     <div class="d-flex justify-content-center">
-                                        <img class="img-fluid img-imagepost-headline bd-radius-2" loading="lazy"
+                                        <img class="img-fluid img-square bd-radius-2" loading="lazy"
                                             src="{{ asset('storage/' . $p->photo()) }}" alt="">
                                     </div>
                                 </div>
