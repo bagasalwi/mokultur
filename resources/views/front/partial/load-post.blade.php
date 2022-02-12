@@ -58,7 +58,7 @@ $last_id = $row->id;
                         </small>
                     </span>
                 </div>
-                <a data-judul="{{ $row->title }}"
+                <a href="#" data-judul="{{ $row->title }}"
                     data-link="{{ route('post.detail',[$row->user->username,$row->id,$row->slug]) }}"
                     data-toggle="modal" data-target="#shareArticle" id="btn-share"
                     class="foot-link border-left p-2 ml-auto clearfix">
