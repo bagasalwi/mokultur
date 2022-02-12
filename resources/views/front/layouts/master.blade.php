@@ -5,9 +5,9 @@
 	<meta charset="UTF-8">
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
 	<meta name="keywords" content="Mokultur,Mo,Kultur, @yield('meta_keyword')" />
-	<meta name="description" content="@yield('meta_desc', ' Mokultur adalah ruang terbuka untuk kalian yang mempunyai tingak kulturasi tinggi, disini gue akan berbagi macam-macam tulisan random mulai dari Geeks, Pop Culture, Film, Teknologi dan lainnya.')" />
+	<meta name="description" content="@yield('meta_desc', ' Mokultur adalah ruang terbuka untuk kalian yang mempunyai tingkat kulturasi tinggi, disini kalian bisa berbagi macam-macam tulisan random mulai dari Geeks, Pop Culture, Film, Teknologi dan lainnya.')" />
 	<meta itemprop="name" content="@yield('meta_title', '')Mokultur">
-	<meta itemprop="description" content="@yield('meta_desc', ' Mokultur adalah ruang terbuka untuk kalian yang mempunyai tingak kulturasi tinggi, disini gue akan berbagi macam-macam tulisan random mulai dari Geeks, Pop Culture, Film, Teknologi dan lainnya.')">
+	<meta itemprop="description" content="@yield('meta_desc', ' Mokultur adalah ruang terbuka untuk kalian yang mempunyai tingkat kulturasi tinggi, disini kalian bisa berbagi macam-macam tulisan random mulai dari Geeks, Pop Culture, Film, Teknologi dan lainnya.')">
 	<meta itemprop="image" content="@yield('meta_img', asset('gambar/logo/logo.png'))">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -43,6 +43,7 @@
 	</div>
 
 	@include('front.layouts.script-extension')
+	@include('front.layouts.modal')
 
 	@yield('script')
 	@stack('script')

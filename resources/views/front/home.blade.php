@@ -7,7 +7,7 @@
     <div class="container section">
         <div class="row">
             <div class="col-lg-6 align-self-center">
-                <h1 class="text-white fw-700" data-font-size="36px">Ber-kulturisasi dengan update yang lagi happening! Seperti <span id="switchtext" class="bolder-text">Geeks</span>!</h1>
+                <h1 class="text-white fw-700" data-font-size="36px">Ber-kulturisasi dengan update yang lagi happening! Seperti <span id="switchtext">Geeks</span>!</h1>
                 <p class="mb-3 text-white">
                     Mokultur adalah ruang terbuka untuk kalian yang mempunyai tingak kulturasi tinggi, disini gue akan berbagi macam-macam tulisan random mulai dari Geeks, Pop Culture, Film, Teknologi dan lainnya. Stay Tune!!
                 </p>
@@ -157,6 +157,30 @@
     function wait(timeout) {
         return new Promise((resolve) => setTimeout(() => resolve(), timeout));
     }
+
+    $('#shareArticle').on('show.bs.modal', function(e) {
+        var link = $(e.relatedTarget).data('link');
+        var judul = encodeURIComponent($(e.relatedTarget).data('judul'));
+        $('#m-whatsapp').attr('href', 'https://api.whatsapp.com/send?text='+judul+'%0A%0A'+link+'%0A%0AJangan lupa kunjungi mokultur.online untuk konten seru lainnya!!');
+        $('#m-twitter').attr('href','https://twitter.com/share?text='+judul+'&url='+link+'');
+        // $('#m-discord').attr('href',link);
+        $('#m-facebook').attr('href','http://www.facebook.com/sharer.php?u='+link+'');
+        $('#m-link').attr('href',link);
+    });
+
+    $('.copy_text').click(function (e) {
+        e.preventDefault();
+        var copyText = $(this).attr('href');
+
+        document.addEventListener('copy', function(e) {
+            e.clipboardData.setData('text/plain', copyText);
+            e.preventDefault();
+        }, true);
+
+        document.execCommand('copy');  
+        console.log('copied text : ', copyText);
+        alert('Link berhasil di Copy'); 
+    });
     // End Text Typing
     </script>
 @endpush

@@ -19,7 +19,7 @@
         @endguest
         <div class="card card-full bd-radius-4 mb-2">
             <div class="card-body">
-                <h6 class="my-1 bolder-text">FOLLOW <span class="text-primary fw-600">OUR INSTAGRAM</span></h6>
+                <h6 class="my-1">FOLLOW <span class="text-primary fw-600">OUR INSTAGRAM</span></h6>
                 <div class="my-3" id="instagram" style="max-width: 200px; margin: 0 auto;"></div>
                 <a href="https://www.instagram.com/mokultur/" class="btn btn-sm btn-block btn-outline-primary">FOLLOW US</a>
             </div>

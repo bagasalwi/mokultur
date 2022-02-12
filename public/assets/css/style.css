@@ -4713,3 +4713,14 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
 .review-text .review-box {
 	margin-left: 14px;
 }
+
+.foot-link:hover{
+    background-color: rgba(243, 243, 243, 0.456)
+}
+
+.ur {
+    border: none;
+    background-color: #e6e2e2;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px
+}
