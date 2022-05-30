@@ -30,6 +30,7 @@
 	@include('front.layouts.css-extension')
 
 	@yield('css')
+	@stack('css')
 </head>
 
 <body class="layout-3 @yield('bg-color', 'bg-light')">
