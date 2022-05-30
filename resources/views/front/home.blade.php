@@ -1,5 +1,9 @@
 @extends('front.layouts.master')
 
+@section('meta-tags')
+<meta name="og:image" content="{{ asset('gambar/logo/logo.png') }}" />
+@endsection
+
 @section('content')
 <div class="jumbotron jumbotron-fluid primary-gradient mb-0 starback"
     style="padding-bottom: 80px; margin-bottom: -225px !important;">

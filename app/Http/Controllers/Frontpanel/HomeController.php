@@ -28,7 +28,8 @@ class HomeController extends Controller
     public function index(Request $request)
     {        
         $data['title'] = 'Home';
-        $data['top_creation'] = Post::where('status', 'P')->whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->orderBy('view_count', 'desc')->take(4)->get();
+        $data['top_creation'] = Post::where('status', 'P')->orderBy('created_at', 'desc')->take(4)->get();
+        // $data['top_creation'] = Post::where('status', 'P')->whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->orderBy('view_count', 'desc')->take(4)->get();
         // $data['creation'] = Post::where('status', 'P')->orderBy('created_at', 'desc')->paginate(10);
         $data['review'] = $this->reviewService->takePublishReview(4);
         $data['top_category'] = $this->categoryService->topCategory();
